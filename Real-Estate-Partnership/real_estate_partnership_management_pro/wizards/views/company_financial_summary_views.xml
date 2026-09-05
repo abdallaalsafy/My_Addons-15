@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Company Financial Summary Form View -->
+        <record id="view_company_financial_summary_form" model="ir.ui.view">
+            <field name="name">company.financial.summary.form</field>
+            <field name="model">company.financial.summary</field>
+            <field name="arch" type="xml">
+                <form string="Company Financial Summary">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>Company Financial Summary</h1>
+                            <field name="date_from" invisible="1"/>
+                        </div>
+                        
+                        <notebook>
+                            <page string="Company balance">
+                                <group>
+                                    <group>
+                                        <field name="total_company_balance" widget="monetary" style="font-weight: bold;font-size: 16px;"/>
+                                    </group>
+                                    <group string="Calculation elements">
+                                        <field name="partners_actual_balance" widget="monetary"/>
+                                        <field name="property_assets" widget="monetary"/>
+                                        <field name="management_fees" widget="monetary"/>
+                                        <field name="sold_child_property_assets" widget="monetary" style="color: red;"/>
+                                        <field name="undistributed_company_expenses" widget="monetary" style="color: red;"/>
+                                    </group>
+                                </group>
+                                <div class="alert alert-info" role="alert">
+                                    <p><strong>Note:</strong> The company's balance represents all funds and assets managed by the company.</p>
+                                    <p><strong>It consists of:</strong></p>
+                                    <ul>
+                                        <li><b>1 Partners Actual Balance:</b> The current positive balance in the partners' accounts</li>
+                                        <li><b>2 Property Assets:</b> Total cost of the unsold properties of the fathers.</li>
+                                        <li><b>3 Management Fees:</b> The total management fees from sales transactions</li>
+                                        <li><b>4 Sold Child Property Assets:</b> Total cost of the sold properties of the childern.</li>
+                                        <li><b>5 Undistributed Company Expenses:</b> Deduction of company expenses related to management</li>
+                                    </ul>
+                                </div>
+                            </page>
+                            <page string="Actual Liquidity">
+                                <group>
+                                    <group>
+                                        <field name="actual_liquidity" widget="monetary" style="font-weight: bold;font-size: 16px;"/>
+                                    </group>
+                                    <group string="Calculation elements">
+                                        <field name="positive_transactions" widget="monetary"/>
+                                        <field name="sale_paid" widget="monetary"/>
+                                        <field name="negative_transactions" widget="monetary" style="color: red;"/>
+                                        <field name="expense_paid" widget="monetary" style="color: red;"/>
+                                        <field name="purchase_paid" widget="monetary" style="color: red;"/>
+                                    </group>
+                                </group>
+                                <div class="alert alert-info" role="alert">
+                                    <p><strong>Note:</strong> The actual liquidity represents the current balance of the company's assets and liabilities.</p>
+                                    <p><strong>It consists of:</strong></p>
+                                    <ul>
+                                        <li><b>1 Positive Transactions:</b> Total positive transactions.</li>
+                                        <li><b>2 Sale Paid:</b> Total sale paid.</li>
+                                        <li><b>3 Negative Transactions:</b> The total negative transactions.</li>
+                                        <li><b>4 Expense Paid:</b> Total any expense paid.</li>
+                                        <li><b>5 Purchase Paid:</b> Total purchase paid.</li>
+                                    </ul>
+                                </div>
+                            </page>
+
+                            <page string="Deals Statistics">
+                                <group>
+                                    <group string="Overview">
+                                        <field name="deals_count"/>
+                                        <field name="deals_open_count"/>
+                                        <field name="deals_closed_count"/>
+                                    </group>
+                                    <group string="Financial Summary">
+                                        <field name="deals_total_amount"/>
+                                        <field name="deals_open_amount" widget="monetary"/>
+                                        <field name="deals_closed_amount" widget="monetary"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group string="Partnership Statistics">
+                                        <field name="Partnership_partners_count" />
+                                    </group>
+                                    <group string="Deals Amounts"> 
+                                        <field name="deals_maximum_amount" widget="monetary"/>
+                                        <field name="deals_minimum_amount" widget="monetary"/>
+                                         <field name="partnerships_debtor_amount" widget="monetary"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="Partners Statistics">
+                                <group>
+                                    <group string="Overview">
+                                        <field name="partners_count"/>
+                                        <field name="partners_active_count"/>
+                                        <field name="partners_exited_count"/>
+                                        <field name="partners_debtor_count"/>
+                                    </group>
+                                    <group string="Financial Summary">
+                                        <field name="partners_current_balance" widget="monetary"/>
+                                        <field name="partners_maximum_balance" widget="monetary"/>
+                                        <field name="partners_minimum_balance" widget="monetary" style="color: red;"/>
+                                        <field name="partners_debtor_balance" widget="monetary" style="color: red;"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="Purchases Statistics">
+                                <group>
+                                    <group string="Overview">
+                                        <field name="purchases_count"/>
+                                        <field name="purchases_paid_count"/>
+                                        <field name="purchases_unpaid_count"/>
+                                    </group>
+                                    <group string="Financial Summary">
+                                        <field name="purchases_total_price" widget="monetary"/>
+                                        <field name="purchases_paid_amount" widget="monetary"/>
+                                        <field name="purchases_unpaid_amount" widget="monetary"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="Sales Statistics">
+                                <group>
+                                    <group string="Overview">
+                                        <field name="sales_count"/>
+                                        <field name="sales_paid_count"/>
+                                        <field name="sales_unpaid_count"/>
+                                    </group>
+                                    <group string="Financial Summary">
+                                        <field name="sales_total_price" widget="monetary"/>
+                                        <field name="sales_paid_amount" widget="monetary"/>
+                                        <field name="sales_unpaid_amount" widget="monetary"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group string="Profits">
+                                        <field name="sales_total_profit" widget="monetary"/>
+                                        <field name="sales_total_management_fees" widget="monetary"/>
+                                        <field name="sales_total_net_profit" widget="monetary"/>
+                                    </group>
+                                    <group></group>
+                                </group>
+                            </page>
+                            
+                            <page string="Expenses Statistics">
+                                <group string="All Expenses">
+                                    <group>
+                                        <field name="expenses_count"/>
+                                        <field name="expenses_paid_count"/>
+                                        <field name="expenses_unpaid_count"/>
+                                    </group>
+                                    <group>
+                                        <field name="expenses_total_amount" widget="monetary"/>
+                                        <field name="expense_paid" widget="monetary"/>
+                                        <field name="expenses_unpaid_amount" widget="monetary" style="color: red;"/>
+                                    </group>
+                                </group>
+                                <group string="Investment Expenses Payment Status">
+                                    <group>
+                                        <field name="expenses_investment_count"/>
+                                        <field name="expenses_investment_paid_count"/>
+                                        <field name="expenses_investment_unpaid_count"/>
+                                    </group>
+                                    <group>
+                                        <field name="expenses_investment_amount" widget="monetary"/>
+                                        <field name="expenses_investment_paid_amount" widget="monetary"/>
+                                        <field name="expenses_investment_unpaid_amount" widget="monetary" style="color: red;"/>
+                                    </group>
+                                </group>
+                                <group string="Company Expenses Payment Status">
+                                    <group>
+                                        <field name="expenses_company_count"/>
+                                        <field name="expenses_company_paid_count"/>
+                                        <field name="expenses_company_unpaid_count"/>
+                                    </group>
+                                    <group>
+                                        <field name="expenses_company_amount" widget="monetary"/>
+                                        <field name="expenses_company_paid_amount" widget="monetary"/>
+                                        <field name="expenses_company_unpaid_amount" widget="monetary" style="color: red;"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        <button name="action_print_report" string="Print Report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Action for Company Financial Summary -->
+        <record id="action_company_financial_summary" model="ir.actions.act_window">
+            <field name="name">Company Financial Summary</field>
+            <field name="res_model">company.financial.summary</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

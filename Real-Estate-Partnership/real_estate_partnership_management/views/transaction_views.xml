@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Transaction Search View -->
+        <record id="view_real_estate_transaction_search" model="ir.ui.view">
+            <field name="name">real.estate.transaction.search</field>
+            <field name="model">real.estate.transaction</field>
+            <field name="arch" type="xml">
+                <search string="Partner Transactions">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="transaction_type"/>
+                    <field name="transaction_date"/>
+                    <separator/>
+                    <filter string="Deposits" name="deposits" domain="[('transaction_type', '=', 'deposit')]"/>
+                    <filter string="Withdrawals" name="withdrawals" domain="[('transaction_type', '=', 'withdrawal')]"/>
+                    <filter string="Profit Distribution" name="profit" domain="[('transaction_type', '=', 'profit_distribution')]"/>
+                    <filter string="Investment Return" name="return" domain="[('transaction_type', '=', 'investment_return')]"/>
+                    <separator/>
+                    <filter string="Today" name="today" domain="[('transaction_date', '=', context_today())]"/>
+                    <filter string="This Week" name="this_week"
+                            domain="[('transaction_date', '&gt;=', (context_today() - datetime.timedelta(days=context_today().weekday())).strftime('%Y-%m-%d')),
+                                    ('transaction_date', '&lt;=', (context_today() + datetime.timedelta(days=6-context_today().weekday())).strftime('%Y-%m-%d'))]"/>
+                    <filter string="This Month" name="this_month"
+                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
+                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="This Year" name="this_year"
+                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(day=1, month=1)).strftime('%Y-%m-%d')),
+                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Transaction Type" name="group_type" context="{'group_by': 'transaction_type'}"/>
+                        <filter string="Transaction Date" name="group_date" context="{'group_by': 'transaction_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Transaction Tree View -->
+        <record id="view_real_estate_transaction_tree" model="ir.ui.view">
+            <field name="name">real.estate.transaction.tree</field>
+            <field name="model">real.estate.transaction</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Transactions">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="transaction_type"/>
+                    <field name="amount" widget="monetary"/>
+                    <field name="transaction_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Transaction Form View -->
+        <record id="view_real_estate_transaction_form" model="ir.ui.view">
+            <field name="name">real.estate.transaction.form</field>
+            <field name="model">real.estate.transaction</field>
+            <field name="arch" type="xml">
+                <form string="Partner Transaction">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="transaction_details">
+                                <field name="partner_id" readonly="context.get('readonly_partner_id')"/>
+                                <field name="transaction_type" readonly="context.get('readonly_transaction_type')"/>
+                                <field name="amount" widget="monetary"/>
+                                <field name="transaction_date" readonly="context.get('readonly_transaction_date')"/>
+                            </group>
+                            <group name="payment_info">
+                                <field name="payment_method"/>
+                                <field name="payment_reference"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description" placeholder="Add transaction description..."/>
+                            </page>
+                            <page string="Attachments">
+                                <field name="attachment_ids" widget="many2many_binary"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Transaction Kanban View -->
+        <record id="view_real_estate_transaction_kanban" model="ir.ui.view">
+            <field name="name">real.estate.transaction.kanban</field>
+            <field name="model">real.estate.transaction</field>
+            <field name="arch" type="xml">
+                <kanban string="Partner Transactions">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="transaction_type"/>
+                    <field name="amount"/>
+                    <field name="transaction_date"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                                <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <strong><field name="partner_id"/></strong>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section">
+                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
+                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_card_content">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <span><field name="name"/></span>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <field name="transaction_type"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Amount: </strong><field name="amount" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Transaction Action -->
+        <record id="action_real_estate_transaction" model="ir.actions.act_window">
+            <field name="name">Partner Transactions</field>
+            <field name="res_model">real.estate.transaction</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first transaction
+                </p>
+                <p>
+                    Transactions include deposits, withdrawals, profit distributions, and other
+                    financial movements between partners and the partnership.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

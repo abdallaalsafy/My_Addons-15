@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--	              Update Goods                  -->
+    <record model="ir.ui.view" id="update_goods_form_id">
+		<field name="name">Update_Goods_Form</field>
+		<field name="model">wzrd_update_goods</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="fld_category_id"/>
+					<field name="fld_unit_id"/>
+					<field name="fld_alarms"/>
+					<field name="fld_notes"/>
+				</group>
+				<footer>
+					<button  name='fnc_update_goods' string='Update' type='object' class = "btn-primary"/>
+					<button special="cancel" string="Cancel" class="btn btn-secondary"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="update_goods_action_id">
+		<field name="name">Update_Goods_Action</field>
+		<field name="res_model">wzrd_update_goods</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+		<field name="view_id" ref="update_goods_form_id"/>
+		<field name="binding_model_id"    ref="model_mdl_goods"/>
+		<field name="binding_view_types">list</field>
+	</record>
+<!--	          Update Prices                        -->
+	 <record model="ir.ui.view" id="update_prices_form_id">
+		<field name="name">Update_Prices_Form</field>
+		<field name="model">wzrd_update_goods</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<group string="Price Buy">
+						<field name="fld_buy_update"/>
+						<span class="o_form_label o_td_label" attrs="{'invisible':[('fld_buy_update','not in',['ratio'])]}">Ratio</span>
+						<div class="o_address_format" attrs="{'invisible':[('fld_buy_update','not in',['ratio'])]}">
+							<field name="fld_buy_ratio"
+								   class="o_address_city"/>
+							<span>%</span>
+						</div>
+						<span class="o_form_label o_td_label" attrs="{'invisible':[('fld_buy_update','not in',['sum'])]}">Sum</span>
+						<div class="o_address_format" attrs="{'invisible':[('fld_buy_update','not in',['sum'])]}">
+							<field name="fld_buy_sum"
+								   class="o_address_city"/>
+							<span>L.E</span>
+						</div>
+					</group>
+					<group string="Price Sell">
+						<field name="fld_sell_update"/>
+						<span class="o_form_label o_td_label" attrs="{'invisible':[('fld_sell_update','not in',['ratio'])]}">Ratio</span>
+						<div class="o_address_format" attrs="{'invisible':[('fld_sell_update','not in',['ratio'])]}">
+							<field name="fld_sell_ratio"
+								   class="o_address_city"/>
+							<span>%</span>
+						</div>
+						<span class="o_form_label o_td_label" attrs="{'invisible':[('fld_sell_update','not in',['sum'])]}">Sum</span>
+						<div class="o_address_format" attrs="{'invisible':[('fld_sell_update','not in',['sum'])]}">
+							<field name="fld_sell_sum"
+								   class="o_address_city"/>
+							<span>L.E</span>
+						</div>
+						<field name="fld_on_buy" attrs="{'invisible':[('fld_sell_update','not in',['ratio'])]}"/>
+					</group>
+				</group>
+				<footer>
+					<button  name='fnc_update_prices' string='Update' type='object' class = "btn-primary"/>
+					<button special="cancel" string="Cancel" class="btn btn-secondary"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="update_prices_action_id">
+		<field name="name">Update_Prices_Action</field>
+		<field name="res_model">wzrd_update_goods</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+		<field name="view_id" ref="update_prices_form_id"/>
+		<field name="binding_model_id"    ref="model_mdl_goods"/>
+		<field name="binding_view_types">list</field>
+	</record>
+</odoo>

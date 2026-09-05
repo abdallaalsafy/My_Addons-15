@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- QWeb report template for Property Expense List -->
+        <template id="report_property_expense_list">
+            <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .expense-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .expense-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .expense-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .expense-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .expense-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Property Expenses List Report</h2>
+
+                    <table class="expense-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">No.</th>
+                                <th>Notes</th>
+                                <th>Status</th>
+                                <th>Payment Reference</th>
+                                <th>Payment Method</th>
+                                <th>Paid To</th>
+                                <th>Amount</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Property</th>
+                                <th>Description</th>
+                                <th>Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="docs">
+                                <t t-foreach="docs" t-as="exp">
+                                    <tr>
+                                        <td><span t-esc="exp_index + 1"/></td>
+                                        <td><span t-field="exp.notes"/></td>
+                                        <td><span t-field="exp.status"/></td>
+                                        <td><span t-field="exp.payment_reference"/></td>
+                                        <td><span t-field="exp.payment_method"/></td>
+                                        <td><span t-field="exp.paid_to_contact_id.name"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(exp.amount)"/></td>
+                                        <td><span t-field="exp.category_id.name"/></td>
+                                        <td><span t-field="exp.expense_date"/></td>
+                                        <td><span t-field="exp.property_id.name"/></td>
+                                        <td><span t-field="exp.name"/></td>
+                                        <td><span t-field="exp.code"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not docs">
+                                <tr>
+                                    <td colspan="12" class="text-center">No property expenses found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_property_expense_list_action" model="ir.actions.report">
+            <field name="name">Property Expenses List</field>
+            <field name="model">real.estate.expense</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_property_expense_list</field>
+            <field name="report_file">real_estate_partnership_management.report_property_expense_list</field>
+            <field name="binding_model_id" ref="model_real_estate_expense"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_landscape"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb report template for Partner Details -->
+        <template id="report_partner_details">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-row { background-color: #f0f0f0; border: 1px solid #bbb; padding: 8px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .info-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .info-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .info-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .info-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .section-title {
+                        background-color: #2d5016;
+                        color: white;
+                        padding: 10px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Partner Details Report</h2>
+                    <h3 style="text-align: center;"><span t-field="doc.name"/></h3>
+
+                    <!-- Basic Information -->
+                    <div class="section-title">Basic Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Code:</span> <span t-field="doc.code"/></td>
+                                <td><span class="header-label">Name:</span> <span t-field="doc.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Phone:</span> <span t-field="doc.phone"/></td>
+                                <td><span class="header-label">Email:</span> <span t-field="doc.email"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">National ID:</span> <span t-field="doc.national_id"/></td>
+                                <td><span class="header-label">Status:</span> <span t-field="doc.status"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Join Date:</span> <span t-field="doc.join_date"/></td>
+                                <td><span class="header-label">Exit Date:</span> <span t-field="doc.exit_date"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><span class="header-label">Address:</span> <span t-field="doc.address"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Financial Information -->
+                    <div class="section-title">Financial Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Current Balance:</span> <span t-esc="'{:,.2f}'.format(doc.current_balance)"/></td>
+                                <td><span class="header-label">Remaining Balance:</span> <span t-esc="'{:,.2f}'.format(doc.actual_balance)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Confirmed Investments Total:</span> <span t-esc="'{:,.2f}'.format(doc.confirmed_investments_total)"/></td>
+                                <td><span class="header-label">Confirmed Investments Count:</span> <span t-field="doc.confirmed_investments_count"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Total Profit from Exits:</span> <span t-esc="'{:,.2f}'.format(doc.total_profit_from_exits)"/></td>
+                                <td><span class="header-label">Total Profit from Sales:</span> <span t-esc="'{:,.2f}'.format(doc.total_profit_from_sales)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Investments -->
+                    <div class="section-title">Investments</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Percentage</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Property</th>
+                                <th>Status</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.investment_ids">
+                                <t t-foreach="doc.investment_ids" t-as="inv">
+                                    <tr>
+                                        <td><span t-esc="'{:.2f}%'.format(inv.percentage)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(inv.amount)"/></td>
+                                        <td><span t-field="inv.investment_date"/></td>
+                                        <td><span t-field="inv.property_id.name"/></td>
+                                        <td><span t-field="inv.status"/></td>
+                                        <td><span t-field="inv.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.investment_ids">
+                                <tr>
+                                    <td colspan="6" class="text-center">No investments found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Transactions -->
+                    <div class="section-title">Transactions</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Type</th>
+                                <th>Date</th>
+                                <th>Payment Method</th>
+                                <th>Description</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.transaction_ids">
+                                <t t-foreach="doc.transaction_ids" t-as="trans">
+                                    <tr>
+                                        <td><span t-esc="'{:,.2f}'.format(trans.amount)"/></td>
+                                        <td><span t-field="trans.transaction_type"/></td>
+                                        <td><span t-field="trans.transaction_date"/></td>
+                                        <td><span t-field="trans.payment_method"/></td>
+                                        <td><span t-field="trans.description"/></td>
+                                        <td><span t-field="trans.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.transaction_ids">
+                                <tr>
+                                    <td colspan="6" class="text-center">No transactions found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Property Sales -->
+                    <div class="section-title">Property Sales</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Profit Amount</th>
+                                <th>Investment Percentage</th>
+                                <th>Investment Amount</th>
+                                <th>Sale Date</th>
+                                <th>Property</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.property_sale_ids">
+                                <t t-foreach="doc.property_sale_ids" t-as="sale">
+                                    <tr>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.profit_amount)"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(sale.investment_percentage)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.investment_amount)"/></td>
+                                        <td><span t-field="sale.sale_id.sale_date"/></td>
+                                        <td><span t-field="sale.property_id.name"/></td>
+                                        <td><span t-field="sale.sale_id.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.property_sale_ids">
+                                <tr>
+                                    <td colspan="6" class="text-center">No property sales found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Exit Lines -->
+                    <div class="section-title">Partner Exits</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Exit Percentage</th>
+                                <th>Investment Percentage</th>
+                                <th>Exit Date</th>
+                                <th>Property</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.exit_line_ids">
+                                <t t-foreach="doc.exit_line_ids" t-as="exit">
+                                    <tr>
+                                        <td><span t-esc="'{:.2f}%'.format(exit.exit_percentage)"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(exit.investment_percentage)"/></td>
+                                        <td><span t-field="exit.exit_id.exit_date"/></td>
+                                        <td><span t-field="exit.exit_id.property_id.name"/></td>
+                                        <td><span t-field="exit.exit_id.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.exit_line_ids">
+                                <tr>
+                                    <td colspan="5" class="text-center">No partner exits found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_partner_details_action" model="ir.actions.report">
+            <field name="name">Partner Details</field>
+            <field name="model">real.estate.partner</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_partner_details</field>
+            <field name="report_file">real_estate_partnership_management.report_partner_details</field>
+            <field name="binding_model_id" ref="model_real_estate_partner"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

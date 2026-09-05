@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="update_isalls_form_id">
+		<field name="name">Update_Isalls_Form</field>
+		<field name="model">wzrd_update_isalls</field>
+		<field name="arch" type="xml">
+			<form>
+				<field name="fld_sell_id" invisible="1"/>
+				<group>
+					<group>
+						<field name="fld_reg_date"/>
+						<field name="fld_amount"/>
+					</group>
+					<group>
+						<field name="fld_from"/>
+						<field name="fld_to"/>
+					</group>
+				</group>
+				<field name="fld_isalls_ids" force_save="1">
+					<tree>
+						<field name="fld_num"/>
+						<field name="fld_reg_date"/>
+						<field name="fld_amount"/>
+						<field name="fld_month" invisible="1"/>
+						<field name="fld_year" invisible="1"/>
+					</tree>
+				</field>
+				<footer>
+					<button  name='action_update_installments' string='Update' type='object' class = "btn-primary"/>
+					<button special="cancel" string="Cancel" class="btn btn-secondary"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="update_isalls_action_id">
+		<field name="name">Update_Isalls_Action</field>
+		<field name="res_model">wzrd_update_isalls</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+		<field name="view_id" ref="update_isalls_form_id"/>
+	</record>
+</odoo>

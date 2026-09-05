@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record model="ir.ui.view" id="inventorys_goods_search_id">
+        <field name="name">Inventory Goods Search</field>
+        <field name="model">mdl_inventorys_goods</field>
+        <field name="arch" type="xml">
+            <search string="Search Inventory Goods">
+                <!-- Search Fields -->
+                <field name="fld_category_id"/>
+                <field name="fld_goods_id"/>
+                <field name="fld_unit_id"/>
+                <field name="fld_inventory_id"/>
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Category" name="group_category" context="{'group_by':'fld_category_id'}"/>
+                    <filter string="Goods" name="group_goods" context="{'group_by':'fld_goods_id'}"/>
+                    <filter string="Unit" name="group_unit" context="{'group_by':'fld_unit_id'}"/>
+                    <filter string="Inventory" name="group_inventory" context="{'group_by':'fld_inventory_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="inventorys_goods_list_id">
+        <field name="name">Inventory Goods List</field>
+        <field name="model">mdl_inventorys_goods</field>
+        <field name="arch" type="xml">
+            <tree decoration-bf="1">
+                <field name="fld_inventory_id"/>
+                <field name="fld_category_id"/>
+                <field name="fld_goods_id"/>
+                <field name="fld_count" sum="Total Count"/>
+                <field name="fld_unit_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="inventorys_goods_form_id">
+        <field name="name">Inventory Goods Form</field>
+        <field name="model">mdl_inventorys_goods</field>
+        <field name="arch" type="xml">
+            <form string="Inventory Goods">
+                <sheet>
+                    <group>
+                        <group name="basic_info">
+                            <field name="fld_inventory_id"/>
+                            <field name="fld_category_id"/>
+                        </group>
+                        <group name="goods_info">
+                            <field name="fld_goods_id"/>
+                            <field name="fld_unit_id"/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <group name="count_info">
+                            <field name="fld_count" widget="monetary"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record model="ir.actions.act_window" id="inventorys_goods_action_id">
+        <field name="name">Inventory Goods</field>
+        <field name="res_model">mdl_inventorys_goods</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_group_inventory': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No inventory goods found
+            </p>
+            <p>
+                View and manage inventory goods details, track stock counts, and monitor inventory levels.
+            </p>
+        </field>
+    </record>
+</odoo>

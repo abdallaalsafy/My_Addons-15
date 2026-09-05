@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Expense Tree View -->
+        <record id="view_real_estate_expense_tree" model="ir.ui.view">
+            <field name="name">real.estate.expense.tree</field>
+            <field name="model">real.estate.expense</field>
+            <field name="arch" type="xml">
+                <tree string="Property Expenses">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="expense_type" attrs="{'column_invisible': True}"/>
+                    <field name="property_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
+                    <field name="all_partners" optional="hide" widget="boolean_toggle" attrs="{'column_invisible': [('expense_type', '=', 'investment')]}"/>
+                    <field name="partner_ids" widget="many2many_tags" attrs="{'column_invisible': [('expense_type', '=', 'investment')]}"/>
+                    <field name="distribution_method" optional="hide" attrs="{'column_invisible': [('expense_type', '=', 'investment')]}"/>
+                    <field name="category_id"/>
+                    <field name="amount" widget="monetary" sum="Total Amount"/>
+                    <field name="expense_date"/>
+                    <field name="paid_to_contact_id"/>
+                    <field name="status" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Expense Form View -->
+        <record id="view_real_estate_expense_form" model="ir.ui.view">
+            <field name="name">real.estate.expense.form</field>
+            <field name="model">real.estate.expense</field>
+            <field name="arch" type="xml">
+                <form string="Property Expense">
+                    <header>
+                        <button name="action_mark_paid" type="object" 
+                                string="Mark as Paid" class="btn-primary"
+                                attrs="{'invisible': [('status', '!=', 'confirmed')]}"/>
+                        <button name="action_redistribute" type="object"
+                                string="Redistribute" class="btn-warning"
+                                attrs="{'invisible': ['|',('expense_type', '!=', 'company'),('distribution_method', '!=', 'percentage')]}"/>
+                        <field name="status" widget="statusbar" 
+                               statusbar_visible="confirmed,paid"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Expense Description"/>
+                            </h1>
+                            <h2>
+                                <field name="code" readonly="1"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group name="expense_details">
+                                <field name="expense_date"/>
+                                <field name="expense_type" invisible="1"/>
+                                <field name="property_id" readonly="context.get('readonly_property_id')" attrs="{'required': [('expense_type', '=', 'investment')], 'invisible': [('expense_type', '=', 'company')]}"/>
+                                <field name="amount" widget="monetary"/>
+                                <field name="category_id"/>
+                            </group>
+                            <group name="payment_info">
+                                <field name="paid_to_contact_id"/>
+                                <field name="payment_method"/>
+                                <field name="payment_reference"/>
+                            </group>
+                        </group>
+                        
+                        <!-- Partner Distribution Section -->
+                        <group string="Partner Distribution" attrs="{'invisible': [('expense_type', '=', 'investment')]}">
+                            <group name="distribution_options">
+                                <field name="all_partners" widget="boolean_toggle"/>
+                                <field name="distribution_method" widget="radio"/>
+                            </group>
+                            <group name="partner_selection">
+                                <field name="partner_ids" widget="many2many_tags" force_save="1"
+                                       attrs="{'readonly': [('all_partners', '=', True)]}"
+                                       placeholder="Select specific partners..."/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Partner Distributions" attrs="{'invisible': [('expense_type', '=', 'investment')]}">
+                                <field name="distribution_ids">
+                                    <tree string="Distributions">
+                                        <field name="partner_id"/>
+                                        <field name="partner_share" widget="monetary"/>
+                                        <field name="share_percentage" widget="percentage"/>
+                                        <field name="distribution_date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Attachments">
+                                <field name="attachment_ids" widget="many2many_binary"/>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes" placeholder="Add any additional notes about this expense..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Expense Kanban View -->
+        <record id="view_real_estate_expense_kanban" model="ir.ui.view">
+            <field name="name">real.estate.expense.kanban</field>
+            <field name="model">real.estate.expense</field>
+            <field name="arch" type="xml">
+                <kanban string="Property Expenses">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="property_id"/>
+                    <field name="amount"/>
+                    <field name="category_id"/>
+                    <field name="status"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                                <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section">
+                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
+                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_card_content">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <span><field name="code"/></span>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <field name="property_id"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Amount: </strong><field name="amount" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="o_kanban_primary_right">
+                                        <field name="status" widget="label_selection" 
+                                               options="{'classes': {'confirmed': 'info', 'paid': 'success'}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Expense Action for Properties Expenses -->
+        <record id="action_real_estate_expense" model="ir.actions.act_window">
+            <field name="name">Properties Expenses</field>
+            <field name="res_model">real.estate.expense</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="domain">[('expense_type', '=', 'investment')]</field>
+            <field name="context">{'default_expense_type': 'investment'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first investment expense
+                </p>
+                <p>
+                    Investment expenses include renovation, maintenance, licenses, taxes, and other costs
+                    associated with managing and developing specific properties.
+                </p>
+            </field>
+        </record>
+
+        <!-- Company Expense Action -->
+        <record id="action_company_expense" model="ir.actions.act_window">
+            <field name="name">Company Expenses</field>
+            <field name="res_model">real.estate.expense</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="domain">[('expense_type', '=', 'company')]</field>
+            <field name="context">{'default_expense_type': 'company'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first company expense
+                </p>
+                <p>
+                    Company expenses include salaries, utilities, office rent, and other operational costs
+                    that are distributed among selected partners.
+                </p>
+            </field>
+        </record>
+
+        <!-- Expense Search View -->
+        <record id="view_real_estate_expense_search" model="ir.ui.view">
+            <field name="name">real.estate.expense.search</field>
+            <field name="model">real.estate.expense</field>
+            <field name="arch" type="xml">
+                <search string="Property Expenses">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="property_id"/>
+                    <field name="partner_ids"/>
+                    <field name="paid_to_contact_id"/>
+                    <filter string="Confirmed" name="confirmed" domain="[('status', '=', 'confirmed')]"/>
+                    <filter string="Paid" name="paid" domain="[('status', '=', 'paid')]"/>
+                    <separator/>
+                    <filter string="Renovation" name="renovation" domain="[('category_id.name', '=ilike', 'Renovation')]"/>
+                    <filter string="Maintenance" name="maintenance" domain="[('category_id.name', '=ilike', 'Maintenance')]"/>
+                    <filter string="Licenses" name="licenses" domain="[('category_id.name', '=ilike', 'Licenses')]"/>
+                    <filter string="Taxes" name="taxes" domain="[('category_id.name', '=ilike', 'Taxes')]"/>
+                    <filter string="Management Fees" name="management" domain="[('category_id.name', '=ilike', 'Management')]"/>
+                    <separator/>
+                    <filter string="This Month" name="this_month" 
+                            domain="[('expense_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
+                                    ('expense_date', '&lt;', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="This Year" name="this_year" 
+                            domain="[('expense_date', '&gt;', (context_today() - relativedelta(day=1, month=1)).strftime('%Y-%m-%d')),
+                                    ('expense_date', '&lt;', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Property" name="group_property" context="{'group_by': 'property_id'}" invisible="context.get('default_expense_type')=='investment'" />
+                        <filter string="Partners" name="group_partners" context="{'group_by': 'partner_ids'}" invisible="context.get('default_expense_type')=='company'"/>
+                        <filter string="Category" name="group_category" context="{'group_by': 'category_id'}"/>
+                        <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                        <filter string="Expense Date" name="group_date" context="{'group_by': 'expense_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

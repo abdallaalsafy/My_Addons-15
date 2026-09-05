@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="buygoods_form_id">
+		<field name="name">Buy_Goods_Form</field>
+		<field name="model">mdl_buys_goods</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="fld_class_id"/>
+					<field name="fld_goods_id" attrs="{'readonly': [('fld_class_id', '=', False)]}" context="{'default_fld_class_id': fld_class_id, 'hide_fld_class_id': 1}"/>
+					<field name="fld_goods_num"/>
+					<field name="fld_price_buy"/>
+					<field name="fld_calc_price"/>
+				</group>
+			</form>
+		</field>
+	</record>
+
+		<record model="ir.ui.view" id="buygoods_list_id">
+		<field name="name">Buy_Goods_List</field>
+		<field name="model">mdl_buys_goods</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="fld_class_id"/>
+				<field name="fld_goods_id"/>
+				<field name="fld_goods_num"/>
+				<field name="fld_price_buy"/>
+				<field name="fld_calc_price"/>
+			</tree>
+		</field>
+	</record>
+</odoo>

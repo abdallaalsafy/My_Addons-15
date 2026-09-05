@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="catg_units_default" model="mdl_catg_units">
+        <field name="name">Units</field>
+        <field name="fld_description">Default units category for SuperMarket Pro.</field>
+    </record>
+
+    <record id="unit_default_ref" model="mdl_units">
+        <field name="name">Unit</field>
+        <field name="fld_catg_id" ref="super_market_pro.catg_units_default"/>
+        <field name="fld_ratio">1.0</field>
+        <field name="fld_type">ref</field>
+        <field name="fld_description">Default reference unit for goods.</field>
+    </record>
+</odoo>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_real_estate_partner_exit_tree" model="ir.ui.view">
+            <field name="name">real.estate.partner.exit.tree</field>
+            <field name="model">real.estate.partner.exit</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Exits">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="exit_date"/>
+                    <field name="total_exit_percentage" widget="percentage"/>
+                    <field name="total_replacement_percentage" widget="percentage"/>
+                    <field name="current_property_value" widget="monetary" sum="Total Current Value"/>
+                    <field name="total_property_cost" widget="monetary" sum="Total Cost"/>
+                    <field name="actual_property_profit" widget="monetary" sum="Total Profit"/>
+                    <field name="management_fee_amount" widget="monetary" sum="Management Fee"/>
+                    <field name="net_profit" widget="monetary" sum="Net Profit"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_real_estate_partner_exit_form" model="ir.ui.view">
+            <field name="name">real.estate.partner.exit.form</field>
+            <field name="model">real.estate.partner.exit</field>
+            <field name="arch" type="xml">
+                <form string="Partner Exit">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="exit_date"/>
+                                <field name="property_id" options="{'no_create': True}" readonly="context.get('default_property_id', False)"/>
+                            </group>
+                            <group>
+                                <field name="current_property_value"/>
+                                <field name="total_property_cost" force_save="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Management Fee">
+                                <field name="management_fee_percentage"/>
+                                <field name="management_fee_amount"/>
+                            </group>
+                            <group string="Profit">
+                                <field name="actual_property_profit"/>
+                                <field name="net_profit"/>
+                                <field name="total_exit_percentage"/>
+                                <field name="total_replacement_percentage" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Exiting Partners">
+                                <field name="exiting_partner_ids">
+                                    <tree editable="bottom">
+                                        <field name="partner_id"/>
+                                        <field name="investment_id"/>
+                                        <field name="investment_percentage"/>
+                                        <field name="exit_type"/>
+                                        <field name="exit_percentage"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Replacement Partners">
+                                <field name="replacement_partner_ids">
+                                    <tree editable="bottom">
+                                        <field name="partner_id"/>
+                                        <field name="partner_type"/>
+                                        <field name="replacement_percentage"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Profit Distribution">
+                                <field name="exit_line_ids" readonly="1">
+                                    <tree>
+                                        <field name="partner_id"/>
+                                        <field name="investment_percentage"/>
+                                        <field name="original_investment_amount"/>
+                                        <field name="profit_amount"/>
+                                        <field name="is_exiting_partner"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Notes">
+                                <group>
+                                    <field name="notes" nolabel="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_real_estate_partner_exit_search" model="ir.ui.view">
+            <field name="name">real.estate.partner.exit.search</field>
+            <field name="model">real.estate.partner.exit</field>
+            <field name="arch" type="xml">
+                <search string="Partner Exits">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Property" name='group_property' context="{'group_by': 'property_id'}"/>
+                        <filter string="Exit Date" name='group_date' context="{'group_by': 'exit_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action Window -->
+        <record id="action_real_estate_partner_exit" model="ir.actions.act_window">
+            <field name="name">Partner Exits</field>
+            <field name="res_model">real.estate.partner.exit</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new partner exit request
+                </p>
+                <p>
+                    Manage partner exits from property investments with proper valuation and profit calculation.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="mawhubin_list2">
+      <field name="name">mawhubin_list</field>
+      <field name="model">mawhubin</field>
+      <field name="arch" type="xml">
+        <tree>
+
+<!--            <button name="func_Do" type="object" string="Showw Wizard"/>-->
+
+          <field name="name"/>
+          <field name="school"/>
+          <field name="management"/>
+          <field name="phone_number"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="mawhubin_form">
+      <field name="name">mawhubin form</field>
+      <field name="model">mawhubin</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button name="popupNotification" string='CCCCC' type="object"/>
+          </header>
+<!--          <div class="oe_button_box" name="button_box">-->
+<!--            <button name="func_Do" type="object" icon="fa-users">-->
+<!--              <field name="name"/>-->
+<!--            </button>-->
+<!--          </div>-->
+
+
+          <field name="image" widget="image" class="oe_avatar"/>
+          <group>
+              <field name="name"/>
+              <field name="date_birth"/>
+              <field name="adress"/>
+
+              <field name="school"/>
+              <field name="management"/>
+              <field name="national_id"/>
+              <field name="phone_number"/>
+              <field name="notes"/>
+            <field name="mawh2_ids">
+              <tree editable="top">
+                <field name="name"/>
+                <field name="country_id"/>
+              </tree>
+            </field>
+
+          </group>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="mawhubin_action_window">
+      <field name="name">mawhubin window</field>
+      <field name="res_model">mawhubin</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="mawhubin" id="mawhubin_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="mawhubin_menu_1" parent="mawhubin_menu_root"/>
+    <menuitem name="Menu 2" id="mawhubin_menu_2" parent="mawhubin_menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List" id="mawhubin_menu_1_list" parent="mawhubin_menu_1"
+              action="mawhubin_action_window"/>
+
+  </data>
+</odoo>

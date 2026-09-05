@@ -1,0 +1,29 @@
+<odoo>
+    <record model="ir.ui.view" id="search_mandoops_sells_form_id">
+        <field name="name">Search Mandoops Sells Form</field>
+        <field name="model">wzrd_search_mandoops_sells</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Search Mandoops Sells">
+                <group string="Elements Search">
+                    <field name="fld_date_f" attrs="{'readonly':[('fld_date_selc','!=',False)]}"
+                                                options="{'datepicker':{'maxDate': 'now'}}"/>
+                    <field name="fld_date_t" attrs="{'readonly':[('fld_date_selc','!=',False)]}"
+                                                options="{'datepicker':{'maxDate': 'now'}}"/>
+                    <field name="fld_date_selc" attrs="{'readonly':['|',('fld_date_f','!=',False),('fld_date_t','!=',False)]}"/>
+                </group>
+                <footer>
+                    <button name="fnc_do_action" string="OK" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="search_mandoops_sells_action_id">
+		<field name="name">Search Mandoops Sells Action</field>
+		<field name="res_model">wzrd_search_mandoops_sells</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+	</record>
+</odoo>

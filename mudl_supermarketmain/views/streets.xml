@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+    <record model="ir.ui.view" id="streets_form_id">
+		<field name="name">Streets_Form</field>
+		<field name="model">mdl_streets</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="fld_town_id" invisible="context.get('hide_fld_town_id')"/>
+					<field name="name"/>
+				</group>
+			</form>
+		</field>
+	</record>
+</data>
+</odoo>

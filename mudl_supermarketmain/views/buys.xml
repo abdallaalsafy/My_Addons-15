@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="buys_search_id">
+		<field name="name">Buys_search</field>
+		<field name="model">mdl_buys</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="fld_sequence"/>
+				<field name="fld_customer_id"/>
+				<field name="fld_store_id"/>
+				<field name="fld_notes"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="buys_list_id">
+		<field name="name">Buys_List</field>
+		<field name="model">mdl_buys</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="fld_sonum"/>
+				<field name="fld_sequence"/>
+				<field name="fld_customer_id"/>
+				<field name="fld_store_id"/>
+				<field name="fld_date"/>
+				<field name="fld_paying" sum="Sum Of Paying Fatoras Buy"/>
+				<field name="fld_totall" sum="Sum Of Totall Fatoras Buy"/>
+				<field name="fld_remain" sum="Sum Of Remaining Fatoras Buy"/>
+				<field name="fld_notes"/>
+			</tree>
+		</field>
+	</record>
+
+    <record model="ir.ui.view" id="buys_form_id">
+		<field name="name">Buys_Form</field>
+		<field name="model">mdl_buys</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<group>
+						<field name="fld_sequence" attrs="{'readonly': [('fld_sequence_chk', '=', False)]}"/>
+					</group>
+					<group>
+						<field name="fld_sequence_chk" nolabel='1'/>
+					</group>
+					</group>
+					<group>
+						<field name="fld_customer_id"/>
+						<field name="fld_store_id" />
+						<field name="fld_date" options="{'datepicker':{'maxDate': 'now'}}"/>
+						<field name="fld_paying"/>
+					</group>
+				<group>
+					<field name="fld_buygoods_ids"/>
+				</group>
+				<group>
+					<field name="fld_totall"/>
+					<field name="fld_remain"/>
+					<field name="fld_notes"/>
+				</group>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="buys_action_id">
+        <field name="name">Buys_Action</field>
+        <field name="res_model">mdl_buys</field>
+        <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Fatora Buy</p>
+		</field>
+    </record>
+
+    <menuitem id="buys_menu_root_id" name="Buys"/>
+	<menuitem id="buys_menu_id" name="Buys" parent="buys_menu_root_id"/>
+	<menuitem id="buys_menu_id2" name="All Fatoras Buys" parent="buys_menu_id" action="buys_action_id"/>
+</odoo>

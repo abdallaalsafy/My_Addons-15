@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <template id="sells_r_template_id" inherit_id="super_market_pro.sells_r_template_id" name="Return Sells Template">
+            <xpath expr="//thead//tr[2]//h3" position="attributes">
+                <attribute   name="t-if"> not docs[0].fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//thead//tr[2]//h3" position="after">
+                <h3  t-if="docs[0].fld_is_qst">Kashf Of Return Qests</h3>
+            </xpath>
+            <xpath expr="//thead" position="after">
+                <t t-set="sum_remain_qst" t-value="0"/>
+                <t t-set="sum_total_qst" t-value="0"/>
+            </xpath>
+            <xpath expr="//tbody" position="before">
+                <t t-set = "sum_remain_qst"  t-value = "sum_remain_qst+o.fld_remain_qst"/>
+                <t t-set = "sum_total_qst"  t-value = "sum_total_qst+o.fld_total_qst"/>
+            </xpath>
+            <xpath expr="//tbody//td[4]//div//span" position="attributes">
+                <span t-field="o.fld_total"/>
+                <attribute   name="t-if"> not o.fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//tbody//td[4]//div//span" position="after">
+                <span t-if="o.fld_is_qst" t-field="o.fld_total_qst"/>
+            </xpath>
+            <xpath expr="//tbody//td[1]//div//span" position="attributes">
+                <span t-field="o.fld_total"/>
+                <attribute   name="t-if"> not o.fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//tbody//td[1]//div//span" position="after">
+                <span t-if="o.fld_is_qst" t-field="o.fld_remain_qst"/>
+            </xpath>
+            <xpath expr="//table//tr//td[4]//p" position="attributes">
+                <attribute   name="t-if"> not o.fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//table//tr//td[4]//p" position="after">
+                <p t-if="o.fld_is_qst" t-esc ="sum_total_qst"/>
+            </xpath>
+
+            <xpath expr="//table//tr//td[1]//p" position="attributes">
+                <attribute   name="t-if"> not o.fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//table//tr//td[1]//p" position="after">
+                <p t-if="o.fld_is_qst" t-esc ="sum_remain_qst"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

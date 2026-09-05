@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mdl_account_group,mdl_account_group,model_mdl_account_group,,1,1,1,1
+access_mdl_account_type,mdl_account_type,model_mdl_account_type,,1,1,1,1
+access_mdl_account_tag,mdl_account_tag,model_mdl_account_tag,,1,1,1,1
+access_mdl_account_root,mdl_account_root,model_mdl_account_root,,1,1,1,1
+access_mdl_account_account,mdl_account_account,model_mdl_account_account,,1,1,1,1

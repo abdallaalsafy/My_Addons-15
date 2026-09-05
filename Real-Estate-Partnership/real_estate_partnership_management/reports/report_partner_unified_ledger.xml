@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb report template for Partner Unified Ledger -->
+        <template id="report_partner_unified_ledger">
+            <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-row { background-color: #f0f0f0; border: 1px solid #bbb; padding: 8px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .ledger-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .ledger-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .ledger-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .ledger-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .ledger-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .text-right { text-align: right; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Partner Ledger - All Transactions</h2>
+                    <h3 style="text-align: center;"><span t-field="docs.partner_id.name"/></h3>
+
+                    <div class="report-title">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr class="header-row">
+                                <td style="width: 33%; padding: 8px; border: 1px solid #bbb;">
+                                    <span class="header-label">To:</span>
+                                    <span t-field="docs.date_to"/>
+                                </td>
+                                <td style="width: 33%; padding: 8px; border: 1px solid #bbb;">
+                                    <span class="header-label">From:</span>
+                                    <span t-field="docs.date_from"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <table class="ledger-table">
+                        <thead>
+                            <tr>
+                                <th>Balance</th>
+                                <th>Amount</th>
+                                <th>Type</th>
+                                <th>Reference</th>
+                                <th>Date</th>
+                                <th style="width: 5%;">No.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="docs.line_ids">
+                                <t t-foreach="docs.line_ids" t-as="l">
+                                    <tr>
+                                        <td><span t-esc="'{:,.2f}'.format(l.balance)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(l.amount)"/></td>
+                                        <td><span t-esc="l.transaction_type or ''"/></td>
+                                        <td><span t-esc="l.name or ''"/></td>
+                                        <td><span t-field="l.date"/></td>
+                                        <td><span t-esc="l_index + 1"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not docs.line_ids">
+                                <tr>
+                                    <td colspan="7" class="text-center">No ledger lines to display.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_partner_unified_ledger_action" model="ir.actions.report">
+            <field name="name">Partner Unified Ledger</field>
+            <field name="model">partner.unified.ledger</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_partner_unified_ledger</field>
+            <field name="report_file">real_estate_partnership_management.report_partner_unified_ledger</field>
+        </record>
+    </data>
+</odoo>
+

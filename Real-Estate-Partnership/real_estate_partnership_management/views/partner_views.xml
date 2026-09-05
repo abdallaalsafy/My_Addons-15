@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Partner Search View -->
+        <record id="view_real_estate_partner_search" model="ir.ui.view">
+            <field name="name">real.estate.partner.search</field>
+            <field name="model">real.estate.partner</field>
+            <field name="arch" type="xml">
+                <search string="Partners">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="status"/>
+                    <filter string="Active" name="active" domain="[('status', '=', 'active')]"/>
+                    <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="Exited" name="exited" domain="[('status', '=', 'exited')]"/>
+                    <separator/>
+                    <filter string="With Balance" name="with_balance" domain="[('current_balance', '>', 0)]"/>
+                    <filter string="No Balance" name="no_balance" domain="[('current_balance', '=', 0)]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                        <filter string="Join Date" name="group_join_date" context="{'group_by': 'join_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Partner Tree View -->
+        <record id="view_real_estate_partner_tree" model="ir.ui.view">
+            <field name="name">real.estate.partner.tree</field>
+            <field name="model">real.estate.partner</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="current_balance" widget="monetary" sum="Total Balance"/>
+                    <field name="confirmed_investments_total" widget="monetary" sum="Total Investments"/>
+                    <field name="actual_balance" widget="monetary" sum="Actual Balance"/>
+                    <field name="confirmed_investments_count"/>
+                    <field name="status" widget="badge" decoration-success="status=='active'" decoration-danger="status=='exited'"/>
+                    <field name="join_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Partner Form View -->
+        <record id="view_real_estate_partner_form" model="ir.ui.view">
+            <field name="name">real.estate.partner.form</field>
+            <field name="model">real.estate.partner</field>
+            <field name="arch" type="xml">
+                <form string="Partner">
+                    <header>
+                        <button name="action_create_investment" type="object"
+                                string="New Investment" class="btn-primary"
+                                attrs="{'invisible': ['|',('status', '=', 'exited'),('active', '=', False)]}"/>
+                        <button name="action_create_transaction" type="object"
+                                string="New Transaction" class="btn-primary"
+                                attrs="{'invisible': ['|',('status', '=', 'exited'),('active', '=', False)]}"/>
+                        <button name="action_exit_partnership" type="object"
+                                string="Exit Partnership" class="btn-danger"
+                                confirm="Are you sure you want to exit this partner from the partnership?"
+                                attrs="{'invisible': ['|',('status', '=', 'exited'),('active', '=', False)]}"/>
+                        <button name="action_reactivate" type="object" 
+                                string="Reactivate" class="btn-warning"
+                                attrs="{'invisible': [('status', '!=', 'exited')]}"/>
+                        <button name="action_view_partner_ledger" type="object"
+                                    class="btn-info" icon="fa-file-text" string="Balance">
+                            </button>
+                        <field name="status" widget="statusbar" 
+                               statusbar_visible="active,exited"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_transactions" type="object" 
+                                    class="oe_stat_button" icon="fa-money"
+                                    attrs="{'invisible': [('transaction_count', '=', 0)]}">
+                                <field name="transaction_count" widget="statinfo" 
+                                       string="Transactions"/>
+                            </button>
+                            <button name="action_view_investments" type="object" 
+                                    class="oe_stat_button" icon="fa-building"
+                                    attrs="{'invisible': [('investments_count', '=', 0)]}">
+                                <field name="investments_count" widget="statinfo"
+                                       string="Investments"/>
+                            </button>
+                            <button name="action_view_expense_distributions" type="object" 
+                                    class="oe_stat_button" icon="fa-file-text-o"
+                                    attrs="{'invisible': [('expense_distribution_count', '=', 0)]}">
+                                <field name="expense_distribution_count" widget="statinfo"
+                                       string="Expenses (Company)"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Partner Name"/>
+                            </h1>
+                            <h2>
+                                <field name="code" readonly="1"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group name="contact_info">
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="address"/>
+                                <field name="national_id"/>
+                            </group>
+                            <group name="financial_info">
+                                <field name="current_balance"/>
+                                <field name="confirmed_investments_total"/>
+                                <field name="actual_balance"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group name="dates">
+                                <field name="join_date"/>
+                                <field name="exit_date" attrs="{'readonly': [('exit_date', '=', False)]}"/>
+                                <field name="active" invisible="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="notes" placeholder="Add any additional notes here..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Partner Kanban View -->
+        <record id="view_real_estate_partner_kanban" model="ir.ui.view">
+            <field name="name">real.estate.partner.kanban</field>
+            <field name="model">real.estate.partner</field>
+            <field name="arch" type="xml">
+                <kanban string="Partners">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="current_balance"/>
+                    <field name="status"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click #{record.status.raw_value == 'exited' ? 'o_kanban_disabled' : ''}">
+                                <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section">
+                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
+                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_card_content">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <span><field name="code"/></span>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Balance: </strong><field name="current_balance" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="o_kanban_primary_right">
+                                        <field name="status" widget="label_selection" 
+                                               options="{'classes': {'active': 'success', 'exited': 'danger'}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Partner Action -->
+        <record id="action_real_estate_partner" model="ir.actions.act_window">
+            <field name="name">Partners</field>
+            <field name="res_model">real.estate.partner</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="context">{'search_default_active': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first partner
+                </p>
+                <p>
+                    Partners are the shareholders in your real estate partnership business.
+                    Each partner can deposit funds, invest in properties, and receive profits.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

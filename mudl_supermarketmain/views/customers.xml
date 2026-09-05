@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="customers_search_id">
+		<field name="name">Customers_Search</field>
+		<field name="model">mdl_customers</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+                <field name="fld_phone"/>
+                <field name="fld_address"/>
+				<field name="fld_notes"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="customers_list_id">
+		<field name="name">Customers_List</field>
+		<field name="model">mdl_customers</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="fld_sonum"/>
+				<field name="name"/>
+                <field name="fld_phone"/>
+                <field name="fld_address"/>
+				<field name="fld_notes"/>
+			</tree>
+		</field>
+	</record>
+
+
+    <record model="ir.ui.view" id="customers_form_id">
+		<field name="name">Customers_Form</field>
+		<field name="model">mdl_customers</field>
+		<field name="arch" type="xml">
+			<form>
+                <group>
+                    <field name="name"/>
+					<field name="fld_phone"/>
+					<field name="fld_address"/>
+					<field name="fld_notes"/>
+                </group>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="customers_action_id">
+        <field name="name">Customers_Action</field>
+        <field name="res_model">mdl_customers</field>
+        <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Customers</p>
+		</field>
+    </record>
+
+    <menuitem id="customers_menu_root_id" name="Customers" sequence="1"/>
+	<menuitem id="customers_menu_id" name="Customers" parent="customers_menu_root_id"/>
+	<menuitem id="customers_menu_id2" name="All Customers" parent="customers_menu_id" action="customers_action_id"/>
+</odoo>

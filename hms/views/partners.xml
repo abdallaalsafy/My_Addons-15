@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="inherit_partner_form_id" model="ir.ui.view">
+            <field name="name">Inherit Partner Form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="industry_id" position="after">
+                    <field name="related_patient_id"/>
+                </field>
+                <field name="vat" position="attributes">
+                    <attribute name="required">
+                        1
+                    </attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="inherit_partner_tree_id" model="ir.ui.view">
+            <field name="name">Inherit Partner Tree</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="phone" position="after">
+                    <field name="website"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

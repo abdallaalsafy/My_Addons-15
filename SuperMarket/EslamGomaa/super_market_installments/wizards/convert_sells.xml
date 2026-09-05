@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="convert_sells_form_id">
+		<field name="name">Convert_Sells_Form</field>
+		<field name="model">wzrd_convert_sells</field>
+		<field name="arch" type="xml">
+			<form>
+				<field name="fld_is_qst" invisible="1"/>
+                <p attrs="{'invisible':[('fld_is_qst','=',False)]}">Are You Sure, You Want To Convert Qest To Cash ???</p>
+				<p attrs="{'invisible':[('fld_is_qst','=',True)]}">Are You Sure, You Want To Convert Cash To Qest ???</p>
+				<footer>
+					<button  name='fnc_convert_sells' string='Convert' type='object' class = "btn-primary"/>
+					<button special="cancel" string="Cancel" class="btn btn-secondary"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="convert_sells_action_id">
+		<field name="name">Convert_Sells_Action</field>
+		<field name="res_model">wzrd_convert_sells</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+		<field name="view_id" ref="convert_sells_form_id"/>
+		<field name="binding_model_id"    ref="model_mdl_sells"/>
+		<field name="binding_view_types">form</field>
+	</record>
+</odoo>

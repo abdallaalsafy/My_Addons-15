@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Configuration Menu -->
+    <menuitem id="regions_menu_id" name="Regions" parent="super_market_pro.setting_menu_id" action="regions_action_id" sequence="0"/>
+    <menuitem id="places_menu_id" name="Places" parent="super_market_pro.setting_menu_id" action="places_action_id" sequence="20"/>
+
+
+    <menuitem id="qests_menu_id" name="Instalments" parent="super_market_pro.supermarket_menu_root_id" sequence="35"/>
+    <menuitem id="mandoops_menu_id" name="Mandoops" parent="qests_menu_id" action="mandoops_action_id" sequence="10"/>
+    <menuitem id="sells_qst_menu_id" name="Sales Orders Qest" parent="qests_menu_id" action="sells_qst_action_id" sequence="20"/>
+    <menuitem id="sells_r_qst_menu_id" name="Sales Returns Qest" parent="qests_menu_id" action="sells_r_qst_action_id" sequence="30"/>
+    <menuitem id="isalls_menu_id" name="Installments" parent="qests_menu_id" action="isalls_action_id" sequence="40"/>
+
+    <menuitem id="report_menu_id" name="Reports" parent="qests_menu_id" sequence="50"/>
+    <menuitem id="search_isalls_menu_id" name="Search Installments" parent="report_menu_id" action="search_isalls_action_id"/>
+    <menuitem id="search_cust_addr_of_mandoops_menu_id" name="Search Custpomers And Address Of Mandoops Menu" parent="report_menu_id" action="search_cust_addr_of_mandoops_action_id"/>
+    <menuitem id="search_mandoops_sells_menu_id" name="Search Mandoops Sales" parent="report_menu_id" action="search_mandoops_sells_action_id"/>
+    <menuitem id="search_mandoops_goods_menu_id" name="Search Mandoops Goods" parent="report_menu_id" action="search_mandoops_goods_action_id"/>
+</odoo>

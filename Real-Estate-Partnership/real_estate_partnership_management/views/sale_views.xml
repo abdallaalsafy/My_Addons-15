@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Property Sale Search View -->
+        <record id="view_real_estate_property_sale_search" model="ir.ui.view">
+            <field name="name">real.estate.property.sale.search</field>
+            <field name="model">real.estate.property.sale</field>
+            <field name="arch" type="xml">
+                <search string="Property Sales">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="buyer_contact_id"/>
+                    <field name="sale_date"/>
+                    <separator/>
+                    <filter string="This Month" name="this_month"
+                            domain="[('sale_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
+                                    ('sale_date', '&lt;=', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="This Year" name="this_year"
+                            domain="[('sale_date', '&gt;=', (context_today() - relativedelta(day=1, month=1)).strftime('%Y-%m-%d')),
+                                    ('sale_date', '&lt;=', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <filter string="Profitable" name="profitable" domain="[('net_profit', '&gt;', 0)]"/>
+                    <filter string="Loss" name="loss" domain="[('net_profit', '&lt;', 0)]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Property" name="group_property" context="{'group_by': 'property_id'}"/>
+                        <filter string="Sale Date" name="group_date" context="{'group_by': 'sale_date'}"/>
+                        <filter string="Buyer" name="group_buyer" context="{'group_by': 'buyer_contact_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Property Sale Tree View -->
+        <record id="view_real_estate_property_sale_tree" model="ir.ui.view">
+            <field name="name">real.estate.property.sale.tree</field>
+            <field name="model">real.estate.property.sale</field>
+            <field name="arch" type="xml">
+                <tree string="Property Sales">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="sale_date"/>
+                    <field name="sale_price" widget="monetary" sum="Total Sale Price"/>
+                    <field name="down_payment" widget="monetary" sum="Total Down Payment" optional="show"/>
+                    <field name="remaining_balance" widget="monetary" sum="Total Remaining Balance" optional="show"/>
+                    <field name="total_cost" widget="monetary" sum="Total Cost"/>
+                    <field name="total_profit" widget="monetary" sum="Total Profit"/>
+                    <field name="net_profit" widget="monetary" sum="Net Profit"/>
+                    <field name="buyer_contact_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Property Sale Form View -->
+        <record id="view_real_estate_property_sale_form" model="ir.ui.view">
+            <field name="name">real.estate.property.sale.form</field>
+            <field name="model">real.estate.property.sale</field>
+            <field name="arch" type="xml">
+                <form string="Property Sale">
+                    <header>
+                        <button name="action_generate_sale_payment_receipts" type="object"
+                                string="Generate Receipts" class="btn-primary"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="sale_details">
+                                <field name="property_id" readonly="context.get('readonly_property_id')"/>
+                                <field name="sale_date"/>
+                                <field name="sale_price" widget="monetary"/>
+                                <field name="down_payment" widget="monetary"/>
+                                <field name="remaining_balance" widget="monetary" readonly="1"/>
+                                <field name="buyer_contact_id"/>
+                            </group>
+                            <group name="financial_summary">
+                                <field name="total_cost" widget="monetary" readonly="1"/>
+                                <field name="total_profit" widget="monetary" readonly="1"/>
+                                <field name="net_profit" widget="monetary" readonly="1"/>
+                            </group>
+                        </group>
+                        <group name="payment_info">
+                            <group name="payment_details">
+                                <field name="payment_method"/>
+                                <field name="payment_reference"/>
+                            </group>
+                            <group name="Management Fee">
+                                <field name="management_fee_percentage"/>
+                                <field name="management_fee_amount" widget="monetary" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Payment Installments">
+                                <field name="payment_installment_ids" readonly="1" force_save="1">
+                                    <tree>
+                                        <field name="due_date"/>
+                                        <field name="amount" widget="monetary" sum="Total Amount"/>
+                                        <field name="status" widget="badge"
+                                           decoration-muted="status=='draft'"
+                                           decoration-success="status=='paid'"/>
+                                        <field name="is_down_payment"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Profit Distribution">
+                                <field name="sale_line_ids" readonly="1">
+                                    <tree>
+                                        <field name="partner_id"/>
+                                        <field name="investment_amount" widget="monetary" sum="Total Investment"/>
+                                        <field name="investment_percentage"/>
+                                        <field name="profit_amount" widget="monetary" sum="Total Profit"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Attachments">
+                                <field name="attachment_ids" widget="many2many_binary"/>
+                            </page>
+                            <page string="Notes">
+                                <field name="notes" placeholder="Add any notes about this sale..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Property Sale Kanban View -->
+        <record id="view_real_estate_property_sale_kanban" model="ir.ui.view">
+            <field name="name">real.estate.property.sale.kanban</field>
+            <field name="model">real.estate.property.sale</field>
+            <field name="arch" type="xml">
+                <kanban string="Property Sales">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="sale_price"/>
+                    <field name="net_profit"/>
+                    <field name="buyer_contact_id"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                                <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <strong><field name="property_id"/></strong>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section">
+                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
+                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_card_content">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <span><field name="name"/></span>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Sale Price: </strong><field name="sale_price" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Net Profit: </strong><field name="net_profit" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Property Sale Action -->
+        <record id="action_real_estate_property_sale" model="ir.actions.act_window">
+            <field name="name">Property Sales</field>
+            <field name="res_model">real.estate.property.sale</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first property sale
+                </p>
+                <p>
+                    Property sales manage the process of selling properties and distributing
+                    profits to partners based on their investment percentages.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <!-- Alarms Action Report -->
+        <record id="alarms_action_report_id" model="ir.actions.report">
+            <field name="name">Print Goods Alarms</field>
+            <field name="model">mdl_alarms</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.alarms_template_id</field>
+            <field name="report_file">super_market_pro.reports.alarms_template_id</field>
+            <field name="print_report_name">'Goods Alarms'</field>
+            <field name="binding_model_id" ref="model_mdl_alarms"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Buys Goods Action Report -->
+        <record id="buys_goods_action_report_id" model="ir.actions.report">
+            <field name="name">Print Buys Goods</field>
+            <field name="model">mdl_buys</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.buys_goods_template_id</field>
+            <field name="report_file">super_market_pro.reports.buys_goods_template_id</field>
+            <field name="print_report_name">'Buys Details'</field>
+            <field name="binding_model_id" ref="model_mdl_buys"/>
+            <field name="paperformat_id" ref="super_market_pro.format2_paperformat_id"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Buys Return Goods Action Report -->
+        <record id="buys_r_goods_action_report_id" model="ir.actions.report">
+            <field name="name">Print Return Buys Goods</field>
+            <field name="model">mdl_buys_r</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.buys_r_goods_template_id</field>
+            <field name="report_file">super_market_pro.reports.buys_r_goods_template_id</field>
+            <field name="print_report_name">'Return Buys Details'</field>
+            <field name="binding_model_id" ref="model_mdl_buys_r"/>
+            <field name="paperformat_id" ref="super_market_pro.format2_paperformat_id"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Buys Return Action Report -->
+        <record id="buys_r_action_report_id" model="ir.actions.report">
+            <field name="name">Print Return Buys</field>
+            <field name="model">mdl_buys_r</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.buys_r_template_id</field>
+            <field name="report_file">super_market_pro.reports.buys_r_template_id</field>
+            <field name="print_report_name">'Return Buys_Header'</field>
+            <field name="binding_model_id" ref="model_mdl_buys_r"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Buys Action Report -->
+        <record id="buys_action_report_id" model="ir.actions.report">
+            <field name="name">Print Buys</field>
+            <field name="model">mdl_buys</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.buys_template_id</field>
+            <field name="report_file">super_market_pro.reports.buys_template_id</field>
+            <field name="print_report_name">'Buys_Header'</field>
+            <field name="binding_model_id" ref="model_mdl_buys"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Charges Goods Action Report -->
+        <record id="charges_goods_action_report_id" model="ir.actions.report">
+            <field name="name">Print Charges Goods</field>
+            <field name="model">mdl_charges</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.charges_goods_template_id</field>
+            <field name="report_file">super_market_pro.reports.charges_goods_template_id</field>
+            <field name="print_report_name">'Charges Details'</field>
+            <field name="binding_model_id" ref="model_mdl_charges"/>
+            <field name="paperformat_id" ref="super_market_pro.format2_paperformat_id"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Charges Action Report -->
+        <record id="charges_action_report_id" model="ir.actions.report">
+            <field name="name">Print Charges</field>
+            <field name="model">mdl_charges</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.charges_template_id</field>
+            <field name="report_file">super_market_pro.reports.charges_template_id</field>
+            <field name="print_report_name">'Charges_Header'</field>
+            <field name="binding_model_id" ref="model_mdl_charges"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Customers Action Report -->
+        <record id="customers_action_report_id" model="ir.actions.report">
+            <field name="name">Print Customers</field>
+            <field name="model">mdl_customers</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.customers_template_id</field>
+            <field name="report_file">super_market_pro.reports.customers_template_id</field>
+            <field name="print_report_name">'Customers Data'</field>
+            <field name="binding_model_id" ref="model_mdl_customers"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Goods Action Report -->
+        <record id="goods_action_report_id" model="ir.actions.report">
+            <field name="name">Print Goods</field>
+            <field name="model">mdl_goods</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.goods_template_id</field>
+            <field name="report_file">super_market_pro.reports.goods_template_id</field>
+            <field name="print_report_name">'Goods Data'</field>
+            <field name="binding_model_id" ref="model_mdl_goods"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="groups_id"   eval="[ (4,ref('super_market_pro.super_market_manager_group') ) ]" />
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Inventorys Action Report -->
+        <record id="inventorys_action_report_id" model="ir.actions.report">
+            <field name="name">Print inventorys</field>
+            <field name="model">mdl_inventorys</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.inventorys_template_id</field>
+            <field name="report_file">super_market_pro.reports.inventorys_template_id</field>
+            <field name="print_report_name">'inventorys'</field>
+            <field name="binding_model_id" ref="model_mdl_inventorys"/>
+            <field name="paperformat_id" ref="super_market_pro.format2_paperformat_id"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Sells Action Report -->
+        <record id="sells_action_report_id" model="ir.actions.report">
+            <field name="name">Print Sells</field>
+            <field name="model">mdl_sells</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.sells_template_id</field>
+            <field name="report_file">super_market_pro.reports.sells_template_id</field>
+            <field name="print_report_name">'Sells_Header'</field>
+            <field name="binding_model_id" ref="model_mdl_sells"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Spending Action Report -->
+        <record id="spending_action_report_id" model="ir.actions.report">
+            <field name="name">Print Spending</field>
+            <field name="model">mdl_spending</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.spending_template_id</field>
+            <field name="report_file">super_market_pro.reports.spending_template_id</field>
+            <field name="print_report_name">'Spending'</field>
+            <field name="binding_model_id" ref="model_mdl_spending"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Vendors Action Report -->
+        <record id="vendors_action_report_id" model="ir.actions.report">
+            <field name="name">Print Vendors</field>
+            <field name="model">mdl_vendors</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.vendors_template_id</field>
+            <field name="report_file">super_market_pro.reports.vendors_template_id</field>
+            <field name="print_report_name">'Vendors Data'</field>
+            <field name="binding_model_id" ref="model_mdl_vendors"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Sells Return Action Report -->
+        <record id="sells_r_action_report_id" model="ir.actions.report">
+            <field name="name">Print Return Sells</field>
+            <field name="model">mdl_sells_r</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.sells_r_template_id</field>
+            <field name="report_file">super_market_pro.reports.sells_r_template_id</field>
+            <field name="print_report_name">'Return Sells_Header'</field>
+            <field name="binding_model_id" ref="model_mdl_sells_r"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Customers In Action Report -->
+        <record id="customers_in_action_report_id" model="ir.actions.report">
+            <field name="name">Print Customers_In</field>
+            <field name="model">mdl_customers_in</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.customers_in_template_id</field>
+            <field name="report_file">super_market_pro.reports.customers_in_template_id</field>
+            <field name="print_report_name">'Customers_In'</field>
+            <field name="binding_model_id" ref="model_mdl_customers_in"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Customers Out Action Report -->
+        <record id="customers_out_action_report_id" model="ir.actions.report">
+            <field name="name">Print Customers_Out</field>
+            <field name="model">mdl_customers_out</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.customers_out_template_id</field>
+            <field name="report_file">super_market_pro.reports.customers_out_template_id</field>
+            <field name="print_report_name">'Customers_Out'</field>
+            <field name="binding_model_id" ref="model_mdl_customers_out"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Customers Deuoon Action Report -->
+        <record id="customers_deuoon_action_report_id" model="ir.actions.report">
+            <field name="name">Print Customers Deuoon</field>
+            <field name="model">mdl_customers</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.customers_deuoon_template_id</field>
+            <field name="report_file">super_market_pro.reports.customers_deuoon_template_id</field>
+            <field name="print_report_name">'Customers Deuoon'</field>
+            <field name="binding_model_id" ref="model_mdl_customers"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Vendors In Action Report -->
+        <record id="vendors_in_action_report_id" model="ir.actions.report">
+            <field name="name">Print Vendors_In</field>
+            <field name="model">mdl_vendors_in</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.vendors_in_template_id</field>
+            <field name="report_file">super_market_pro.reports.vendors_in_template_id</field>
+            <field name="print_report_name">'Vendors_In'</field>
+            <field name="binding_model_id" ref="model_mdl_vendors_in"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Vendors Out Action Report -->
+        <record id="vendors_out_action_report_id" model="ir.actions.report">
+            <field name="name">Print Vendors_Out</field>
+            <field name="model">mdl_vendors_out</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.vendors_out_template_id</field>
+            <field name="report_file">super_market_pro.reports.vendors_out_template_id</field>
+            <field name="print_report_name">'Vendors_Out'</field>
+            <field name="binding_model_id" ref="model_mdl_vendors_out"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Vendors Deuoon Action Report -->
+        <record id="vendors_deuoon_action_report_id" model="ir.actions.report">
+            <field name="name">Print Vendors Deuoon</field>
+            <field name="model">mdl_vendors</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.vendors_deuoon_template_id</field>
+            <field name="report_file">super_market_pro.reports.vendors_deuoon_template_id</field>
+            <field name="print_report_name">'Vendors Deuoon'</field>
+            <field name="binding_model_id" ref="model_mdl_vendors"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Goods Calc Action Report -->
+        <record id="goods_calc_action_report_id" model="ir.actions.report">
+            <field name="name">Print Goods Calc</field>
+            <field name="model">mdl_goods_calc</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.goods_calc_template_id</field>
+            <field name="report_file">super_market_pro.reports.goods_calc_template_id</field>
+            <field name="print_report_name">'Goods Calc'</field>
+            <field name="binding_model_id" ref="model_mdl_goods_calc"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Goods Stores Action Report -->
+        <record id="goods_stores_action_report_id" model="ir.actions.report">
+            <field name="name">Print Goods Stores</field>
+            <field name="model">mdl_goods_stores</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.goods_stores_template_id</field>
+            <field name="report_file">super_market_pro.reports.goods_stores_template_id</field>
+            <field name="print_report_name">'Goods Stores'</field>
+            <field name="binding_model_id" ref="model_mdl_goods_stores"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Sells Goods Action Report -->
+        <record id="sells_goods_action_report_id" model="ir.actions.report">
+            <field name="name">Print Sells Goods</field>
+            <field name="model">mdl_sells</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.sells_goods_template_id</field>
+            <field name="report_file">super_market_pro.reports.sells_goods_template_id</field>
+            <field name="print_report_name">'Sells Details'</field>
+            <field name="binding_model_id" ref="model_mdl_sells"/>
+            <field name="paperformat_id" ref="super_market_pro.format2_paperformat_id"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Sells Return Goods Action Report -->
+        <record id="sells_r_goods_action_report_id" model="ir.actions.report">
+            <field name="name">Print Return Sells Goods</field>
+            <field name="model">mdl_sells_r</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_pro.sells_r_goods_template_id</field>
+            <field name="report_file">super_market_pro.reports.sells_r_goods_template_id</field>
+            <field name="print_report_name">'Return Sells Details'</field>
+            <field name="binding_model_id" ref="model_mdl_sells_r"/>
+            <field name="paperformat_id" ref="super_market_pro.format2_paperformat_id"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

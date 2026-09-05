@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates >
+    <t t-extend="ListView.buttons" t-name="ExpensesListView.buttons2">
+<!--        <t  t-operation="after">-->
+<!--            <t t-js="ctx">-->
+<!--                if (window.odoo._modules.indexOf("base_import") >= 0) {-->
+<!--                    r.push(context.engine.tools.call(context, 'ImportView.import_button', dict));-->
+<!--                };-->
+<!--            </t>-->
+            <button type="button" class="btn btn-primary ">
+                Uploadssss
+            </button>
+        </t>
+<!--    </t>-->
+<!--    <t t-name="ImportView2">-->
+<!--        <t t-extend="ListView.buttons">-->
+<!--            <button type="button" class="btn btn-primary" >-->
+<!--                abdallaalsafy-->
+<!--            </button>-->
+<!--        <t t-jquery="button.o_list_button_add" t-operation="after">-->
+<!--           <t t-call="ImportView.import_button"/>-->
+<!--        </t>-->
+
+<!--    </t>-->
+<!--        <t t-inherit="ListView.Buttons" t-inhert-mode="extension">-->
+<!--        <xpath expr="" position="inside">-->
+<!--            <button type="button" class="btn btn-primary" >-->
+<!--                abdallaalsafy-->
+<!--            </button>-->
+<!--        </xpath>-->
+
+<!--    </t>-->
+
+
+
+</templates>

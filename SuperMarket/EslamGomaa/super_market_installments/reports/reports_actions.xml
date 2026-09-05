@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <!-- Mandoops Action Report -->
+        <record id="mandoops_action_report_id" model="ir.actions.report">
+            <field name="name">Print Mandoops</field>
+            <field name="model">mdl_mandoops</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_installments.mandoops_template_id</field>
+            <field name="report_file">super_market_installments.reports.mandoops_template_id</field>
+            <field name="print_report_name">'Mandoops Data'</field>
+            <field name="binding_model_id" ref="model_mdl_mandoops"/>
+            <field name="paperformat_id" ref="super_market_pro.format1_paperformat_id"/>
+            <field name="binding_view_types">list</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Isalls Tahseel Action Report -->
+        <record id="isalls_tahseel_action_report_id" model="ir.actions.report">
+            <field name="name">Print Isalls Tahseel</field>
+            <field name="model">mdl_isalls</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">super_market_installments.isalls_tahseel_template_id</field>
+            <field name="report_file">super_market_installments.reports.isalls_tahseel_template_id</field>
+            <field name="print_report_name">'Isalls Tahseel'</field>
+<!--            <field name="binding_model_id" eval="False"/>-->
+            <field name="paperformat_id" ref="super_market_installments.isalls_tahseel_paper_format_id"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

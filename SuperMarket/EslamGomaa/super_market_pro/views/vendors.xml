@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="vendors_search_id">
+		<field name="name">Vendors_Search</field>
+		<field name="model">mdl_vendors</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<field name="fld_star_name"/>
+				<field name="fld_phone"/>
+				<field name="fld_address"/>
+				<field name="fld_notes"/>
+				<filter name="archived" string="Archived" domain="[('active','=',False)]"/>
+				<filter string="Active" name="active" domain="[('active','=',True)]"/>
+				<separator/>
+				<filter string="Has Phone" name="has_phone" domain="[('fld_phone','!=',False)]"/>
+				<separator/>
+				<filter string="Vendors with Credit" name="has_balance" domain="[('balance', '&gt;', 0)]"/>
+				<filter string="Vendors with Balance" name="has_credit" domain="[('balance', '&lt;', 0)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="vendors_list_id">
+		<field name="name">Vendors_List</field>
+		<field name="model">mdl_vendors</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1' >
+				<field name="name"/>
+				<field name="fld_star_name"/>
+				<field name="fld_phone"/>
+				<field name="fld_address"/>
+				<field name="balance" widget="monetary" optional="hide"  decoration-warning='balance &gt; 0'
+					sum="Total Balance" groups="super_market_pro.super_market_manager_group"/>
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="vendors_form_id">
+		<field name="name">Vendors_Form</field>
+		<field name="model">mdl_vendors</field>
+		<field name="arch" type="xml">
+			<form>
+				<header></header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="action_view_buys" type="object" class="oe_stat_button" icon="fa-shopping-cart"
+							attrs="{'invisible': [('buys_count', '=', 0)]}">
+							<field name="buys_count" widget="statinfo" string="Purchases"/>
+						</button>
+						<button name="action_view_buys_r" type="object" class="oe_stat_button" icon="fa-reply"
+							attrs="{'invisible': [('buys_r_count', '=', 0)]}">
+							<field name="buys_r_count" widget="statinfo" string="Return Purchases"/>
+						</button>
+						<button name="action_view_vendors_in" type="object" class="oe_stat_button" icon="fa-arrow-down"
+							attrs="{'invisible': [('vendors_in_count', '=', 0)]}">
+							<field name="vendors_in_count" widget="statinfo" string="Payments In"/>
+						</button>
+						<button name="action_view_vendors_out" type="object" class="oe_stat_button" icon="fa-arrow-up"
+							attrs="{'invisible': [('vendors_out_count', '=', 0)]}">
+							<field name="vendors_out_count" widget="statinfo" string="Payments Out"/>
+						</button>
+					</div>
+					<group name="basic_info">
+						<group>
+							<field name="name"/>
+							<field name="fld_star_name"/>
+							<field name="fld_phone"/>
+						</group>
+						<group>
+							<field name="fld_address"/>
+							<field name="active" invisible="1"/>
+						</group>
+					</group>
+					<group>
+						<group string="Balance Information" groups="super_market_pro.super_market_manager_group">
+							<field name="balance" widget="monetary"/>
+						</group>
+						<group name="notes" string="Notes">
+							<field name="fld_notes" nolabel="1" placeholder="Add notes about this vendor..."/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="vendors_action_id">
+        <field name="name">Vendors</field>
+        <field name="res_model">mdl_vendors</field>
+        <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Create your first vendor!</p>
+			<p>Vendors are companies or individuals you purchase products from.</p>
+		</field>
+    </record>
+</odoo>

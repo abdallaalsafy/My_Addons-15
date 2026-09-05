@@ -1,0 +1,58 @@
+<data>
+    <record id="view_sale_order_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="sales_type"/>
+                <field name="down_payment_type"/>
+            </xpath>
+            <xpath expr="//notebook" position="before">
+                <h2 style="text-align: left;" attrs="{'invisible':[('sales_type','!=','installment')]}">
+                    Installment data
+                </h2>
+                <group attrs="{'invisible':[('sales_type','!=','installment')]}">
+                    <group>
+                        <field name="paid_or_offered"/>
+                        <field name="sales_man"/>
+                        <field name="sales_person"/>
+                        <field name="national_id"/>
+                        <field name="customer_address"/>
+                    </group>
+                    <group>
+                        <field name="region"/>
+                        <field name="number_of_installments"/>
+                        <field name="date_of_the_first_installment"/>
+                        <field name="phone"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                <field name="ratio"/>
+            </xpath>
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_quotation_send'][1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_quotation_send'][2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_quotation_send'][3]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_quotation_send'][4]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='customer_signature']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+        </field>
+    </record>
+</data>

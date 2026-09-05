@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="sqnce_stores" model="ir.sequence">
+            <field name="name">sqnce_stores</field>
+            <field name="code">sqnce_stores</field>
+            <field name="prefix">stor</field>
+            <field name="padding">6</field>
+        </record>
+    </data>
+</odoo>

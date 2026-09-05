@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record model="ir.ui.view" id="search_charges_goods_search_id">
+        <field name="name">Search Transfer Goods</field>
+        <field name="model">mdl_charges_goods</field>
+        <field name="arch" type="xml">
+            <search string="Search Transfer Goods">
+                <!-- Search Fields -->
+                <field name="fld_goods_id" filter_domain="[('fld_goods_id.name','ilike',self)]"/>
+                <field name="fld_category_id"/>
+                <field name="fld_unit_id"/>
+                <field name="fld_charges_id"/>
+                <field name="fld_store_f_id"/>
+                <field name="fld_store_t_id"/>
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Goods" name="group_goods" context="{'group_by':'fld_goods_id'}"/>
+                    <filter string="Category" name="group_category" context="{'group_by':'fld_category_id'}"/>
+                    <filter string="Transfer" name="group_transfer" context="{'group_by':'fld_charges_id'}"/>
+                    <filter string="From Store" name="group_store_f" context="{'group_by':'fld_store_f_id'}"/>
+                    <filter string="To Store" name="group_store_t" context="{'group_by':'fld_store_t_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="charges_goods_list_id">
+        <field name="name">Transfer Goods List</field>
+        <field name="model">mdl_charges_goods</field>
+        <field name="arch" type="xml">
+            <tree string="Transfer Goods" decoration-bf="1">
+                <field name="fld_goods_id"/>
+                <field name="fld_category_id"/>
+                <field name="fld_count"/>
+                <field name="fld_unit_id"/>
+                <field name="fld_count_store" widget="monetary"/>
+                <field name="fld_store_f_id"/>
+                <field name="fld_store_t_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="charges_goods_form_id">
+        <field name="name">Transfer Goods Form</field>
+        <field name="model">mdl_charges_goods</field>
+        <field name="arch" type="xml">
+            <form string="Transfer Goods">
+                <sheet>
+                    <!-- Hidden computed fields -->
+                    <field name="fld_count_ref_unit" invisible="1"/>
+                    <field name="fld_unit_catg_id" invisible="1"/>
+                    
+                    <!-- Basic Information -->
+                    <group>
+                        <group name="basic_info">
+                            <field name="fld_category_id" options="{'no_create': True}"/>
+                            <field name="fld_goods_id" options="{'no_quick_create': True}"/>
+                        </group>
+                        <group name="quantity_info">
+                            <field name="fld_count" placeholder="Enter quantity..."/>
+                            <field name="fld_unit_id" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Store Information -->
+                    <group>
+                        <group name="store_info">
+                            <field name="fld_store_f_id" options="{'no_create': True}"/>
+                            <field name="fld_store_t_id"  options="{'no_create': True}"/>
+                        </group>
+                        <group name="stock_info">
+                            <field name="fld_count_store" string="Current Stock" widget="monetary" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

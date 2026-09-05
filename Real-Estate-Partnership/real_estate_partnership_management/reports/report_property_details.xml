@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb report template for Property Details -->
+        <template id="report_property_details">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-row { background-color: #f0f0f0; border: 1px solid #bbb; padding: 8px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .info-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .info-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .info-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .info-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .section-title {
+                        background-color: #2d5016;
+                        color: white;
+                        padding: 10px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Property Details Report</h2>
+                    <h3 style="text-align: center;"><span t-field="doc.name"/></h3>
+
+                    <!-- Basic Information -->
+                    <div class="section-title">Basic Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Code:</span> <span t-field="doc.code"/></td>
+                                <td><span class="header-label">Name:</span> <span t-field="doc.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Type:</span> <span t-field="doc.property_type"/></td>
+                                <td><span class="header-label">Status:</span> <span t-field="doc.status"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">City:</span> <span t-field="doc.city_id.name"/></td>
+                                <td><span class="header-label">State:</span> <span t-field="doc.state_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Address:</span> <span t-field="doc.address"/></td>
+                                <td><span class="header-label">Area Unit:</span> <span t-field="doc.area_unit"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Total Area:</span> <span t-field="doc.total_area"/> m²</td>
+                                <td><span class="header-label">Built Area:</span> <span t-field="doc.built_area"/> m²</td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Number of Floors:</span> <span t-field="doc.number_of_floors"/></td>
+                                <td><span class="header-label">Current Value:</span> <span t-esc="'{:,.2f}'.format(doc.current_value)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Purchase Information -->
+                    <div class="section-title">Purchase Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Purchase Date:</span> <span t-field="doc.purchase_date"/></td>
+                                <td><span class="header-label">Purchase Price:</span> <span t-esc="'{:,.2f}'.format(doc.purchase_price)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Seller:</span> <span t-field="doc.seller_id.name"/></td>
+                                <td><span class="header-label">Down Payment:</span> <span t-esc="'{:,.2f}'.format(doc.down_payment)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Remaining Purchase Amount:</span> <span t-esc="'{:,.2f}'.format(doc.remaining_purchase_amount)"/></td>
+                                <td><span class="header-label">Total Cost:</span> <span t-esc="'{:,.2f}'.format(doc.total_cost)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Investments -->
+                    <div class="section-title">Investments</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Percentage</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Partner</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.investment_ids">
+                                <t t-foreach="doc.investment_ids" t-as="inv">
+                                    <tr>
+                                        <td><span t-esc="'{:.2f}%'.format(inv.percentage)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(inv.amount)"/></td>
+                                        <td><span t-field="inv.investment_date"/></td>
+                                        <td><span t-field="inv.partner_id.name"/></td>
+                                        <td><span t-field="inv.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.investment_ids">
+                                <tr>
+                                    <td colspan="5" class="text-center">No investments found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Expenses -->
+                    <div class="section-title">Expenses</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.expense_ids">
+                                <t t-foreach="doc.expense_ids" t-as="exp">
+                                    <tr>
+                                        <td><span t-esc="'{:,.2f}'.format(exp.amount)"/></td>
+                                        <td><span t-field="exp.expense_date"/></td>
+                                        <td><span t-field="exp.category_id.name"/></td>
+                                        <td><span t-field="exp.name"/></td>
+                                        <td><span t-field="exp.code"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.expense_ids">
+                                <tr>
+                                    <td colspan="5" class="text-center">No expenses found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Sale Information (if sold) -->
+                    <t t-if="doc.status == 'sold'">
+                        <div class="section-title">Sale Information</div>
+                        <table class="info-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="header-label">Sale Date:</span> <span t-field="doc.sale_id.sale_date"/></td>
+                                    <td><span class="header-label">Sale Price:</span> <span t-esc="'{:,.2f}'.format(doc.sale_id.sale_price)"/></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="header-label">Buyer:</span> <span t-field="doc.sale_id.buyer_contact_id.name"/></td>
+                                    <td><span class="header-label">Down Payment:</span> <span t-esc="'{:,.2f}'.format(doc.sale_id.down_payment)"/></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="header-label">Total Profit:</span> <span t-esc="'{:,.2f}'.format(doc.sale_id.total_profit)"/></td>
+                                    <td><span class="header-label">Net Profit:</span> <span t-esc="'{:,.2f}'.format(doc.sale_id.net_profit)"/></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="header-label">Management Fee:</span> <span t-esc="'{:,.2f}'.format(doc.sale_id.management_fee_amount)"/></td>
+                                    <td><span class="header-label">Management Fee %:</span> <span t-esc="'{:.2f}%'.format(doc.sale_id.management_fee_percentage)"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+
+                    <!-- Purchase Payments -->
+                    <div class="section-title">Purchase Payments</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Payment Method</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.purchase_payment_ids">
+                                <t t-foreach="doc.purchase_payment_ids" t-as="pay">
+                                    <tr>
+                                        <td><span t-esc="'{:,.2f}'.format(pay.amount)"/></td>
+                                        <td><span t-field="pay.due_date"/></td>
+                                        <td><span t-field="pay.status"/></td>
+                                        <td><span t-field="pay.payment_method"/></td>
+                                        <td><span t-field="pay.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.purchase_payment_ids">
+                                <tr>
+                                    <td colspan="5" class="text-center">No purchase payments found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Sale Payments (if sold) -->
+                    <t t-if="doc.status == 'sold' and doc.sale_id">
+                        <div class="section-title">Sale Payments</div>
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>Amount</th>
+                                    <th>Due Date</th>
+                                    <th>Status</th>
+                                    <th>Payment Method</th>
+                                    <th>Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-if="doc.sale_id.payment_installment_ids">
+                                    <t t-foreach="doc.sale_id.payment_installment_ids" t-as="pay">
+                                        <tr>
+                                            <td><span t-esc="'{:,.2f}'.format(pay.amount)"/></td>
+                                            <td><span t-field="pay.due_date"/></td>
+                                            <td><span t-field="pay.status"/></td>
+                                            <td><span t-field="pay.payment_method"/></td>
+                                            <td><span t-field="pay.name"/></td>
+                                        </tr>
+                                    </t>
+                                </t>
+                                <t t-if="not doc.sale_id.payment_installment_ids">
+                                    <tr>
+                                        <td colspan="5" class="text-center">No sale payments found.</td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+
+                </div>
+                </main>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_property_details_action" model="ir.actions.report">
+            <field name="name">Property Details</field>
+            <field name="model">real.estate.property</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_property_details</field>
+            <field name="report_file">real_estate_partnership_management.report_property_details</field>
+            <field name="binding_model_id" ref="model_real_estate_property"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

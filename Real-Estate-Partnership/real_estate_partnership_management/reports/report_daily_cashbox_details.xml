@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb report template for Daily Cashbox Details -->
+        <template id="report_daily_cashbox_details">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .info-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .info-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .info-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .info-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .section-title {
+                        background-color: #2d5016;
+                        color: white;
+                        padding: 10px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                    .inflow-row { background-color: #e8f5e9 !important; }
+                    .outflow-row { background-color: #ffebee !important; }
+                    .total-row {
+                        background-color: #e8f5e9 !important;
+                        font-weight: bold;
+                    }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Daily Cashbox Details Report</h2>
+                    <h3 style="text-align: center;"><span t-field="doc.name"/></h3>
+
+                    <!-- Basic Information -->
+                    <div class="section-title">Basic Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Reference:</span> <span t-field="doc.name"/></td>
+                                <td><span class="header-label">Date:</span> <span t-field="doc.date"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Status:</span> <span t-field="doc.status"/></td>
+                                <td><span class="header-label">Responsible User:</span> <span t-field="doc.responsible_user.name"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Balance Information -->
+                    <div class="section-title">Balance Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Opening Balance:</span> <span t-esc="'{:,.2f}'.format(doc.opening_balance)"/></td>
+                                <td><span class="header-label">Total Inflows:</span> <span t-esc="'{:,.2f}'.format(doc.total_inflows)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Total Outflows:</span> <span t-esc="'{:,.2f}'.format(doc.total_outflows)"/></td>
+                                <td><span class="header-label">Closing Balance:</span> <span t-esc="'{:,.2f}'.format(doc.closing_balance)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Transactions -->
+                    <div class="section-title">Daily Transactions</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Category</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Payment Method</th>
+                                <th>Reference</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.transaction_ids">
+                                <t t-foreach="doc.transaction_ids" t-as="trans">
+                                    <tr t-att-class="'inflow-row' if trans.transaction_type == 'inflow' else 'outflow-row'">
+                                        <td><span t-field="trans.transaction_time"/></td>
+                                        <td><span t-field="trans.category"/></td>
+                                        <td><span t-field="trans.transaction_type"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(trans.amount)"/></td>
+                                        <td><span t-field="trans.payment_method"/></td>
+                                        <td><span t-field="trans.reference"/></td>
+                                        <td><span t-field="trans.notes"/></td>
+                                    </tr>
+                                </t>
+                                <tr class="total-row">
+                                    <td colspan="3"><strong>Total</strong></td>
+                                    <td colspan="4"><strong><span t-esc="'{:,.2f}'.format(doc.closing_balance - doc.opening_balance)"/></strong></td>
+                                </tr>
+                            </t>
+                            <t t-if="not doc.transaction_ids">
+                                <tr>
+                                    <td colspan="7" class="text-center">No transactions found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Summary -->
+                    <div class="section-title">Summary</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Total Transactions:</span> <span t-field="doc.transaction_count"/></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Notes -->
+                    <div class="section-title">Daily Notes</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span t-field="doc.notes"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_daily_cashbox_details_action" model="ir.actions.report">
+            <field name="name">Daily Cashbox Details</field>
+            <field name="model">real.estate.daily.cashbox</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_daily_cashbox_details</field>
+            <field name="report_file">real_estate_partnership_management.report_daily_cashbox_details</field>
+            <field name="binding_model_id" ref="model_real_estate_daily_cashbox"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

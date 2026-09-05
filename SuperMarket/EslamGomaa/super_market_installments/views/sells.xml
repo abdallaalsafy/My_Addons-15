@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="sells_qst_list_id">
+		<field name="name">Sells Qest List</field>
+		<field name="model">mdl_sells</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="name"/>
+				<field name="fld_ref"/>
+                <field name="fld_date"/>
+                <field name="fld_customer_id"/>
+				<field name="fld_region_id"/>
+				<field name="fld_place_id"/>
+				<field name="fld_total_qst" sum="Sum Total Qest"/>
+                <field name="fld_paying" sum="Sum Paying"/>
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="sells_form_id">
+		<field name="name">Sells Form</field>
+		<field name="model">mdl_sells</field>
+		<field name="inherit_id" ref="super_market_pro.sells_form_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//header" position="inside">
+				<button name="super_market_installments.update_isalls_action_id" string="Update Iaslls" type="action"
+						attrs="{'invisible':[('fld_is_qst','=', False)]}" class="oe_highlight"/>
+			</xpath>
+
+			<xpath expr="//group[@name='basic_info']" position="after">
+				<field name="fld_is_qst" invisible="1"/>
+				<group name="group_qest" attrs="{'invisible':[('fld_is_qst','=', False)]}">
+					<group name="customer_data" string="Customer Data">
+						<field name="fld_phone"/>
+						<field name="fld_region_id"/>
+						<field name="fld_place_id"/>
+						<field name="fld_address"/>
+					</group>
+					<group name="group_mandop_collector" string="Mandoops Data">
+						<field name="fld_mandoops" widget="many2many_tags"/>
+						<field name="fld_collector_id"/>
+					</group>
+				</group>
+				<group name="group_qest_data" string="Qest Data" attrs="{'invisible':[('fld_is_qst','=', False)]}">
+					<group>
+						<field name="fld_num_isalls"/>
+						<field name="fld_date_first_qst"/>
+					</group>
+					<group>
+						<field name="fld_total_qst" widget="monetary" force_save="1"/>
+						<field name="fld_win_qst" widget="monetary" force_save="1" groups="super_market_pro.super_market_manager_group"/>
+						<field name="fld_remain_qst" widget="monetary" force_save="1" />
+						<field name="fld_total_hafez" widget="monetary" force_save="1"/>
+					</group>
+				</group>
+			</xpath>
+
+			<xpath expr="//field[@name='fld_customer_id']" position="attributes">
+				<attribute name="attrs">{'required':[('fld_is_qst','=', True)]}</attribute>
+			</xpath>
+			<xpath expr="//group[@name='calc_info']" position="attributes">
+				<attribute name="attrs">{'invisible':[('fld_is_qst','=', True)]}</attribute>
+			</xpath>
+
+			<xpath expr="//notebook" position="inside">
+				<page string="Installments" attrs="{'invisible':[('fld_is_qst','=', False)]}">
+					<field name="fld_isalls_ids" force_save="1">
+						<tree>
+							<field name="fld_num"/>
+							<field name="fld_reg_date"/>
+							<field name="fld_amount"/>
+							<field name="fld_month" invisible="1"/>
+							<field name="fld_year" invisible="1"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+
+			<xpath expr="//field[@name='fld_sells_goods_ids']/tree/field[@name='fld_win']" position="after">
+				<field name="fld_price_qst" widget="monetary" invisible="context.get('is_cash')"/>
+				<field name="fld_clc_qst" widget="monetary" invisible="context.get('is_cash')"/>
+				<field name="fld_clc_hafez" widget="monetary" invisible="context.get('is_cash')"/>
+			</xpath>
+			<xpath expr="//field[@name='fld_sells_goods_ids']/tree/field[@name='fld_price_sell']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+			<xpath expr="//field[@name='fld_sells_goods_ids']/tree/field[@name='fld_win']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+			<xpath expr="//field[@name='fld_sells_goods_ids']/tree/field[@name='fld_clc_sell']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="sells_qst_action_id">
+        <field name="name">Sells Qest Action</field>
+        <field name="res_model">mdl_sells</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="sells_qst_list_id"/>
+		<field name="domain">[('fld_is_qst', '=', True)]</field>
+		<field name="context">{'default_fld_is_qst': True, 'is_cash':False, 'is_qst':True}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Sells Qest</p>
+		</field>
+    </record>
+
+	<record id="super_market_pro.sells_action_id" model="ir.actions.act_window">
+		<field name="view_id" ref="super_market_pro.sells_list_id"/>
+		<field name="domain">[('fld_is_qst', '=', False)]</field>
+		<field name="context">{'is_cash':True, 'is_qst':False}</field>
+	</record>
+</odoo>

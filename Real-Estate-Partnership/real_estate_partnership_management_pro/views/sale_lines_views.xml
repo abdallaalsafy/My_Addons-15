@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Property Sale Search View -->
+        <record id="view_real_estate_property_sale_lines_search" model="ir.ui.view">
+            <field name="name">real.estate.property.sale.lines.search</field>
+            <field name="model">real.estate.property.sale.line</field>
+            <field name="arch" type="xml">
+                <search string="Property Sales">
+                    <field name="contract_id"/>
+                    <field name="contract_date"/>
+                    <field name="deal_id"/>
+                    <field name="partner_id"/>
+                    <separator/>
+                    <filter string="Profit This Month" name="profit_this_month" domain="[('contract_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Profit This Year" name="profit_this_year" domain="[('contract_date', '>=', (context_today() - datetime.timedelta(years=1)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Profit This Quarter" name="profit_this_quarter" domain="[('contract_date', '>=', (context_today() - datetime.timedelta(days=90)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Profit This Week" name="profit_this_week" domain="[('contract_date', '>=', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Profit This Day" name="profit_today" domain="[('contract_date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Contract Date" name="group_contract_date" context="{'group_by': 'contract_date'}"/>
+                        <filter string="Deal" name="group_deal" context="{'group_by': 'deal_id'}"/>
+                        <filter string="Contract" name="group_contract" context="{'group_by': 'contract_id'}"/>
+                    </group>
+
+                </search>
+            </field>
+        </record>
+
+        <!-- Property Sale Line Tree View -->
+        <record id="view_real_estate_property_sale_lines_tree" model="ir.ui.view">
+            <field name="name">real.estate.property.sale.lines.tree</field>
+            <field name="model">real.estate.property.sale.line</field>
+            <field name="arch" type="xml">
+                <tree string="Property Sales" create="0" delete="0">
+                    <field name="contract_id"/>
+                    <field name="contract_date"/>
+                    <field name="deal_id"/>
+                    <field name="partner_id"/>
+                    <field name="profit_amount" widget="monetary" sum="Total Profit"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Property Sale Line Form View -->
+        <record id="view_real_estate_property_sale_lines_form" model="ir.ui.view">
+            <field name="name">real.estate.property.sale.lines.form</field>
+            <field name="model">real.estate.property.sale.line</field>
+            <field name="arch" type="xml">
+                <form string="Contract Sale Line" create="0" delete="0" edit="0">
+                    <sheet>
+                        <group>
+                            <field name="contract_id"/>
+                            <field name="contract_date"/>
+                            <field name="deal_id"/>
+                            <field name="partner_id"/>
+                            <field name="profit_amount" widget="monetary"/>
+                        </group>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Property Sale Line Action -->
+        <record id="action_real_estate_contract_sale_lines" model="ir.actions.act_window">
+            <field name="name">Property Sales Lines</field>
+            <field name="res_model">real.estate.property.sale.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Profits Found
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

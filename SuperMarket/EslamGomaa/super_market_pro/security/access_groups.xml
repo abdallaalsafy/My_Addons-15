@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- SuperMarket Category -->
+    <record model="ir.module.category" id="module_category_sales_management">
+        <field name="name">Super Market</field>
+        <field name="sequence">60</field>
+    </record>
+
+    <!-- SuperMarket Category Groups -->
+    <record id="super_market_manager_group" model="res.groups">
+        <field name="name">SuperMarket Manager</field>
+        <field name="category_id" ref="super_market_pro.module_category_sales_management"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin')),(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="super_market_sales_person_group" model="res.groups">
+        <field name="name">SuperMarket Sales Person</field>
+        <field name="category_id" ref="super_market_pro.module_category_sales_management"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>

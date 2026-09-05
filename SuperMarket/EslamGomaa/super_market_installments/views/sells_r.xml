@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="sells_r_list_id">
+		<field name="name">Sells_r_List</field>
+		<field name="model">mdl_sells_r</field>
+		<field name="inherit_id" ref="super_market_pro.sells_r_list_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='fld_total']" position="after">
+				<field name="fld_total_qst" sum="Total Qest" invisible="context.get('is_cash')"/>
+			</xpath>
+			<xpath expr="//field[@name='fld_remain']" position="after">
+				<field name="fld_remain_qst" sum="Sum Remains Qest" invisible="context.get('is_cash')"/>
+			</xpath>
+			<xpath expr="//field[@name='fld_total']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+			<xpath expr="//field[@name='fld_remain']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="sells_r_form_id">
+		<field name="name">Sells_r_Form</field>
+		<field name="model">mdl_sells_r</field>
+		<field name="inherit_id" ref="super_market_pro.sells_r_form_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='fld_remain']" position="after">
+				<field name="fld_is_qst" invisible="1"/>
+                <field name="fld_win_qst" widget="monetary" invisible="1"/>
+				<field name="fld_total_qst" widget="monetary" force_save="1" attrs="{'invisible':[('fld_is_qst','=', False)]}"/>
+				<field name="fld_remain_qst" widget="monetary" force_save="1" attrs="{'invisible':[('fld_is_qst','=', False)]}"/>
+				<field name="fld_total_hafez" widget="monetary" force_save="1" attrs="{'invisible':[('fld_is_qst','=', False)]}"/>
+			</xpath>
+			<xpath expr="//field[@name='fld_total']" position="attributes">
+				<attribute name="attrs">{'invisible':[('fld_is_qst','=',True)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='fld_remain']" position="attributes">
+				<attribute name="attrs">{'invisible':[('fld_is_qst','=',True)]}</attribute>
+			</xpath>
+			<xpath expr="//field[@name='fld_parent_id']" position="attributes">
+				<attribute name="domain">[('fld_is_qst','=',fld_is_qst)]</attribute>
+			</xpath>
+
+			<xpath expr="//field[@name='fld_sells_r_goods_ids']/tree/field[@name='fld_win']" position="after">
+				<field name="fld_price_qst" widget="monetary" invisible="context.get('is_cash')"/>
+				<field name="fld_clc_qst" widget="monetary" invisible="context.get('is_cash')"/>
+				<field name="fld_clc_hafez" widget="monetary" invisible="context.get('is_cash')"/>
+			</xpath>
+			<xpath expr="//field[@name='fld_sells_r_goods_ids']/tree/field[@name='fld_price_sell']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+			<xpath expr="//field[@name='fld_sells_r_goods_ids']/tree/field[@name='fld_win']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+			<xpath expr="//field[@name='fld_sells_r_goods_ids']/tree/field[@name='fld_clc_sell']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="sells_r_qst_action_id">
+        <field name="name">Return Qest Action</field>
+        <field name="res_model">mdl_sells_r</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[('fld_is_qst', '=', True)]</field>
+		<field name="context">{'default_fld_is_qst': True, 'is_cash':False, 'is_qst':True}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Return Qest</p>
+		</field>
+    </record>
+
+	<record id="super_market_pro.sells_r_action_id" model="ir.actions.act_window">
+		<field name="view_id" ref="super_market_pro.sells_r_list_id"/>
+		<field name="domain">[('fld_is_qst', '=', False)]</field>
+		<field name="context">{'is_cash':True, 'is_qst':False}</field>
+	</record>
+</odoo>

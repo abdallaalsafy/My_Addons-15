@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb report template for Partner Exit Details -->
+        <template id="report_partner_exit_details">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-row { background-color: #f0f0f0; border: 1px solid #bbb; padding: 8px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .info-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .info-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .info-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .info-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .section-title {
+                        background-color: #2d5016;
+                        color: white;
+                        padding: 10px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                    .total-row {
+                        background-color: #e8f5e9 !important;
+                        font-weight: bold;
+                    }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Partner Exit Details Report</h2>
+                    <h3 style="text-align: center;"><span t-field="doc.name"/></h3>
+
+                    <!-- Basic Information -->
+                    <div class="section-title">Basic Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Reference:</span> <span t-field="doc.name"/></td>
+                                <td><span class="header-label">Exit Date:</span> <span t-field="doc.exit_date"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Property:</span> <span t-field="doc.property_id.name"/></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Financial Information -->
+                    <div class="section-title">Financial Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Current Property Value:</span> <span t-esc="'{:,.2f}'.format(doc.current_property_value)"/></td>
+                                <td><span class="header-label">Total Property Cost:</span> <span t-esc="'{:,.2f}'.format(doc.total_property_cost)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Actual Property Profit:</span> <span t-esc="'{:,.2f}'.format(doc.actual_property_profit)"/></td>
+                                <td><span class="header-label">Management Fee %:</span> <span t-esc="'{:.2f}%'.format(doc.management_fee_percentage)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Management Fee Amount:</span> <span t-esc="'{:,.2f}'.format(doc.management_fee_amount)"/></td>
+                                <td><span class="header-label">Net Profit:</span> <span t-esc="'{:,.2f}'.format(doc.net_profit)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Exiting Partners -->
+                    <div class="section-title">Exiting Partners</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Partner</th>
+                                <th>Investment Percentage (%)</th>
+                                <th>Exit Percentage (%)</th>
+                                <th>Exit Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.exiting_partner_ids">
+                                <t t-foreach="doc.exiting_partner_ids" t-as="exiting">
+                                    <tr>
+                                        <td><span t-field="exiting.partner_id.name"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(exiting.investment_percentage)"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(exiting.exit_percentage)"/></td>
+                                        <td><span t-field="exiting.exit_type"/></td>
+                                    </tr>
+                                </t>
+                                <tr class="total-row">
+                                    <td><strong>Total</strong></td>
+                                    <td></td>
+                                    <td><strong><span t-esc="'{:.2f}%'.format(doc.total_exit_percentage)"/></strong></td>
+                                    <td></td>
+                                </tr>
+                            </t>
+                            <t t-if="not doc.exiting_partner_ids">
+                                <tr>
+                                    <td colspan="4" class="text-center">No exiting partners found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Replacement Partners -->
+                    <div class="section-title">Replacement Partners</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Partner</th>
+                                <th>Investment Percentage (%)</th>
+                                <th>Replacement Percentage (%)</th>
+                                <th>Partner Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.replacement_partner_ids">
+                                <t t-foreach="doc.replacement_partner_ids" t-as="replacement">
+                                    <tr>
+                                        <td><span t-field="replacement.partner_id.name"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(replacement.investment_percentage)"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(replacement.replacement_percentage)"/></td>
+                                        <td><span t-field="replacement.partner_type"/></td>
+                                    </tr>
+                                </t>
+                                <tr class="total-row">
+                                    <td><strong>Total</strong></td>
+                                    <td></td>
+                                    <td><strong><span t-esc="'{:.2f}%'.format(doc.total_replacement_percentage)"/></strong></td>
+                                    <td></td>
+                                </tr>
+                            </t>
+                            <t t-if="not doc.replacement_partner_ids">
+                                <tr>
+                                    <td colspan="4" class="text-center">No replacement partners found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Profit Distribution -->
+                    <div class="section-title">Profit Distribution to All Partners</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Partner</th>
+                                <th>Investment Percentage (%)</th>
+                                <th>Original Investment Amount</th>
+                                <th>Profit Amount</th>
+                                <th>Is Exiting Partner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.exit_line_ids">
+                                <t t-foreach="doc.exit_line_ids" t-as="line">
+                                    <tr>
+                                        <td><span t-field="line.partner_id.name"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(line.investment_percentage)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(line.original_investment_amount)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(line.profit_amount)"/></td>
+                                        <td><span t-esc="'Yes' if line.is_exiting_partner else 'No'"/></td>
+                                    </tr>
+                                </t>
+                                <tr class="total-row">
+                                    <td colspan="3"><strong>Total</strong></td>
+                                    <td><strong><span t-esc="'{:,.2f}'.format(sum(doc.exit_line_ids.mapped('profit_amount')))"/></strong></td>
+                                    <td></td>
+                                </tr>
+                            </t>
+                            <t t-if="not doc.exit_line_ids">
+                                <tr>
+                                    <td colspan="5" class="text-center">No profit distribution found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Notes -->
+                    <div class="section-title">Notes</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span t-field="doc.notes"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_partner_exit_details_action" model="ir.actions.report">
+            <field name="name">Partner Exit Details</field>
+            <field name="model">real.estate.partner.exit</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_partner_exit_details</field>
+            <field name="report_file">real_estate_partnership_management.report_partner_exit_details</field>
+            <field name="binding_model_id" ref="model_real_estate_partner_exit"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

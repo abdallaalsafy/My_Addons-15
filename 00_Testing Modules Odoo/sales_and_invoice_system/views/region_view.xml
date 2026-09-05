@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record id="res_region_form" model="ir.ui.view">
+            <field name="name">res.region.form</field>
+            <field name="model">res.region</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="res_region_tree" model="ir.ui.view">
+            <field name="name">res.region.tree</field>
+            <field name="model">res.region</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="res_region_search" model="ir.ui.view">
+            <field name="name">res.region.search</field>
+            <field name="model">res.region</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="res_region_action" model="ir.actions.act_window">
+            <field name="name">Region</field>
+            <field name="res_model">res.region</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Region
+                </p>
+            </field>
+        </record>
+        <menuitem id="res_region_menu"
+                  name="Region"
+                  action="res_region_action"
+                  parent="contacts.menu_localisation"
+                  sequence="4"
+                  />
+    </data>
+</odoo>

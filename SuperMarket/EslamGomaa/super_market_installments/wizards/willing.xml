@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="willing_form_id">
+		<field name="name">Willing_Form</field>
+		<field name="model">wzrd_willing</field>
+        <field name="inherit_id" ref="super_market_pro.willing_form_id"/>
+		<field name="arch" type="xml">
+            <xpath expr="//sheet[2]//group[1]" position="after">
+                <group>
+                    <group string="Qest">
+                        <field name="fld_count_qst"/>
+                        <field name="fld_totals_qst"/>
+                        <field name="fld_discounts_qst"/>
+                        <field name="fld_wins_qst"/>
+                    </group>
+                    <group string="Return Qest">
+                        <field name="fld_count_qst_r"/>
+                        <field name="fld_totals_qst_r"/>
+                        <field name="fld_discounts_qst_r"/>
+                    </group>
+                </group>
+            </xpath>
+		</field>
+	</record>
+</odoo>

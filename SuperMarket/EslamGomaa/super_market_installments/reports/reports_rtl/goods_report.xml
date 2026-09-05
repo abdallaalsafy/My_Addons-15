@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <template id="goods_template_id" inherit_id="super_market_pro.goods_template_id" name="Goods Template">
+            <xpath expr="//table//thead//tr[3]//th[2]" position="after">
+                <th style="border:1px solid black;vertical-align:middle;">Price Qest</th>
+                <th style="border:1px solid black;vertical-align:middle;">Hafez</th>
+            </xpath>
+            <xpath expr="//tbody//td[2]" position="after">
+                <td style="border:1px solid black; vertical-align:middle;">
+                    <div style="text-align:center; font-size:16px;width:75px; height:35px; padding:3px;overflow:hidden;">
+                        <span t-field="o.fld_price_qst"/>
+                    </div>
+                </td>
+                <td style="border:1px solid black; vertical-align:middle;">
+                    <div style="text-align:center; font-size:16px;width:75px; height:35px; padding:3px;overflow:hidden;">
+                        <span t-field="o.fld_hafez"/>
+                    </div>
+                </td>
+            </xpath>
+
+            <xpath expr="//thead//tr[1]//th[1]" position="attributes">
+                <attribute   name="colspan">3</attribute>
+            </xpath>
+            <xpath expr="//thead//tr[2]//th[1]" position="attributes">
+                <attribute   name="colspan">3</attribute>
+            </xpath>
+            <xpath expr="//tbody//td[1]//div" position="attributes">
+                <attribute   name="style">font-size:12px;width:150px; height:35px; padding:3px;overflow:hidden;</attribute>
+            </xpath>
+        </template>
+    </data>
+</odoo>

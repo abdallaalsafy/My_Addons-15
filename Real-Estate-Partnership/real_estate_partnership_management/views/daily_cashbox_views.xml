@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Daily Cashbox Tree View -->
+        <record id="view_daily_cashbox_tree" model="ir.ui.view">
+            <field name="name">real.estate.daily.cashbox.tree</field>
+            <field name="model">real.estate.daily.cashbox</field>
+            <field name="arch" type="xml">
+                <tree string="Daily Cashbox">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="opening_balance" widget="monetary" sum="Total Opening Balance"/>
+                    <field name="total_inflows" widget="monetary" sum="Total Inflows"/>
+                    <field name="total_outflows" widget="monetary" sum="Total Outflows"/>
+                    <field name="closing_balance" widget="monetary" sum="Total Closing Balance"/>
+                    <field name="transaction_count" sum="Total Transactions"/>
+                    <field name="status" widget="badge" 
+                           decoration-success="status=='open'" 
+                           decoration-muted="status=='closed'"/>
+                    <field name="responsible_user"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Daily Cashbox Form View -->
+        <record id="view_daily_cashbox_form" model="ir.ui.view">
+            <field name="name">real.estate.daily.cashbox.form</field>
+            <field name="model">real.estate.daily.cashbox</field>
+            <field name="arch" type="xml">
+                <form string="Daily Cashbox">
+                    <header>
+                        <button name="action_close_day" type="object" string="Close Day" 
+                                class="btn-warning" attrs="{'invisible': [('status', '=', 'closed')]}"/>
+<!--                        <button name="action_print_report" type="object" string="Print Report" -->
+<!--                                class="btn-secondary"/>-->
+                        <field name="status" widget="statusbar" statusbar_visible="open,closed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="basic_info">
+                                <field name="date"/>
+                                <field name="responsible_user"/>
+                            </group>
+                            <group name="balance_info">
+                                <field name="opening_balance" widget="monetary" 
+                                       attrs="{'readonly': [('status', '=', 'closed')]}"/>
+                                <field name="total_inflows" widget="monetary" readonly="1"/>
+                                <field name="total_outflows" widget="monetary" readonly="1"/>
+                                <field name="closing_balance" widget="monetary" readonly="1"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Transactions" name="transactions">
+                                <field name="transaction_ids" attrs="{'readonly': [('status', '=', 'closed')]}">
+                                    <tree>
+                                        <field name="transaction_time"/>
+                                        <field name="transaction_type" widget="badge" 
+                                               decoration-success="transaction_type=='inflow'" 
+                                               decoration-danger="transaction_type=='outflow'"/>
+                                        <field name="category"/>
+                                        <field name="amount" widget="monetary"/>
+                                        <field name="payment_method"/>
+                                        <field name="reference"/>
+                                        <field name="create_uid"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Notes" name="notes">
+                                <field name="notes" placeholder="Add any daily notes here..." 
+                                       attrs="{'readonly': [('status', '=', 'closed')]}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Daily Cashbox Search View -->
+        <record id="view_daily_cashbox_search" model="ir.ui.view">
+            <field name="name">real.estate.daily.cashbox.search</field>
+            <field name="model">real.estate.daily.cashbox</field>
+            <field name="arch" type="xml">
+                <search string="Daily Cashbox">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="status"/>
+                    <field name="responsible_user"/>
+                    
+                    <filter string="Open" name="open" domain="[('status', '=', 'open')]"/>
+                    <filter string="Closed" name="closed" domain="[('status', '=', 'closed')]"/>
+                    <filter string="This Month" name="this_month"
+                            domain="[('date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
+                                    ('date', '&lt;=', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="This Year" name="this_year"
+                            domain="[('date', '&gt;=', (context_today() - relativedelta(day=1, month=1)).strftime('%Y-%m-%d')),
+                                    ('date', '&lt;=', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
+                    
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                        <filter string="Responsible User" name="group_user" context="{'group_by': 'responsible_user'}"/>
+                        <filter string="Date" name="group_date" context="{'group_by': 'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Daily Cashbox Kanban View -->
+        <record id="view_daily_cashbox_kanban" model="ir.ui.view">
+            <field name="name">real.estate.daily.cashbox.kanban</field>
+            <field name="model">real.estate.daily.cashbox</field>
+            <field name="arch" type="xml">
+                <kanban string="Daily Cashbox">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="opening_balance"/>
+                    <field name="total_inflows"/>
+                    <field name="total_outflows"/>
+                    <field name="closing_balance"/>
+                    <field name="status"/>
+                    <field name="transaction_count"/>
+                    <field name="responsible_user"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click #{record.status.raw_value == 'closed' ? 'o_kanban_disabled' : ''}">
+                                <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section">
+                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
+                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_card_content">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Date: </strong><field name="date"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Opening: </strong><field name="opening_balance" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Inflows: </strong><field name="total_inflows" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Outflows: </strong><field name="total_outflows" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Closing: </strong><field name="closing_balance" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="o_kanban_primary_right">
+                                        <field name="status" widget="label_selection" 
+                                               options="{'classes': {'open': 'success', 'closed': 'muted'}}"/>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <field name="transaction_count"/> Transactions
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <field name="responsible_user"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Daily Cashbox Action -->
+        <record id="action_daily_cashbox" model="ir.actions.act_window">
+            <field name="name">Daily Cashbox</field>
+            <field name="res_model">real.estate.daily.cashbox</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first daily cashbox
+                </p>
+                <p>
+                    Daily cashbox management allows you to track daily cash inflows and outflows,
+                    manage opening and closing balances, and maintain accurate financial records.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

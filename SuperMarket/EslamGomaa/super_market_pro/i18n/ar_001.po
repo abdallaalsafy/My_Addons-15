@@ -1,0 +1,4181 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* super_market_pro
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20240131\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-13 12:15+0000\n"
+"PO-Revision-Date: 2026-05-13 12:15+0000\n"
+"Last-Translator: SuperMarket Pro i18n\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ar_001\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+""
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+"--- MERGED ORDERS ---\n"
+"Merged on: %s\n"
+"Orders merged: %s\n"
+"Notes: %s"
+msgstr ""
+"\n"
+"\n"
+"--- أوامر مدمجة ---\n"
+"تاريخ الدمج: %s\n"
+"الأوامر المدمجة: %s\n"
+"ملاحظات: %s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+"--- MERGED RETURNS ---\n"
+"Merged on: %s\n"
+"Returns merged: %s\n"
+"Notes: %s"
+msgstr ""
+"\n"
+"\n"
+"--- مرتجعات مدمجة ---\n"
+"تاريخ الدمج: %s\n"
+"المرتجعات المدمجة: %s\n"
+"ملاحظات: %s"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.buys_goods_action_report_id
+msgid "'Buys Details'"
+msgstr "'تفاصيل المشتريات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.buys_action_report_id
+msgid "'Buys_Header'"
+msgstr "'رأس المشتريات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.charges_goods_action_report_id
+msgid "'Charges Details'"
+msgstr "'تفاصيل التحويلات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.charges_action_report_id
+msgid "'Charges_Header'"
+msgstr "'رأس التحويلات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.customers_action_report_id
+msgid "'Customers Data'"
+msgstr "'بيانات العملاء'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.customers_deuoon_action_report_id
+msgid "'Customers Deuoon'"
+msgstr "'أرصدة العملاء'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.customers_in_action_report_id
+msgid "'Customers_In'"
+msgstr "'إيصالات العملاء'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.customers_out_action_report_id
+msgid "'Customers_Out'"
+msgstr "'مدفوعات العملاء'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.alarms_action_report_id
+msgid "'Goods Alarms'"
+msgstr "'تنبيهات المخزون'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.goods_calc_action_report_id
+msgid "'Goods Calc'"
+msgstr "'حاسبة الأصناف'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.goods_action_report_id
+msgid "'Goods Data'"
+msgstr "'بيانات الأصناف'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.goods_stores_action_report_id
+msgid "'Goods Stores'"
+msgstr "'المخزون حسب المخزن'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.buys_r_goods_action_report_id
+msgid "'Return Buys Details'"
+msgstr "'تفاصيل مرتجع المشتريات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.buys_r_action_report_id
+msgid "'Return Buys_Header'"
+msgstr "'رأس مرتجع المشتريات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.sells_r_goods_action_report_id
+msgid "'Return Sells Details'"
+msgstr "'تفاصيل مرتجع المبيعات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.sells_r_action_report_id
+msgid "'Return Sells_Header'"
+msgstr "'رأس مرتجع المبيعات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.sells_goods_action_report_id
+msgid "'Sells Details'"
+msgstr "'تفاصيل المبيعات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.sells_action_report_id
+msgid "'Sells_Header'"
+msgstr "'رأس المبيعات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.spending_action_report_id
+msgid "'Spending'"
+msgstr "'المصروفات'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.vendors_action_report_id
+msgid "'Vendors Data'"
+msgstr "'بيانات الموردين'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.vendors_deuoon_action_report_id
+msgid "'Vendors Deuoon'"
+msgstr "'أرصدة الموردين'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.vendors_in_action_report_id
+msgid "'Vendors_In'"
+msgstr "'إيصالات الموردين'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.vendors_out_action_report_id
+msgid "'Vendors_Out'"
+msgstr "'مدفوعات الموردين'"
+
+#. module: super_market_pro
+#: model:ir.actions.report,print_report_name:super_market_pro.inventorys_action_report_id
+msgid "'inventorys'"
+msgstr "'الجرد'"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+msgid "(1) If There Is More Than One Vendor, Will Take First One"
+msgstr "(1) إذا وُجد أكثر من مورد، يُستخدم أول مورد."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+msgid "(2) It Will Take Data Of The Oldest Buys With Date"
+msgstr "(2) تُؤخذ بيانات أقدم أمر شراء حسب التاريخ."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+msgid "(2) It Will Take Data Of The Oldest Return Buys With Date"
+msgstr "(2) تُؤخذ بيانات أقدم مرتجع شراء حسب التاريخ."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+msgid "(3) After Merging Will Delete Other Buys"
+msgstr "(3) بعد الدمج تُحذف بقية أوامر الشراء."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+msgid "(3) After Merging Will Delete Other Return Buys"
+msgstr "(3) بعد الدمج تُحذف بقية مرتجعات الشراء."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+msgid "** Read Notes First **"
+msgstr "** اقرأ الملاحظات أولًا **"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_form_id
+msgid "0.00"
+msgstr "0.00"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "01120591612"
+msgstr "01120591612"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "01221696630"
+msgstr "01221696630"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-code\"/> معلومات المطور"
+msgstr "<i class=\"fa fa-code\"/> معلومات المطور"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-copyright\"/> جميع الحقوق محفوظة 2026 - برنامج الصافى"
+msgstr "<i class=\"fa fa-copyright\"/> جميع الحقوق محفوظة 2026 - برنامج الصافى"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-envelope\"/> abdallaalsafy31@gmail.com"
+msgstr "<i class=\"fa fa-envelope\"/> abdallaalsafy31@gmail.com"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-facebook\"/> facebook.com/abdalla6alsafy"
+msgstr "<i class=\"fa fa-facebook\"/> facebook.com/abdalla6alsafy"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-heart\" style=\"color: #ff6b6b;\"/> تم التطوير بكل حب وإتقان"
+msgstr "<i class=\"fa fa-heart\" style=\"color: #ff6b6b;\"/> تم التطوير بكل حب وإتقان"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-phone\"/> معلومات الاتصال"
+msgstr "<i class=\"fa fa-phone\"/> معلومات الاتصال"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-share-alt\"/> وسائل التواصل والاتصال"
+msgstr "<i class=\"fa fa-share-alt\"/> وسائل التواصل والاتصال"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-store\"/> برنامج الصافى"
+msgstr "<i class=\"fa fa-store\"/> برنامج الصافى"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-user-tie\"/> CV: abdallaalsafy.carrd.co"
+msgstr "<i class=\"fa fa-user-tie\"/> السيرة: abdallaalsafy.carrd.co"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<i class=\"fa fa-whatsapp\"/> WhatsApp: +201221696630"
+msgstr "<i class=\"fa fa-whatsapp\"/> واتساب: +201221696630"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_buy_update','not in',['ratio'])]}\">Ratio</span>"
+msgstr ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_buy_update','not in',['ratio'])]}\">النسبة</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_buy_update','not in',['sum'])]}\">Sum</span>"
+msgstr ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_buy_update','not in',['sum'])]}\">المجموع</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_sell_update','not "
+"in',['ratio'])]}\">Ratio</span>"
+msgstr ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_sell_update','not "
+"in',['ratio'])]}\">النسبة</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_sell_update','not in',['sum'])]}\">Sum</span>"
+msgstr ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_sell_update','not in',['sum'])]}\">المجموع</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.alarms_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_stores_form_id
+msgid "<span class=\"o_form_label o_td_label\">Count</span>"
+msgstr "<span class=\"o_form_label o_td_label\">الكمية</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid "<span>%</span>"
+msgstr "<span>%</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+msgid "<span>Code:</span>"
+msgstr "<span>الرمز:</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+msgid "<span>Count Existe</span>"
+msgstr "<span>الكمية الموجودة</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "<span>Count</span>"
+msgstr "<span>الكمية</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+msgid "<span>Date:</span>"
+msgstr "<span>التاريخ:</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "<span>Goods</span>"
+msgstr "<span>الصنف</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid "<span>L.E</span>"
+msgstr "<span>ج.م</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "<span>M</span>"
+msgstr "<span>م</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "<span>Price</span>"
+msgstr "<span>السعر</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+msgid "<span>Store:</span>"
+msgstr "<span>المخزن:</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "<span>Store</span>"
+msgstr "<span>المخزن</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "<span>Total</span>"
+msgstr "<span>الإجمالي</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "<span>Unit</span>"
+msgstr "<span>الوحدة</span>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<strong style=\"color: #333;\">Facebook:</strong>"
+msgstr "<strong style=\"color: #333;\">فيسبوك:</strong>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<strong style=\"color: #333;\">المبرمج:</strong>"
+msgstr "<strong style=\"color: #333;\">المبرمج:</strong>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<strong style=\"color: #333;\">الهاتف الأول:</strong>"
+msgstr "<strong style=\"color: #333;\">الهاتف الأول:</strong>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "<strong style=\"color: #333;\">الهاتف الثاني:</strong>"
+msgstr "<strong style=\"color: #333;\">الهاتف الثاني:</strong>"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+msgid ""
+"<strong>Customer has no sales restrictions</strong><br/>\n"
+"\t\t\t\t\t\t\t\t\tCan proceed with normal sales transactions"
+msgstr ""
+"<strong>العميل غير مقيّد على المبيعات</strong><br/>\n"
+"\t\t\t\t\t\t\t\t\tيمكن إتمام عمليات البيع بشكل طبيعي"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+msgid "<strong>Customer is restricted from sales</strong><br/>"
+msgstr "<strong>العميل مقيّد على المبيعات</strong><br/>"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.about_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "About"
+msgstr "حول"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.about_action_id
+msgid "About_Action"
+msgstr "إجراء_حول"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.willing_menu_id
+msgid "Accounting"
+msgstr "المحاسبة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__active
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__active
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__active
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__active
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__active
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__active
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__active
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_search_id
+msgid "Active"
+msgstr "نشط"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.units_action_id
+msgid "Add a new unit of measure"
+msgstr "أضف وحدة قياس جديدة"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.categorys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.catg_units_form_id
+msgid "Add category description here..."
+msgstr "أضف وصف التصنيف هنا..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_form_id
+msgid "Add description here..."
+msgstr "أضف الوصف هنا..."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.sells_r_goods_action_id
+msgid "Add goods to return sales order"
+msgstr "أضف أصنافًا لمرتجع المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+msgid "Add notes about this customer..."
+msgstr "أضف ملاحظات عن هذا العميل..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.stores_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_form_id
+msgid "Add notes about this vendor..."
+msgstr "أضف ملاحظات عن هذا المورد..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_form_id
+msgid "Additional notes..."
+msgstr "ملاحظات إضافية..."
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__fld_address
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__fld_address
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_template_id
+msgid "Address"
+msgstr "العنوان"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "Address:"
+msgstr "العنوان:"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_alarms__fld_alarms
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__fld_alarms
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_alarms
+#: model_terms:ir.ui.view,arch_db:super_market_pro.alarms_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.alarms_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_template_id
+#, python-format
+msgid "Alarms"
+msgstr "التنبيهات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.catg_units_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.stores_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_search_id
+msgid "Archived"
+msgstr "مؤرشف"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "Average Discount: %.2f%%"
+msgstr "متوسط الخصم: %.2f%%"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__balance
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__balance
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_deuoon_template_id
+msgid "Balance"
+msgstr "الرصيد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_form_id
+msgid "Balance Information"
+msgstr "معلومات الرصيد"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_on_buy
+#, python-format
+msgid "Based on Buy Price"
+msgstr "بناءً على سعر الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_form_id
+msgid "Basic Info"
+msgstr "معلومات أساسية"
+
+#. module: super_market_pro
+#: model:ir.model.fields.selection,name:super_market_pro.selection__mdl_units__fld_type__big
+msgid "Bigger Than Reference"
+msgstr "أكبر من وحدة المرجع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_search_id
+msgid "Bigger Units"
+msgstr "وحدات أكبر"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_buy_ratio
+#, python-format
+msgid "Buy Ratio (%)"
+msgstr "نسبة الشراء (%)"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_buy_sum
+#, python-format
+msgid "Buy Sum"
+msgstr "مجموع الشراء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_buy_update
+#, python-format
+msgid "Buy Update Type"
+msgstr "نوع تحديث الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.willing_form_id
+msgid "Buys"
+msgstr "المشتريات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+msgid "Buys Details"
+msgstr "تفاصيل المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_buys_id
+msgid "Buys ID"
+msgstr "معرّف المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_clc_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_clc_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_clc_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_clc_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_clc_buy
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+msgid "Calc Buy"
+msgstr "محسوب شراء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_clc_sell
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_clc_sell
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_clc_sell
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_clc_sell
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+msgid "Calc Sell"
+msgstr "محسوب بيع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_update_goods__fld_on_buy
+#, python-format
+msgid "Calculate sell ratio based on buy price instead of sell price"
+msgstr "احتساب نسبة البيع من سعر الشراء بدلًا من سعر البيع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/sells.py:0
+#, python-format
+msgid ""
+"Cannot create sale for restricted customer: %s\n"
+"Customer Balance: %s\n"
+"Reason: Customer has sales restriction due to outstanding balance or manual restriction"
+msgstr ""
+"لا يمكن إنشاء بيع للعميل المقيّد: %s\n"
+"رصيد العميل: %s\n"
+"السبب: قيود مبيعات بسبب رصيد مستحق أو قيد يدوي"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#, python-format
+msgid ""
+"Cannot merge purchase orders without a vendor. Please ensure at least one "
+"order has a vendor assigned."
+msgstr ""
+"لا يمكن دمج أوامر الشراء بدون مورد. تأكد أن أمرًا واحدًا على الأقل له مورد."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#, python-format
+msgid ""
+"Cannot merge purchase returns from different parent purchases. All returns "
+"must belong to the same parent purchase."
+msgstr ""
+"لا يمكن دمج مرتجعات شراء من أوامر شراء أب مختلفة. يجب أن تنتمي كل المرتجعات لنفس أمر الشراء الأب."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#, python-format
+msgid ""
+"Cannot merge purchase returns without a vendor. Please ensure at least one "
+"return has a vendor assigned."
+msgstr ""
+"لا يمكن دمج مرتجعات الشراء بدون مورد. تأكد أن مرتجعًا واحدًا على الأقل له مورد."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#, python-format
+msgid ""
+"Cannot merge sales orders without a customer. Please ensure at least one "
+"order has a customer assigned."
+msgstr ""
+"لا يمكن دمج أوامر البيع بدون عميل. تأكد أن أمرًا واحدًا على الأقل له عميل."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid ""
+"Cannot merge sales returns from different parent sales. All returns must "
+"belong to the same parent sale."
+msgstr ""
+"لا يمكن دمج مرتجعات بيع من أوامر بيع أب مختلفة. يجب أن تنتمي كل المرتجعات لنفس أمر البيع الأب."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid ""
+"Cannot merge sales returns without a customer. Please ensure at least one "
+"return has a customer assigned."
+msgstr ""
+"لا يمكن دمج مرتجعات البيع بدون عميل. تأكد أن مرتجعًا واحدًا على الأقل له عميل."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_template_id
+msgid "Categ"
+msgstr "التصنيف"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.catg_units_action_id
+msgid "Categories Units"
+msgstr "تصنيفات الوحدات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_alarms__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_stores__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_category_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.alarms_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.catg_units_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_stores_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_charges_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_search_id
+#, python-format
+msgid "Category"
+msgstr "التصنيف"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/units.py:0
+#, python-format
+msgid "Category '%s' Should Have a Reference Unit."
+msgstr "يجب أن يحتوي التصنيف '%s' على وحدة مرجعية."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/units.py:0
+#, python-format
+msgid "Category '%s' Should Only Have One Reference Unit. Found: %s"
+msgstr "يجب أن يحتوي التصنيف '%s' على وحدة مرجعية واحدة فقط. وُجدت: %s"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.categorys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.catg_units_form_id
+msgid "Category Name..."
+msgstr "اسم التصنيف..."
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__fld_catg_id
+msgid "Category Spending"
+msgstr "تصنيف المصروف"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_unit_catg_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_unit_catg_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_unit_catg_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_unit_catg_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_unit_catg_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__fld_catg_id
+msgid "Category Unit"
+msgstr "تصنيف الوحدة"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.categorys_action_id
+msgid "Categorys_Action"
+msgstr "إجراء_التصنيفات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_list_id
+msgid "Charges"
+msgstr "التحويلات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+msgid "Charges Details"
+msgstr "تفاصيل التحويلات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_charges_id
+msgid "Charges ID"
+msgstr "معرّف التحويلات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__name
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_template_id
+msgid "Code"
+msgstr "الرمز"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "Code:"
+msgstr "الرمز:"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__color
+msgid "Color"
+msgstr "اللون"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.setting_menu_id
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_alarms__fld_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_stores__fld_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__fld_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_count
+#: model_terms:ir.ui.view,arch_db:super_market_pro.alarms_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_stores_template_id
+msgid "Count"
+msgstr "الكمية"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_count_buys
+msgid "Count Buys"
+msgstr "عدد المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_count_buys_r
+msgid "Count Buys_r"
+msgstr "عدد مرتجعات الشراء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_count_store
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_count_store
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_count_store
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_count_store
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_count_store
+msgid "Count In Store"
+msgstr "الكمية في المخزن"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_template_id
+msgid "Count Items"
+msgstr "عدد البنود"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_count_ref_unit
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_count_ref_unit
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_count_ref_unit
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_count_ref_unit
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_count_ref_unit
+msgid "Count Ref Unit"
+msgstr "الكمية بوحدة المرجع"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_count_sells
+msgid "Count Sell"
+msgstr "عدد المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_count_sells_r
+msgid "Count Sell_r"
+msgstr "عدد مرتجعات البيع"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.categorys_action_id
+msgid "Creat The First Category"
+msgstr "أنشئ أول تصنيف"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.stores_action_id
+msgid "Creat The First Stores"
+msgstr "أنشئ أول مخزن"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.customers_in_action_id
+msgid "Create your first customer payment"
+msgstr "أنشئ أول دفعة عميل"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.customers_out_action_id
+msgid "Create your first customer refund"
+msgstr "أنشئ أول استرداد عميل"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.customers_action_id
+msgid "Create your first customer!"
+msgstr "أنشئ أول عميل!"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.goods_action_id
+msgid "Create your first goods item"
+msgstr "أنشئ أول صنف"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.inventorys_action_id
+msgid "Create your first inventory"
+msgstr "أنشئ أول جرد"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.buys_action_id
+msgid "Create your first purchase order"
+msgstr "أنشئ أول أمر شراء"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.buys_r_action_id
+msgid "Create your first purchase return"
+msgstr "أنشئ أول مرتجع شراء"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.sells_r_action_id
+msgid "Create your first return sales order"
+msgstr "أنشئ أول مرتجع بيع"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.sells_action_id
+msgid "Create your first sales order"
+msgstr "أنشئ أول أمر بيع"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.spending_action_id
+msgid "Create your first spending record"
+msgstr "أنشئ أول مصروف"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.charges_action_id
+msgid "Create your first stock transfer"
+msgstr "أنشئ أول حركة مخزون"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.catg_units_action_id
+msgid "Create your first unit category"
+msgstr "أنشئ أول تصنيف وحدات"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.vendors_out_action_id
+msgid "Create your first vendor payment"
+msgstr "أنشئ أول دفعة مورد"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.vendors_in_action_id
+msgid "Create your first vendor refund"
+msgstr "أنشئ أول استرداد مورد"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.vendors_action_id
+msgid "Create your first vendor!"
+msgstr "أنشئ أول مورد!"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_about__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_about__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__create_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__create_date
+msgid "Created on"
+msgstr "تاريخ الإنشاء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_form_id
+msgid "Current Stock"
+msgstr "المخزون الحالي"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__fld_customer_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__fld_customer_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_customer_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_customer_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_customer_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_customer_id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__fld_customer_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+msgid "Customer Name"
+msgstr "اسم العميل"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_customers_uniqueCustomersName
+msgid "Customer Name Already Exists"
+msgstr "اسم العميل موجود مسبقًا"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_form_id
+msgid "Customer Payment"
+msgstr "دفعة عميل"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.customers_in_action_id
+#: model:ir.ui.menu,name:super_market_pro.customers_out_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_list_id
+msgid "Customer Payments"
+msgstr "مدفوعات العملاء"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.customers_in_menu_id
+msgid "Customer Receipts"
+msgstr "إيصالات العملاء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_form_id
+msgid "Customer Refund"
+msgstr "استرداد عميل"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.customers_out_action_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_list_id
+msgid "Customer Refunds"
+msgstr "استردادات العملاء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/sells.py:0
+#, python-format
+msgid "Customer Restriction Warning"
+msgstr "تحذير قيود العميل"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "Customer:"
+msgstr "العميل:"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/sells.py:0
+#, python-format
+msgid ""
+"Customer: %s\n"
+"Balance: %s\n"
+"Status: RESTRICTED - Cannot create sales for this customer due to outstanding balance or manual restriction"
+msgstr ""
+"العميل: %s\n"
+"الرصيد: %s\n"
+"الحالة: مقيّد - لا يمكن إنشاء مبيعات لهذا العميل بسبب رصيد مستحق أو قيد يدوي"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.customers_action_id
+#: model:ir.ui.menu,name:super_market_pro.customers_menu_id
+msgid "Customers"
+msgstr "العملاء"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.customers_action_id
+msgid "Customers are companies or individuals you sell products to."
+msgstr "العملاء هم شركات أو أفراد تبيع لهم المنتجات."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+msgid "Customers with Balance"
+msgstr "عملاء لهم رصيد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+msgid "Customers with Credit"
+msgstr "عملاء لهم دائن"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__fld_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__fld_date
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_template_id
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/buys.py:0
+#: code:addons/super_market_pro/models/buys_r.py:0
+#: code:addons/super_market_pro/models/customers_in.py:0
+#: code:addons/super_market_pro/models/customers_out.py:0
+#: code:addons/super_market_pro/models/sells.py:0
+#: code:addons/super_market_pro/models/sells_r.py:0
+#: code:addons/super_market_pro/models/spending.py:0
+#: code:addons/super_market_pro/models/vendors_in.py:0
+#: code:addons/super_market_pro/models/vendors_out.py:0
+#, python-format
+msgid "Date cannot be in the future"
+msgstr "لا يمكن أن يكون التاريخ في المستقبل"
+
+#. module: super_market_pro
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_merg_buys__merge_date
+msgid "Date for the merged purchase order"
+msgstr "تاريخ أمر الشراء بعد الدمج"
+
+#. module: super_market_pro
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_merg_buys_r__merge_date
+msgid "Date for the merged purchase return"
+msgstr "تاريخ مرتجع الشراء بعد الدمج"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "Date:"
+msgstr "التاريخ:"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_date_selc__day
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_willing__fld_date_selc__day
+#, python-format
+msgid "Day"
+msgstr "يوم"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__fld_description
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending__fld_Desc
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__fld_description
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__fld_description
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__fld_description
+#: model_terms:ir.ui.view,arch_db:super_market_pro.categorys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.catg_units_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_form_id
+msgid "Description"
+msgstr "الوصف"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+msgid "Discount"
+msgstr "الخصم"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_discount_percent
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_discount_percent
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_discount_percent
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_discount_percent
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_list_id
+msgid "Discount %"
+msgstr "خصم %"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/buys.py:0
+#: code:addons/super_market_pro/models/buys_r.py:0
+#: code:addons/super_market_pro/models/sells.py:0
+#: code:addons/super_market_pro/models/sells_r.py:0
+#, python-format
+msgid "Discount percentage cannot be negative"
+msgstr "لا يمكن أن يكون نسبة الخصم سالبة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/buys.py:0
+#: code:addons/super_market_pro/models/buys_r.py:0
+#: code:addons/super_market_pro/models/sells.py:0
+#: code:addons/super_market_pro/models/sells_r.py:0
+#, python-format
+msgid "Discount percentage cannot exceed 100%"
+msgstr "لا يمكن أن تتجاوز نسبة الخصم 100٪"
+
+#. module: super_market_pro
+#: model:ir.model.fields,help:super_market_pro.field_mdl_buys__fld_discount_percent
+#: model:ir.model.fields,help:super_market_pro.field_mdl_buys_r__fld_discount_percent
+#: model:ir.model.fields,help:super_market_pro.field_mdl_sells__fld_discount_percent
+#: model:ir.model.fields,help:super_market_pro.field_mdl_sells_r__fld_discount_percent
+msgid "Discount percentage from total amount"
+msgstr "نسبة الخصم من إجمالي المبلغ"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_discounts_buys
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_discounts_buys_r
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_discounts_sells
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_discounts_sells_r
+msgid "Discounts"
+msgstr "الخصومات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_alarms__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_stores__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_about__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__display_name
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.willing_form_id
+msgid "Elements Search"
+msgstr "بحث العناصر"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_wzrd_merg_buys
+msgid "Enhanced Wizard for Merging Purchase Orders"
+msgstr "معالج دمج أوامر الشراء"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_wzrd_merg_buys_r
+msgid "Enhanced Wizard for Merging Purchase Returns"
+msgstr "معالج دمج مرتجعات الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_form_id
+msgid "Enter goods description..."
+msgstr "أدخل وصف الصنف..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_form_id
+msgid "Enter inventory notes..."
+msgstr "أدخل ملاحظات الجرد..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_form_id
+msgid "Enter payment notes..."
+msgstr "أدخل ملاحظات الدفع..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_form_id
+msgid "Enter purchase notes..."
+msgstr "أدخل ملاحظات الشراء..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_form_id
+msgid "Enter quantity..."
+msgstr "أدخل الكمية..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_form_id
+msgid "Enter reference..."
+msgstr "أدخل المرجع..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_form_id
+msgid "Enter refund notes..."
+msgstr "أدخل ملاحظات الاسترداد..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_form_id
+msgid "Enter return notes..."
+msgstr "أدخل ملاحظات المرتجع..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_form_id
+msgid "Enter return sales notes..."
+msgstr "أدخل ملاحظات مرتجع البيع..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_form_id
+msgid "Enter sales notes..."
+msgstr "أدخل ملاحظات البيع..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_form_id
+msgid "Enter spending notes..."
+msgstr "أدخل ملاحظات المصروف..."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_form_id
+msgid "Enter transfer notes..."
+msgstr "أدخل ملاحظات التحويل..."
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.spending_menu_id
+msgid "Expenses"
+msgstr "المصروفات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_vendors_out_ids
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_customers_out_ids
+msgid "Exports"
+msgstr "الصادرات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__fld_factor
+msgid "Factor Unit"
+msgstr "معامل الوحدة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "Failed to complete merge operation: %s"
+msgstr "تعذر إتمام عملية الدمج: %s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#, python-format
+msgid "Failed to merge purchase orders: %s"
+msgstr "تعذر دمج أوامر الشراء: %s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#, python-format
+msgid "Failed to merge purchase returns: %s"
+msgstr "تعذر دمج مرتجعات الشراء: %s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#, python-format
+msgid "Failed to merge sales orders: %s"
+msgstr "تعذر دمج أوامر البيع: %s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "Failed to merge sales returns: %s"
+msgstr "تعذر دمج مرتجعات البيع: %s"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.finance_menu_id
+msgid "Finance"
+msgstr "المالية"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_discount
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_discount
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_discount
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_discount
+msgid "Fixed Discount"
+msgstr "خصم ثابت"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "Fixed Discount: %s"
+msgstr "خصم ثابت: %s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_update_goods__fld_buy_sum
+#, python-format
+msgid "Fixed amount to add to buy price"
+msgstr "مبلغ ثابت يُضاف إلى سعر الشراء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_update_goods__fld_sell_sum
+#, python-format
+msgid "Fixed amount to add to sell price"
+msgstr "مبلغ ثابت يُضاف إلى سعر البيع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/buys.py:0
+#: code:addons/super_market_pro/models/buys_r.py:0
+#: code:addons/super_market_pro/models/sells.py:0
+#: code:addons/super_market_pro/models/sells_r.py:0
+#, python-format
+msgid "Fixed discount amount cannot be negative"
+msgstr "لا يمكن أن يكون مبلغ الخصم الثابت سالبًا"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__fld_buys_ids
+msgid "Fld Buys"
+msgstr "مشتريات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__fld_buys_r_ids
+msgid "Fld Buys R"
+msgstr "مرتجعات شراء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__fld_customers_in_ids
+msgid "Fld Customers In"
+msgstr "إيصالات العملاء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__fld_customers_out_ids
+msgid "Fld Customers Out"
+msgstr "مدفوعات العملاء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__fld_img
+msgid "Fld Img"
+msgstr "صورة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__fld_sells_ids
+msgid "Fld Sells"
+msgstr "مبيعات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__fld_sells_r_ids
+msgid "Fld Sells R"
+msgstr "مرتجعات بيع"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__fld_vendors_in_ids
+msgid "Fld Vendors In"
+msgstr "إيصالات الموردين"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__fld_vendors_out_ids
+msgid "Fld Vendors Out"
+msgstr "مدفوعات الموردين"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__fld_date_f
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_date_f
+#, python-format
+msgid "From"
+msgstr "من"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__fld_store_f_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_store_f_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_charges_goods_search_id
+msgid "From Store"
+msgstr "من مخزن"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+msgid "From Store:"
+msgstr "من مخزن:"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.actions.act_window,name:super_market_pro.goods_action_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_alarms__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_buys_goods_ids
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_buys_r_goods_ids
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__fld_charges_goods_ids
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_stores__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_sells_goods_ids
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_sells_r_goods_ids
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__fld_goods_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_stores_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_charges_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_r_goods_search_id
+#, python-format
+msgid "Goods"
+msgstr "الصنف"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.goods_calc_menu_id
+msgid "Goods Calculator"
+msgstr "حاسبة الأصناف"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_buys_goods_CheckBuysGoodsCount
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_buys_r_goods_CheckReturnBuysGoodsCount
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_charges_goods_CheckChargesGoodsCount
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_sells_goods_CheckSellsGoodsCount
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_sells_r_goods_CheckReturnSellsGoodsCount
+msgid "Goods Count Must Be Above Zero"
+msgstr "يجب أن تكون كمية الصنف أكبر من صفر"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_search_id
+msgid "Goods Name"
+msgstr "اسم الصنف"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_buys_goods_CheckBuysGoodsPriceBuy
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_buys_r_goods_CheckReturnBuysGoodsPriceBuy
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_sells_goods_CheckSellsGoodsPriceBuy
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_sells_r_goods_CheckReturnSellsGoodsPriceBuy
+msgid "Goods Price_Buy Must Be Above Zero"
+msgstr "يجب أن يكون سعر الشراء أكبر من صفر"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_buys_goods_CheckBuysGoodsPriceSell
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_buys_r_goods_CheckReturnBuysGoodsPriceSell
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_sells_goods_CheckSellsGoodsPriceSell
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_sells_r_goods_CheckReturnSellsGoodsPriceSell
+msgid "Goods Price_Sell Must Be Above Zero"
+msgstr "يجب أن يكون سعر البيع أكبر من صفر"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.goods_calc_action_id
+msgid "Goods_Calc_Action"
+msgstr "إجراء_حاسبة_الأصناف"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.goods_stores_action_id
+msgid "Goods_Stores_Action"
+msgstr "إجراء_مخزون_المخازن"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_charges_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_search_id
+msgid "Has Phone"
+msgstr "له هاتف"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__has_restriction
+msgid "Has Sales Restriction"
+msgstr "مقيّد على المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_alarms__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_stores__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_about__id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys__id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r__id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__id
+msgid "ID"
+msgstr "المعرّف"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_vendors_in_ids
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_customers_in_ids
+msgid "Imports"
+msgstr "الواردات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_in
+msgid "In"
+msgstr "وارد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.willing_form_id
+msgid "In_Out"
+msgstr "وارد_صادر"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.inventorys_action_id
+#: model:ir.ui.menu,name:super_market_pro.inventorys_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_goods_search_id
+msgid "Inventory"
+msgstr "المخزون"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.inventorys_goods_action_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__fld_inventory_goods_ids
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_goods_form_id
+msgid "Inventory Goods"
+msgstr "أصناف الجرد"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__fld_inventory_id
+msgid "Inventory ID"
+msgstr "معرّف الجرد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_template_id
+msgid "Inventorys"
+msgstr "عمليات الجرد"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__fld_is_pay
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__fld_is_pay
+msgid "Is Paid"
+msgstr "مدفوع"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__fld_is_pay
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__fld_is_pay
+msgid "Is Refunded"
+msgstr "مسترد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+msgid "Kashf Of Buys"
+msgstr "كشف المشتريات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_template_id
+msgid "Kashf Of Charges"
+msgstr "كشف التحويلات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_template_id
+msgid "Kashf Of Customers"
+msgstr "كشف العملاء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_deuoon_template_id
+msgid "Kashf Of Customers Deuoon"
+msgstr "كشف أرصدة العملاء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_template_id
+msgid "Kashf Of Customers_In"
+msgstr "كشف إيصالات العملاء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_template_id
+msgid "Kashf Of Customers_Out"
+msgstr "كشف مدفوعات العملاء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+msgid "Kashf Of Goods Calc"
+msgstr "كشف حاسبة الأصناف"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_template_id
+msgid "Kashf Of Goods Data"
+msgstr "كشف بيانات الأصناف"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_stores_template_id
+msgid "Kashf Of Goods Stores"
+msgstr "كشف المخزون حسب المخزن"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+msgid "Kashf Of Return Buys"
+msgstr "كشف مرتجع المشتريات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+msgid "Kashf Of Return Sells"
+msgstr "كشف مرتجع المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+msgid "Kashf Of Sells"
+msgstr "كشف المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_template_id
+msgid "Kashf Of Spending"
+msgstr "كشف المصروفات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_template_id
+msgid "Kashf Of Vendors"
+msgstr "كشف الموردين"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_deuoon_template_id
+msgid "Kashf Of Vendors Deuoon"
+msgstr "كشف أرصدة الموردين"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_template_id
+msgid "Kashf Of Vendors_In"
+msgstr "كشف إيصالات الموردين"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_template_id
+msgid "Kashf Of Vendors_Out"
+msgstr "كشف مدفوعات الموردين"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_alarms____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_stores____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_about____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods____last_update
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_about__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_about__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__write_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__write_date
+msgid "Last Updated on"
+msgstr "تاريخ آخر تحديث"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.customers_in_action_id
+msgid ""
+"Manage customer payments, track payment status, and maintain accurate "
+"financial records."
+msgstr ""
+"إدارة مدفوعات العملاء، متابعة حالة الدفع، والحفاظ على سجلات مالية دقيقة."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.customers_out_action_id
+msgid ""
+"Manage customer refunds, track refund status, and maintain accurate "
+"financial records."
+msgstr ""
+"إدارة استردادات العملاء، متابعة حالة الاسترداد، والحفاظ على سجلات مالية دقيقة."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.spending_action_id
+msgid ""
+"Manage daily expenses, track spending by category, and maintain accurate "
+"financial records."
+msgstr ""
+"إدارة المصروفات اليومية، متابعة الإنفاق حسب التصنيف، والحفاظ على سجلات مالية دقيقة."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.inventorys_action_id
+msgid ""
+"Manage inventory counts, track stock levels, and maintain accurate inventory"
+" records."
+msgstr ""
+"إدارة أعداد الجرد، متابعة مستويات المخزون، والحفاظ على سجلات جرد دقيقة."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.buys_r_action_id
+msgid "Manage purchase returns, track refunds, and monitor discounts."
+msgstr "إدارة مرتجعات الشراء، متابعة الاستردادات، ومراقبة الخصومات."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.sells_r_action_id
+msgid "Manage return sales orders, track payments, and monitor profit/loss."
+msgstr "إدارة مرتجعات المبيعات، متابعة المدفوعات، ومراقبة الربح/الخسارة."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.charges_action_id
+msgid ""
+"Manage stock transfers between stores, track inventory movements, and "
+"maintain accurate stock levels."
+msgstr ""
+"إدارة تحويلات المخزون بين المخازن، متابعة حركات المخزون، والحفاظ على مستويات دقيقة."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.vendors_out_action_id
+msgid ""
+"Manage vendor payments, track payment status, and maintain accurate "
+"financial records."
+msgstr ""
+"إدارة مدفوعات الموردين، متابعة حالة الدفع، والحفاظ على سجلات مالية دقيقة."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.vendors_in_action_id
+msgid ""
+"Manage vendor refunds, track refund status, and maintain accurate financial "
+"records."
+msgstr ""
+"إدارة استردادات الموردين، متابعة حالة الاسترداد، والحفاظ على سجلات مالية دقيقة."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.buys_action_id
+msgid "Manage your purchase orders, track payments, and monitor discounts."
+msgstr "إدارة أوامر الشراء، متابعة المدفوعات، ومراقبة الخصومات."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.sells_action_id
+msgid "Manage your sales orders, track payments, and monitor profits."
+msgstr "إدارة أوامر البيع، متابعة المدفوعات، ومراقبة الأرباح."
+
+#. module: super_market_pro
+#: model:ir.model.fields,help:super_market_pro.field_mdl_customers__restriction_amount
+msgid "Maximum allowed balance before restriction"
+msgstr "أقصى رصيد مسموح به قبل تفعيل القيد"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.merg_buys_action_id
+msgid "Merg_Buys_Action"
+msgstr "إجراء_دمج_المشتريات"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.merg_buys_r_action_id
+msgid "Merg_Buys_r_Action"
+msgstr "إجراء_دمج_مرتجعات_الشراء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys__merge_date
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r__merge_date
+msgid "Merge Date"
+msgstr "تاريخ الدمج"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys__merge_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_merg_buys_r__merge_notes
+msgid "Merge Notes"
+msgstr "ملاحظات الدمج"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+msgid "Merge Options"
+msgstr "خيارات الدمج"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+msgid "Merge Orders"
+msgstr "دمج الأوامر"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+msgid "Merge Purchase Orders"
+msgstr "دمج أوامر الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+msgid "Merge Purchase Returns"
+msgstr "دمج مرتجعات الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+msgid "Merge Returns"
+msgstr "دمج المرتجعات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_date_selc__month
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_willing__fld_date_selc__month
+#, python-format
+msgid "Month"
+msgstr "شهر"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_spending__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__name
+#: model_terms:ir.ui.view,arch_db:super_market_pro.alarms_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_deuoon_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_deuoon_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_template_id
+msgid "Name"
+msgstr "الاسم"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/buys.py:0
+#: code:addons/super_market_pro/models/buys_r.py:0
+#: code:addons/super_market_pro/models/charges.py:0
+#: code:addons/super_market_pro/models/customers_in.py:0
+#: code:addons/super_market_pro/models/customers_out.py:0
+#: code:addons/super_market_pro/models/inventorys.py:0
+#: code:addons/super_market_pro/models/sells.py:0
+#: code:addons/super_market_pro/models/sells_r.py:0
+#: code:addons/super_market_pro/models/spending.py:0
+#: code:addons/super_market_pro/models/vendors_in.py:0
+#: code:addons/super_market_pro/models/vendors_out.py:0
+#, python-format
+msgid "New"
+msgstr "جديد"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "No Discount"
+msgstr "بدون خصم"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "No goods selected for price update"
+msgstr "لم يُحدد أي صنف لتحديث الأسعار"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "No goods selected for update"
+msgstr "لم يُحدد أي صنف للتحديث"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.inventorys_goods_action_id
+msgid "No inventory goods found"
+msgstr "لا توجد أصناف جرد"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#, python-format
+msgid "No orders to merge found"
+msgstr "لا توجد أوامر للدمج"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#, python-format
+msgid "No purchase orders selected for merging"
+msgstr "لم يُحدد أي أمر شراء للدمج"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#, python-format
+msgid "No purchase returns selected for merging"
+msgstr "لم يُحدد أي مرتجع شراء للدمج"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "No returns to merge found"
+msgstr "لا توجد مرتجعات للدمج"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#, python-format
+msgid "No sales orders selected for merging"
+msgstr "لم يُحدد أي أمر بيع للدمج"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "No sales returns selected for merging"
+msgstr "لم يُحدد أي مرتجع بيع للدمج"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+msgid "Non-Restricted Customers"
+msgstr "عملاء غير مقيّدين"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "Not Paid"
+msgstr "غير مدفوع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+msgid "Not Refunded"
+msgstr "غير مسترد"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_stores__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__fld_notes
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_notes
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.stores_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_form_id
+#, python-format
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.willing_form_id
+msgid "OK"
+msgstr "موافق"
+
+#. module: super_market_pro
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_merg_buys__merge_notes
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_merg_buys_r__merge_notes
+msgid "Optional notes about this merge operation"
+msgstr "ملاحظات اختيارية عن عملية الدمج"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.merg_buys_r_form_id
+msgid "Optional notes about this merge operation..."
+msgstr "ملاحظات اختيارية عن عملية الدمج..."
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_out
+msgid "Out"
+msgstr "صادر"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "Paid"
+msgstr "مدفوع"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_parent_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+msgid "Parent Purchase"
+msgstr "أمر الشراء الأب"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_parent_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+msgid "Parent Sale"
+msgstr "أمر البيع الأب"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_paying
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_paying
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_paying
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_paying
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_spending__fld_paying
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_template_id
+msgid "Paying"
+msgstr "المدفوع"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__fld_paying
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__fld_paying
+msgid "Payment Amount"
+msgstr "مبلغ الدفع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "Payment Status"
+msgstr "حالة الدفع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/buys.py:0
+#: code:addons/super_market_pro/models/buys_r.py:0
+#: code:addons/super_market_pro/models/sells.py:0
+#: code:addons/super_market_pro/models/sells_r.py:0
+#, python-format
+msgid "Payment amount cannot be negative"
+msgstr "لا يمكن أن يكون مبلغ الدفع سالبًا"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/customers_in.py:0
+#: code:addons/super_market_pro/models/customers_out.py:0
+#: code:addons/super_market_pro/models/vendors_in.py:0
+#: code:addons/super_market_pro/models/vendors_out.py:0
+#, python-format
+msgid "Payment amount must be above zero!"
+msgstr "يجب أن يكون مبلغ الدفع أكبر من صفر!"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__customers_in_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__vendors_in_count
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_form_id
+msgid "Payments In"
+msgstr "المدفوعات الواردة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__customers_out_count
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__vendors_out_count
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_form_id
+msgid "Payments Out"
+msgstr "المدفوعات الصادرة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_update_goods__fld_buy_ratio
+#, python-format
+msgid "Percentage to increase buy price (e.g., 10 for 10%)"
+msgstr "النسبة لزيادة سعر الشراء (مثال: 10 تعني 10٪)"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,help:super_market_pro.field_wzrd_update_goods__fld_sell_ratio
+#, python-format
+msgid "Percentage to increase sell price (e.g., 10 for 10%)"
+msgstr "النسبة لزيادة سعر البيع (مثال: 10 تعني 10٪)"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__fld_date_selc
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_date_selc
+#, python-format
+msgid "Period"
+msgstr "الفترة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__fld_phone
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__fld_phone
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_deuoon_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_deuoon_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_template_id
+msgid "Phone"
+msgstr "الهاتف"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "Phone:"
+msgstr "الهاتف:"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "Please provide buy ratio value"
+msgstr "يرجى إدخال قيمة نسبة الشراء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "Please provide buy sum value"
+msgstr "يرجى إدخال قيمة مجموع الشراء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "Please provide sell ratio value"
+msgstr "يرجى إدخال قيمة نسبة البيع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "Please provide sell sum value"
+msgstr "يرجى إدخال قيمة مجموع البيع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "Please select at least one field to update"
+msgstr "يرجى اختيار حقل واحد على الأقل للتحديث"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "Please select at least one price type to update"
+msgstr "يرجى اختيار نوع سعر واحد على الأقل للتحديث"
+
+#. module: super_market_pro
+#: model:ir.model.fields,help:super_market_pro.field_mdl_customers__balance
+#: model:ir.model.fields,help:super_market_pro.field_mdl_vendors__balance
+msgid "Positive balance = customer owes money, Negative = customer has credit"
+msgstr "رصيد موجب = على العميل دين، رصيد سالب = للعميل دائن"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_price_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_price_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__fld_price_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_price_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_price_buy
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_price_buy
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid "Price Buy"
+msgstr "سعر الشراء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_price_sell
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_price_sell
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__fld_price_sell
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_price_sell
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_price_sell
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_price_sell
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid "Price Sell"
+msgstr "سعر البيع"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_goods_CheckGoodsPriceBuy
+msgid "Price_Buy Must Be Above Zero"
+msgstr "يجب أن يكون سعر الشراء أكبر من صفر"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_goods_CheckGoodsPriceSell
+msgid "Price_Sell Must Be Above Zero"
+msgstr "يجب أن يكون سعر البيع أكبر من صفر"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_form_id
+msgid "Pricing"
+msgstr "التسعير"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.buys_action_report_id
+msgid "Print Buys"
+msgstr "طباعة المشتريات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.buys_goods_action_report_id
+msgid "Print Buys Goods"
+msgstr "طباعة أصناف المشتريات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.charges_action_report_id
+msgid "Print Charges"
+msgstr "طباعة المصروفات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.charges_goods_action_report_id
+msgid "Print Charges Goods"
+msgstr "طباعة أصناف المصروفات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.customers_action_report_id
+msgid "Print Customers"
+msgstr "طباعة العملاء"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.customers_deuoon_action_report_id
+msgid "Print Customers Deuoon"
+msgstr "طباعة ديون العملاء"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.customers_in_action_report_id
+msgid "Print Customers_In"
+msgstr "طباعة وارد العملاء"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.customers_out_action_report_id
+msgid "Print Customers_Out"
+msgstr "طباعة صادر العملاء"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.goods_action_report_id
+msgid "Print Goods"
+msgstr "طباعة الأصناف"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.alarms_action_report_id
+msgid "Print Goods Alarms"
+msgstr "طباعة تنبيهات الأصناف"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.goods_calc_action_report_id
+msgid "Print Goods Calc"
+msgstr "طباعة حاسبة الأصناف"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.goods_stores_action_report_id
+msgid "Print Goods Stores"
+msgstr "طباعة أصناف المخازن"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.buys_r_action_report_id
+msgid "Print Return Buys"
+msgstr "طباعة مرتجعات المشتريات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.buys_r_goods_action_report_id
+msgid "Print Return Buys Goods"
+msgstr "طباعة أصناف مرتجعات المشتريات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.sells_r_action_report_id
+msgid "Print Return Sells"
+msgstr "طباعة مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.sells_r_goods_action_report_id
+msgid "Print Return Sells Goods"
+msgstr "طباعة أصناف مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.sells_action_report_id
+msgid "Print Sells"
+msgstr "طباعة المبيعات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.sells_goods_action_report_id
+msgid "Print Sells Goods"
+msgstr "طباعة أصناف المبيعات"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.spending_action_report_id
+msgid "Print Spending"
+msgstr "طباعة الإنفاق"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.vendors_action_report_id
+msgid "Print Vendors"
+msgstr "طباعة الموردين"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.vendors_deuoon_action_report_id
+msgid "Print Vendors Deuoon"
+msgstr "طباعة ديون الموردين"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.vendors_in_action_report_id
+msgid "Print Vendors_In"
+msgstr "طباعة وارد الموردين"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.vendors_out_action_report_id
+msgid "Print Vendors_Out"
+msgstr "طباعة صادر الموردين"
+
+#. module: super_market_pro
+#: model:ir.actions.report,name:super_market_pro.inventorys_action_report_id
+msgid "Print inventorys"
+msgstr "طباعة الجرد"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.categorys_goods_menu_id
+msgid "Product Categories"
+msgstr "فئات المنتجات"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.goods_menu_id
+#: model:ir.ui.menu,name:super_market_pro.products_menu_id
+msgid "Products"
+msgstr "المنتجات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_list_id
+msgid "Profit"
+msgstr "الربح"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_list_id
+msgid "Profit/Loss"
+msgstr "ربح/خسارة"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_search_id
+msgid "Purchase"
+msgstr "شراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_list_id
+msgid "Purchase Goods"
+msgstr "أصناف الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_form_id
+msgid "Purchase Items"
+msgstr "بنود الشراء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__fld_buys_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "Purchase Order"
+msgstr "أمر شراء"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.buys_menu_id
+msgid "Purchase Orders"
+msgstr "أوامر الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_form_id
+msgid "Purchase Return"
+msgstr "مرتجع شراء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.actions.act_window,name:super_market_pro.buys_r_action_id
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_transaction_type__buys_r
+#: model:ir.ui.menu,name:super_market_pro.buys_r_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_list_id
+#, python-format
+msgid "Purchase Returns"
+msgstr "مرتجعات الشراء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.actions.act_window,name:super_market_pro.buys_action_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__buys_count
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_transaction_type__buys
+#: model:ir.ui.menu,name:super_market_pro.purchases_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_form_id
+#, python-format
+msgid "Purchases"
+msgstr "المشتريات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_date_selc__q1
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_willing__fld_date_selc__q1
+#, python-format
+msgid "Q1"
+msgstr "الربع الأول"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_date_selc__q2
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_willing__fld_date_selc__q2
+#, python-format
+msgid "Q2"
+msgstr "الربع الثاني"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_date_selc__q3
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_willing__fld_date_selc__q3
+#, python-format
+msgid "Q3"
+msgstr "الربع الثالث"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_date_selc__q4
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_willing__fld_date_selc__q4
+#, python-format
+msgid "Q4"
+msgstr "الربع الرابع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_update_goods__fld_buy_update__ratio
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_update_goods__fld_sell_update__ratio
+#, python-format
+msgid "Ratio"
+msgstr "نسبة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__fld_ratio
+msgid "Ratio Unit"
+msgstr "وحدة النسبة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__fld_ref
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+msgid "Referance"
+msgstr "مرجع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "Referance:"
+msgstr "مرجع:"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_ref
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_ref
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_ref
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_ref
+#: model:ir.model.fields.selection,name:super_market_pro.selection__mdl_units__fld_type__ref
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_search_id
+msgid "Reference Units"
+msgstr "وحدات مرجعية"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__fld_paying
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__fld_paying
+msgid "Refund Amount"
+msgstr "مبلغ الاسترداد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+msgid "Refund Status"
+msgstr "حالة الاسترداد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+msgid "Refunded"
+msgstr "مسترد"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_remain
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_remain
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_remain
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_remain
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+msgid "Remain"
+msgstr "المتبقي"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_list_id
+msgid "Remaining"
+msgstr "الباقي"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.inventory_reports_menu_id
+#: model:ir.ui.menu,name:super_market_pro.products_reports_menu_id
+#: model:ir.ui.menu,name:super_market_pro.purchases_reports_menu_id
+#: model:ir.ui.menu,name:super_market_pro.sales_reports_menu_id
+msgid "Reports"
+msgstr "التقارير"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+msgid "Restricted Customers"
+msgstr "عملاء مقيدون"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__restriction_amount
+msgid "Restriction Amount"
+msgstr "مبلغ التقييد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+msgid "Restriction Settings"
+msgstr "إعدادات التقييد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_search_id
+msgid "Restriction Status"
+msgstr "حالة التقييد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.willing_form_id
+msgid "Return Buys"
+msgstr "مرتجعات المشتريات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+msgid "Return Buys Details"
+msgstr "تفاصيل مرتجعات المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_buys_r_id
+msgid "Return Buys ID"
+msgstr "معرّف مرتجع المشتريات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_form_id
+msgid "Return Items"
+msgstr "بنود المرتجع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_search_id
+msgid "Return Purchase"
+msgstr "مرتجع شراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_list_id
+msgid "Return Purchase Goods"
+msgstr "أصناف مرتجع الشراء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__fld_buys_r_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+msgid "Return Purchase Order"
+msgstr "أمر مرتجع شراء"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__buys_r_count
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_form_id
+msgid "Return Purchases"
+msgstr "مرتجعات المشتريات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_r_goods_search_id
+msgid "Return Sale"
+msgstr "مرتجع بيع"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.sells_r_action_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__sells_r_count
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_list_id
+msgid "Return Sales"
+msgstr "مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.sells_r_goods_action_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_list_id
+msgid "Return Sales Goods"
+msgstr "أصناف مرتجع المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_out__fld_sells_r_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_form_id
+msgid "Return Sales Order"
+msgstr "أمر مرتجع مبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.willing_form_id
+msgid "Return Sells"
+msgstr "مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+msgid "Return Sells Details"
+msgstr "تفاصيل مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_sells_r_id
+msgid "Return Sells ID"
+msgstr "معرّف مرتجع المبيعات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.actions.act_window,name:super_market_pro.sells_action_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__sells_count
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_transaction_type__sells
+#: model:ir.ui.menu,name:super_market_pro.sales_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_list_id
+#, python-format
+msgid "Sales"
+msgstr "المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_list_id
+msgid "Sales Goods"
+msgstr "أصناف المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_form_id
+msgid "Sales Items"
+msgstr "بنود المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers_in__fld_sells_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_form_id
+msgid "Sales Order"
+msgstr "أمر بيع"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.sells_menu_id
+msgid "Sales Orders"
+msgstr "أوامر البيع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_form_id
+msgid "Sales Restrictions"
+msgstr "قيود المبيعات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_transaction_type__sells_r
+#: model:ir.ui.menu,name:super_market_pro.sells_r_menu_id
+#, python-format
+msgid "Sales Returns"
+msgstr "مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.alarms_search_id
+msgid "Search Alarms"
+msgstr "بحث التنبيهات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_form_id
+msgid "Search Buys Goods"
+msgstr "بحث أصناف المشتريات"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.search_buys_goods_action_id
+msgid "Search Buys Goods Action"
+msgstr "إجراء بحث أصناف المشتريات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_search_id
+msgid "Search Charges"
+msgstr "بحث المصروفات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+msgid "Search Customer Payments"
+msgstr "بحث مدفوعات العملاء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+msgid "Search Customer Refunds"
+msgstr "بحث استردادات العملاء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_search_id
+msgid "Search Goods"
+msgstr "بحث الأصناف"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_search_id
+msgid "Search Inventory"
+msgstr "بحث الجرد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_goods_search_id
+msgid "Search Inventory Goods"
+msgstr "بحث أصناف الجرد"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.search_buys_goods_menu_id
+msgid "Search Purchase & Sales Items"
+msgstr "بحث بنود الشراء والبيع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_search_id
+msgid "Search Purchase Goods"
+msgstr "بحث أصناف الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+msgid "Search Purchase Returns"
+msgstr "بحث مرتجعات الشراء"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#, python-format
+msgid "Search Purchase Returns Goods"
+msgstr "بحث أصناف مرتجعات الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+msgid "Search Purchases"
+msgstr "بحث المشتريات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#, python-format
+msgid "Search Purchases Goods"
+msgstr "بحث أصناف المشتريات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#, python-format
+msgid "Search Results"
+msgstr "نتائج البحث"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_search_id
+msgid "Search Return Purchase Goods"
+msgstr "بحث أصناف مرتجع الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+msgid "Search Return Sales"
+msgstr "بحث مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_r_goods_search_id
+msgid "Search Return Sales Goods"
+msgstr "بحث أصناف مرتجع المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+msgid "Search Sales"
+msgstr "بحث المبيعات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_goods_search_id
+#, python-format
+msgid "Search Sales Goods"
+msgstr "بحث أصناف المبيعات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#, python-format
+msgid "Search Sales Returns Goods"
+msgstr "بحث أصناف مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_search_id
+msgid "Search Spending"
+msgstr "بحث الإنفاق"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_charges_goods_search_id
+msgid "Search Transfer Goods"
+msgstr "بحث أصناف التحويل"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "Search Vendor Payments"
+msgstr "بحث مدفوعات الموردين"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+msgid "Search Vendor Refunds"
+msgstr "بحث استردادات الموردين"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_form_id
+msgid "Select destination store..."
+msgstr "اختر المخزن الوجهة..."
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.sells_r_goods_action_id
+msgid "Select goods, quantities, and units to add to your return sales order."
+msgstr "اختر الأصناف والكميات والوحدات لإضافتها إلى أمر مرتجع المبيعات."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_form_id
+msgid "Select source store..."
+msgstr "اختر المخزن المصدر..."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_sell_ratio
+#, python-format
+msgid "Sell Ratio (%)"
+msgstr "نسبة البيع (%)"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_sell_sum
+#, python-format
+msgid "Sell Sum"
+msgstr "مجموع البيع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_sell_update
+#, python-format
+msgid "Sell Update Type"
+msgstr "نوع تحديث البيع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.willing_form_id
+msgid "Sells"
+msgstr "المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+msgid "Sells Details"
+msgstr "تفاصيل المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_sells_id
+msgid "Sells ID"
+msgstr "معرّف المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model.fields.selection,name:super_market_pro.selection__mdl_units__fld_type__smll
+msgid "Smaller Than Reference"
+msgstr "أصغر من المرجع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_search_id
+msgid "Smaller Units"
+msgstr "وحدات أصغر"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#, python-format
+msgid "Some selected purchase orders were not found"
+msgstr "لم يُعثر على بعض أوامر الشراء المحددة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#, python-format
+msgid "Some selected purchase returns were not found"
+msgstr "لم يُعثر على بعض مرتجعات الشراء المحددة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#, python-format
+msgid "Some selected sales orders were not found"
+msgstr "لم يُعثر على بعض أوامر البيع المحددة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "Some selected sales returns were not found"
+msgstr "لم يُعثر على بعض مرتجعات المبيعات المحددة"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.spending_action_id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_spending
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_form_id
+msgid "Spending"
+msgstr "الإنفاق"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/spending.py:0
+#, python-format
+msgid "Spending amount must be greater than zero!"
+msgstr "يجب أن يكون مبلغ الإنفاق أكبر من صفر!"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__fld_star_name
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__fld_star_name
+msgid "Star Name"
+msgstr "الاسم المميز"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_deuoon_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_deuoon_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_template_id
+msgid "Star_Name"
+msgstr "الاسم_المميز"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.alarms_action_id
+msgid "Stock Alarms"
+msgstr "تنبيهات المخزون"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.alarms_menu_id
+msgid "Stock Alerts"
+msgstr "تنبيهات المخزون"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.charges_menu_id
+msgid "Stock Movements"
+msgstr "حركات المخزون"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.inventorys_sub_menu_id
+msgid "Stock Status"
+msgstr "حالة المخزون"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_form_id
+msgid "Stock Transfer"
+msgstr "تحويل مخزون"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.charges_action_id
+msgid "Stock Transfers"
+msgstr "تحويلات المخزون"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.goods_stores_menu_id
+msgid "Stock by Store"
+msgstr "المخزون حسب المخزن"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_stores__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_store_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_store_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_stores_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+msgid "Store"
+msgstr "المخزن"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.stores_menu_id
+msgid "Stores"
+msgstr "المخازن"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.stores_action_id
+msgid "Stores are the places where you store your products."
+msgstr "المخازن هي الأماكن التي تخزن فيها منتجاتك."
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.stores_action_id
+msgid "Stores_Action"
+msgstr "إجراء_المخازن"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "Success"
+msgstr "نجاح"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#, python-format
+msgid ""
+"Successfully merged %d purchase orders\n"
+"%s"
+msgstr ""
+"تم دمج %d أمر شراء\n"
+"%s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#, python-format
+msgid ""
+"Successfully merged %d purchase returns\n"
+"%s"
+msgstr ""
+"تم دمج %d مرتجع شراء\n"
+"%s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid ""
+"Successfully merged %d sales returns\n"
+"%s"
+msgstr ""
+"تم دمج %d مرتجع مبيعات\n"
+"%s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#, python-format
+msgid "Successfully updated %d goods"
+msgstr "تم تحديث %d صنفًا"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_update_goods__fld_buy_update__sum
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_update_goods__fld_sell_update__sum
+#, python-format
+msgid "Sum"
+msgstr "مجموع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_list_id
+msgid "Sum Buy"
+msgstr "مجموع الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_deuoon_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_deuoon_template_id
+msgid "Sum Deuoon"
+msgstr "مجموع الديون"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_list_id
+msgid "Sum Discount"
+msgstr "مجموع الخصم"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_template_id
+msgid "Sum Paying"
+msgstr "مجموع المدفوع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_list_id
+msgid "Sum Sell"
+msgstr "مجموع البيع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_list_id
+msgid "Sum Totall Clc_Buy"
+msgstr "مجموع إجمالي احتساب الشراء"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_goods_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_r_goods_list_id
+msgid "Sum Totall Clc_Sell"
+msgstr "مجموع إجمالي احتساب البيع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_goods_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_goods_list_id
+msgid "Sum Totall win"
+msgstr "مجموع إجمالي الربح"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+msgid "Sum Totals"
+msgstr "مجموع الإجماليات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_list_id
+msgid "Sum Win"
+msgstr "مجموع الربح"
+
+#. module: super_market_pro
+#: model:ir.module.category,name:super_market_pro.module_category_sales_management
+#: model:ir.ui.menu,name:super_market_pro.supermarket_menu_root_id
+msgid "Super Market"
+msgstr "السوبر ماركت"
+
+#. module: super_market_pro
+#: model:res.groups,name:super_market_pro.super_market_manager_group
+msgid "SuperMarket Manager"
+msgstr "مدير السوبر ماركت"
+
+#. module: super_market_pro
+#: model:res.groups,name:super_market_pro.super_market_sales_person_group
+msgid "SuperMarket Sales Person"
+msgstr "مندوب مبيعات السوبر ماركت"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_buys
+msgid "Table Of All Buys"
+msgstr "جدول جميع المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_buys_goods
+msgid "Table Of All Buys Goods"
+msgstr "جدول جميع أصناف المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_charges
+msgid "Table Of All Charges"
+msgstr "جدول جميع التحويلات/الحركات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_charges_goods
+msgid "Table Of All Charges Goods"
+msgstr "جدول جميع أصناف التحويلات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_customers_in
+msgid "Table Of All Customer Incoming Payments"
+msgstr "جدول جميع مدفوعات العملاء الواردة"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_customers_out
+msgid "Table Of All Customer Refund Payments"
+msgstr "جدول جميع استردادات العملاء"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_customers
+msgid "Table Of All Customers"
+msgstr "جدول جميع العملاء"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_goods
+msgid "Table Of All Goods"
+msgstr "جدول جميع الأصناف"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_goods_calc
+msgid "Table Of All Goods Calc"
+msgstr "جدول حاسبة جميع الأصناف"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_goods_stores
+msgid "Table Of All Goods In Stores"
+msgstr "جدول جميع الأصناف في المخازن"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_inventorys
+msgid "Table Of All Inventorys"
+msgstr "جدول جميع عمليات الجرد"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_buys_r
+msgid "Table Of All Return Buys"
+msgstr "جدول جميع مرتجعات المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_buys_r_goods
+msgid "Table Of All Return Buys Goods"
+msgstr "جدول جميع أصناف مرتجعات المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_sells_r
+msgid "Table Of All Return Sells"
+msgstr "جدول جميع مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_sells_r_goods
+msgid "Table Of All Return Sells Goods"
+msgstr "جدول جميع أصناف مرتجعات المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_sells
+msgid "Table Of All Sells"
+msgstr "جدول جميع المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_sells_goods
+msgid "Table Of All Sells Goods"
+msgstr "جدول جميع أصناف المبيعات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_spending
+msgid "Table Of All Spending"
+msgstr "جدول جميع الإنفاق"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_stores
+msgid "Table Of All Stores"
+msgstr "جدول جميع المخازن"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_vendors_out
+msgid "Table Of All Vendor Payments"
+msgstr "جدول جميع مدفوعات الموردين"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_vendors_in
+msgid "Table Of All Vendor Refund Payments"
+msgstr "جدول جميع استردادات الموردين"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_vendors
+msgid "Table Of All Vendors"
+msgstr "جدول جميع الموردين"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_catg_spending
+msgid "Table Of Categorys Of Spending"
+msgstr "جدول فئات الإنفاق"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_catg_units
+msgid "Table Of Categorys Units"
+msgstr "جدول فئات الوحدات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_categorys
+msgid "Table Of Goods Categorys"
+msgstr "جدول فئات الأصناف"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_units
+msgid "Table Of Goods Units"
+msgstr "جدول وحدات الأصناف"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_inventorys_goods
+msgid "Table Of Inventory Goods"
+msgstr "جدول أصناف الجرد"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_mdl_alarms
+msgid "Table Of alarms"
+msgstr "جدول التنبيهات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_categorys__name
+msgid "Tag Name"
+msgstr "اسم الوسم"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_units_ChkUnitRefFactorIsOne
+msgid "The Factor Of Reference Unit Must Equal To 1."
+msgstr "يجب أن يكون معامل الوحدة المرجعية مساويًا لـ 1."
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_goods_uniqueGoodsName
+msgid "The Goods Is Existe Before"
+msgstr "الصنف موجود مسبقًا"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/goods.py:0
+#, python-format
+msgid "The Goods is Used , Can Not Change Its Unit!"
+msgstr "الصنف مستخدم، لا يمكن تغيير وحدته!"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_categorys_uniqueCategoryName
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_catg_spending_UniqueCatgSpendingName
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_stores_uniqueStoreName
+msgid "The Name Is Existe Before"
+msgstr "الاسم موجود مسبقًا"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_catg_units_UniqueCatgUnitName
+msgid "The Name Of Category Is Existe Before"
+msgstr "اسم الفئة موجود مسبقًا"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_units_UniqueUnitName
+msgid "The Name Of Unit Is Existe Before"
+msgstr "اسم الوحدة موجود مسبقًا"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_units_ChkUnitFactorZero
+msgid "The Ratio For Unit Must Be Above Zero!"
+msgstr "يجب أن تكون نسبة الوحدة أكبر من صفر!"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "This Month"
+msgstr "هذا الشهر"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "This Week"
+msgstr "هذا الأسبوع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__fld_date_t
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_date_t
+#, python-format
+msgid "To"
+msgstr "إلى"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges__fld_store_t_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_store_t_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_charges_goods_search_id
+msgid "To Store"
+msgstr "إلى مخزن"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_template_id
+msgid "To Store:"
+msgstr "إلى مخزن:"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+msgid "Today"
+msgstr "اليوم"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_total
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_total
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_total
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_total
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_template_id
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_list_id
+msgid "Total Balance"
+msgstr "إجمالي الرصيد"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__total_buys
+msgid "Total Buys"
+msgstr "إجمالي المشتريات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_goods_list_id
+msgid "Total Count"
+msgstr "العدد الإجمالي"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__total_payments
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors__total_payments
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_list_id
+msgid "Total Payments"
+msgstr "إجمالي المدفوعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_out_list_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_list_id
+msgid "Total Refunds"
+msgstr "إجمالي الاستردادات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_customers__total_sales
+msgid "Total Sales"
+msgstr "إجمالي المبيعات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.spending_list_id
+msgid "Total Spending"
+msgstr "إجمالي الإنفاق"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_totals_buys
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_totals_buys_r
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_totals_sells
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_totals_sells_r
+msgid "Totals"
+msgstr "الإجماليات"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__fld_transaction_type
+#, python-format
+msgid "Transaction Type"
+msgstr "نوع الحركة"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_charges_goods_search_id
+msgid "Transfer"
+msgstr "تحويل"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_goods_list_id
+msgid "Transfer Goods"
+msgstr "أصناف التحويل"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.charges_form_id
+msgid "Transfer Items"
+msgstr "بنود التحويل"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_search_id
+msgid "Type"
+msgstr "النوع"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/update_goods.py:0
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_alarms__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_charges_goods__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_stores__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_inventorys_goods__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_unit_id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_update_goods__fld_unit_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.alarms_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_stores_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.inventorys_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_buys_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.search_sells_r_goods_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_search_id
+#, python-format
+msgid "Unit"
+msgstr "الوحدة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/units.py:0
+#, python-format
+msgid "Unit '%s' Is Used Before, You Cannot Update Its Ratio Or Category."
+msgstr "الوحدة '%s' مستخدمة مسبقًا، لا يمكن تحديث نسبتها أو فئتها."
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.categorys_units_menu_id
+msgid "Unit Categories"
+msgstr "فئات الوحدات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__name
+msgid "Unit Name"
+msgstr "اسم الوحدة"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.units_form_id
+msgid "Unit Name..."
+msgstr "اسم الوحدة..."
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_units__fld_type
+msgid "Unit Type"
+msgstr "نوع الوحدة"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.catg_units_action_id
+msgid ""
+"Unit categories help you organize different types of measurements\n"
+"            like weight, length, volume, etc."
+msgstr ""
+"تساعدك فئات الوحدات على تنظيم أنواع مختلفة من القياسات\n"
+"            مثل الوزن والطول والحجم، إلخ."
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__units_ids
+#: model_terms:ir.ui.view,arch_db:super_market_pro.catg_units_form_id
+msgid "Units"
+msgstr "الوحدات"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.units_action_id
+msgid "Units Action"
+msgstr "إجراء الوحدات"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_catg_units__units_count
+msgid "Units Count"
+msgstr "عدد الوحدات"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.units_menu_id
+msgid "Units of Measure"
+msgstr "وحدات القياس"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.sells_search_id
+msgid "Unpaid"
+msgstr "غير مدفوع"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.update_prices_form_id
+msgid "Update"
+msgstr "تحديث"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.update_goods_action_id
+msgid "Update_Goods_Action"
+msgstr "إجراء_تحديث_الأصناف"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.update_prices_action_id
+msgid "Update_Prices_Action"
+msgstr "إجراء_تحديث_الأسعار"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_vendor_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_vendor_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r__fld_vendor_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_r_goods__fld_vendor_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_in__fld_vendor_id
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_vendors_out__fld_vendor_id
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_search_buys_goods__fld_vendor_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_template_id
+msgid "Vendor"
+msgstr "المورد"
+
+#. module: super_market_pro
+#: model:ir.model.constraint,message:super_market_pro.constraint_mdl_vendors_uniqueVendorsName
+msgid "Vendor Name Already Exists"
+msgstr "اسم المورد موجود مسبقًا"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_out_form_id
+msgid "Vendor Payment"
+msgstr "دفعة للمورد"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.vendors_out_action_id
+#: model:ir.ui.menu,name:super_market_pro.vendors_out_menu_id
+msgid "Vendor Payments"
+msgstr "مدفوعات الموردين"
+
+#. module: super_market_pro
+#: model:ir.ui.menu,name:super_market_pro.vendors_in_menu_id
+msgid "Vendor Receipts"
+msgstr "إيصالات الموردين"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_form_id
+msgid "Vendor Refund"
+msgstr "استرداد من المورد"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.vendors_in_action_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_in_list_id
+msgid "Vendor Refunds"
+msgstr "استردادات الموردين"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_pro.buys_r_goods_template_id
+msgid "Vendor:"
+msgstr "المورد:"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.vendors_action_id
+#: model:ir.ui.menu,name:super_market_pro.vendors_menu_id
+msgid "Vendors"
+msgstr "الموردون"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.vendors_action_id
+msgid "Vendors are companies or individuals you purchase products from."
+msgstr "الموردون هم شركات أو أفراد تشتري منهم المنتجات."
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_search_id
+msgid "Vendors with Balance"
+msgstr "موردون برصيد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.vendors_search_id
+msgid "Vendors with Credit"
+msgstr "موردون بدائن"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.inventorys_goods_action_id
+msgid ""
+"View and manage inventory goods details, track stock counts, and monitor "
+"inventory levels."
+msgstr ""
+"اعرض وأدر تفاصيل أصناف الجرد، وتتبع أعداد المخزون، وراقب مستويات المخزون."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_date_selc__week
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_willing__fld_date_selc__week
+#, python-format
+msgid "Week"
+msgstr "أسبوع"
+
+#. module: super_market_pro
+#: model:ir.actions.act_window,name:super_market_pro.willing_action_id
+msgid "Willing_Action"
+msgstr "إجراء_الموافقة"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys__fld_win
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_buys_goods__fld_win
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_goods_calc__fld_win
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells__fld_win
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_goods__fld_win
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r__fld_win
+#: model:ir.model.fields,field_description:super_market_pro.field_mdl_sells_r_goods__fld_win
+#: model_terms:ir.ui.view,arch_db:super_market_pro.goods_calc_template_id
+msgid "Winning"
+msgstr "الربح"
+
+#. module: super_market_pro
+#: model:ir.model.fields,field_description:super_market_pro.field_wzrd_willing__fld_wins_sells
+msgid "Wins"
+msgstr "الأرباح"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.catg_units_search_id
+msgid "With Units"
+msgstr "مع وحدات"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.catg_units_search_id
+msgid "Without Units"
+msgstr "بدون وحدات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_wzrd_about
+msgid "Wizard Of About"
+msgstr "معالج حول التطبيق"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_wzrd_search_buys_goods
+msgid "Wizard Of Search Buys Goods"
+msgstr "معالج بحث أصناف المشتريات"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_wzrd_update_goods
+msgid "Wizard Of Update goods"
+msgstr "معالج تحديث الأصناف"
+
+#. module: super_market_pro
+#: model:ir.model,name:super_market_pro.model_wzrd_willing
+msgid "Wizard Of willing"
+msgstr "معالج الموافقة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/search_buys_goods.py:0
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_search_buys_goods__fld_date_selc__year
+#: model:ir.model.fields.selection,name:super_market_pro.selection__wzrd_willing__fld_date_selc__year
+#, python-format
+msgid "Year"
+msgstr "سنة"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/catg_units.py:0
+#, python-format
+msgid "You Can Not Delete This Category %s Because Unit %s Is Used in %s"
+msgstr "لا يمكنك حذف الفئة %s لأن الوحدة %s مستخدمة في %s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/units.py:0
+#, python-format
+msgid "You Cannot Delete Reference Unit(s): %s"
+msgstr "لا يمكنك حذف الوحدة (الوحدات) المرجعية: %s"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/units.py:0
+#, python-format
+msgid "You Cannot Update Reference Unit Category."
+msgstr "لا يمكنك تحديث فئة الوحدة المرجعية."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/models/customers_in.py:0
+#: code:addons/super_market_pro/models/customers_out.py:0
+#: code:addons/super_market_pro/models/vendors_in.py:0
+#: code:addons/super_market_pro/models/vendors_out.py:0
+#, python-format
+msgid "You cannot delete this paid record: %s"
+msgstr "لا يمكنك حذف هذا السجل المدفوع: %s"
+
+#. module: super_market_pro
+#: model_terms:ir.actions.act_window,help:super_market_pro.goods_action_id
+msgid ""
+"You must create goods items before you can manage inventory, purchases, and "
+"sales."
+msgstr ""
+"يجب إنشاء أصناف قبل أن تتمكن من إدارة الجرد والمشتريات والمبيعات."
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys.py:0
+#, python-format
+msgid "You must select more than one purchase order to merge"
+msgstr "يجب اختيار أكثر من أمر شراء واحد للدمج"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_buys_r.py:0
+#, python-format
+msgid "You must select more than one purchase return to merge"
+msgstr "يجب اختيار أكثر من مرتجع شراء واحد للدمج"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells.py:0
+#, python-format
+msgid "You must select more than one sales order to merge"
+msgstr "يجب اختيار أكثر من أمر بيع واحد للدمج"
+
+#. module: super_market_pro
+#: code:addons/super_market_pro/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "You must select more than one sales return to merge"
+msgstr "يجب اختيار أكثر من مرتجع مبيعات واحد للدمج"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.customers_deuoon_template_id
+msgid "balance"
+msgstr "الرصيد"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "مؤمن ربيع على"
+msgstr "مؤمن ربيع على"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "موافق"
+msgstr "موافق"
+
+#. module: super_market_pro
+#: model_terms:ir.ui.view,arch_db:super_market_pro.about_form_id
+msgid "نظام محاسبي متكامل للمتاجر والأسواق"
+msgstr "نظام محاسبي متكامل للمتاجر والأسواق"

@@ -1,0 +1,32 @@
+<odoo>
+    <record model="ir.ui.view" id="search_mandoops_goods_form_id">
+        <field name="name">Search Mandoops Goods Form</field>
+        <field name="model">wzrd_search_mandoops_goods</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Search Mandoops Goods">
+                <group string="Elements Search">
+                    <field name="fld_mandoops_id"/>
+                    <field name="fld_category_id"/>
+                    <field name="fld_goods_id"/>
+                    <field name="fld_date_f" attrs="{'readonly':[('fld_date_selc','!=',False)]}"
+                                                options="{'datepicker':{'maxDate': 'now'}}"/>
+                    <field name="fld_date_t" attrs="{'readonly':[('fld_date_selc','!=',False)]}"
+                                                options="{'datepicker':{'maxDate': 'now'}}"/>
+                    <field name="fld_date_selc" attrs="{'readonly':['|',('fld_date_f','!=',False),('fld_date_t','!=',False)]}"/>
+                </group>
+                <footer>
+                    <button name="fnc_do_action" string="OK" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="search_mandoops_goods_action_id">
+		<field name="name">Search Mandoops Goods Action</field>
+		<field name="res_model">wzrd_search_mandoops_goods</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+	</record>
+</odoo>

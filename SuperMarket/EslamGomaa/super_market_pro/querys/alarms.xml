@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record model="ir.ui.view" id="alarms_search_id">
+        <field name="name">Alarms Search</field>
+        <field name="model">mdl_alarms</field>
+        <field name="arch" type="xml">
+            <search string="Search Alarms">
+                <!-- Search Fields -->
+                <field name="fld_category_id"/>
+                <field name="fld_goods_id"/>
+                <field name="fld_unit_id"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="alarms_list_id">
+        <field name="name">Alarms List</field>
+        <field name="model">mdl_alarms</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="0" decoration-bf="1" decoration-danger="fld_count &lt; 0" decoration-warning="fld_count &lt;= fld_alarms and fld_count &gt; 0" decoration-success="fld_count > fld_alarms">
+                <field name="fld_category_id"/>
+                <field name="fld_goods_id"/>
+                <field name="fld_unit_id"/>
+                <field name="fld_count"/>
+                <field name="fld_alarms"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="alarms_form_id">
+        <field name="name">Alarms Form</field>
+        <field name="model">mdl_alarms</field>
+        <field name="arch" type="xml">
+            <form string="Alarms" create="0" edit="0" delete="0">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="fld_goods_id"/></h1>
+                    </div>
+                    
+                    <group>
+                        <field name="fld_category_id"/>
+                        <span class="o_form_label o_td_label">Count</span>
+                        <div class="o_address_format">
+                            <field name="fld_count" widget="monetary" class="o_address_city"/>
+                            <field name="fld_unit_id" class="o_address_zip"/>
+                        </div>
+                        <field name="fld_alarms"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record model="ir.actions.act_window" id="alarms_action_id">
+        <field name="name">Stock Alarms</field>
+        <field name="res_model">mdl_alarms</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

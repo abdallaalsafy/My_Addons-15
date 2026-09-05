@@ -1,0 +1,53 @@
+<odoo>
+    <record id="regions_search_id" model="ir.ui.view">
+        <field name="name">Regions Search</field>
+        <field name="model">mdl_regions</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="fld_notes"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="regions_list_id" model="ir.ui.view">
+        <field name="name">Regions List</field>
+        <field name="model">mdl_regions</field>
+        <field name="arch" type="xml">
+            <tree decoration-bf="1">
+                <field name="name"/>
+                <field name="fld_notes"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="regions_form_id" model="ir.ui.view">
+        <field name="name">Region Form</field>
+        <field name="model">mdl_regions</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                   <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="fld_notes"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="regions_action_id" model="ir.actions.act_window">
+        <field name="name">Regions Action</field>
+        <field name="res_model">mdl_regions</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Region
+            </p>
+        </field>
+    </record>
+</odoo>

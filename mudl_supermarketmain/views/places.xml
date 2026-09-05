@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+	<record model="ir.ui.view" id="places_search_id">
+		<field name="name">Places_Search</field>
+		<field name="model">mdl_places</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="fld_town_id"/>
+				<field name="fld_street_id"/>
+				<field name="name"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="places_list_id">
+		<field name="name">Places_List</field>
+		<field name="model">mdl_places</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="fld_sonum"/>
+				<field name="fld_town_id"/>
+				<field name="fld_street_id"/>
+				<field name="name"/>
+			</tree>
+		</field>
+	</record>
+
+    <record model="ir.ui.view" id="places_form_id">
+		<field name="name">Places_Form</field>
+		<field name="model">mdl_places</field>
+		<field name="arch" type="xml">
+			<form>
+                <group>
+					<field name="fld_town_id" invisible="context.get('hide_fld_town_id')"/>
+					<field name="fld_street_id" invisible="context.get('hide_fld_street_id')" attrs="{'readonly': [('fld_town_id', '=', False)]}" context="{'default_fld_town_id': fld_town_id, 'hide_fld_town_id': 1}"/>
+					<field name="name"/>
+                </group>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="places_action_id">
+        <field name="name">Places_Action</field>
+        <field name="res_model">mdl_places</field>
+        <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Address</p>
+		</field>
+    </record>
+
+    <menuitem id="places_menu_root_id" name="Addresses"/>
+	<menuitem id="places_menu_id" name="Zepoons Addresses" parent="places_menu_root_id"/>
+	<menuitem id="places_menu_id2" name="All Zepoons Addresses" parent="places_menu_id" action="places_action_id"/>
+</data>
+</odoo>

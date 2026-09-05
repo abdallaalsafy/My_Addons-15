@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb report template for Sale Details -->
+        <template id="report_sale_details">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-row { background-color: #f0f0f0; border: 1px solid #bbb; padding: 8px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .info-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .info-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .info-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .info-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .section-title {
+                        background-color: #2d5016;
+                        color: white;
+                        padding: 10px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Sale Details Report</h2>
+                    <h3 style="text-align: center;"><span t-field="doc.name"/></h3>
+
+                    <!-- Basic Information -->
+                    <div class="section-title">Basic Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Reference:</span> <span t-field="doc.name"/></td>
+                                <td><span class="header-label">Sale Date:</span> <span t-field="doc.sale_date"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Property:</span> <span t-field="doc.property_id.name"/></td>
+                                <td><span class="header-label">Buyer Contact:</span> <span t-field="doc.buyer_contact_id.name"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Sale Information -->
+                    <div class="section-title">Sale Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Sale Price:</span> <span t-esc="'{:,.2f}'.format(doc.sale_price)"/></td>
+                                <td><span class="header-label">Down Payment:</span> <span t-esc="'{:,.2f}'.format(doc.down_payment)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Remaining Balance:</span> <span t-esc="'{:,.2f}'.format(doc.remaining_balance)"/></td>
+                                <td><span class="header-label">Payment Method:</span> <span t-field="doc.payment_method"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><span class="header-label">Payment Reference:</span> <span t-field="doc.payment_reference"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Financial Information -->
+                    <div class="section-title">Financial Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Total Cost:</span> <span t-esc="'{:,.2f}'.format(doc.total_cost)"/></td>
+                                <td><span class="header-label">Total Profit:</span> <span t-esc="'{:,.2f}'.format(doc.total_profit)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Management Fee %:</span> <span t-esc="'{:.2f}%'.format(doc.management_fee_percentage)"/></td>
+                                <td><span class="header-label">Management Fee Amount:</span> <span t-esc="'{:,.2f}'.format(doc.management_fee_amount)"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><span class="header-label">Net Profit:</span> <span t-esc="'{:,.2f}'.format(doc.net_profit)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Sale Lines -->
+                    <div class="section-title">Sale Lines</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Partner</th>
+                                <th>Share Percentage</th>
+                                <th>Sale Share</th>
+                                <th>Profit Share</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.sale_line_ids">
+                                <t t-foreach="doc.sale_line_ids" t-as="line">
+                                    <tr>
+                                        <td><span t-field="line.partner_id.name"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(line.share_percentage * 100)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(line.sale_share)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(line.profit_share)"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.sale_line_ids">
+                                <tr>
+                                    <td colspan="4" class="text-center">No sale lines found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Payment Installments -->
+                    <div class="section-title">Payment Installments</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Due Date</th>
+                                <th>Amount</th>
+                                <th>Payment Method</th>
+                                <th>Status</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.payment_installment_ids">
+                                <t t-foreach="doc.payment_installment_ids" t-as="pay">
+                                    <tr>
+                                        <td><span t-field="pay.due_date"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(pay.amount)"/></td>
+                                        <td><span t-field="pay.payment_method"/></td>
+                                        <td><span t-field="pay.status"/></td>
+                                        <td><span t-field="pay.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.payment_installment_ids">
+                                <tr>
+                                    <td colspan="5" class="text-center">No payment installments found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Notes -->
+                    <div class="section-title">Notes</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span t-field="doc.notes"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_sale_details_action" model="ir.actions.report">
+            <field name="name">Sale Details</field>
+            <field name="model">real.estate.property.sale</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_sale_details</field>
+            <field name="report_file">real_estate_partnership_management.report_sale_details</field>
+            <field name="binding_model_id" ref="model_real_estate_property_sale"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

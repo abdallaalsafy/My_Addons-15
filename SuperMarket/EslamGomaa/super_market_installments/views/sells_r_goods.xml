@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="sells_r_goods_list_id">
+		<field name="name">Sells_r_Goods_List</field>
+		<field name="model">mdl_sells_r_goods</field>
+		<field name="inherit_id" ref="super_market_pro.sells_r_goods_list_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='fld_clc_sell']" position="after">
+				<field name="fld_price_qst" widget="monetary" invisible="context.get('is_cash')"/>
+				<field name="fld_clc_qst" widget="monetary" invisible="context.get('is_cash')"/>
+				<field name="fld_hafez" widget="monetary" invisible="context.get('is_cash')"/>
+				<field name="fld_clc_hafez" widget="monetary" invisible="context.get('is_cash')"/>
+                <field name="fld_win_qst" invisible="1"/>
+			</xpath>
+			<xpath expr="//field[@name='fld_price_sell']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+			<xpath expr="//field[@name='fld_clc_sell']" position="attributes">
+				<attribute name="invisible">context.get('is_qst')</attribute>
+			</xpath>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="sells_r_goods_form_id">
+		<field name="name">Sells_r_Goods_Form</field>
+		<field name="model">mdl_sells_r_goods</field>
+		<field name="inherit_id" ref="super_market_pro.sells_r_goods_form_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='fld_clc_sell']" position="after">
+				<field name="fld_is_qst" invisible="1"/>
+                <field name="fld_win_qst" widget="monetary" invisible="1"/>
+				<field name="fld_clc_qst" widget="monetary" invisible="1"/>
+				<field name="fld_clc_hafez" widget="monetary" invisible="1"/>
+			</xpath>
+			<xpath expr="//field[@name='fld_price_sell']" position="after">
+				<field name="fld_price_qst" widget="monetary" attrs="{'invisible':[('fld_is_qst','=', False)]}"/>
+				<field name="fld_hafez" widget="monetary" attrs="{'invisible':[('fld_is_qst','=', False)]}"/>
+			</xpath>
+			<xpath expr="//field[@name='fld_price_sell']" position="attributes">
+				<attribute name="attrs">{'invisible':[('fld_is_qst','=', True)]}</attribute>
+			</xpath>
+		</field>
+	</record>
+</odoo>

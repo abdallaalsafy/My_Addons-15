@@ -1,0 +1,86 @@
+<odoo>
+  <data>
+
+      <record model="ir.ui.view"   id="knbn_id">
+	<field name="name">knbn_name</field>
+	<field name="model">mawhubin2</field>
+	<field name="arch" type="xml">
+		<kanban >
+            <field name="name"/>
+			<templates>
+				<t  t-name="kanban-box">
+					<div class="oe_kanban_card">
+						<span t-esc="record.name.raw_value"/>
+					</div>
+				</t>
+			</templates>
+		</kanban>
+	</field>
+</record>
+
+    <record model="ir.ui.view" id="search_id">
+	<field name="name">search_name</field>
+	<field name="model">mawhubin2</field>
+	<field name="arch" type="xml">
+		<search>
+			<field name="name"   />
+			<field name="age"/>
+            <filter name="create_date" string="Today  Records" domain="[('create_date','>=',(context_today()+datetime.timedelta(-6)).strftime('%Y-%m-%d'))]"/>
+            <searchpanel>
+	            <field name = "mawh1_id"   icon = "fa-filter"   select = "multi"/>
+            </searchpanel>
+		</search>
+	</field>
+</record>
+
+     <record model="ir.ui.view" id="mawhubin2_form">
+      <field name="name">mawhubin2 form</field>
+      <field name="model">mawhubin2</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+<!--            <button name="fnc_name" type="object" string="Do Func"/>-->
+            <field name="state" widget="statusbar"/>
+          </header>
+          <group>
+              <field name="name"/>
+              <field name="mawh1_id"/>
+              <field name="country_id" context="{'AnyKey2':mawh1_id}"/>
+              <field name="phone_number"/>
+              <field name="brthdate"/>
+              <field name="age"/>
+              <field name="number"/>
+              <field name="xlang"/>
+
+          </group>
+        </form>
+      </field>
+    </record>
+
+      <record model="ir.ui.view" id="mawhubin2_tree">
+      <field name="name">mawhubin2 tree</field>
+      <field name="model">mawhubin2</field>
+      <field name="arch" type="xml">
+        <tree  import = "1">
+<!--                <button name="fnc_name" type="object" string="Do Func" class="btn-primary"/>-->
+              <field name="lang" widget="handle"/>
+              <field name="name" />
+              <field name="mawh1_id"/>
+              <field name="phone_number"/>
+              <field name="brthdate" optional = "hide"/>
+              <field name="age" optional = "hide"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="mawhubin2_action_window">
+      <field name="name">mawhubin2 window</field>
+      <field name="res_model">mawhubin2</field>
+      <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem name="mawhubin2_menu" id="mawhubin2" parent="mawhubin_menu_root"
+              action="mawhubin2_action_window"/>
+  </data>
+</odoo>

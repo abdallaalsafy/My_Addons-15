@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="vws_search_id_bbacks">
+		<field name="name">vws_search_name_bbacks</field>
+		<field name="model">tbl_bbacks</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="fld_num_bback"/>
+				<field name="fld_customer_id"/>
+				<field name="fld_store_id"/>
+				<field name="fld_bback_paying"/>
+				<field name="fld_bback_notes"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="vws_tree_id_bbacks">
+		<field name="name">vws_tree_name_bbacks</field>
+		<field name="model">tbl_bbacks</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="fld_sonum"/>
+				<field name="fld_num_bback"/>
+				<field name="fld_customer_id"/>
+				<field name="fld_store_id"/>
+				<field name="fld_bback_date"/>
+				<field name="fld_bback_paying" sum="Sum Of Paying Fatoras Buy Back"/>
+				<field name="fld_totall_bback" sum="Sum Of Totall Fatoras Buy Back"/>
+				<field name="fld_remain_bback" sum="Sum Of Remaining Fatoras Buy Back"/>
+				<field name="fld_bback_notes"/>
+			</tree>
+		</field>
+	</record>
+
+    <record model="ir.ui.view" id="vws_form_id_bbacks">
+		<field name="name">vws_form_name_bbacks</field>
+		<field name="model">tbl_bbacks</field>
+		<field name="arch" type="xml">
+			<form>
+                <group>
+					<field name="fld_num_bback"/>
+					<field name="fld_customer_id"/>
+					<field name="fld_store_id"/>
+					<field name="fld_bback_date" options="{'datepicker':{'maxDate': 'now'}}"/>
+					<field name="fld_bback_paying"/>
+                </group>
+				<group>
+					<field name="fld_bback_goods_ids">
+						<tree editable="bottom">
+							<field name="fld_sonum"/>
+							<field name="fld_class_id"/>
+							<field name="fld_goods_id"/>
+							<field name="fld_goods_num"/>
+							<field name="fld_goods_price_buy"/>
+							<field name="fld_price_in_num" sum="Totall Of Fatora Buy Back"/>
+						</tree>
+					</field>
+				</group>
+				<group>
+					<field name="fld_remain_bback"/>
+					<field name="fld_bback_notes"/>
+				</group>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="actid_bbacks">
+        <field name="name">Screen To All Fatoras Buys Back In Company</field>
+        <field name="res_model">tbl_bbacks</field>
+        <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Fatora Buy Back</p>
+		</field>
+    </record>
+
+    <menuitem id="main_mnu_id_bbacks" name="Part Of Fatoras Buys Back"/>
+	<menuitem id="mnu_id_bbacks" name="Buys Back" parent="main_mnu_id_bbacks"/>
+	<menuitem id="mnu_id_all_bbacks" name="All Fatoras Buys Back" parent="mnu_id_bbacks" action="actid_bbacks"/>
+</odoo>

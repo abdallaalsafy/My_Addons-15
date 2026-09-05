@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+        <template id="sells_r_goods_template_id" inherit_id="super_market_pro.sells_r_goods_template_id" name="Return Sells Goods Template">
+            <xpath expr="//table[1]//tr[2]//td[2]//h3" position="attributes">
+                <attribute   name="t-if"> not docs[0].fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//table[1]//tr[2]//td[2]//h3" position="after">
+                <h3  t-if="docs[0].fld_is_qst">Return Qests Details</h3>
+            </xpath>
+
+            <xpath expr="//tbody//t[3]//tr[1]//td[2]//div//span" position="attributes">
+                <attribute   name="t-if">not o.fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//tbody//t[3]//tr[1]//td[2]//div//span" position="after">
+                <span t-if="o.fld_is_qst" t-field="ln.fld_price_qst"/>
+            </xpath>
+            <xpath expr="//tbody//t[3]//tr[1]//td[1]//div//span" position="attributes">
+                <attribute   name="t-if">not o.fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//tbody//t[3]//tr[1]//td[1]//div//span" position="after">
+                <span t-if="o.fld_is_qst" t-field="ln.fld_clc_qst"/>
+            </xpath>
+
+            <xpath expr="//tbody//tr[1]//td[1]//p" position="attributes">
+                <attribute   name="t-if">not o.fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//tbody//tr[1]//td[1]//p" position="after">
+                <p t-if="o.fld_is_qst" t-field="o.fld_total_qst"/>
+            </xpath>
+
+            <xpath expr="//tbody//tr[4]//td[1]//p" position="attributes">
+                <attribute   name="t-if">not o.fld_is_qst</attribute>
+            </xpath>
+            <xpath expr="//tbody//tr[4]//td[1]//p" position="after">
+                <p t-if="o.fld_is_qst" t-field="o.fld_remain_qst"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

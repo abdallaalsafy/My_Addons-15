@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- QWeb report template for Daily Cashbox List -->
+        <template id="report_daily_cashbox_list">
+            <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .cashbox-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .cashbox-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .cashbox-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .cashbox-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .cashbox-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Daily Cashbox List</h2>
+
+                    <table class="cashbox-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">No.</th>
+                                <th>Daily Notes</th>
+                                <th>Responsible User</th>
+                                <th>Status</th>
+                                <th>Transaction Count</th>
+                                <th>Closing Balance</th>
+                                <th>Total Outflows</th>
+                                <th>Total Inflows</th>
+                                <th>Opening Balance</th>
+                                <th>Date</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="docs">
+                                <t t-foreach="docs" t-as="cashbox">
+                                    <tr>
+                                        <td><span t-esc="cashbox_index + 1"/></td>
+                                        <td><span t-field="cashbox.notes"/></td>
+                                        <td><span t-field="cashbox.responsible_user.name"/></td>
+                                        <td><span t-field="cashbox.status"/></td>
+                                        <td><span t-field="cashbox.transaction_count"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(cashbox.closing_balance)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(cashbox.total_outflows)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(cashbox.total_inflows)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(cashbox.opening_balance)"/></td>
+                                        <td><span t-field="cashbox.date"/></td>
+                                        <td><span t-field="cashbox.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not docs">
+                                <tr>
+                                    <td colspan="11" class="text-center">No cashbox records found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_daily_cashbox_list_action" model="ir.actions.report">
+            <field name="name">Daily Cashbox List</field>
+            <field name="model">real.estate.daily.cashbox</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_daily_cashbox_list</field>
+            <field name="report_file">real_estate_partnership_management.report_daily_cashbox_list</field>
+            <field name="binding_model_id" ref="model_real_estate_daily_cashbox"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_landscape"/>
+        </record>
+    </data>
+</odoo>

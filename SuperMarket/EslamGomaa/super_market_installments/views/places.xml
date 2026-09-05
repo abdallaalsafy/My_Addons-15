@@ -1,0 +1,66 @@
+<odoo>
+    <record id="places_search_id" model="ir.ui.view">
+        <field name="name">Places Search</field>
+        <field name="model">mdl_places</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="fld_region_id"/>
+                <field name="fld_notes"/>
+                <group expand="0" string="Group By">
+                    <filter string="Region" name="group_by_region" context="{'group_by': 'fld_region_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="places_list_id" model="ir.ui.view">
+        <field name="name">Places List</field>
+        <field name="model">mdl_places</field>
+        <field name="arch" type="xml">
+            <tree string="Places" decoration-bf="1">
+                <field name="fld_region_id"/>
+                <field name="name"/>
+                <field name="fld_notes" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="places_form_id" model="ir.ui.view">
+        <field name="name">Places Form</field>
+        <field name="model">mdl_places</field>
+        <field name="arch" type="xml">
+            <form string="Place">
+                <sheet>
+                    <div class="oe_title">
+						<h1><field name="name" placeholder="Place Name"/></h1>
+					</div>
+                    <group>
+                        <group>
+                            <field name="fld_region_id"/>
+                        </group>
+                        <group>
+                            <field name="fld_notes"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="places_action_id" model="ir.actions.act_window">
+        <field name="name">Places</field>
+        <field name="res_model">mdl_places</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first place!
+            </p>
+            <p>
+                Places are specific locations within regions where customers can be located.
+                You can assign places to customers for better delivery and collection management.
+            </p>
+        </field>
+    </record>
+</odoo>

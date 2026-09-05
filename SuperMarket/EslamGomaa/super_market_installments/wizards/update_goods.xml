@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--	          Update Prices                        -->
+	 <record model="ir.ui.view" id="update_prices_form_id">
+		 <field name="name">Update_Prices_Form</field>
+		 <field name="model">wzrd_update_goods</field>
+		 <field name="inherit_id" ref="super_market_pro.update_prices_form_id"/>
+		 <field name="arch" type="xml">
+			 <xpath expr="//footer" position="before">
+				 <group>
+					<group string="Price Qest">
+						<field name="fld_qst_update"/>
+						<span class="o_form_label o_td_label" attrs="{'invisible':[('fld_qst_update','not in',['ratio'])]}">Ratio</span>
+						<div class="o_address_format" attrs="{'invisible':[('fld_qst_update','not in',['ratio'])]}">
+							<field name="fld_qst_ratio"
+								   class="o_address_city"/>
+							<span>%</span>
+						</div>
+						<span class="o_form_label o_td_label" attrs="{'invisible':[('fld_qst_update','not in',['sum'])]}">Sum</span>
+						<div class="o_address_format" attrs="{'invisible':[('fld_qst_update','not in',['sum'])]}">
+							<field name="fld_qst_sum"
+								   class="o_address_city"/>
+							<span>L.E</span>
+						</div>
+						<field name="fld_qst_on_buy" attrs="{'invisible':[('fld_qst_update','not in',['ratio'])]}"/>
+					</group>
+					<group string="Hafez">
+						<field name="fld_hafez_update"/>
+						<span class="o_form_label o_td_label" attrs="{'invisible':[('fld_hafez_update','not in',['ratio'])]}">Ratio</span>
+						<div class="o_address_format" attrs="{'invisible':[('fld_hafez_update','not in',['ratio'])]}">
+							<field name="fld_hafez_ratio"
+								   class="o_address_city"/>
+							<span>%</span>
+						</div>
+						<span class="o_form_label o_td_label" attrs="{'invisible':[('fld_hafez_update','not in',['sum'])]}">Sum</span>
+						<div class="o_address_format" attrs="{'invisible':[('fld_hafez_update','not in',['sum'])]}">
+							<field name="fld_hafez_sum"
+								   class="o_address_city"/>
+							<span>L.E</span>
+						</div>
+						<field name="fld_hafez_on_buy" attrs="{'invisible':[('fld_hafez_update','not in',['ratio'])]}"/>
+					</group>
+				</group>
+			 </xpath>
+		</field>
+	</record>
+</odoo>

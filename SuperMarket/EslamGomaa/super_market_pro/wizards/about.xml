@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="about_form_id">
+		<field name="name">About_Form</field>
+		<field name="model">wzrd_about</field>
+		<field name="arch" type="xml">
+			<form string="About">
+                <sheet>
+					<div class="oe_title">
+						<center>
+							<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+								<h1 style="margin: 0; font-size: 32px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+									<i class="fa fa-store"/> برنامج الصافى
+								</h1>
+								<p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">نظام محاسبي متكامل للمتاجر والأسواق</p>
+							</div>
+						</center>
+					</div>
+                <div class="row">
+						<div class="col-12">
+							<div style="background: #f8f9fa; border-left: 4px solid #667eea; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+								<h3 style="color: #667eea; margin: 0 0 15px 0; font-size: 18px;">
+									<i class="fa fa-code"/> معلومات المطور
+								</h3>
+								<div style="display: flex; align-items: center; margin-bottom: 15px;">
+									<div style="background: #667eea; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-left: 15px;">
+										<i class="fa fa-user"/>
+									</div>
+									<div>
+										<strong style="color: #333;">المبرمج:</strong>
+										<div style="font-size: 20px; color: #333; margin-top: 3px; font-weight: bold;">مؤمن ربيع على</div>
+									</div>
+								</div>
+							</div>
+                <div style="background: #f8f9fa; border-left: 4px solid #28a745; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+								<h3 style="color: #28a745; margin: 0 0 15px 0; font-size: 18px;">
+									<i class="fa fa-phone"/> معلومات الاتصال
+								</h3>
+								<div style="display: flex; align-items: center; margin-bottom: 10px;">
+									<div style="background: #28a745; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-left: 12px;">
+										<i class="fa fa-phone"/>
+									</div>
+									<div>
+										<strong style="color: #333;">الهاتف الأول:</strong>
+										<div style="font-size: 18px; color: #333; margin-top: 2px; font-weight: bold;">01221696630</div>
+									</div>
+								</div>
+				<div style="display: flex; align-items: center;">
+									<div style="background: #28a745; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-left: 12px;">
+										<i class="fa fa-phone-alt"/>
+									</div>
+									<div>
+										<strong style="color: #333;">الهاتف الثاني:</strong>
+										<div style="font-size: 18px; color: #333; margin-top: 2px; font-weight: bold;">01120591612</div>
+									</div>
+								</div>
+							</div>
+				<div style="background: #f8f9fa; border-left: 4px solid #1877f2; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+								<h3 style="color: #1877f2; margin: 0 0 15px 0; font-size: 18px;">
+									<i class="fa fa-share-alt"/> وسائل التواصل والاتصال
+								</h3>
+				<div style="display: flex; align-items: center;">
+									<div style="background: #1877f2; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-left: 12px;">
+										<i class="fa fa-facebook-f"/>
+									</div>
+									<div>
+										<strong style="color: #333;">Facebook:</strong>
+				<div style="margin-top: 5px;">
+											<a href="http://www.facebook.com/abdalla6alsafy" target="_blank" 
+											   style="color: #1877f2; text-decoration: none; font-size: 14px; padding: 5px 10px; background: rgba(24, 119, 242, 0.1); border-radius: 5px; display: inline-block; transition: all 0.3s; margin-bottom: 8px; width: 100%; box-sizing: border-box;">
+												<i class="fa fa-facebook"/> facebook.com/abdalla6alsafy
+											</a>
+											<a href="mailto:abdallaalsafy31@gmail.com" 
+											   style="color: #ea4335; text-decoration: none; font-size: 14px; padding: 5px 10px; background: rgba(234, 67, 53, 0.1); border-radius: 5px; display: inline-block; transition: all 0.3s; margin-bottom: 8px; width: 100%; box-sizing: border-box;">
+												<i class="fa fa-envelope"/> abdallaalsafy31@gmail.com
+											</a>
+											<a href="https://abdallaalsafy.carrd.co" target="_blank" 
+											   style="color: #6c757d; text-decoration: none; font-size: 14px; padding: 5px 10px; background: rgba(108, 117, 125, 0.1); border-radius: 5px; display: inline-block; transition: all 0.3s; margin-bottom: 8px; width: 100%; box-sizing: border-box;">
+												<i class="fa fa-user-tie"/> CV: abdallaalsafy.carrd.co
+											</a>
+											<a href="http://wa.me/201221696630" target="_blank" 
+											   style="color: #25d366; text-decoration: none; font-size: 14px; padding: 5px 10px; background: rgba(37, 211, 102, 0.1); border-radius: 5px; display: inline-block; transition: all 0.3s; width: 100%; box-sizing: border-box;">
+												<i class="fa fa-whatsapp"/> WhatsApp: +201221696630
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px;">
+								<p style="margin: 0; font-size: 14px; opacity: 0.9;">
+									<i class="fa fa-copyright"/> جميع الحقوق محفوظة 2026 - برنامج الصافى
+								</p>
+								<p style="margin: 10px 0 0 0; font-size: 12px; opacity: 0.8;">
+									<i class="fa fa-heart" style="color: #ff6b6b;"/> تم التطوير بكل حب وإتقان
+								</p>
+							</div>
+						</div>
+					</div>
+				</sheet>
+				<footer>
+					<center style="padding: 20px; background: #f8f9fa; border-top: 1px solid #dee2e6;">
+						<button special="cancel" string="موافق" class="btn btn-primary" style="padding: 10px 30px; font-size: 16px; border-radius: 25px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);"/>
+					</center>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="about_action_id">
+		<field name="name">About_Action</field>
+		<field name="res_model">wzrd_about</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+	</record>
+</odoo>

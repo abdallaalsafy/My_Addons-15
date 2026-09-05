@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main Menu -->
+        <menuitem id="menu_real_estate_root" name="Real Estate Partnership" sequence="0"
+                  web_icon="real_estate_partnership,static/description/icon.png"/>
+        
+        <!-- Partners Menu -->
+        <menuitem id="menu_real_estate_partners" name="Partners" parent="menu_real_estate_root" sequence="10"/>
+        <menuitem id="menu_real_estate_partner" name="Partners" parent="menu_real_estate_partners" 
+                  action="action_real_estate_partner" sequence="10"/>
+        <menuitem id="menu_real_estate_transactions" name="Transactions" parent="menu_real_estate_partners"
+                  action="action_real_estate_transaction" sequence="20"/>
+        <menuitem id="menu_real_estate_expense_distributions" name="Expenses (Company)" parent="menu_real_estate_partners"
+                  action="action_real_estate_expense_distribution" sequence="30"/>
+
+        <!-- Properties Menu -->
+        <menuitem id="menu_real_estate_properties" name="Properties" parent="menu_real_estate_root" sequence="20"/>
+        <menuitem id="menu_real_estate_property" name="Properties" parent="menu_real_estate_properties" 
+                  action="action_real_estate_property" sequence="10"/>
+        <menuitem id="menu_real_estate_investment_expenses" name="Properties Expenses" parent="menu_real_estate_properties"
+                  action="action_real_estate_expense" sequence="20"/>
+        
+        <!-- Payments Submenu under Properties -->
+        <menuitem id="menu_real_estate_payments" name="Payments" parent="menu_real_estate_properties" sequence="30"/>
+        <menuitem id="menu_all_payments" name="All Payments" parent="menu_real_estate_payments"
+                  action="action_payment_installment" sequence="10"/>
+        <menuitem id="menu_advanced_search_payments" name="Advanced Search Payments" parent="menu_real_estate_payments"
+                  action="action_payment_filter_wizard" sequence="20"/>
+
+        <!-- Investments Menu -->
+        <menuitem id="menu_real_estate_investments" name="Investments" parent="menu_real_estate_root" sequence="30"/>
+        <menuitem id="menu_real_estate_property_investment" name="Property Investments" 
+                  parent="menu_real_estate_investments" action="action_real_estate_property_investment" sequence="10"/>
+        <menuitem id="menu_real_estate_investment_payments" name="Investment Payments" 
+                  parent="menu_real_estate_investments" action="action_investment_payment" sequence="20"/>
+        <menuitem id="menu_real_estate_partner_exit" name="Partner Exits" 
+                  parent="menu_real_estate_investments" action="action_real_estate_partner_exit" sequence="30"/>
+
+        <!-- Financial Menu -->
+        <menuitem id="menu_real_estate_financial" name="Financial" parent="menu_real_estate_root" sequence="40"/>
+        <menuitem id="menu_real_estate_company_expenses" name="Company Expenses" parent="menu_real_estate_financial" 
+                  action="action_company_expense" sequence="30"/>
+        <!-- Daily Cashbox Menu Items -->
+        <menuitem id="menu_cashbox_main" name="Cashbox Management" parent="menu_real_estate_financial"
+                  sequence="40"/>
+        <menuitem id="menu_daily_cashbox" name="Daily Cashbox" parent="menu_cashbox_main"
+                  action="action_daily_cashbox" sequence="10"/>
+        <menuitem id="menu_cashbox_transactions" name="All Transactions" parent="menu_cashbox_main"
+                  action="action_daily_cashbox_transaction" sequence="20"/>
+
+        <!-- Reports Menu (for future implementation) -->
+        <menuitem id="menu_real_estate_reports" name="Reports" parent="menu_real_estate_financial" sequence="60"/>
+        <menuitem id="menu_management_fee_summary" name="Management Fees Summary" parent="menu_real_estate_reports"
+                  action="action_load_management_fees" sequence="10"/>
+        <menuitem id="menu_company_financial_summary" name="Company Financial Summary" parent="menu_real_estate_reports"
+                  action="action_company_financial_summary" sequence="20"/>
+
+
+        <!--   Debts and Dues     -->
+        <menuitem id="menu_purchase_payments" name="Dues" parent="menu_real_estate_root"
+                  action="action_purchase_payment_installment" sequence="50"/>
+        <menuitem id="menu_sale_payments" name="Debts" parent="menu_real_estate_root"
+                  action="action_sale_payment_installment" sequence="60"/>
+
+        <!-- Sales Menu -->
+        <menuitem id="menu_real_estate_sales" name="Sales" parent="menu_real_estate_root" sequence="70"/>
+        <menuitem id="menu_real_estate_property_sales" name="Property Sales" parent="menu_real_estate_sales" 
+                  action="action_real_estate_property_sale" sequence="10"/>
+
+        <!-- Configuration Menu for Real Estate Manager -->
+        <menuitem id="menu_real_estate_configuration" name="Configuration" parent="menu_real_estate_root" sequence="80"
+                  groups="real_estate_partnership_management.group_real_estate_manager"/>
+        <menuitem id="menu_real_estate_company_settings" name="Company Settings" parent="menu_real_estate_configuration"
+                  action="base.action_res_company_form" sequence="10" groups="real_estate_partnership_management.group_real_estate_manager"/>
+        <menuitem id="menu_real_estate_expense_categories" name="Expense Categories" parent="menu_real_estate_configuration"
+                  action="action_real_estate_expense_category" sequence="20" groups="real_estate_partnership_management.group_real_estate_manager"/>
+        <menuitem id="menu_real_estate_contacts" name="Contacts" parent="menu_real_estate_configuration"
+                  action="action_real_estate_contact" sequence="30"/>
+        <menuitem id="menu_real_estate_cities" name="Cities" parent="menu_real_estate_configuration"
+                  action="action_real_estate_city" sequence="40"/>
+        <menuitem id="menu_real_estate_states" name="States/Provinces" parent="menu_real_estate_configuration"
+                  action="action_real_estate_state" sequence="50"/>
+    </data>
+</odoo>

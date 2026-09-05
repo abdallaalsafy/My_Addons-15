@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record model="ir.ui.view" id="charges_search_id">
+        <field name="name">Charges Search</field>
+        <field name="model">mdl_charges</field>
+        <field name="arch" type="xml">
+            <search string="Search Charges">
+                <!-- Search Fields -->
+                <field name="name"/>
+                <field name="fld_ref"/>
+                <field name="fld_date"/>
+                <field name="fld_store_f_id"/>
+                <field name="fld_store_t_id"/>
+                <!-- Filters -->
+                <separator/>
+                <filter string="Today" name="created_today" domain="[('create_date', '>=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="This Week" name="created_this_week" domain="[('create_date', '>=', (context_today()+datetime.timedelta(-6)).strftime('%Y-%m-%d'))]"/>
+                <filter string="This Month" name="created_this_month" domain="[('create_date', '>=', context_today().replace(day=1).strftime('%Y-%m-%d'))]"/>
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Date" name="group_date" context="{'group_by':'fld_date'}"/>
+                    <filter string="From Store" name="group_store_f" context="{'group_by':'fld_store_f_id'}"/>
+                    <filter string="To Store" name="group_store_t" context="{'group_by':'fld_store_t_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="charges_list_id">
+        <field name="name">Charges List</field>
+        <field name="model">mdl_charges</field>
+        <field name="arch" type="xml">
+            <tree string="Charges" decoration-bf="1">
+                <field name="name"/>
+                <field name="fld_ref"/>
+                <field name="fld_date" widget="date"/>
+                <field name="fld_store_f_id"/>
+                <field name="fld_store_t_id"/>
+                <field name="fld_charges_goods_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="charges_form_id">
+        <field name="name">Charges Form</field>
+        <field name="model">mdl_charges</field>
+        <field name="arch" type="xml">
+            <form string="Stock Transfer">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    
+                    <group>
+                        <group name="basic_info">
+                            <field name="fld_ref" placeholder="Enter reference..."/>
+                            <field name="fld_date" options="{'datepicker':{'maxDate': 'now'}}"/>
+                        </group>
+                        <group name="store_info">
+                            <field name="fld_store_f_id" options="{'no_create': True}" placeholder="Select source store..."/>
+                            <field name="fld_store_t_id" options="{'no_create': True}" placeholder="Select destination store..."/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <group name="notes_info">
+                            <field name="fld_notes" placeholder="Enter transfer notes..."/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Transfer Items" name="items">
+                            <field name="fld_charges_goods_ids" context="{'default_fld_store_f_id':fld_store_f_id, 'default_fld_store_t_id':fld_store_t_id}">
+                                <tree>
+                                    <field name="fld_goods_id"/>
+                                    <field name="fld_count"/>
+                                    <field name="fld_unit_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record model="ir.actions.act_window" id="charges_action_id">
+        <field name="name">Stock Transfers</field>
+        <field name="res_model">mdl_charges</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first stock transfer
+            </p>
+            <p>
+                Manage stock transfers between stores, track inventory movements, and maintain accurate stock levels.
+            </p>
+        </field>
+    </record>
+</odoo>

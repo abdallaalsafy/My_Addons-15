@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="catg_units_search_id" model="ir.ui.view">
+        <field name="name">Categories Units Search</field>
+        <field name="model">mdl_catg_units</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Category" filter_domain="[('name', 'ilike', self)]"/>
+                <separator/>
+                <filter string="With Units" name="with_units" domain="[(('units_ids', '!=', False))]"/>
+                <filter string="Without Units" name="without_units" domain="[(('units_ids', '=', False))]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="catg_units_list_id" model="ir.ui.view">
+        <field name="name">Categories Units List</field>
+        <field name="model">mdl_catg_units</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="units_count" widget="badge"/>
+                <field name="units_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            </tree>
+        </field>
+    </record>
+
+	<record id="catg_units_form_id" model="ir.ui.view">
+        <field name="name">Categories Units Form</field>
+        <field name="model">mdl_catg_units</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Category Name..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group invisible="1">
+                            <field name="active" />
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="fld_description" nolabel="1" placeholder="Add category description here..."/>
+                    </group>
+                    <notebook>
+                        <page string="Units">
+                            <field name="units_ids">
+                                <tree editable="bottom">
+                                    <field name="name" decoration-bf="fld_type == 'ref'"/>
+                                    <field name="fld_type" decoration-success="fld_type == 'ref'" decoration-info="fld_type != 'ref'"/>
+                                    <field name="fld_ratio" attrs="{'readonly': [('fld_type', '=', 'ref')]}"/>
+                                    <field name="fld_factor" widget="float_time" invisible="1"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="fld_type"/>
+                                        <field name="fld_ratio" attrs="{'readonly': [('fld_type', '=', 'ref')]}"/>
+                                        <field name="fld_description"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="catg_units_action_id" model="ir.actions.act_window">
+        <field name="name">Categories Units</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mdl_catg_units</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create your first unit category
+          </p>
+          <p>
+            Unit categories help you organize different types of measurements
+            like weight, length, volume, etc.
+          </p>
+        </field>
+    </record>
+</odoo>

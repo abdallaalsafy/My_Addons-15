@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Payment Installment Search View -->
+        <record id="view_payment_installment_search" model="ir.ui.view">
+            <field name="name">payment.installment.search</field>
+            <field name="model">real.estate.payment.installment</field>
+            <field name="arch" type="xml">
+                <search string="Payment Installments">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="contact_id"/>
+                    <field name="payment_type"/>
+                    <field name="status"/>
+                    <field name="due_date"/>
+                    <filter string="Draft" name="draft" domain="[('status', '=', 'draft')]"/>
+                    <filter string="Paid" name="paid" domain="[('status', '=', 'paid')]"/>
+                    <filter string="Down Payments" name="down_payment" domain="[('is_down_payment', '=', 'True')]"/>
+                    <separator/>
+                    <filter string="Purchase Payments" name="purchase" domain="[('payment_type', '=', 'purchase')]"/>
+                    <filter string="Sale Payments" name="sale" domain="[('payment_type', '=', 'sale')]"/>
+                    <separator/>
+                    <filter string="Overdue" name="overdue" domain="[('status', '=', 'draft'), ('due_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
+                    <filter string="Due This Month" name="due_this_month" domain="[('due_date', '>=', (context_today().replace(day=1)).strftime('%Y-%m-%d')), ('due_date', '&lt;=', (context_today().replace(day=28) + datetime.timedelta(days=4)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <filter string="Filter by Due Date" name="filter_by_due_date" date="due_date"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Property" name="group_property" context="{'group_by': 'property_id'}"/>
+                        <filter string="Payment Type" name="group_payment_type" context="{'group_by': 'payment_type'}"/>
+                        <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                        <filter string="Contact" name="group_contact" context="{'group_by': 'contact_id'}"/>
+                        <filter string="Due Date" name="group_due_date" context="{'group_by': 'due_date'}"/>
+                        <filter string="Down Payment" name="group_down_payment" context="{'group_by': 'is_down_payment'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Payment Installment Tree View -->
+        <record id="view_payment_installment_tree" model="ir.ui.view">
+            <field name="name">payment.installment.tree</field>
+            <field name="model">real.estate.payment.installment</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Installments">
+                    <field name="name"/>
+                    <field name="property_id"/>
+                    <field name="contact_id"/>
+                    <field name="payment_type" widget="badge"
+                           decoration-info="payment_type=='purchase'"
+                           decoration-success="payment_type=='sale'"/>
+                    <field name="amount" widget="monetary" sum="Total Amount"/>
+                    <field name="due_date"/>
+                    <field name="status" widget="badge"
+                           decoration-muted="status=='draft'"
+                           decoration-success="status=='paid'"/>
+                    <field name="payment_method" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Payment Installment Form View -->
+        <record id="view_payment_installment_form" model="ir.ui.view">
+            <field name="name">payment.installment.form</field>
+            <field name="model">real.estate.payment.installment</field>
+            <field name="arch" type="xml">
+                <form string="Payment Installment">
+                    <header>
+                        <button name="action_mark_paid" type="object" 
+                                string="Mark as Paid" class="btn-success"
+                                attrs="{'invisible': [('status', '=', 'paid')]}"/>
+                        <button name="action_mark_draft" type="object"
+                                string="Mark as Draft" class="btn-muted"
+                                attrs="{'invisible': ['|',('status', '=', 'draft'),('is_down_payment', '=', True)]}"/>
+                        <field name="status" widget="statusbar" 
+                               statusbar_visible="draft,paid"/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Down Payment" bg_color="bg-info"
+                            attrs="{'invisible': [('is_down_payment', '=', False)]}"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                                <field name="is_down_payment" invisible="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="basic_info">
+                                <field name="property_id" options="{'no_create': True}"/>
+                                <field name="contact_id"/>
+                                <field name="sale_id" readonly="1" attrs="{'invisible': [('payment_type', '!=', 'sale')]}" force_save="1"/>
+                                <field name="payment_type" readonly="context.get('default_payment_type', False)"/>
+                            </group>
+                            <group name="payment_info">
+                                <field name="amount" widget="monetary"/>
+                                <field name="due_date"/>
+                                <field name="payment_method"/>
+                                <field name="payment_reference"/>
+                            </group>
+                        </group>
+                        <group string="Notes">
+                            <field name="notes" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Payment Installment Action -->
+        <record id="action_payment_installment" model="ir.actions.act_window">
+            <field name="name">All Payment Installments</field>
+            <field name="res_model">real.estate.payment.installment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first payment installment!
+                </p>
+                <p>
+                    Manage payment installments for property purchases and sales.
+                    Track due dates, payment status, and payment methods.
+                </p>
+            </field>
+        </record>
+
+        <!-- Purchase Payments Action -->
+        <record id="action_purchase_payment_installment" model="ir.actions.act_window">
+            <field name="name">Dues</field>
+            <field name="res_model">real.estate.payment.installment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('payment_type', '=', 'purchase'),('status', '=', 'draft')]</field>
+            <field name="context">{'default_payment_type': 'purchase'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first purchase payment installment!
+                </p>
+                <p>
+                    Manage installments for payments to property sellers.
+                </p>
+            </field>
+        </record>
+
+        <!-- Sale Payments Action -->
+        <record id="action_sale_payment_installment" model="ir.actions.act_window">
+            <field name="name">Debts</field>
+            <field name="res_model">real.estate.payment.installment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('payment_type', '=', 'sale'),('status', '=', 'draft')]</field>
+            <field name="context">{'default_payment_type': 'sale'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first sale payment installment!
+                </p>
+                <p>
+                    Manage installments for payments from property buyers.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

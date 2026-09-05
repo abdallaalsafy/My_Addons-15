@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="goods_search_id">
+		<field name="name">Goods_Search</field>
+		<field name="model">mdl_goods</field>
+		<field name="inherit_id" ref="super_market_pro.goods_search_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//filter[@name='archived']" position="after">
+				<separator/>
+				<filter string="Hafez Ratio" name="hafez_ratio" domain="[('fld_type_hafez','=','ratio')]"/>
+				<filter string="Hafez Sum" name="hafez_sum" domain="[('fld_type_hafez','=','sum')]"/>
+            </xpath>
+			<xpath expr="//filter[@name='group_unit']" position="after">
+				<filter string="Hafez Type" name="group_hafez_type" context="{'group_by':'fld_type_hafez'}"/>
+            </xpath>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="goods_list_id">
+		<field name="name">Goods_List</field>
+		<field name="model">mdl_goods</field>
+		<field name="inherit_id" ref="super_market_pro.goods_list_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='fld_price_sell']" position="after">
+                <field name="fld_price_qst" widget="monetary"/>
+				<field name="fld_hafez" widget="monetary"/>
+            </xpath>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="goods_form_id">
+		<field name="name">Goods_Form</field>
+		<field name="model">mdl_goods</field>
+		<field name="inherit_id" ref="super_market_pro.goods_form_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='fld_price_sell']" position="after">
+				<field name="fld_price_qst" widget="monetary"/>
+			</xpath>
+			<xpath expr="//group[@name='info']" position="after">
+				<group name="hafez">
+					<group>
+						<field name="fld_type_hafez"/>
+					</group>
+					<group>
+						<field name="fld_ratio" attrs="{'invisible':[('fld_type_hafez','!=','ratio')]}"/>
+						<field name="fld_hafez" force_save="1" attrs="{'readonly':[('fld_type_hafez','=','ratio')]}"/>
+					</group>
+				</group>
+			</xpath>
+		</field>
+	</record>
+</odoo>

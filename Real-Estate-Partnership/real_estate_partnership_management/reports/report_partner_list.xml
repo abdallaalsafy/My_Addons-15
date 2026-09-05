@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- QWeb report template for Partner List -->
+        <template id="report_partner_list">
+            <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .partner-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .partner-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .partner-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .partner-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .partner-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Partners List Report</h2>
+
+                    <table class="partner-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">No.</th>
+                                <th>Status</th>
+                                <th>Exit Date</th>
+                                <th>Join Date</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Current Balance</th>
+                                <th>Remaining Balance</th>
+                                <th>Investments Total</th>
+                                <th>Investments Count</th>
+                                <th>Name</th>
+                                <th>Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="docs">
+                                <t t-foreach="docs" t-as="partner">
+                                    <tr>
+                                        <td><span t-esc="partner_index + 1"/></td>
+                                        <td><span t-field="partner.status"/></td>
+                                        <td><span t-field="partner.exit_date"/></td>
+                                        <td><span t-field="partner.join_date"/></td>
+                                        <td><span t-field="partner.phone"/></td>
+                                        <td><span t-field="partner.email"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(partner.current_balance)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(partner.actual_balance)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(partner.confirmed_investments_total)"/></td>
+                                        <td><span t-field="partner.confirmed_investments_count"/></td>
+                                        <td><span t-field="partner.name"/></td>
+                                        <td><span t-field="partner.code"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not docs">
+                                <tr>
+                                    <td colspan="12" class="text-center">No partners found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_partner_list_action" model="ir.actions.report">
+            <field name="name">Partners List</field>
+            <field name="model">real.estate.partner</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_partner_list</field>
+            <field name="report_file">real_estate_partnership_management.report_partner_list</field>
+            <field name="binding_model_id" ref="model_real_estate_partner"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_landscape"/>
+        </record>
+    </data>
+</odoo>

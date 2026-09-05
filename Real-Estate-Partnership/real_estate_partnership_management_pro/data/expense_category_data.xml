@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Expense Categories -->
+        <record id="expense_category_renovation" model="real.estate.expense.category">
+            <field name="name">Renovation</field>
+            <field name="code">REN</field>
+            <field name="description">Expenses related to property renovation and remodeling work</field>
+        </record>
+        
+        <record id="expense_category_maintenance" model="real.estate.expense.category">
+            <field name="name">Maintenance</field>
+            <field name="code">MAINT</field>
+            <field name="description">Regular maintenance and repair expenses for properties</field>
+        </record>
+        
+        <record id="expense_category_licenses" model="real.estate.expense.category">
+            <field name="name">Licenses / Permits</field>
+            <field name="code">LIC</field>
+            <field name="description">Government licenses, permits, and regulatory fees</field>
+        </record>
+        
+        <record id="expense_category_taxes" model="real.estate.expense.category">
+            <field name="name">Taxes</field>
+            <field name="code">TAX</field>
+            <field name="description">Property taxes and other tax-related expenses</field>
+        </record>
+        
+        <record id="expense_category_utilities" model="real.estate.expense.category">
+            <field name="name">Utilities</field>
+            <field name="code">UTIL</field>
+            <field name="description">Electricity, water, gas, and other utility expenses</field>
+        </record>
+        
+        <record id="expense_category_insurance" model="real.estate.expense.category">
+            <field name="name">Insurance</field>
+            <field name="code">INS</field>
+            <field name="description">Property insurance premiums and coverage expenses</field>
+        </record>
+        
+        <record id="expense_category_legal" model="real.estate.expense.category">
+            <field name="name">Legal Fees</field>
+            <field name="code">LEGAL</field>
+            <field name="description">Legal consultation, contracts, and litigation expenses</field>
+        </record>
+        
+        <record id="expense_category_marketing" model="real.estate.expense.category">
+            <field name="name">Marketing</field>
+            <field name="code">MARK</field>
+            <field name="description">Advertising, promotion, and marketing expenses</field>
+        </record>
+        
+        <record id="expense_category_management" model="real.estate.expense.category">
+            <field name="name">Management Fees</field>
+            <field name="code">MGMT</field>
+            <field name="description">Property management and administrative fees</field>
+        </record>
+        
+        <record id="expense_category_other" model="real.estate.expense.category">
+            <field name="name">Other</field>
+            <field name="code">OTHER</field>
+            <field name="description">Miscellaneous expenses that don't fit in other categories</field>
+        </record>
+    </data>
+</odoo>

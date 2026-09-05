@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View for Replacement Partners -->
+        <record id="view_real_estate_partner_exit_replacement_tree" model="ir.ui.view">
+            <field name="name">real.estate.partner.exit.replacement.tree</field>
+            <field name="model">real.estate.partner.exit.replacement</field>
+            <field name="arch" type="xml">
+                <tree string="Replacement Partners">
+                    <field name="exit_id"/>
+                    <field name="partner_id"/>
+                    <field name="partner_type"/>
+                    <field name="replacement_percentage"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View for Replacement Partners -->
+        <record id="view_real_estate_partner_exit_replacement_form" model="ir.ui.view">
+            <field name="name">real.estate.partner.exit.replacement.form</field>
+            <field name="model">real.estate.partner.exit.replacement</field>
+            <field name="arch" type="xml">
+                <form string="Replacement Partner">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="exit_id"/>
+                                <field name="partner_id"/>
+                                <field name="partner_type"/>
+                            </group>
+                            <group>
+                                <field name="replacement_percentage"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record model="ir.ui.view" id="sells_r_search_id">
+        <field name="name">Return Sales Search</field>
+        <field name="model">mdl_sells_r</field>
+        <field name="arch" type="xml">
+            <search string="Search Return Sales">
+                <!-- Search Fields -->
+                <field name="name"/>
+                <field name="fld_ref"/>
+                <field name="fld_customer_id"/>
+                <field name="fld_date"/>
+                <field name="fld_parent_id"/>
+                
+                <!-- Filters -->
+                <separator/>
+                <filter string="Today" name="created_today" domain="[('create_date', '>=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="This Week" name="created_this_week" domain="[('create_date', '>=', (context_today()+datetime.timedelta(-6)).strftime('%Y-%m-%d'))]"/>
+                <filter string="This Month" name="created_this_month" domain="[('create_date', '>=', context_today().replace(day=1).strftime('%Y-%m-%d'))]"/>
+                <filter string="Paid" name="paid" domain="[('fld_remain', '=', 0)]"/>
+                <filter string="Unpaid" name="unpaid" domain="[('fld_remain', '>', 0)]"/>
+                
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Date" name="group_date" context="{'group_by':'fld_date'}"/>
+                    <filter string="Customer" name="group_customer" context="{'group_by':'fld_customer_id'}"/>
+                    <filter string="Store" name="group_store" context="{'group_by':'fld_store_id'}"/>
+                    <filter string="Parent Sale" name="group_parent" context="{'group_by':'fld_parent_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="sells_r_list_id">
+        <field name="name">Return Sales List</field>
+        <field name="model">mdl_sells_r</field>
+        <field name="arch" type="xml">
+            <tree string="Return Sales" decoration-bf="1" decoration-success="fld_remain == 0" decoration-warning="fld_remain > 0">
+                <field name="name"/>
+                <field name="fld_ref"/>
+                <field name="fld_date" widget="date"/>
+                <field name="fld_customer_id"/>
+                <field name="fld_parent_id"/>
+                <field name="fld_total" widget="monetary" sum="Total"/>
+                <field name="fld_paying" widget="monetary" sum="Paid"/>
+                <field name="fld_discount" widget="monetary" sum="Discount"/>
+                <field name="fld_discount_percent" sum="Discount %"/>
+                <field name="fld_remain" widget="monetary" sum="Remaining"/>
+                <field name="fld_win" widget="monetary" optional="hide" groups="super_market_pro.super_market_manager_group" sum="Profit/Loss"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="sells_r_form_id">
+        <field name="name">Return Sales Form</field>
+        <field name="model">mdl_sells_r</field>
+        <field name="arch" type="xml">
+            <form string="Return Sales Order">
+                <header>
+                </header>
+                
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    
+                    <group>
+                        <group name="basic_info">
+                            <field name="fld_date" options="{'datepicker':{'maxDate': 'now'}}"/>
+                            <field name="fld_parent_id" options="{'no_create': True}"/>
+                            <field name="fld_customer_id" options="{'no_create': True}" force_save="1" attrs="{'readonly': [('fld_parent_id', '!=', False)]}"/>
+                            <field name="fld_ref" placeholder="Enter reference..."/>
+                            <field name="fld_store_id"  options="{'no_create': True}"/>
+                        </group>
+                        <group name="payment_info">
+                            <field name="fld_paying" widget="monetary" placeholder="0.00"/>
+                            <field name="fld_discount" force_save="1" attrs="{'readonly': [('fld_discount_percent', '&gt;', 0)]}" widget="monetary" placeholder="0.00"/>
+                            <field name="fld_discount_percent" placeholder="0.00"/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <group name="notes_info">
+                            <field name="fld_notes" placeholder="Enter return sales notes..."/>
+                        </group>
+                        <group name="summary_info">
+                            <field name="fld_total" widget="monetary"/>
+                            <field name="fld_remain" widget="monetary"/>
+                            <field name="fld_win" widget="monetary" groups="super_market_pro.super_market_manager_group"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Return Items" name="items">
+                            <field name="fld_sells_r_goods_ids" context="{'default_fld_store_id':fld_store_id}">
+                                <tree>
+                                    <field name="fld_goods_id"/>
+                                    <field name="fld_count"/>
+                                    <field name="fld_unit_id"/>
+                                    <field name="fld_price_sell"/>
+                                    <field name="fld_clc_sell"/>
+                                    <field name="fld_win" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record model="ir.actions.act_window" id="sells_r_action_id">
+        <field name="name">Return Sales</field>
+        <field name="res_model">mdl_sells_r</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first return sales order
+            </p>
+            <p>
+                Manage return sales orders, track payments, and monitor profit/loss.
+            </p>
+        </field>
+    </record>
+</odoo>

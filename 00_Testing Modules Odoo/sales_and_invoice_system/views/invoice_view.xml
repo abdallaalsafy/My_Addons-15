@@ -1,0 +1,56 @@
+<data>
+    <record id="view_account_move_inherit" model="ir.ui.view">
+        <field name="name">account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']" position="attributes">
+                <attribute name="force_save">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="sales_type"/>
+                <field name="down_payment_type"/>
+            </xpath>
+            <xpath expr="//notebook" position="before">
+                <h2 style="text-align: left;" attrs="{'invisible':[('sales_type','!=','installment')]}">
+                    Installment data
+                </h2>
+                <group attrs="{'invisible':[('sales_type','!=','installment')]}">
+                    <group>
+                                                <field name="paid_or_offered"/>
+                        <field name="sales_man"/>
+                        <field name="sales_person"/>
+                        <field name="national_id"/>
+                        <field name="customer_address"/>
+                    </group>
+                    <group>
+                        <field name="region"/>
+                        <field name="date_of_the_first_installment" force_save="1"/>
+                        <field name="number_of_installments" force_save="1"/>
+                        <field name="phone"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//notebook/page[@id='invoice_tab']" position="after">
+                <page name="installment_lines" string="Installment Line">
+                    <field name="installment_line_ids" widget="one2many" colspan="4" nolabel="1" mode="tree">
+                        <tree string="Installment Line" editable="bottom" default_order='installment_line_number'>
+                            <field name="installment_line_number" invisible="1"/>
+                            <field name="state"/>
+                            <field name="due_date"/>
+                            <field name="amount"/>
+                            <field name="type"/>
+                            <field name="reference"/>
+                            <field name="customer_name"/>
+                            <field name="installment_name"/>
+                            <field name="paid_or_offered" invisible="1"/>
+                        </tree>
+                    </field>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+</data>
+
+

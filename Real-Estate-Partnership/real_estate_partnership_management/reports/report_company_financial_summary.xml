@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Company Financial Summary Report -->
+        <template id="report_company_financial_summary_document">
+            <t t-call="web.external_layout">
+                <main>
+                <div class="page">
+                    <h2>Company Financial Summary</h2>
+                    
+                    <h3>Main Summary</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Total Company Balance</td>
+                                <td class="text-right"><span t-field="docs.total_company_balance" /></td>
+                            </tr>
+                            <tr>
+                                <td>Actual Liquidity</td>
+                                <td class="text-right"><span t-field="docs.actual_liquidity" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Partners Statistics</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Count/Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Partners Count</td>
+                                <td class="text-right"><span t-field="docs.partners_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Partners Exited Count</td>
+                                <td class="text-right"><span t-field="docs.partners_exited_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Partners with Negative Actual Balance Count</td>
+                                <td class="text-right"><span t-field="docs.partners_negative_actual_balance_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Partners Current Balance</td>
+                                <td class="text-right"><span t-field="docs.partners_current_balance" /></td>
+                            </tr>
+                            <tr>
+                                <td>Partners Total Investments</td>
+                                <td class="text-right"><span t-field="docs.partners_total_investments" /></td>
+                            </tr>
+                            <tr>
+                                <td>Partners Negative Actual Balance Total</td>
+                                <td class="text-right"><span t-field="docs.partners_negative_actual_balance_total" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Properties Statistics</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Count/Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Parent Properties Count</td>
+                                <td class="text-right"><span t-field="docs.properties_parent_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Sold Properties Count</td>
+                                <td class="text-right"><span t-field="docs.properties_sold_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Active Properties Count</td>
+                                <td class="text-right"><span t-field="docs.properties_active_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Properties Total Cost</td>
+                                <td class="text-right"><span t-field="docs.properties_total_cost" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Sales Statistics</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Count/Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sales Count</td>
+                                <td class="text-right"><span t-field="docs.sales_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Sales Paid Count</td>
+                                <td class="text-right"><span t-field="docs.sales_paid_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Sales Unpaid Count</td>
+                                <td class="text-right"><span t-field="docs.sales_unpaid_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Sales Total Price</td>
+                                <td class="text-right"><span t-field="docs.sales_total_price" /></td>
+                            </tr>
+                            <tr>
+                                <td>Sales Total Profit</td>
+                                <td class="text-right"><span t-field="docs.sales_total_profit" /></td>
+                            </tr>
+                            <tr>
+                                <td>Sales Total Management Fees</td>
+                                <td class="text-right"><span t-field="docs.sales_total_management_fees" /></td>
+                            </tr>
+                            <tr>
+                                <td>Sale Paid</td>
+                                <td class="text-right"><span t-field="docs.sale_paid" /></td>
+                            </tr>
+                            <tr>
+                                <td>Sales Remaining Balance</td>
+                                <td class="text-right"><span t-field="docs.sales_remaining_balance" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Expenses Statistics</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Count/Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Expenses Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Investment Expenses Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_investment_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Company Expenses Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_company_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Expenses Paid Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_paid_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Expenses Unpaid Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_unpaid_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Expenses Total Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_total_amount" /></td>
+                            </tr>
+                            <tr>
+                                <td>Investment Expenses Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_investment_amount" /></td>
+                            </tr>
+                            <tr>
+                                <td>Company Expenses Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_company_amount" /></td>
+                            </tr>
+                            <tr>
+                                <td>Expense Paid</td>
+                                <td class="text-right"><span t-field="docs.expense_paid" /></td>
+                            </tr>
+                            <tr>
+                                <td>Expenses Unpaid Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_unpaid_amount" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Investment Expenses Payment Status</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Count/Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Investment Expenses Paid Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_investment_paid_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Investment Expenses Unpaid Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_investment_unpaid_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Investment Expenses Paid Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_investment_paid_amount" /></td>
+                            </tr>
+                            <tr>
+                                <td>Investment Expenses Unpaid Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_investment_unpaid_amount" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Company Expenses Payment Status</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Count/Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Company Expenses Paid Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_company_paid_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Company Expenses Unpaid Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_company_unpaid_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Company Expenses Paid Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_company_paid_amount" /></td>
+                            </tr>
+                            <tr>
+                                <td>Company Expenses Unpaid Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_company_unpaid_amount" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Expenses Distribution Status</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th class="text-right">Count/Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Distributed Expenses Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_distributed_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Undistributed Expenses Count</td>
+                                <td class="text-right"><span t-field="docs.expenses_undistributed_count" /></td>
+                            </tr>
+                            <tr>
+                                <td>Distributed Expenses Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_distributed_amount" /></td>
+                            </tr>
+                            <tr>
+                                <td>Undistributed Expenses Amount</td>
+                                <td class="text-right"><span t-field="docs.expenses_undistributed_amount" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </main>
+            </t>
+        </template>
+        
+        <!-- Report Action -->
+        <report 
+            id="action_report_company_financial_summary"
+            string="Company Financial Summary"
+            model="company.financial.summary"
+            report_type="qweb-pdf"
+            name="real_estate_partnership_management.report_company_financial_summary_document"
+            file="real_estate_partnership_management.report_company_financial_summary_document"
+            print_report_name="'Company Financial Summary'"
+        />
+    </data>
+</odoo>

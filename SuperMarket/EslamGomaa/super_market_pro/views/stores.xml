@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="stores_search_id">
+		<field name="name">Stores_Search</field>
+		<field name="model">mdl_stores</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<field name="fld_notes"/>
+				<filter name="archived" string="Archived" domain="[('active','=',False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="stores_list_id">
+		<field name="name">Stores_List</field>
+		<field name="model">mdl_stores</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1' decoration-info='active==False'>
+				<field name="name"/>
+				<field name="fld_notes"/>
+				<field name="active" widget="boolean_toggle" invisible="1"/>
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="stores_form_id">
+		<field name="name">Stores_Form</field>
+		<field name="model">mdl_stores</field>
+		<field name="arch" type="xml">
+			<form>
+				<header></header>
+				<sheet>
+					<group>
+						<field name="name"/>
+					</group>
+					<group name="notes" string="Notes">
+						<field name="fld_notes" nolabel="1" placeholder="Add notes about this vendor..."/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="stores_action_id">
+        <field name="name">Stores_Action</field>
+        <field name="res_model">mdl_stores</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Stores</p>
+			<p>Stores are the places where you store your products.</p>
+		</field>
+    </record>
+</odoo>

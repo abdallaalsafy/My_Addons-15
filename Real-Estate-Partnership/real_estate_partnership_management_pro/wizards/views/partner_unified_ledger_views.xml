@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+                <!-- Partner Unified Ledger Line Tree View -->
+        <record id="view_partner_unified_ledger_line_tree" model="ir.ui.view">
+            <field name="name">partner.unified.ledger.line.tree</field>
+            <field name="model">partner.unified.ledger.line</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Ledger - Running Balance">
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="transaction_type"/>
+                    <field name="description"/>
+                    <field name="amount" sum="total_amount"/>
+                    <field name="balance"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Partner Unified Ledger Form View -->
+        <record id="view_partner_unified_ledger_form" model="ir.ui.view">
+            <field name="name">partner.unified.ledger.form</field>
+            <field name="model">partner.unified.ledger</field>
+            <field name="arch" type="xml">
+                <form string="Partner Ledger - All Transactions">
+                    <div class="oe_title">
+                        <h1><field name="partner_id"/></h1>
+                    </div>
+
+                    <!-- Filter Section -->
+                    <group string="Filters">
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="action_view_tree_ledger" type="object" string="List View" class="btn-primary"/>
+                        <button name="action_print_report" type="object" string="Print" class="btn-primary"/>
+                        <button special="cancel" string="Close" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Partner Unified Ledger Action -->
+        <record id="action_partner_unified_ledger" model="ir.actions.act_window">
+            <field name="name">Partner Ledger</field>
+            <field name="res_model">partner.unified.ledger</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
+

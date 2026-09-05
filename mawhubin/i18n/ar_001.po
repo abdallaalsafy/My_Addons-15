@@ -1,0 +1,132 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mawhubin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-12 19:57+0000\n"
+"PO-Revision-Date: 2024-08-12 19:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__id
+msgid "ID"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.ui.menu,name:mawhubin.mawhubin_menu_1_list
+msgid "List"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.ui.menu,name:mawhubin.mawhubin_menu_1
+msgid "Menu 1"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.ui.menu,name:mawhubin.mawhubin_menu_2
+msgid "Menu 2"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.ui.menu,name:mawhubin.mawhubin
+msgid "Server to list"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model,name:mawhubin.model_mawhubin
+#: model:ir.ui.menu,name:mawhubin.mawhubin_menu_root
+msgid "mawhubin"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.actions.server,name:mawhubin.mawhubin_action_server
+msgid "mawhubin server"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.actions.act_window,name:mawhubin.mawhubin_action_window
+msgid "mawhubin window"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__management
+msgid "الادارة"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__name
+msgid "الاسم"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__national_id
+msgid "الرقم القومي"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__image
+msgid "الصورة"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__adress
+msgid "العنوان"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__school
+msgid "المدرسة"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__phone_number
+msgid "الهاتف"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__date_birth
+msgid "تاريخ الميلاد"
+msgstr ""
+
+#. module: mawhubin
+#: model:ir.model.fields,field_description:mawhubin.field_mawhubin__notes
+msgid "ملاحظات"
+msgstr ""

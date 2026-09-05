@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="classes_search_id">
+		<field name="name">Classes_Search</field>
+		<field name="model">mdl_classes</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="classes_list_id">
+		<field name="name">Classes_List</field>
+		<field name="model">mdl_classes</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="fld_sonum"/>
+				<field name="name"/>
+			</tree>
+		</field>
+	</record>
+
+    <record model="ir.ui.view" id="classes_form_id">
+		<field name="name">Classes_Form</field>
+		<field name="model">mdl_classes</field>
+		<field name="arch" type="xml">
+			<form>
+                <group>
+                    <field name="name"/>
+                </group>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="classes_action_id">
+        <field name="name">Classes_Action</field>
+        <field name="res_model">mdl_classes</field>
+        <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat the first Class</p>
+		</field>
+    </record>
+
+    <menuitem id="classes_menu_root_id" name="Classes"/>
+	<menuitem id="classes_menu_id" name="Classes" parent="classes_menu_root_id"/>
+	<menuitem id="classes_menu_id2" name="All Classes" parent="classes_menu_id" action="classes_action_id"/>
+</odoo>

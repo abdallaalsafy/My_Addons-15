@@ -1,0 +1,32 @@
+<odoo>
+    <record model="ir.ui.view" id="search_cust_addr_of_mandoops_form_id">
+        <field name="name">Search Custpomers And Address Of Mandoops Form</field>
+        <field name="model">wzrd_search_cust_addr_of_mandoops</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Search Custpomers And Address Of Mandoops">
+                <group string="Select Model">
+                    <field name="fld_model" widget="radio" options="{'horizontal': True}"/>
+                </group>
+                <group>
+                    <field name="fld_mandoop_id" options="{'no_create':True}"/>
+                    <field name="fld_collector_id" options="{'no_create':True}"/>
+                    <field name="fld_collector_isall_id" options="{'no_create':True}"/>
+                    <field name="fld_is_paid"/>
+                </group>
+
+                <footer>
+                    <button name="fnc_get_domain" string="Show Places" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="search_cust_addr_of_mandoops_action_id">
+		<field name="name">Search Custpomers And Address Of Mandoops Action</field>
+		<field name="res_model">wzrd_search_cust_addr_of_mandoops</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+	</record>
+</odoo>

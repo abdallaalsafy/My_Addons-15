@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="unlink_partner_group_id" model="res.groups">
+            <field name="name">Unlink Partner Group</field>
+        </record>
+
+        <record id="managers_group_id" model="res.groups">
+            <field name="name">Managers Group</field>
+        </record>
+
+        <record id="users_group_id" model="res.groups">
+            <field name="name">Users Group</field>
+        </record>
+
+        <record id="users_rule_id" model="ir.rule">
+            <field name="name">Users Rule</field>
+            <field name="model_id" ref="model_hms_patient"/>
+            <field name="groups" eval="[(4,ref('hms.users_group_id'))]"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        </record>
+    </data>
+</odoo>

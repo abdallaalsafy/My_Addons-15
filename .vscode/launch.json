@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Odoo-15",
+            "type": "python",
+            "request": "launch",
+            "program": "D:/Odoo_Work_Space/Pycharm_Work_Space/Odoo-15/server/odoo-bin",
+            "args": [
+                "--config=D:/Odoo_Work_Space/Pycharm_Work_Space/Odoo-15.conf",
+                "--update=all",
+                "-u","real_estate_partnership_management_pro"
+            ],
+            "console": "integratedTerminal",
+        }
+    ]
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="mandoops_search_id">
+		<field name="name">Mandoops_Search</field>
+		<field name="model">mdl_mandoops</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<field name="fld_phone"/>
+				<field name="fld_address"/>
+				<field name="fld_notes"/>
+				<filter name="archived" string="Archived" domain="[('active','=',False)]"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="mandoops_list_id">
+		<field name="name">Mandoops_List</field>
+		<field name="model">mdl_mandoops</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="name"/>
+				<field name="fld_phone"/>
+				<field name="fld_salary" widget="monetary" sum="Sum Salary"/>
+				<field name="fld_address"/>
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="mandoops_form_id">
+		<field name="name">Mandoops_Form</field>
+		<field name="model">mdl_mandoops</field>
+		<field name="arch" type="xml">
+			<form>
+				<header></header>
+				<sheet>
+					<div class="oe_title">
+                        <h1><field name="name" placeholder="Mandoop Name"/></h1>
+                    </div>
+					<group>
+						<group>
+							<field name="fld_phone"/>
+							<field name="fld_salary"/>
+							<field name="fld_address"/>
+						</group>
+						<group>
+							<field name="fld_notes"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="mandoops_action_id">
+        <field name="name">Mandoops_Action</field>
+        <field name="res_model">mdl_mandoops</field>
+        <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Mandoop</p>
+			<p>
+				Manage Your Mandoops for qest selles
+			</p>
+		</field>
+    </record>
+</odoo>

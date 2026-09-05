@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="stores_search_id">
+		<field name="name">Stores_Search</field>
+		<field name="model">mdl_stores</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="stores_list_id">
+		<field name="name">Stores_list</field>
+		<field name="model">mdl_stores</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="fld_sonum"/>
+				<field name="name"/>
+			</tree>
+		</field>
+	</record>
+
+    <record model="ir.ui.view" id="stores_form_id">
+		<field name="name">Stores_Form</field>
+		<field name="model">mdl_stores</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="name"/>
+				</group>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="stores_action_id">
+        <field name="name">Stores_Action</field>
+        <field name="res_model">mdl_stores</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Store</p>
+		</field>
+    </record>
+
+    <menuitem id="stores_menu_root_id" name="Stores" sequence="1"/>
+	<menuitem id="stores_menu_id" name="Stores" parent="stores_menu_root_id"/>
+	<menuitem id="stores_menu_id2" name="All Stores" parent="stores_menu_id" action="stores_action_id"/>
+
+</odoo>

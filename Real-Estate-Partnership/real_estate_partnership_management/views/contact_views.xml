@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Contact Search View -->
+        <record id="view_real_estate_contact_search" model="ir.ui.view">
+            <field name="name">real.estate.contact.search</field>
+            <field name="model">real.estate.contact</field>
+            <field name="arch" type="xml">
+                <search string="Contacts">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="workplace"/>
+                    <field name="city_id"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                    <filter string="Sellers" name="sellers" domain="[('is_seller', '=', True)]"/>
+                    <filter string="Payees" name="payees" domain="[('is_payee', '=', True)]"/>
+                    <filter string="Buyers" name="buyers" domain="[('is_buyer', '=', True)]"/>
+                    <separator/>
+                    <filter string="All Types" name="all_types" domain="[('is_seller', '=', True), ('is_payee', '=', True), ('is_buyer', '=', True)]"/>
+                    <separator/>
+                    <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Seller" name="group_seller" context="{'group_by': 'is_seller'}"/>
+                        <filter string="Payee" name="group_payee" context="{'group_by': 'is_payee'}"/>
+                        <filter string="Buyer" name="group_buyer" context="{'group_by': 'is_buyer'}"/>
+                        <filter string="Workplace" name="group_workplace" context="{'group_by': 'workplace'}"/>
+                        <filter string="Country" name="group_country" context="{'group_by': 'country_id'}"/>
+                        <filter string="State" name="group_state" context="{'group_by': 'state_id'}"/>
+                        <filter string="City" name="group_city" context="{'group_by': 'city_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Contact Tree View -->
+        <record id="view_real_estate_contact_tree" model="ir.ui.view">
+            <field name="name">real.estate.contact.tree</field>
+            <field name="model">real.estate.contact</field>
+            <field name="arch" type="xml">
+                <tree string="Contacts">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="workplace"/>
+                    <field name="is_seller" widget="boolean_toggle"/>
+                    <field name="is_payee" widget="boolean_toggle"/>
+                    <field name="is_buyer" widget="boolean_toggle"/>
+                    <field name="city_id"/>
+                    <field name="country_id"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Contact Form View -->
+        <record id="view_real_estate_contact_form" model="ir.ui.view">
+            <field name="name">real.estate.contact.form</field>
+            <field name="model">real.estate.contact</field>
+            <field name="arch" type="xml">
+                <form string="Contact">
+                    <header>
+                        <button name="action_view_properties" type="object" string="View Properties" class="btn-primary" attrs="{'invisible': [('is_seller', '=', False)]}"/>
+                        <button name="action_view_expenses" type="object" string="View Expenses" class="btn-info" attrs="{'invisible': [('is_payee', '=', False)]}"/>
+                        <button name="action_view_property_sales" type="object" string="View Property Sales" class="btn-success" attrs="{'invisible': [('is_buyer', '=', False)]}"/>
+                        <field name="active" widget="boolean_toggle"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Contact Name"/>
+                            </h1>
+                            <h2>
+                                <field name="code" readonly="1"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group name="contact_info">
+                                <field name="is_seller" attrs="{'invisible': [('is_seller', '=', False)]}"/>
+                                <field name="is_payee" attrs="{'invisible': [('is_payee', '=', False)]}"/>
+                                <field name="is_buyer" attrs="{'invisible': [('is_buyer', '=', False)]}"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="national_id"/>
+                            </group>
+                            <group name="additional_info">
+                                <field name="nickname"/>
+                                <field name="workplace"/>
+                            </group>
+                        </group>
+                        <group name="location_info">
+                            <group>
+                                <field name="country_id"/>
+                                <field name="state_id"/>
+                                <field name="city_id"/>
+                            </group>
+                            <group>
+                                <field name="address" nolabel="1" placeholder="Enter complete address..."/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="notes" nolabel="1" placeholder="Add any additional notes about this contact..."/>
+                            </page>
+                            <page string="Related Records" attrs="{'invisible': [('is_payee', '=', False)]}">
+                                <group string="Expenses Paid">
+                                    <field name="expense_ids" nolabel="1">
+                                        <tree string="Expenses">
+                                            <field name="code"/>
+                                            <field name="name"/>
+                                            <field name="amount" widget="monetary"/>
+                                            <field name="expense_date"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Related Records" attrs="{'invisible': [('is_seller', '=', False)]}">
+                                <group string="Properties Sold">
+                                    <field name="property_ids" nolabel="1">
+                                        <tree string="Properties">
+                                            <field name="code"/>
+                                            <field name="name"/>
+                                            <field name="property_type"/>
+                                            <field name="city_id"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Properties Bought" attrs="{'invisible': [('is_buyer', '=', False)]}">
+                                <group string="Properties Bought">
+                                    <field name="property_sale_ids" nolabel="1">
+                                        <tree string="Property Sales">
+                                            <field name="name"/>
+                                            <field name="property_id"/>
+                                            <field name="sale_date"/>
+                                            <field name="sale_price" widget="monetary"/>
+                                            <field name="net_profit" widget="monetary"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Contact Kanban View -->
+        <record id="view_real_estate_contact_kanban" model="ir.ui.view">
+            <field name="name">real.estate.contact.kanban</field>
+            <field name="model">real.estate.contact</field>
+            <field name="arch" type="xml">
+                <kanban string="Contacts">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="workplace"/>
+                    <field name="is_seller"/>
+                    <field name="is_payee"/>
+                    <field name="is_buyer"/>
+                    <field name="color"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click {{record.color.raw_value and 'oe_kanban_color_' + record.color.raw_value or ''}}">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                        <div class="o_kanban_record_subtitle"><field name="code"/></div>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section">
+                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
+                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left">
+                                            <field name="phone"/>
+                                            <br/>
+                                            <field name="workplace"/>
+                                        </div>
+                                        <div class="oe_kanban_bottom_right">
+                                            <div>
+                                                <field name="is_seller" widget="boolean_toggle" style="margin-right: 5px;" attrs="{'invisible': [('is_seller', '=', False)]}"/>
+                                                <field name="is_payee" widget="boolean_toggle" style="margin-right: 5px;" attrs="{'invisible': [('is_payee', '=', False)]}"/>
+                                                <field name="is_buyer" widget="boolean_toggle" attrs="{'invisible': [('is_buyer', '=', False)]}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Contact Action -->
+        <record id="action_real_estate_contact" model="ir.actions.act_window">
+            <field name="name">Contacts</field>
+            <field name="res_model">real.estate.contact</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="view_real_estate_contact_kanban"/>
+            <field name="search_view_id" ref="view_real_estate_contact_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first contact
+                </p>
+                <p>
+                    Contacts represent sellers you buy properties from or payees you pay expenses to.
+                    Each contact can be a seller, payee, or both.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

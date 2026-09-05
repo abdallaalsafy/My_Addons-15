@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record model="ir.ui.view" id="zepoons_search_id">
+		<field name="name">Zepoons_Search</field>
+		<field name="model">mdl_zepoons</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<field name="fld_phone"/>
+				<field name="fld_town_id"/>
+				<field name="fld_street_id"/>
+				<field name="fld_place_id"/>
+				<field name="fld_notes"/>
+			</search>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="zepoons_list_id">
+		<field name="name">Zepoons_List</field>
+		<field name="model">mdl_zepoons</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="fld_sonum"/>
+				<field name="name"/>
+				<field name="fld_phone"/>
+				<field name="fld_town_id"/>
+				<field name="fld_street_id"/>
+				<field name="fld_place_id"/>
+				<field name="fld_notes"/>
+			</tree>
+		</field>
+	</record>
+
+    <record model="ir.ui.view" id="zepoons_form_id">
+		<field name="name">Zepoons_Form</field>
+		<field name="model">mdl_zepoons</field>
+		<field name="arch" type="xml">
+			<form>
+                <group>
+					<field name="name"/>
+					<field name="fld_phone"/>
+					<field name="fld_town_id"/>
+					<field name="fld_street_id" attrs="{'readonly': [('fld_town_id', '=', False)]}" context="{'default_fld_town_id': fld_town_id, 'hide_fld_town_id': 1}"/>
+					<field name="fld_place_id" attrs="{'readonly': [('fld_street_id', '=', False)]}" context="{'default_fld_town_id': fld_town_id, 'default_fld_street_id': fld_street_id, 'hide_fld_town_id': 1, 'hide_fld_street_id': 1}"/>
+					<field name="fld_notes"/>
+                </group>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="zepoons_action_id">
+        <field name="name">Zepoons_Action</field>
+        <field name="res_model">mdl_zepoons</field>
+        <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Creat The First Zepoon</p>
+		</field>
+    </record>
+
+    <menuitem id="zepoons_menu_root_id" name="Zepoons"/>
+	<menuitem id="zepoons_menu_id" name="Zepoons" parent="zepoons_menu_root_id"/>
+	<menuitem id="zepoons_menu_id2" name="All Zepoons" parent="zepoons_menu_id" action="zepoons_action_id"/>
+</odoo>

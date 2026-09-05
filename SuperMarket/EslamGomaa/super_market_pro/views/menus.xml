@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="supermarket_menu_root_id" name="Super Market" sequence="10" web_icon="super_market_pro,static/description/icon.png"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="setting_menu_id" name="Configuration" parent="supermarket_menu_root_id" sequence="90" groups="super_market_pro.super_market_manager_group"/>
+    <menuitem id="about_menu_id" name="About" parent="setting_menu_id" action="about_action_id" sequence="60"/>
+
+    <!-- Purchases Menu -->
+    <menuitem id="purchases_menu_id" name="Purchases" parent="supermarket_menu_root_id" sequence="20"/>
+    <menuitem id="vendors_menu_id" name="Vendors" parent="purchases_menu_id" action="vendors_action_id" sequence="10"/>
+	<menuitem id="buys_menu_id" name="Purchase Orders" parent="purchases_menu_id" action="buys_action_id" sequence="20"/>
+    <menuitem id="buys_r_menu_id" name="Purchase Returns" parent="purchases_menu_id" action="buys_r_action_id" sequence="30"/>
+
+    <menuitem id="purchases_reports_menu_id" name="Reports" parent="purchases_menu_id" sequence="40"/>
+
+    <!-- Sales Menu -->
+    <menuitem id="sales_menu_id" name="Sales" parent="supermarket_menu_root_id" sequence="30"/>
+    <menuitem id="customers_menu_id" name="Customers" parent="sales_menu_id" action="customers_action_id" sequence="10"/>
+    <menuitem id="sells_menu_id" name="Sales Orders" parent="sales_menu_id" action="sells_action_id" sequence="20"/>
+    <menuitem id="sells_r_menu_id" name="Sales Returns" parent="sales_menu_id" action="sells_r_action_id" sequence="30"/>
+
+    <menuitem id="sales_reports_menu_id" name="Reports" parent="sales_menu_id" sequence="40"/>
+
+    <!-- Products Menu -->
+    <menuitem id="products_menu_id" name="Products" parent="supermarket_menu_root_id" sequence="35"/>
+    <menuitem id="goods_menu_id" name="Products" parent="products_menu_id" action="goods_action_id" sequence="10"/>
+    <menuitem id="categorys_goods_menu_id" name="Product Categories" parent="products_menu_id" action="categorys_action_id" sequence="20"/>
+    <menuitem id="units_menu_id" name="Units of Measure" parent="products_menu_id" action="units_action_id" sequence="30"/>
+    <menuitem id="categorys_units_menu_id" name="Unit Categories" parent="products_menu_id" action="catg_units_action_id" sequence="40"/>
+
+    <menuitem id="products_reports_menu_id" name="Reports" parent="products_menu_id" sequence="50"/>
+    <menuitem id="search_buys_goods_menu_id" name="Search Purchase &amp; Sales Items" parent="products_reports_menu_id" action="search_buys_goods_action_id" sequence="50"/>
+
+    <!-- Inventory Menu -->
+    <menuitem id="inventorys_menu_id" name="Inventory" parent="supermarket_menu_root_id" sequence="40"/>
+    <menuitem id="stores_menu_id" name="Stores" parent="inventorys_menu_id" action="stores_action_id" sequence="10"/>
+    <menuitem id="charges_menu_id" name="Stock Movements" parent="inventorys_menu_id" action="charges_action_id" sequence="20"/>
+    <menuitem id="inventorys_sub_menu_id" name="Stock Status" parent="inventorys_menu_id" action="inventorys_action_id" sequence="30"/>
+
+    <menuitem id="inventory_reports_menu_id" name="Reports" parent="inventorys_menu_id" sequence="40"/>
+    <menuitem id="goods_calc_menu_id" name="Goods Calculator" parent="inventory_reports_menu_id" action="goods_calc_action_id" sequence="10"/>
+    <menuitem id="goods_stores_menu_id" name="Stock by Store" parent="inventory_reports_menu_id" action="goods_stores_action_id" sequence="20"/>
+    <menuitem id="alarms_menu_id" name="Stock Alerts" parent="inventory_reports_menu_id" action="alarms_action_id" sequence="30"/>
+
+    <!-- Finance Menu -->
+    <menuitem id="finance_menu_id" name="Finance" parent="supermarket_menu_root_id" sequence="50"/>
+    <menuitem id="customers_out_menu_id" name="Customer Payments" parent="finance_menu_id" action="customers_out_action_id" sequence="10"/>
+    <menuitem id="customers_in_menu_id" name="Customer Receipts" parent="finance_menu_id" action="customers_in_action_id" sequence="20"/>
+    <menuitem id="vendors_out_menu_id" name="Vendor Payments" parent="finance_menu_id" action="vendors_out_action_id" sequence="30"/>
+    <menuitem id="vendors_in_menu_id" name="Vendor Receipts" parent="finance_menu_id" action="vendors_in_action_id" sequence="40"/>
+    <menuitem id="spending_menu_id" name="Expenses" parent="finance_menu_id" action="spending_action_id" sequence="50"/>
+    <menuitem id="willing_menu_id" name="Accounting" parent="finance_menu_id" action="willing_action_id" sequence="60"/>
+</odoo>

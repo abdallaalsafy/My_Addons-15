@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record model="ir.ui.view" id="vendors_in_search_id">
+        <field name="name">Vendor Refunds Search</field>
+        <field name="model">mdl_vendors_in</field>
+        <field name="arch" type="xml">
+            <search string="Search Vendor Refunds">
+                <!-- Search Fields -->
+                <field name="name"/>
+                <field name="fld_date"/>
+                <field name="fld_buys_r_id" />
+                <field name="fld_vendor_id"/>
+                <field name="fld_notes"/>
+                <!-- Filters -->
+                <separator/>
+                <filter string="Today" name="created_today" domain="[('create_date', '>=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="This Week" name="created_this_week" domain="[('create_date', '>=', (context_today()+datetime.timedelta(-6)).strftime('%Y-%m-%d'))]"/>
+                <filter string="This Month" name="created_this_month" domain="[('create_date', '>=', context_today().replace(day=1).strftime('%Y-%m-%d'))]"/>
+                <filter string="Refunded" name="refunded" domain="[('fld_is_pay', '=', True)]"/>
+                <filter string="Not Refunded" name="not_refunded" domain="[('fld_is_pay', '=', False)]"/>
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Date" name="group_date" context="{'group_by':'fld_date'}"/>
+                    <filter string="Return Purchase Order" name="group_buys_r" context="{'group_by':'fld_buys_r_id'}"/>
+                    <filter string="Vendor" name="group_vendor" context="{'group_by':'fld_vendor_id'}"/>
+                    <filter string="Refund Status" name="group_is_pay" context="{'group_by':'fld_is_pay'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="vendors_in_list_id">
+        <field name="name">Vendor Refunds List</field>
+        <field name="model">mdl_vendors_in</field>
+        <field name="arch" type="xml">
+            <tree string="Vendor Refunds" decoration-bf="1">
+                <field name="name"/>
+                <field name="fld_date" widget="date"/>
+                <field name="fld_vendor_id"/>
+                <field name="fld_buys_r_id"/>
+                <field name="fld_paying"  widget="monetary" sum="Total Refunds"/>
+                <field name="fld_is_pay"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="vendors_in_form_id">
+        <field name="name">Vendor Refund Form</field>
+        <field name="model">mdl_vendors_in</field>
+        <field name="arch" type="xml">
+            <form string="Vendor Refund">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    
+                    <group>
+                        <group name="basic_info">
+                            <field name="fld_date" options="{'datepicker':{'maxDate': 'now'}}"
+                                   attrs="{'readonly':[('fld_is_pay','=',True)]}"/>
+                            <field name="fld_paying" widget="monetary" placeholder="0.00"
+                                   attrs="{'readonly':[('fld_is_pay','=',True)]}"/>
+                        </group>
+                        <group name="relation_info">
+                            <field name="fld_buys_r_id" options="{'no_create': True}"
+                                   attrs="{'readonly':[('fld_is_pay','=',True)], 'required':[('fld_vendor_id','=',False)]}"/>
+                            <field name="fld_vendor_id" options="{'no_create': True}" force_save="1"
+                                   attrs="{'readonly':['|',('fld_buys_r_id','!=',False),('fld_is_pay','=',True)], 'required':[('fld_buys_r_id','=',False)]}"/>
+                        </group>
+                    </group>
+                    
+                    <group>
+                        <group name="status_info">
+                            <field name="fld_is_pay" widget="boolean_toggle" attrs="{'readonly':[('fld_is_pay','=',True)],'invisible':[('fld_is_pay','=',False)]}"/>
+                        </group>
+                        <group name="notes_info">
+                            <field name="fld_notes" string="Notes" placeholder="Enter refund notes..."/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record model="ir.actions.act_window" id="vendors_in_action_id">
+        <field name="name">Vendor Refunds</field>
+        <field name="res_model">mdl_vendors_in</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first vendor refund
+            </p>
+            <p>
+                Manage vendor refunds, track refund status, and maintain accurate financial records.
+            </p>
+        </field>
+    </record>
+</odoo>

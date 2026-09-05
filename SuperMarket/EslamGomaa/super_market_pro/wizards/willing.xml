@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="willing_form_id">
+		<field name="name">Willing_Form</field>
+		<field name="model">wzrd_willing</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group string="Elements Search">
+						<field name="fld_date_f" attrs="{'readonly':[('fld_date_selc','!=',False)]}"
+													options="{'datepicker':{'maxDate': 'now'}}"/>
+						<field name="fld_date_t" attrs="{'readonly':[('fld_date_selc','!=',False)]}"
+													options="{'datepicker':{'maxDate': 'now'}}"/>
+						<field name="fld_date_selc" attrs="{'readonly':['|',('fld_date_f','!=',False),('fld_date_t','!=',False)]}"/>
+					</group>
+				</sheet>
+				<sheet>
+					<group>
+						<group string="Sells">
+							<field name="fld_count_sells"/>
+							<field name="fld_totals_sells"/>
+							<field name="fld_discounts_sells"/>
+							<field name="fld_wins_sells"/>
+						</group>
+						<group string="Return Sells">
+							<field name="fld_count_sells_r"/>
+							<field name="fld_totals_sells_r"/>
+							<field name="fld_discounts_sells_r"/>
+						</group>
+					</group>
+					<group>
+						<group string="Buys">
+							<field name="fld_count_buys"/>
+							<field name="fld_totals_buys"/>
+							<field name="fld_discounts_buys"/>
+						</group>
+						<group string="Return Buys">
+							<field name="fld_count_buys_r"/>
+							<field name="fld_totals_buys_r"/>
+							<field name="fld_discounts_buys_r"/>
+						</group>
+					</group>
+					<group string="In_Out">
+						<field name="fld_in"/>
+						<field name="fld_out"/>
+						<field name="fld_spending"/>
+					</group>
+				</sheet>
+				<footer>
+					<button  special="cancel" string='OK' type='object' class = "btn-primary"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="willing_action_id">
+		<field name="name">Willing_Action</field>
+		<field name="res_model">wzrd_willing</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+		<field name="view_id" ref="willing_form_id"/>
+	</record>
+</odoo>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record model="ir.ui.view" id="inventorys_search_id">
+        <field name="name">Inventory Search</field>
+        <field name="model">mdl_inventorys</field>
+        <field name="arch" type="xml">
+            <search string="Search Inventory">
+                <!-- Search Fields -->
+                <field name="name"/>
+                <field name="fld_date"/>
+                <field name="fld_store_id"/>
+                <field name="fld_notes"/>
+                <!-- Filters -->
+                <separator/>
+                <filter string="Today" name="created_today" domain="[('create_date', '>=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter string="This Week" name="created_this_week" domain="[('create_date', '>=', (context_today()+datetime.timedelta(-6)).strftime('%Y-%m-%d'))]"/>
+                <filter string="This Month" name="created_this_month" domain="[('create_date', '>=', context_today().replace(day=1).strftime('%Y-%m-%d'))]"/>
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Date" name="group_date" context="{'group_by':'fld_date'}"/>
+                    <filter string="Store" name="group_store" context="{'group_by':'fld_store_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="inventorys_list_id">
+        <field name="name">Inventory List</field>
+        <field name="model">mdl_inventorys</field>
+        <field name="arch" type="xml">
+            <tree decoration-bf="1">
+                <field name="name"/>
+                <field name="fld_date" widget="datetime"/>
+                <field name="fld_store_id" options="{'no_create': True}"/>
+                <field name="fld_inventory_goods_ids" widget="many2many_tags" optional="hide"/>
+                <field name="fld_notes" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="inventorys_form_id">
+        <field name="name">Inventory Form</field>
+        <field name="model">mdl_inventorys</field>
+        <field name="arch" type="xml">
+            <form string="Inventory">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    
+                    <group>
+                        <group name="basic_info">
+                            <field name="fld_date" options="{'datepicker':{'maxDate': 'now'}}"/>
+                            <field name="fld_store_id" attrs="{'readonly':[('create_date','!=',False)]}" options="{'no_create': True}"/>
+                        </group>
+                        <group name="notes_info">
+                            <field name="fld_notes" placeholder="Enter inventory notes..."/>
+                            <field name="create_date" invisible="1"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Inventory Goods">
+                            <field name="fld_inventory_goods_ids">
+                                <tree>
+                                    <field name="fld_goods_id"/>
+                                    <field name="fld_category_id"/>
+                                    <field name="fld_count"/>
+                                    <field name="fld_unit_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record model="ir.actions.act_window" id="inventorys_action_id">
+        <field name="name">Inventory</field>
+        <field name="res_model">mdl_inventorys</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first inventory
+            </p>
+            <p>
+                Manage inventory counts, track stock levels, and maintain accurate inventory records.
+            </p>
+        </field>
+    </record>
+</odoo>

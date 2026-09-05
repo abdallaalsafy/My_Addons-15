@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- QWeb report template for Management Fee Summary List -->
+        <template id="report_management_fee_summary_list">
+            <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .fee-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .fee-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .fee-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .fee-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .fee-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Management Fee Summary List</h2>
+
+                    <table class="fee-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">No.</th>
+                                <th>Buyer Name</th>
+                                <th>Property Name</th>
+                                <th>Property Code</th>
+                                <th>Net Profit</th>
+                                <th>Management Fee Amount</th>
+                                <th>Management Fee %</th>
+                                <th>Total Profit</th>
+                                <th>Date</th>
+                                <th>Reference</th>
+                                <th>Fee Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="docs">
+                                <t t-foreach="docs" t-as="fee">
+                                    <tr>
+                                        <td><span t-esc="fee_index + 1"/></td>
+                                        <td><span t-field="fee.buyer_name"/></td>
+                                        <td><span t-field="fee.property_name"/></td>
+                                        <td><span t-field="fee.property_code"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(fee.net_profit)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(fee.management_fee_amount)"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(fee.management_fee_percentage)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(fee.total_profit)"/></td>
+                                        <td><span t-field="fee.date"/></td>
+                                        <td><span t-field="fee.reference"/></td>
+                                        <td><span t-field="fee.fee_type"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not docs">
+                                <tr>
+                                    <td colspan="11" class="text-center">No management fee data found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_management_fee_summary_list_action" model="ir.actions.report">
+            <field name="name">Management Fee Summary List</field>
+            <field name="model">real.estate.management.fee.summary</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_management_fee_summary_list</field>
+            <field name="report_file">real_estate_partnership_management.report_management_fee_summary_list</field>
+            <field name="binding_model_id" ref="model_real_estate_management_fee_summary"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_landscape"/>
+        </record>
+    </data>
+</odoo>

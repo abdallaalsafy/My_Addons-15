@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mawhubin,mawhubin,model_mawhubin,base.group_user,1,1,1,1
+access_mawhubin2,mawhubin2,model_mawhubin2,base.group_user,1,1,1,1
+
+access_mdl_country,mdl_country,model_mdl_country,base.group_user,1,1,1,1

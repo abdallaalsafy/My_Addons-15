@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="hms_menu_root_id"
+        name="Hospitals Management System"/>
+
+        <menuitem id="patient_menu_id"
+                  name="Patient"
+                  parent="hms_menu_root_id"
+                  action="patient_action_id"/>
+
+        <menuitem id="department_menu_id"
+                  name="Department"
+                  parent="hms_menu_root_id"
+                  action="department_action_id"/>
+
+        <menuitem id="doctor_menu_id"
+                  name="Doctor"
+                  parent="hms_menu_root_id"
+                  action="doctor_action_id"
+                  groups="managers_group_id"/>
+    </data>
+</odoo>

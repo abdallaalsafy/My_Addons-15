@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Custom paper format for landscape report -->
+        <record id="paperformat_landscape" model="report.paperformat">
+            <field name="name">Landscape A4</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- QWeb report template for Property List -->
+        <template id="report_property_list">
+            <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .property-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .property-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .property-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .property-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .property-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Properties List Report</h2>
+
+                    <table class="property-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">No.</th>
+                                <th>Status</th>
+                                <th>Current Value</th>
+                                <th>Total Cost</th>
+                                <th>Purchase Price</th>
+                                <th>Purchase Date</th>
+                                <th>Seller</th>
+                                <th>City</th>
+                                <th>Type</th>
+                                <th>Name</th>
+                                <th>Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="docs">
+                                <t t-foreach="docs" t-as="prop">
+                                    <tr>
+                                        <td><span t-esc="prop_index + 1"/></td>
+                                        <td><span t-field="prop.status"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(prop.current_value)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(prop.total_cost)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(prop.purchase_price)"/></td>
+                                        <td><span t-field="prop.purchase_date"/></td>
+                                        <td><span t-field="prop.seller_id.name"/></td>
+                                        <td><span t-field="prop.city_id.name"/></td>
+                                        <td><span t-field="prop.property_type"/></td>
+                                        <td><span t-field="prop.name"/></td>
+                                        <td><span t-field="prop.code"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not docs">
+                                <tr>
+                                    <td colspan="11" class="text-center">No properties found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_property_list_action" model="ir.actions.report">
+            <field name="name">Properties List</field>
+            <field name="model">real.estate.property</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_property_list</field>
+            <field name="report_file">real_estate_partnership_management.report_property_list</field>
+            <field name="binding_model_id" ref="model_real_estate_property"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_landscape"/>
+        </record>
+    </data>
+</odoo>

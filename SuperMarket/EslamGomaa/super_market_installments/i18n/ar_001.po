@@ -1,0 +1,1949 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* super_market_installments
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20240131\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-13 12:56+0000\n"
+"PO-Revision-Date: 2026-05-13 12:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+"Language: ar\n"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid ""
+"\n"
+"\n"
+"--- MERGED ORDERS ---\n"
+"Merged on: %s\n"
+"Orders merged: %s\n"
+"Notes: %s"
+msgstr ""
+"\n"
+"\n"
+"--- الطلبات المدمجة ---\n"
+"تم الدمج في: %s\n"
+"الطلبات المدمجة: %s\n"
+"ملاحظات: %s"
+
+#. module: super_market_installments
+#: model:ir.actions.report,print_report_name:super_market_installments.isalls_tahseel_action_report_id
+msgid "'Isalls Tahseel'"
+msgstr "'قسط تحصيل'"
+
+#. module: super_market_installments
+#: model:ir.actions.report,print_report_name:super_market_installments.mandoops_action_report_id
+msgid "'Mandoops Data'"
+msgstr "'بيانات المندوبين'"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/models/utils.py:0
+#, python-format
+msgid "0 days"
+msgstr "٠ يوم"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_month__10
+msgid "10"
+msgstr "١٠"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_month__11
+msgid "11"
+msgstr "١١"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_month__12
+msgid "12"
+msgstr "١٢"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2024
+msgid "2024"
+msgstr "٢٠٢٤"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2025
+msgid "2025"
+msgstr "٢٠٢٥"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2026
+msgid "2026"
+msgstr "٢٠٢٦"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2027
+msgid "2027"
+msgstr "٢٠٢٧"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2028
+msgid "2028"
+msgstr "٢٠٢٨"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2029
+msgid "2029"
+msgstr "٢٠٢٩"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2030
+msgid "2030"
+msgstr "٢٠٣٠"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2031
+msgid "2031"
+msgstr "٢٠٣١"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2032
+msgid "2032"
+msgstr "٢٠٣٢"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2033
+msgid "2033"
+msgstr "٢٠٣٣"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2034
+msgid "2034"
+msgstr "٢٠٣٤"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2035
+msgid "2035"
+msgstr "٢٠٣٥"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2036
+msgid "2036"
+msgstr "٢٠٣٦"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2037
+msgid "2037"
+msgstr "٢٠٣٧"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2038
+msgid "2038"
+msgstr "٢٠٣٨"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2039
+msgid "2039"
+msgstr "٢٠٣٩"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2040
+msgid "2040"
+msgstr "٢٠٤٠"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2041
+msgid "2041"
+msgstr "٢٠٤١"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2042
+msgid "2042"
+msgstr "٢٠٤٢"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2043
+msgid "2043"
+msgstr "٢٠٤٣"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2044
+msgid "2044"
+msgstr "٢٠٤٤"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2045
+msgid "2045"
+msgstr "٢٠٤٥"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2046
+msgid "2046"
+msgstr "٢٠٤٦"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2047
+msgid "2047"
+msgstr "٢٠٤٧"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2048
+msgid "2048"
+msgstr "٢٠٤٨"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2049
+msgid "2049"
+msgstr "٢٠٤٩"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_year__2050
+msgid "2050"
+msgstr "٢٠٥٠"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_prices_form_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_hafez_update','not in',['ratio'])]}\">Ratio</span>"
+msgstr "<span class=\"o_form_label o_td_label\" attrs=\"{'invisible':[('fld_hafez_update','not in',['ratio'])]}\">نسبة</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_prices_form_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_hafez_update','not in',['sum'])]}\">Sum</span>"
+msgstr "<span class=\"o_form_label o_td_label\" attrs=\"{'invisible':[('fld_hafez_update','not in',['sum'])]}\">مبلغ</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_prices_form_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_qst_update','not in',['ratio'])]}\">Ratio</span>"
+msgstr "<span class=\"o_form_label o_td_label\" attrs=\"{'invisible':[('fld_qst_update','not in',['ratio'])]}\">نسبة</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_prices_form_id
+msgid ""
+"<span class=\"o_form_label o_td_label\" "
+"attrs=\"{'invisible':[('fld_qst_update','not in',['sum'])]}\">Sum</span>"
+msgstr "<span class=\"o_form_label o_td_label\" attrs=\"{'invisible':[('fld_qst_update','not in',['sum'])]}\">مبلغ</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"color:white;\">-</span>"
+msgstr "<span style=\"color:white;\">-</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"color:white;\">20-20-2020</span>"
+msgstr "<span style=\"color:white;\">٢٠-٢٠-٢٠٢٠</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"color:white;\">ـ</span>"
+msgstr "<span style=\"color:white;\">ـ</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size: 16px; \">المقدم</span>"
+msgstr "<span style=\"font-size: 16px; \">المقدم</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size: 16px; \">المنطقة</span>"
+msgstr "<span style=\"font-size: 16px; \">المنطقة</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size: 18px;\">المنتج</span>"
+msgstr "<span style=\"font-size: 18px;\">المنتج</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid ""
+"<span style=\"font-size:15px\">البضاعة المباعة ترد او تستيدل خلال ١٤ يوم علي"
+" ان تكون في حالتها الاصلية</span>"
+msgstr "<span style=\"font-size:15px\">البضاعة المباعة تُرد أو تُستبدل خلال ١٤ يوم على أن تكون في حالتها الأصلية</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size:16px\">1المندوب</span>"
+msgstr "<span style=\"font-size:16px\">المندوب</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size:16px\">: اسم العميل</span>"
+msgstr "<span style=\"font-size:16px\">: اسم العميل</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size:16px\">: التليفون</span>"
+msgstr "<span style=\"font-size:16px\">: التليفون</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size:16px\">: عنوان العميل</span>"
+msgstr "<span style=\"font-size:16px\">: عنوان العميل</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size:16px\">: كود الفاتورة</span>"
+msgstr "<span style=\"font-size:16px\">: كود الفاتورة</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size:16px\">الاجمالي</span>"
+msgstr "<span style=\"font-size:16px\">الإجمالي</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size:16px\">الباقي</span>"
+msgstr "<span style=\"font-size:16px\">الباقي</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span style=\"font-size:16px\">المندوب2</span>"
+msgstr "<span style=\"font-size:16px\">المندوب</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid ""
+"<span style=\"font-size:25px\">ت</span>\n"
+"                                <span style=\"font-size:25px\">:</span>"
+msgstr "<span style=\"font-size:25px\">ت</span><span style=\"font-size:25px\">:</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span> ...ومنتجات اخري</span>"
+msgstr "<span> ... ومنتجات أخرى</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_prices_form_id
+msgid "<span>%</span>"
+msgstr "<span>٪</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span>+</span>"
+msgstr "<span>+</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_prices_form_id
+msgid "<span>L.E</span>"
+msgstr "<span>ج.م</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span>بموجب هذة الكمبيالة أتعهد بأن أدفع مبلغ</span>"
+msgstr "<span>بموجب هذه الكمبيالة أتعهد بأن أدفع مبلغ</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid ""
+"<span>جـنيـة فـقـط لا غـيـر</span>\n"
+"                                    <br/>\n"
+"                                    <span>فى تاريخ :</span>"
+msgstr "<span>جـنـيـه فـقـط لا غـيـر</span><br/><span>فى تاريخ :</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span>جنيه</span>"
+msgstr "<span>جنيه</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid "<span>سعر</span>"
+msgstr "<span>سعر</span>"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_tahseel_template_id
+msgid ""
+"<span>علـما بـأن القيمة وصلتنا بضـاعة والـدفع والتقاضى وفـقا لارادة الدائن "
+"دون التوقف علي رضائي تحريرا في يوم :</span>"
+msgstr "<span>علـماً بأن القيمة وصلتنا بضـاعة، والـدفع والتقاضي وفـقاً لإرادة الدائن دون التوقف على رضائي، تحريراً في يوم :</span>"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_date_selct
+msgid "About Date"
+msgstr "حول التاريخ"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__active
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__active
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__active
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__active
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_active
+msgid "Active"
+msgstr "نشط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_address
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__fld_address
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_address
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_template_id
+msgid "Address"
+msgstr "العنوان"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "Amount Of Isall Is Too High"
+msgstr "مبلغ القسط كبير جداً"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_search_id
+msgid "Archived"
+msgstr "مؤرشف"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.convert_sells_form_id
+msgid "Are You Sure, You Want To Convert Cash To Qest ???"
+msgstr "هل أنت متأكد من تحويل كاش إلى قسط؟؟؟"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.convert_sells_form_id
+msgid "Are You Sure, You Want To Convert Qest To Cash ???"
+msgstr "هل أنت متأكد من تحويل قسط إلى كاش؟؟؟"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "Average Discount: %.2f%%"
+msgstr "متوسط الخصم: %.2f%%"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_goods__fld_clc_hafez
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r_goods__fld_clc_hafez
+msgid "Calc Hafez"
+msgstr "حساب الحافز"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_goods__fld_clc_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r_goods__fld_clc_qst
+msgid "Calc Qest"
+msgstr "حساب القسط"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/models/isalls.py:0
+#, python-format
+msgid ""
+"Can Not Cancel Paying Of Isall(s) Number (%s) \n"
+" There Is Above Isall From The Same Sell_Qest Is Paid\n"
+" Cancel Paying Of It Before This!"
+msgstr ""
+"لا يمكن إلغاء دفع الأقساط رقم (%s) \n"
+" يوجد قسط لاحق من نفس عملية البيع بالتقسيط تم دفعه\n"
+" قم بإلغاء دفعه قبل هذا!"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/models/isalls.py:0
+#, python-format
+msgid ""
+"Can Not Pay Isalls Number (%s) \n"
+" There Is Lower Isall From The Same Sell_Qest Is Not Paid\n"
+" Paid It Before This!"
+msgstr ""
+"لا يمكن دفع الأقساط رقم (%s) \n"
+" يوجد قسط سابق من نفس عملية البيع بالتقسيط غير مدفوع\n"
+" قم بدفعه قبل هذا!"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.convert_sells_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.received_isalls_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_cust_addr_of_mandoops_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_isalls_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_mandoops_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_mandoops_sells_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_isalls_form_id
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: super_market_installments
+#: model:ir.actions.server,name:super_market_installments.cancel_paid_isalls_action_server_id
+msgid "Cancel Paid Isalls Action Server"
+msgstr "خادم إجراء إلغاء دفع الأقساط"
+
+#. module: super_market_installments
+#: model:ir.actions.server,name:super_market_installments.cancel_received_isalls_action_server_id
+msgid "Cancel Received Isalls Action Server"
+msgstr "خادم إجراء إلغاء استلام الأقساط"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid ""
+"Cannot merge sales orders without a customer. Please ensure at least one "
+"order has a customer assigned."
+msgstr "لا يمكن دمج أوامر البيع بدون عميل. يرجى التأكد من أن أمر بيع واحد على الأقل لديه عميل معين."
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_form_id
+msgid "Cash"
+msgstr "كاش"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_category_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__fld_category_id
+msgid "Category"
+msgstr "الفئة"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_customers__fld_code
+msgid "Code Nation"
+msgstr "الرقم القومي"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_collector_id
+msgid "Collector"
+msgstr "المحصل"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_collctr_isal_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_received_isalls__fld_collctr_isal_id
+msgid "Collector Isal"
+msgstr "محصل القسط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__fld_collector_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_collector_id
+msgid "Collector Name"
+msgstr "اسم المحصل"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__fld_collector_isall_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_collector_isall_id
+msgid "Collector_Isall Name"
+msgstr "اسم محصل القسط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.convert_sells_form_id
+msgid "Convert"
+msgstr "تحويل"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.convert_sells_action_id
+msgid "Convert_Sells_Action"
+msgstr "إجراء_تحويل_المبيعات"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_count_cash
+msgid "Count Cash"
+msgstr "عدد الكاش"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_count
+msgid "Count Goods"
+msgstr "عدد الأصناف"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_count_qst
+msgid "Count Qest"
+msgstr "عدد الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_count_cash_r
+msgid "Count Return Cash"
+msgstr "عدد مرتجع الكاش"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_count_qst_r
+msgid "Count Return Qest"
+msgstr "عدد مرتجع الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_count_sells_r
+msgid "Count Return Sells"
+msgstr "عدد مرتجعات المبيعات"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_willing__fld_count_qst
+msgid "Count Sell"
+msgstr "عدد البيع"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_willing__fld_count_qst_r
+msgid "Count Sell_r"
+msgstr "عدد مرتجع البيع"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_count_sells
+msgid "Count Sells"
+msgstr "عدد المبيعات"
+
+#. module: super_market_installments
+#: model_terms:ir.actions.act_window,help:super_market_installments.mandoops_action_id
+msgid "Creat The First Mandoop"
+msgstr "قم بإنشاء أول مندوب"
+
+#. module: super_market_installments
+#: model_terms:ir.actions.act_window,help:super_market_installments.sells_r_qst_action_id
+msgid "Creat The First Return Qest"
+msgstr "قم بإنشاء أول مرتجع تقسيط"
+
+#. module: super_market_installments
+#: model_terms:ir.actions.act_window,help:super_market_installments.sells_qst_action_id
+msgid "Creat The First Sells Qest"
+msgstr "قم بإنشاء أول بيع بالتقسيط"
+
+#. module: super_market_installments
+#: model_terms:ir.actions.act_window,help:super_market_installments.regions_action_id
+msgid "Create a new Region"
+msgstr "إنشاء منطقة جديدة"
+
+#. module: super_market_installments
+#: model_terms:ir.actions.act_window,help:super_market_installments.places_action_id
+msgid "Create your first place!"
+msgstr "قم بإنشاء أول مكان لك!"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_convert_sells__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_received_isalls__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__create_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__create_uid
+msgid "Created by"
+msgstr "تم الإنشاء بواسطة"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_convert_sells__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_received_isalls__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__create_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__create_date
+msgid "Created on"
+msgstr "تم الإنشاء في"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_customer_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_form_id
+msgid "Customer Data"
+msgstr "بيانات العميل"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_customer_id
+msgid "Customer Name"
+msgstr "اسم العميل"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_phone
+msgid "Customer Phone"
+msgstr "هاتف العميل"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_cust_addr_of_mandoops__fld_model__mdl_customers
+msgid "Customers"
+msgstr "العملاء"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_date_first_qst
+msgid "Date Of The First Isall"
+msgstr "تاريخ أول قسط"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_goods__fld_date_selc__day
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_sells__fld_date_selc__day
+msgid "Day"
+msgstr "يوم"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_willing__fld_discounts_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_willing__fld_discounts_qst_r
+msgid "Discounts"
+msgstr "الخصومات"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_convert_sells__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_received_isalls__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__display_name
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_mandoops_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_mandoops_sells_form_id
+msgid "Elements Search"
+msgstr "بحث العناصر"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_date_selct__this
+msgid "Equal To This Date"
+msgstr "يساوي هذا التاريخ"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "Failed to complete merge operation: %s"
+msgstr "فشلت عملية الدمج: %s"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_z.py:0
+#, python-format
+msgid "Failed to merge sales orders: %s"
+msgstr "فشل دمج أوامر البيع: %s"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_frst_reg_isall
+msgid "First Reg Isall"
+msgstr "أول قسط مسجل"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "Fixed Discount: %s"
+msgstr "خصم ثابت: %s"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Fltr Reg Date"
+msgstr "تصفية تاريخ التسجيل"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__fld_date_f
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__fld_date_f
+msgid "From"
+msgstr "من"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__fld_from
+msgid "From Isall Number"
+msgstr "من رقم القسط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_form_id
+msgid "Glopal Data"
+msgstr "بيانات عامة"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_goods_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__fld_goods_id
+msgid "Goods"
+msgstr "الأصناف"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_goods__fld_hafez
+msgid "Goods Hafez"
+msgstr "حافز الصنف"
+
+#. module: super_market_installments
+#: model:ir.model.constraint,message:super_market_installments.constraint_mdl_sells_goods_CheckSellsGoodsPriceQest
+#: model:ir.model.constraint,message:super_market_installments.constraint_mdl_sells_r_goods_CheckReturnSellsGoodsPriceQest
+msgid "Goods Price_Qest Must Be Above Zero"
+msgstr "سعر القسط للصنف يجب أن يكون أكبر من صفر"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.places_search_id
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Group By Collctr_Isal"
+msgstr "تجميع حسب محصل القسط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Group By Month"
+msgstr "تجميع حسب الشهر"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Group By Sell"
+msgstr "تجميع حسب البيع"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Group By Year"
+msgstr "تجميع حسب السنة"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_goods_search_id
+msgid "Group Goods"
+msgstr "تجميع الأصناف"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_goods_search_id
+msgid "Group Mandoop"
+msgstr "تجميع المندوبين"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_goods__fld_hafez
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r_goods__fld_hafez
+#: model_terms:ir.ui.view,arch_db:super_market_installments.goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_prices_form_id
+msgid "Hafez"
+msgstr "حافز"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.goods_search_id
+msgid "Hafez Ratio"
+msgstr "نسبة الحافز"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_goods__fld_ratio
+msgid "Hafez Ratio %"
+msgstr "نسبة الحافز ٪"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.goods_search_id
+msgid "Hafez Sum"
+msgstr "مبلغ الحافز"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_goods__fld_type_hafez
+#: model_terms:ir.ui.view,arch_db:super_market_installments.goods_search_id
+msgid "Hafez Type"
+msgstr "نوع الحافز"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_convert_sells__id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_received_isalls__id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_isalls_ids
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__fld_isalls_ids
+#: model:ir.ui.menu,name:super_market_installments.isalls_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_form_id
+msgid "Installments"
+msgstr "الأقساط"
+
+#. module: super_market_installments
+#: model:ir.ui.menu,name:super_market_installments.qests_menu_id
+msgid "Instalments"
+msgstr "أقساط"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/models/customers.py:0
+#, python-format
+msgid ""
+"Invalid Egyptian National ID format! Please enter a valid 14-digit national "
+"ID number."
+msgstr "تنسيق الرقم القومي المصري غير صالح! يرجى إدخال رقم قومي صحيح مكون من ١٤ رقماً."
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_active__yes
+msgid "Is Active"
+msgstr "نشط"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_cust_addr_of_mandoops__fld_is_paid__yes
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_is_paid__yes
+msgid "Is Paid"
+msgstr "مدفوع"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_is_paid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_is_paid
+msgid "Is Paid?"
+msgstr "هل هو مدفوع؟"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_is_printed__yes
+msgid "Is Printed"
+msgstr "تمت الطباعة"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_is_printed
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_is_printed
+msgid "Is Printed?"
+msgstr "هل تمت الطباعة؟"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r__fld_is_qst
+msgid "Is Return Qst?"
+msgstr "هل هو مرتجع تقسيط؟"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_is_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_goods__fld_is_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r_goods__fld_is_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_convert_sells__fld_is_qst
+msgid "Is Sells Qst?"
+msgstr "هل هو بيع بالتقسيط؟"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_form_id
+msgid "Isall Data"
+msgstr "بيانات القسط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_form_id
+msgid "Isall Status"
+msgstr "حالة القسط"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.isalls_action_id
+msgid "Isalls Action"
+msgstr "إجراء الأقساط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Isalls Of Next Month"
+msgstr "أقساط الشهر القادم"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Isalls Of This Month"
+msgstr "أقساط هذا الشهر"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_template_id
+msgid "Kashf Of Mandoops"
+msgstr "كشف المندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_template_id
+msgid "Kashf Of Qests"
+msgstr "كشف الأقساط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_r_template_id
+msgid "Kashf Of Return Qests"
+msgstr "كشف مرتجعات الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_convert_sells____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_received_isalls____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells____last_update
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_convert_sells__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_received_isalls__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__write_uid
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_convert_sells__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_received_isalls__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__write_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: super_market_installments
+#: model_terms:ir.actions.act_window,help:super_market_installments.mandoops_action_id
+msgid "Manage Your Mandoops for qest selles"
+msgstr "إدارة المندوبين لمبيعات التقسيط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__mdl_mandoops_id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__mdl_mandoops_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__fld_mandoops_id
+msgid "Mandoop"
+msgstr "مندوب"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__fld_mandoop_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_mandoop_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_form_id
+msgid "Mandoop Name"
+msgstr "اسم المندوب"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_mandoops
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_mandoops
+#: model:ir.ui.menu,name:super_market_installments.mandoops_menu_id
+msgid "Mandoops"
+msgstr "المندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_form_id
+msgid "Mandoops Data"
+msgstr "بيانات المندوبين"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.mandoops_action_id
+msgid "Mandoops_Action"
+msgstr "إجراء_المندوبين"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_goods__fld_date_selc__month
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_sells__fld_date_selc__month
+msgid "Month"
+msgstr "شهر"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "Must There Is One Parent Only!"
+msgstr "يجب أن يكون هناك أب واحد فقط!"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__name
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__name
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__name
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_template_id
+msgid "Name"
+msgstr "الاسم"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__fld_amount
+msgid "New Amount"
+msgstr "المبلغ الجديد"
+
+#. module: super_market_installments
+#: model:ir.model.fields,help:super_market_installments.field_wzrd_update_isalls__fld_amount
+msgid "New amount for installments"
+msgstr "المبلغ الجديد للأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,help:super_market_installments.field_wzrd_update_isalls__fld_reg_date
+msgid "New registration date for installments"
+msgstr "تاريخ التسجيل الجديد للأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_date_selct__newest
+msgid "Newest Than This Date"
+msgstr "أحدث من هذا التاريخ"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "No Discount"
+msgstr "لا يوجد خصم"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "No installments found"
+msgstr "لم يتم العثور على أقساط"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "No orders to merge found"
+msgstr "لم يتم العثور على أوامر للدمج"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "No sales orders selected for merging"
+msgstr "لم يتم تحديد أوامر بيع للدمج"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "No sell record selected"
+msgstr "لم يتم تحديد سجل بيع"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_active__no
+msgid "Not Active"
+msgstr "غير نشط"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_cust_addr_of_mandoops__fld_is_paid__no
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_is_paid__no
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Not Paid"
+msgstr "غير مدفوع"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_is_printed__no
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Not Printed"
+msgstr "غير مطبوع"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/models/utils.py:0
+#, python-format
+msgid "Not specified"
+msgstr "غير محدد"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__fld_notes
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__fld_notes
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_regions__fld_notes
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "Num_From Or Num_To Is Out Of Range"
+msgstr "الرقم من أو الرقم إلى خارج النطاق"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "Num_To Edit must be above 1"
+msgstr "الرقم المراد تحريره يجب أن يكون أكبر من ١"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_num
+msgid "Number"
+msgstr "الرقم"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_num_isalls
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_num_isalls
+msgid "Number Of Isalls"
+msgstr "عدد الأقساط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.received_isalls_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_mandoops_goods_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_mandoops_sells_form_id
+msgid "OK"
+msgstr "موافق"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_isalls__fld_date_selct__oldest
+msgid "Older Than This Date"
+msgstr "أقدم من هذا التاريخ"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_goods__fld_hafez_on_buy
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_goods__fld_qst_on_buy
+msgid "On Price Buy"
+msgstr "على سعر الشراء"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Paid"
+msgstr "مدفوع"
+
+#. module: super_market_installments
+#: model:ir.actions.server,name:super_market_installments.paid_isalls_action_server_id
+msgid "Paid Isalls Action Server"
+msgstr "خادم إجراء دفع الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__fld_date_selc
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__fld_date_selc
+msgid "Period"
+msgstr "الفترة"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_phone
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__fld_phone
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_phone
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_template_id
+msgid "Phone"
+msgstr "الهاتف"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_customers__fld_place_id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_place_id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_place_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.customers_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.places_form_id
+msgid "Place"
+msgstr "المكان"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_place_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.places_form_id
+msgid "Place Name"
+msgstr "اسم المكان"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.places_action_id
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_cust_addr_of_mandoops__fld_model__mdl_places
+#: model:ir.ui.menu,name:super_market_installments.places_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.places_list_id
+msgid "Places"
+msgstr "الأماكن"
+
+#. module: super_market_installments
+#: model_terms:ir.actions.act_window,help:super_market_installments.places_action_id
+msgid ""
+"Places are specific locations within regions where customers can be located.\n"
+"                You can assign places to customers for better delivery and collection management."
+msgstr "الأماكن هي مواقع محددة داخل المناطق حيث يمكن تحديد موقع العملاء.\n                يمكنك تعيين أماكن للعملاء لإدارة أفضل للتسليم والتحصيل."
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_goods.py:0
+#, python-format
+msgid "Please provide hafez ratio value"
+msgstr "يرجى تقديم قيمة نسبة الحافز"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_goods.py:0
+#, python-format
+msgid "Please provide hafez sum value"
+msgstr "يرجى تقديم قيمة مبلغ الحافز"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_goods.py:0
+#, python-format
+msgid "Please provide qst ratio value"
+msgstr "يرجى تقديم قيمة نسبة القسط"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_goods.py:0
+#, python-format
+msgid "Please provide qst sum value"
+msgstr "يرجى تقديم قيمة مبلغ القسط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_goods__fld_price_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_goods__fld_price_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r_goods__fld_price_qst
+#: model_terms:ir.ui.view,arch_db:super_market_installments.goods_template_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_prices_form_id
+msgid "Price Qest"
+msgstr "سعر القسط"
+
+#. module: super_market_installments
+#: model:ir.model.constraint,message:super_market_installments.constraint_mdl_goods_CheckGoodsPriceQst
+msgid "Price_Qest Must Be Above Zero"
+msgstr "سعر_القسط يجب أن يكون أكبر من صفر"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_list_id
+msgid "Print Isalls"
+msgstr "طباعة الأقساط"
+
+#. module: super_market_installments
+#: model:ir.actions.report,name:super_market_installments.isalls_tahseel_action_report_id
+msgid "Print Isalls Tahseel"
+msgstr "طباعة قسط تحصيل"
+
+#. module: super_market_installments
+#: model:ir.actions.report,name:super_market_installments.mandoops_action_report_id
+msgid "Print Mandoops"
+msgstr "طباعة المندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_search_id
+msgid "Printed"
+msgstr "مطبوع"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_goods__fld_date_selc__q1
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_sells__fld_date_selc__q1
+msgid "Q1"
+msgstr "الربع الأول"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_goods__fld_date_selc__q2
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_sells__fld_date_selc__q2
+msgid "Q2"
+msgstr "الربع الثاني"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_goods__fld_date_selc__q3
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_sells__fld_date_selc__q3
+msgid "Q3"
+msgstr "الربع الثالث"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_goods__fld_date_selc__q4
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_sells__fld_date_selc__q4
+msgid "Q4"
+msgstr "الربع الرابع"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_form_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.willing_form_id
+msgid "Qest"
+msgstr "قسط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_form_id
+msgid "Qest Data"
+msgstr "بيانات القسط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_goods_template_id
+msgid "Qests Details"
+msgstr "تفاصيل الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_goods__fld_hafez_ratio
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_goods__fld_qst_ratio
+#: model:ir.model.fields.selection,name:super_market_installments.selection__mdl_goods__fld_type_hafez__ratio
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_update_goods__fld_hafez_update__ratio
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_update_goods__fld_qst_update__ratio
+msgid "Ratio"
+msgstr "نسبة"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.received_isalls_action_id
+msgid "Received Isalls Action"
+msgstr "إجراء استلام الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_reg_date
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__fld_reg_date
+msgid "Reg Date"
+msgstr "تاريخ التسجيل"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "Reg Date Of Isall Is Greater Than The Next Isall"
+msgstr "تاريخ تسجيل القسط أكبر من تاريخ القسط التالي"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "Reg Date Of Isall Is Lower Than The Previous Isall"
+msgstr "تاريخ تسجيل القسط أصغر من تاريخ القسط السابق"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "Reg Date Of Isall Is Not Suitable"
+msgstr "تاريخ تسجيل القسط غير مناسب"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_month
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_month
+msgid "Reg Month"
+msgstr "شهر التسجيل"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_year
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_year
+msgid "Reg Year"
+msgstr "سنة التسجيل"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_customers__fld_region_id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_region_id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_places__fld_region_id
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_region_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.customers_search_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.places_search_id
+msgid "Region"
+msgstr "المنطقة"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_region_id
+msgid "Region Name"
+msgstr "اسم المنطقة"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_cust_addr_of_mandoops__fld_model__mdl_regions
+#: model:ir.ui.menu,name:super_market_installments.regions_menu_id
+msgid "Regions"
+msgstr "المناطق"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.regions_action_id
+msgid "Regions Action"
+msgstr "إجراء المناطق"
+
+#. module: super_market_installments
+#: model:ir.actions.server,name:super_market_installments.relay_isalls_action_server_id
+msgid "Relay Isalls Action Server"
+msgstr "خادم إجراء ترحيل الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_remain_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r__fld_remain_qst
+msgid "Remain Qest"
+msgstr "القسط المتبقي"
+
+#. module: super_market_installments
+#: model:ir.ui.menu,name:super_market_installments.report_menu_id
+msgid "Reports"
+msgstr "التقارير"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.willing_form_id
+msgid "Return Qest"
+msgstr "مرتجع قسط"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.sells_r_qst_action_id
+msgid "Return Qest Action"
+msgstr "إجراء مرتجع القسط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_r_goods_template_id
+msgid "Return Qests Details"
+msgstr "تفاصيل مرتجعات الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops__fld_salary
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_template_id
+msgid "Salary"
+msgstr "الراتب"
+
+#. module: super_market_installments
+#: model:ir.ui.menu,name:super_market_installments.sells_qst_menu_id
+msgid "Sales Orders Qest"
+msgstr "أوامر بيع بالتقسيط"
+
+#. module: super_market_installments
+#: model:ir.ui.menu,name:super_market_installments.sells_r_qst_menu_id
+msgid "Sales Returns Qest"
+msgstr "مرتجعات مبيعات بالتقسيط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_cust_addr_of_mandoops_form_id
+msgid "Search Custpomers And Address Of Mandoops"
+msgstr "بحث عملاء وعناوين المندوبين"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.search_cust_addr_of_mandoops_action_id
+msgid "Search Custpomers And Address Of Mandoops Action"
+msgstr "إجراء بحث عملاء وعناوين المندوبين"
+
+#. module: super_market_installments
+#: model:ir.ui.menu,name:super_market_installments.search_cust_addr_of_mandoops_menu_id
+msgid "Search Custpomers And Address Of Mandoops Menu"
+msgstr "قائمة بحث عملاء وعناوين المندوبين"
+
+#. module: super_market_installments
+#: model:ir.ui.menu,name:super_market_installments.search_isalls_menu_id
+msgid "Search Installments"
+msgstr "بحث الأقساط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_isalls_form_id
+msgid "Search Isalls"
+msgstr "بحث الأقساط"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.search_isalls_action_id
+msgid "Search Isalls Action"
+msgstr "إجراء بحث الأقساط"
+
+#. module: super_market_installments
+#: model:ir.ui.menu,name:super_market_installments.search_mandoops_goods_menu_id
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_mandoops_goods_form_id
+msgid "Search Mandoops Goods"
+msgstr "بحث أصناف المندوبين"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.search_mandoops_goods_action_id
+msgid "Search Mandoops Goods Action"
+msgstr "إجراء بحث أصناف المندوبين"
+
+#. module: super_market_installments
+#: model:ir.ui.menu,name:super_market_installments.search_mandoops_sells_menu_id
+msgid "Search Mandoops Sales"
+msgstr "بحث مبيعات المندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_mandoops_sells_form_id
+msgid "Search Mandoops Sells"
+msgstr "بحث مبيعات المندوبين"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.search_mandoops_sells_action_id
+msgid "Search Mandoops Sells Action"
+msgstr "إجراء بحث مبيعات المندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_cust_addr_of_mandoops_form_id
+msgid "Select Model"
+msgstr "اختر النموذج"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_form_id
+msgid "Sell Data"
+msgstr "بيانات البيع"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__fld_is_paid
+msgid "Sell_Qest Is Paid?"
+msgstr "هل تم دفع قسط البيع؟"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_isalls__fld_sell_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_isalls__fld_sell_id
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__fld_sell_id
+msgid "Sells ID"
+msgstr "معرف البيع"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.sells_qst_action_id
+msgid "Sells Qest Action"
+msgstr "إجراء بيع بالتقسيط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_isalls_form_id
+msgid "Show Isalls"
+msgstr "عرض الأقساط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.search_cust_addr_of_mandoops_form_id
+msgid "Show Places"
+msgstr "عرض الأماكن"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "Some selected sales orders were not found"
+msgstr "بعض أوامر البيع المحددة لم يتم العثور عليها"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "Success"
+msgstr "نجاح"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid ""
+"Successfully merged %d sales orders\n"
+"%s"
+msgstr "تم دمج %d من أوامر البيع بنجاح\n%s"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_goods__fld_hafez_sum
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_goods__fld_qst_sum
+#: model:ir.model.fields.selection,name:super_market_installments.selection__mdl_goods__fld_type_hafez__sum
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_update_goods__fld_hafez_update__sum
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_update_goods__fld_qst_update__sum
+msgid "Sum"
+msgstr "مبلغ"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.isalls_list_id
+msgid "Sum Amount Isalls"
+msgstr "إجمالي مبلغ الأقساط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_qst_list_id
+msgid "Sum Paying"
+msgstr "إجمالي المدفوع"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_r_list_id
+msgid "Sum Remains Qest"
+msgstr "إجمالي القسط المتبقي"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_list_id
+msgid "Sum Salary"
+msgstr "إجمالي الرواتب"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_qst_list_id
+msgid "Sum Total Qest"
+msgstr "إجمالي قيمة الأقساط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_list_id
+msgid "Sum Totall"
+msgstr "الإجمالي الكلي"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_goods_list_id
+msgid "Sum Totall Cash For Mandoops"
+msgstr "إجمالي الكاش للمندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_list_id
+msgid "Sum Totall Hafez"
+msgstr "إجمالي الحافز"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_goods_list_id
+msgid "Sum Totall Hafez For Mandoops"
+msgstr "إجمالي حافز المندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_list_id
+msgid "Sum Totall Qest"
+msgstr "إجمالي الأقساط"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_goods_list_id
+msgid "Sum Totall Qest For Mandoops"
+msgstr "إجمالي أقساط المندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_list_id
+msgid "Sum Totall Sells"
+msgstr "إجمالي المبيعات"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_list_id
+msgid "Sum Totall Win"
+msgstr "إجمالي الربح"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_goods_list_id
+msgid "Sum Totall Win For Mandoops"
+msgstr "إجمالي ربح المندوبين"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_list_id
+msgid "Sum Totall Winning"
+msgstr "إجمالي الأرباح"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.mandoops_sells_list_id
+msgid "Sum Win Qest"
+msgstr "إجمالي ربح القسط"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_customers
+msgid "Table Of All Customers"
+msgstr "جدول جميع العملاء"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_goods
+msgid "Table Of All Goods"
+msgstr "جدول جميع الأصناف"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_mandoops
+msgid "Table Of All Mandoops"
+msgstr "جدول جميع المندوبين"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_places
+msgid "Table Of All Places"
+msgstr "جدول جميع الأماكن"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_regions
+msgid "Table Of All Regions"
+msgstr "جدول جميع المناطق"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_sells_r
+msgid "Table Of All Return Sells"
+msgstr "جدول جميع مرتجعات المبيعات"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_sells_r_goods
+msgid "Table Of All Return Sells Goods"
+msgstr "جدول جميع أصناف مرتجعات المبيعات"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_sells
+msgid "Table Of All Sells"
+msgstr "جدول جميع المبيعات"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_sells_goods
+msgid "Table Of All Sells Goods"
+msgstr "جدول جميع أصناف المبيعات"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_isalls
+msgid "Table Of Isalls"
+msgstr "جدول الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_mandoops_goods
+msgid "Table Of Mandoops Goods"
+msgstr "جدول أصناف المندوبين"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_mdl_mandoops_sells
+msgid "Table Of Mandoops Sells"
+msgstr "جدول مبيعات المندوبين"
+
+#. module: super_market_installments
+#: model:ir.model.constraint,message:super_market_installments.constraint_mdl_customers_uniqueCustomersCode
+msgid "The Code Nation Is Existe Before"
+msgstr "الرقم القومي موجود بالفعل"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/models/isalls.py:0
+#, python-format
+msgid ""
+"The Isall Number (%s , %s) \n"
+" There Is Another Isall From The Same Sell_Qest \n"
+" Must Be One Isall From Sell_Qest!"
+msgstr "القسط رقم (%s , %s) \n يوجد قسط آخر من نفس عملية البيع بالتقسيط \n يجب أن يكون قسط واحد فقط من البيع بالتقسيط!"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/models/isalls.py:0
+#, python-format
+msgid "The Isall Number (%s , %s) Is Paid , You Can Not Relay It!"
+msgstr "القسط رقم (%s , %s) مدفوع، لا يمكنك ترحيله!"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_cust_addr_of_mandoops__fld_model
+msgid "The Model"
+msgstr "النموذج"
+
+#. module: super_market_installments
+#: model:ir.model.constraint,message:super_market_installments.constraint_mdl_mandoops_UniqueMandoopsName
+msgid "The Name Of Mandoop Is Existe Before"
+msgstr "اسم المندوب موجود بالفعل"
+
+#. module: super_market_installments
+#: model:ir.model.constraint,message:super_market_installments.constraint_mdl_places_UniquePlacesName
+msgid "The Name Of Place Is Existe Before"
+msgstr "اسم المكان موجود بالفعل"
+
+#. module: super_market_installments
+#: model:ir.model.constraint,message:super_market_installments.constraint_mdl_regions_UniqueRegionsName
+msgid "The Name Of Region Is Existe Before"
+msgstr "اسم المنطقة موجود بالفعل"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/update_isalls.py:0
+#, python-format
+msgid "The Reg_Date Is Lower Than The Date Of sell"
+msgstr "تاريخ التسجيل أقل من تاريخ البيع"
+
+#. module: super_market_installments
+#: model_terms:ir.actions.act_window,help:super_market_installments.isalls_action_id
+msgid "There Is Not a Installment"
+msgstr "لا يوجد قسط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_goods__fld_date_t
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_search_mandoops_sells__fld_date_t
+msgid "To"
+msgstr "إلى"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_isalls__fld_to
+msgid "To Isall Number"
+msgstr "إلى رقم القسط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_total_sell_mandoop
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_total
+msgid "Total Cash"
+msgstr "إجمالي الكاش"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_total_hafez_mandoop
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_total_hafez
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_total_hafez
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r__fld_total_hafez
+msgid "Total Hafez"
+msgstr "إجمالي الحافز"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_total_qst_mandoop
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_total_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_total_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r__fld_total_qst
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_r_list_id
+msgid "Total Qest"
+msgstr "إجمالي القسط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_total_sells
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_total_sells
+msgid "Total Sells"
+msgstr "إجمالي المبيعات"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_total_winning
+msgid "Total Winning"
+msgstr "إجمالي الأرباح"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_willing__fld_totals_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_willing__fld_totals_qst_r
+msgid "Totals"
+msgstr "الإجماليات"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_unit_id
+msgid "Unit"
+msgstr "الوحدة"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.update_isalls_form_id
+msgid "Update"
+msgstr "تحديث"
+
+#. module: super_market_installments
+#: model_terms:ir.ui.view,arch_db:super_market_installments.sells_form_id
+msgid "Update Iaslls"
+msgstr "تحديث الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_goods__fld_hafez_update
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_update_goods__fld_qst_update
+msgid "Update Type"
+msgstr "نوع التحديث"
+
+#. module: super_market_installments
+#: model:ir.actions.act_window,name:super_market_installments.update_isalls_action_id
+msgid "Update_Isalls_Action"
+msgstr "إجراء_تحديث_الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_goods__fld_date_selc__week
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_sells__fld_date_selc__week
+msgid "Week"
+msgstr "أسبوع"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_goods__fld_win_mandoop
+msgid "Winning"
+msgstr "الربح"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_win
+msgid "Winning Cash"
+msgstr "ربح الكاش"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_mandoops_sells__fld_win_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells__fld_win_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_goods__fld_win_qst
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r_goods__fld_win_qst
+msgid "Winning Qest"
+msgstr "ربح القسط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_mdl_sells_r__fld_win_qst
+msgid "Winning Return Qest"
+msgstr "ربح مرتجع القسط"
+
+#. module: super_market_installments
+#: model:ir.model.fields,field_description:super_market_installments.field_wzrd_willing__fld_wins_qst
+msgid "Wins"
+msgstr "الأرباح"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_convert_sells
+msgid "Wizard Of Converting Sells"
+msgstr "معالج تحويل المبيعات"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_received_isalls
+msgid "Wizard Of Received Isalls"
+msgstr "معالج استلام الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_search_cust_addr_of_mandoops
+msgid "Wizard Of Search Custpomers And Address Of Mandoops"
+msgstr "معالج بحث عملاء وعناوين المندوبين"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_search_isalls
+msgid "Wizard Of Search Isalls"
+msgstr "معالج بحث الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_search_mandoops_goods
+msgid "Wizard Of Search Mandoops Goods"
+msgstr "معالج بحث أصناف المندوبين"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_search_mandoops_sells
+msgid "Wizard Of Search Mandoops Sells"
+msgstr "معالج بحث مبيعات المندوبين"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_update_goods
+msgid "Wizard Of Update goods"
+msgstr "معالج تحديث الأصناف"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_update_isalls
+msgid "Wizard Of Updating Isalls"
+msgstr "معالج تحديث الأقساط"
+
+#. module: super_market_installments
+#: model:ir.model,name:super_market_installments.model_wzrd_willing
+msgid "Wizard Of willing"
+msgstr "معالج الموافقة"
+
+#. module: super_market_installments
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_goods__fld_date_selc__year
+#: model:ir.model.fields.selection,name:super_market_installments.selection__wzrd_search_mandoops_sells__fld_date_selc__year
+msgid "Year"
+msgstr "سنة"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_z.py:0
+#, python-format
+msgid "You Must Merge More Than One Sells!"
+msgstr "يجب عليك دمج أكثر من عملية بيع واحدة!"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_r.py:0
+#, python-format
+msgid "You Must Mergine More Than One Return Sells!"
+msgstr "يجب عليك دمج أكثر من مرتجع بيع واحد!"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells.py:0
+#, python-format
+msgid "You Must Mergine More Than One Sells!"
+msgstr "يجب عليك دمج أكثر من عملية بيع واحدة!"
+
+#. module: super_market_installments
+#: code:addons/super_market_installments/wizards/merg_sells/merg_sells_complete.py:0
+#, python-format
+msgid "You must select more than one sales order to merge"
+msgstr "يجب عليك تحديد أكثر من أمر بيع واحد للدمج"

@@ -1,0 +1,95 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Real Estate Partnership Management',
+    'version': '15.0.2.0.0',
+    'category': 'Real Estate',
+    'summary': 'Comprehensive real estate partnership management system',
+    'description': """
+Real Estate Partnership Management Module
+========================================
+
+This module provides a complete solution for managing real estate partnerships:
+
+Features:
+* Partner management with balance tracking
+* Property management with detailed specifications
+* Investment tracking per property
+* Expense management and distribution
+* Transaction management (deposits/withdrawals)
+* Property sale and profit distribution
+* Daily cashbox management with opening/closing balances
+* Manual transaction entry and reporting
+* Professional UI with organized views and menus
+
+The module is built from scratch without dependencies on standard Odoo modules.
+    """,
+    'author': 'Mohamed Eid',
+    'website': 'https://www.example.com',
+    'license': 'LGPL-3',
+    'depends': [
+        'base',
+        'web','mail',
+    ],
+    'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'data/expense_category_data.xml',
+        'data/property_type_data.xml',
+        'data/sequence_data.xml',
+
+        'wizards/views/payment_filter_wizard_views.xml',
+        'wizards/views/partner_unified_ledger_views.xml',
+        'wizards/views/purchase_payment_receipts_wizard_views.xml',
+        'wizards/views/management_fee_summary_views.xml',
+        'wizards/views/company_financial_summary_views.xml',
+
+        'views/partner_views.xml',
+        'views/property_views.xml',
+        'views/investment_views.xml',
+        'views/investment_payment_views.xml',
+        'views/expense_views.xml',
+        'views/expense_category_views.xml',
+        'views/expense_distribution_views.xml',
+        'views/transaction_views.xml',
+        'views/sale_views.xml',
+        'views/contact_views.xml',
+        'views/city_views.xml',
+        'views/state_views.xml',
+        'views/partner_exit_views.xml',
+        'views/partner_exit_exiting_views.xml',
+        'views/partner_exit_replacement_views.xml',
+        'views/company_settings_views.xml',
+        'views/daily_cashbox_views.xml',
+        'views/daily_cashbox_lines_views.xml',
+        'views/payment_installment_views.xml',
+
+        'reports/report_partner_unified_ledger.xml',
+        'reports/report_property_details.xml',
+        'reports/report_property_list.xml',
+        'reports/report_partner_details.xml',
+        'reports/report_partner_list.xml',
+        'reports/report_transaction_list.xml',
+        'reports/report_property_expense_list.xml',
+        'reports/report_company_expense_list.xml',
+        'reports/report_company_expense_details.xml',
+        'reports/report_expense_distribution_list.xml',
+        'reports/report_payment_installment_list.xml',
+        'reports/report_investment_details.xml',
+        'reports/report_investment_list.xml',
+        'reports/report_investment_payment_list.xml',
+        'reports/report_partner_exit_details.xml',
+        'reports/report_partner_exit_list.xml',
+        'reports/report_management_fee_summary_list.xml',
+        'reports/report_company_financial_summary.xml',
+        'reports/report_daily_cashbox_details.xml',
+        'reports/report_daily_cashbox_list.xml',
+        'reports/report_daily_cashbox_transaction_list.xml',
+        'reports/report_sale_details.xml',
+        'reports/report_sale_list.xml',
+
+        'views/menu.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'sequence': 100,
+}

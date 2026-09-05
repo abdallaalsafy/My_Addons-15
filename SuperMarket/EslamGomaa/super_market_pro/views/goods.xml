@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<!-- Search View -->
+	<record model="ir.ui.view" id="goods_search_id">
+		<field name="name">Goods_Search</field>
+		<field name="model">mdl_goods</field>
+		<field name="arch" type="xml">
+			<search string="Search Goods">
+				<!-- Search Fields -->
+				<field name="name" string="Goods Name" filter_domain="[('name','ilike',self)]"/>
+				<field name="fld_category_id"/>
+				<field name="fld_unit_id"/>
+				<field name="fld_description"/>
+				<!-- Filters -->
+				<separator/>
+				<filter string="Active" name="active" domain="[('active','=',True)]"/>
+				<filter string="Archived" name="archived" domain="[('active','=',False)]"/>
+				<!-- Group By -->
+				<group expand="0" string="Group By">
+					<filter string="Category" name="group_category" context="{'group_by':'fld_category_id'}"/>
+					<filter string="Unit" name="group_unit" context="{'group_by':'fld_unit_id'}"/>
+				</group>
+			</search>
+		</field>
+	</record>
+
+	<!-- Tree View -->
+	<record model="ir.ui.view" id="goods_list_id">
+		<field name="name">Goods_List</field>
+		<field name="model">mdl_goods</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1'>
+				<field name="name"/>
+				<field name="fld_category_id"/>
+				<field name="fld_unit_id"/>
+				<field name="fld_price_buy" widget="monetary" groups="super_market_pro.super_market_manager_group"/>
+				<field name="fld_price_sell" widget="monetary"/>
+				<field name="fld_alarms"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Form View -->
+	<record model="ir.ui.view" id="goods_form_id">
+		<field name="name">Goods_Form</field>
+		<field name="model">mdl_goods</field>
+		<field name="arch" type="xml">
+			<form string="Goods">
+				<sheet>
+					<!-- Image and Basic Info -->
+					<field name="fld_img" widget="image" class="oe_avatar"/>
+					
+					<div class="oe_title">
+						<h1><field name="name" placeholder="Goods Name"/></h1>
+					</div>
+					
+					<group name="info">
+						<group name="basic_info" string="Basic Info">
+							<field name="fld_category_id" options="{'no_create': True}"/>
+							<field name="fld_unit_id" options="{'no_create': True}"/>
+							<field name="fld_alarms"/>
+						</group>
+						<group name="pricing" string="Pricing" >
+							<field name="fld_price_buy" widget="monetary" groups="super_market_pro.super_market_manager_group"/>
+							<field name="fld_price_sell" widget="monetary"/>
+						</group>
+					</group>
+					
+					<notebook>
+						<page string="Description" name="description">
+							<group>
+								<field name="fld_description" placeholder="Enter goods description..."/>
+								<field name="fld_notes" placeholder="Additional notes..."/>
+							</group>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- Action Window -->
+	<record model="ir.actions.act_window" id="goods_action_id">
+        <field name="name">Goods</field>
+        <field name="res_model">mdl_goods</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create your first goods item
+			</p>
+			<p>
+				You must create goods items before you can manage inventory, purchases, and sales.
+			</p>
+		</field>
+    </record>
+</odoo>

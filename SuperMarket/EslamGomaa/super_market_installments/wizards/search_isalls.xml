@@ -1,0 +1,49 @@
+<odoo>
+    <record model="ir.ui.view" id="search_isalls_form_id">
+        <field name="name">Search Isalls Form</field>
+        <field name="model">wzrd_search_isalls</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Search Isalls">
+                <group>
+                    <group>
+                        <field name="fld_month" />
+                        <field name="fld_year" />
+                        <field name="fld_date_selct" />
+                        <field name="fld_frst_reg_isall" widget="boolean_toggle" />
+                    </group>
+                    <group>
+                        <field name="fld_sell_id" options="{'no_create':True}"/>
+                        <field name="fld_is_paid" />
+                        <field name="fld_is_printed" />
+                        <field name="fld_active" />
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="fld_mandoop_id" options="{'no_create':True}"/>
+                        <field name="fld_collector_id" options="{'no_create':True}"/>
+                        <field name="fld_collector_isall_id" options="{'no_create':True}"/>
+                    </group>
+                    <group>
+                        <field name="fld_customer_id" options="{'no_create':True}"/>
+                        <field name="fld_phone"/>
+                        <field name="fld_region_id" options="{'no_create':True}"/>
+                        <field name="fld_place_id" options="{'no_create':True}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="fnc_get_domain" string="Show Isalls" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="search_isalls_action_id">
+		<field name="name">Search Isalls Action</field>
+		<field name="res_model">wzrd_search_isalls</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+	</record>
+</odoo>

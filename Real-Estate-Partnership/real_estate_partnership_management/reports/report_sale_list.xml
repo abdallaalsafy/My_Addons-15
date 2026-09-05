@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- QWeb report template for Sale List -->
+        <template id="report_sale_list">
+            <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .sale-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .sale-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .sale-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .sale-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .sale-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Sales List Report</h2>
+
+                    <table class="sale-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">No.</th>
+                                <th>Notes</th>
+                                <th>Payment Reference</th>
+                                <th>Payment Method</th>
+                                <th>Net Profit</th>
+                                <th>Management Fee Amount</th>
+                                <th>Management Fee %</th>
+                                <th>Total Profit</th>
+                                <th>Total Cost</th>
+                                <th>Remaining Balance</th>
+                                <th>Down Payment</th>
+                                <th>Sale Price</th>
+                                <th>Sale Date</th>
+                                <th>Buyer Contact</th>
+                                <th>Property</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="docs">
+                                <t t-foreach="docs" t-as="sale">
+                                    <tr>
+                                        <td><span t-esc="sale_index + 1"/></td>
+                                        <td><span t-field="sale.notes"/></td>
+                                        <td><span t-field="sale.payment_reference"/></td>
+                                        <td><span t-field="sale.payment_method"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.net_profit)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.management_fee_amount)"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(sale.management_fee_percentage)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.total_profit)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.total_cost)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.remaining_balance)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.down_payment)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(sale.sale_price)"/></td>
+                                        <td><span t-field="sale.sale_date"/></td>
+                                        <td><span t-field="sale.buyer_contact_id.name"/></td>
+                                        <td><span t-field="sale.property_id.name"/></td>
+                                        <td><span t-field="sale.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not docs">
+                                <tr>
+                                    <td colspan="16" class="text-center">No sales found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_sale_list_action" model="ir.actions.report">
+            <field name="name">Sales List</field>
+            <field name="model">real.estate.property.sale</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_sale_list</field>
+            <field name="report_file">real_estate_partnership_management.report_sale_list</field>
+            <field name="binding_model_id" ref="model_real_estate_property_sale"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_landscape"/>
+        </record>
+    </data>
+</odoo>

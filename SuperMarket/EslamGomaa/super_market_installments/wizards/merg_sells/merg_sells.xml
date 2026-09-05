@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="merg_sells_form_id">
+		<field name="name">Merg_Sells_Form</field>
+		<field name="model">wzrd_merg_sells</field>
+		<field name="inherit_id" ref="super_market_pro.merg_sells_form_id"/>
+		<field name="arch" type="xml">
+			<xpath expr="//p[4]" position="after">
+				<field name="fld_is_qst" invisible="1"/>
+				<p attrs="{'invisible':[('fld_is_qst','=',False)]}">(4) It Will Take The Greater Num Isalls</p>
+				<p attrs="{'invisible':[('fld_is_qst','=',False)]}">(5) Old Isalls Will Be Lost And There Data (Paid/Printed)</p>
+			</xpath>
+		</field>
+	</record>
+</odoo>

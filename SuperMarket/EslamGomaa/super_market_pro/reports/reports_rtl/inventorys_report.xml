@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+<!--ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc-->
+        <template id="inventorys_template_id">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+            <t t-if="not company">
+                <!-- Multicompany -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+<!--            ==============================================- -->
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <table>
+                                <tr>
+                                    <td ><div style="width:150px; height:150px;" t-field = "company.logo" t-options = "{'widget':'image'}"/></td>
+                                    <td class="text-right" style="width:700px;">
+                                        <span t-field="company.name"/>
+                                        <br/>
+                                        <span t-field="company.street"/>
+                                        <span t-if="company.street and company.street2">-/-</span>
+                                        <span t-field="company.street2"/>
+                                        <br/>
+                                        <span t-field="company.mobile"/>
+                                        <span t-if="company.mobile and company.phone">-/-</span>
+                                        <span t-field="company.phone"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><p t-out="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d---%H:%M:%S')"/></td>
+                                    <td class="text-center" style="height:35px;font-size:20px;font-weight:bold;">
+                                        <h3>Inventorys</h3>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td class="text-right" style=" vertical-align:middle;">
+                                        <div style="font-size:20px;width:300px; height:35px; padding:3px;overflow:hidden;">
+                                            <span t-field="o.fld_date"/>
+                                        </div>
+                                    </td>
+                                    <td class="text-right" style=" vertical-align:middle;">
+                                        <div style="font-size:20px;width:100px; height:35px; padding:3px;overflow:hidden;">
+                                            <span>Date:</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-right" style=" vertical-align:middle;">
+                                        <div style="font-size:20px;width:450px; height:35px; padding:3px;overflow:hidden;">
+                                            <span t-field="o.name"/>
+                                        </div>
+                                    </td>
+                                    <td class="text-right" style=" vertical-align:middle;">
+                                        <div style="font-size:20px;width:100px; height:35px; padding:3px;overflow:hidden;">
+                                            <span>Code:</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="vertical-align:middle;">
+                                        <div style="text-align:center; font-size:20px;width:800px; height:35px; padding:3px;overflow:hidden;">
+                                            <span>Store:</span>
+                                            <span t-field="o.fld_store_id"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <thead>
+                                    <tr class="text-center" style="background-color:rgb(218,218,218);">
+                                        <th style="border:1px solid black;vertical-align:middle;"><span>Count Existe</span></th>
+                                        <th style="border:1px solid black;vertical-align:middle;"><span>Unit</span></th>
+                                        <th style="border:1px solid black;vertical-align:middle;"><span>Count</span></th>
+                                        <th style="border:1px solid black;vertical-align:middle;"><span>Goods</span></th>
+                                        <th style="border:1px solid black;vertical-align:middle;"><span>M</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="lns" t-value="o.fld_inventory_goods_ids"/>
+                                    <t t-set="x" t-value="0"/>
+                                    <t t-foreach="lns" t-as="ln">
+                                        <t t-set = "x"  t-value = "x+1"/>
+                                        <tr>
+                                            <td style="border:1px solid black;">
+                                                <div style="width:150px; height:35px;">
+                                                    <span> </span>
+                                                </div>
+                                            </td>
+                                            <td style="border:1px solid black; vertical-align:middle;">
+                                                <div style="text-align:center; font-size:16px;width:100px; height:35px; padding:3px;overflow:hidden;">
+                                                    <span t-field="ln.fld_unit_id"/>
+                                                </div>
+                                            </td>
+                                            <td style="border:1px solid black; vertical-align:middle;">
+                                                <div style="text-align:center; font-size:16px;width:200px; height:35px; padding:3px;overflow:hidden;">
+                                                    <span t-field="ln.fld_count"/>
+                                                </div>
+                                            </td>
+                                            <td class="text-right" style="border:1px solid black; vertical-align:middle;">
+                                                <div style="font-size:16px;width:400px; height:35px; padding:3px;overflow:hidden;">
+                                                    <span t-field="ln.fld_goods_id"/>
+                                                </div>
+                                            </td>
+                                            <td style="border:1px solid black; vertical-align:middle;background-color:rgb(218,218,218);">
+                                                <div style="text-align:center; font-size:14px; width:50px; height:35px; overflow:hidden;">
+                                                    <p t-esc = "x"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

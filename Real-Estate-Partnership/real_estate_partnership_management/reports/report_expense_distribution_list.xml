@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- QWeb report template for Expense Distribution List -->
+        <template id="report_expense_distribution_list">
+            <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .distribution-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .distribution-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .distribution-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .distribution-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .distribution-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Expense Distribution List Report</h2>
+
+                    <table class="distribution-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 5%;">No.</th>
+                                <th>Distribution Date</th>
+                                <th>Status</th>
+                                <th>Calculation Basis</th>
+                                <th>Base Amount</th>
+                                <th>Share Percentage</th>
+                                <th>Partner Share</th>
+                                <th>Distribution Method</th>
+                                <th>Partner</th>
+                                <th>Expense</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="docs">
+                                <t t-foreach="docs" t-as="dist">
+                                    <tr>
+                                        <td><span t-esc="dist_index + 1"/></td>
+                                        <td><span t-field="dist.distribution_date"/></td>
+                                        <td><span t-field="dist.status"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(dist.calculation_basis)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(dist.base_amount)"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(dist.share_percentage * 100)"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(dist.partner_share)"/></td>
+                                        <td><span t-field="dist.distribution_method"/></td>
+                                        <td><span t-field="dist.partner_id.name"/></td>
+                                        <td><span t-field="dist.expense_id.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not docs">
+                                <tr>
+                                    <td colspan="10" class="text-center">No expense distributions found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_expense_distribution_list_action" model="ir.actions.report">
+            <field name="name">Expense Distribution List</field>
+            <field name="model">real.estate.expense.distribution</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_expense_distribution_list</field>
+            <field name="report_file">real_estate_partnership_management.report_expense_distribution_list</field>
+            <field name="binding_model_id" ref="model_real_estate_expense_distribution"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_landscape"/>
+        </record>
+    </data>
+</odoo>

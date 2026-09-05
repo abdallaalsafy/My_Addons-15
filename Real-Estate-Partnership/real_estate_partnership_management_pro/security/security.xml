@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Real Estate Partnership User Group -->
+        <record id="group_real_estate_user" model="res.groups">
+            <field name="name">Real Estate User</field>
+            <field name="category_id" ref="base.module_category_real_estate"/>
+            <field name="comment">Real Estate Partnership user with access to basic operations.</field>
+        </record>
+
+        <!-- Real Estate Partnership Manager Group -->
+        <record id="group_real_estate_manager" model="res.groups">
+            <field name="name">Real Estate Manager</field>
+            <field name="category_id" ref="base.module_category_real_estate"/>
+            <field name="comment">Real Estate Partnership manager with full access to all operations.</field>
+            <field name="implied_ids" eval="[(4, ref('group_real_estate_user'))]"/>
+        </record>
+
+        <!-- Add admin to manager group automatically -->
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('group_real_estate_manager'))]"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,25 @@
+<odoo>
+  <data>
+      <record id="partner_sqnce_id" model="ir.sequence">
+        <field name="name">Partner Sequence</field>
+        <field name="code">partner_sqnce</field>
+          <field name="padding">1</field>
+        <field name="number_increment"    eval="1"/>
+    </record>
+
+    <record id="view_partner_sequence_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_type']"     position="before">
+                <div><h1><field name="fld_seq" readonly="1"/></h1></div>
+            </xpath>
+        </field>
+    </record>
+
+
+
+  </data>
+</odoo>
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- City Tree View -->
+        <record id="view_real_estate_city_tree" model="ir.ui.view">
+            <field name="name">real.estate.city.tree</field>
+            <field name="model">real.estate.city</field>
+            <field name="arch" type="xml">
+                <tree string="Cities">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- City Form View -->
+        <record id="view_real_estate_city_form" model="ir.ui.view">
+            <field name="name">real.estate.city.form</field>
+            <field name="model">real.estate.city</field>
+            <field name="arch" type="xml">
+                <form string="City">
+                    <sheet>
+                        <group>
+                            <group name="city_info">
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="state_id"/>
+                                <field name="country_id"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description" placeholder="Add city description here..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- City Search View -->
+        <record id="view_real_estate_city_search" model="ir.ui.view">
+            <field name="name">real.estate.city.search</field>
+            <field name="model">real.estate.city</field>
+            <field name="arch" type="xml">
+                <search string="Cities">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                    <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="State" name="group_state" context="{'group_by': 'state_id'}"/>
+                        <filter string="Country" name="group_country" context="{'group_by': 'country_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- City Action -->
+        <record id="action_real_estate_city" model="ir.actions.act_window">
+            <field name="name">Cities</field>
+            <field name="res_model">real.estate.city</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first city
+                </p>
+                <p>
+                    Cities are used to categorize properties by location.
+                    Each city can belong to a state/province and country.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

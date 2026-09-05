@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record model="ir.ui.view" id="search_buys_goods_search_id">
+        <field name="name">Search Purchase Goods</field>
+        <field name="model">mdl_buys_goods</field>
+        <field name="arch" type="xml">
+            <search string="Search Purchase Goods">
+                <!-- Search Fields -->
+                <field name="fld_goods_id" filter_domain="[('fld_goods_id.name','ilike',self)]"/>
+                <field name="fld_category_id"/>
+                <field name="fld_unit_id"/>
+                <field name="fld_vendor_id"/>
+                <field name="fld_buys_id"/>
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Goods" name="group_goods" context="{'group_by':'fld_goods_id'}"/>
+                    <filter string="Category" name="group_category" context="{'group_by':'fld_category_id'}"/>
+                    <filter string="Purchase" name="group_purchase" context="{'group_by':'fld_buys_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record model="ir.ui.view" id="buys_goods_list_id">
+        <field name="name">Purchase Goods List</field>
+        <field name="model">mdl_buys_goods</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Goods" decoration-bf="1">
+                <field name="fld_goods_id"/>
+                <field name="fld_category_id"/>
+                <field name="fld_count"/>
+                <field name="fld_unit_id"/>
+                <field name="fld_price_buy" widget="monetary" groups="super_market_pro.super_market_manager_group"/>
+                <field name="fld_clc_buy" widget="monetary" groups="super_market_pro.super_market_manager_group"/>
+                <field name="fld_win" widget="monetary" optional="hide" groups="super_market_pro.super_market_manager_group"/>
+                <field name="fld_store_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="search_buys_goods_list_id">
+		<field name="name">Search_Buys_Goods_List</field>
+		<field name="model">mdl_buys_goods</field>
+		<field name="arch" type="xml">
+			<tree decoration-bf='1' create="0" delete="0" import="0">
+                <field name="fld_date"/>
+                <field name="fld_buys_id"/>
+                <field name="fld_vendor_id"/>
+				<field name="fld_goods_id"/>
+				<field name="fld_count"/>
+				<field name="fld_unit_id"/>
+				<field name="fld_price_buy" groups="super_market_pro.super_market_manager_group"/>
+				<field name="fld_clc_buy" groups="super_market_pro.super_market_manager_group" sum="Sum Totall Clc_Buy"/>
+				<field name="fld_win" optional = "hide" groups="super_market_pro.super_market_manager_group" sum="Sum Totall win"/>
+				<field name="fld_store_id"/>
+			</tree>
+		</field>
+	</record>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="buys_goods_form_id">
+        <field name="name">Purchase Goods Form</field>
+        <field name="model">mdl_buys_goods</field>
+        <field name="arch" type="xml">
+            <form string="Purchase Goods">
+                <sheet>
+                    <!-- Hidden computed fields -->
+                    <field name="fld_clc_buy" invisible="1"/>
+                    <field name="fld_clc_sell" invisible="1"/>
+                    <field name="fld_unit_catg_id" invisible="1"/>
+                    <field name="fld_count_ref_unit" invisible="1"/>
+                    <field name="fld_win" invisible="1"/>
+                    
+                    <!-- Basic Information -->
+                    <group>
+                        <group name="basic_info">
+                            <field name="fld_category_id" options="{'no_create': True}"/>
+                            <field name="fld_goods_id" options="{'no_quick_create': True}"/>
+                        </group>
+                        <group name="quantity_info">
+                            <field name="fld_count"  placeholder="Enter quantity..."/>
+                            <field name="fld_unit_id"  options="{'no_create':True, 'no_open':True}"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Pricing Information -->
+                    <group>
+                        <group name="pricing_info">
+                            <field name="fld_price_buy" widget="monetary" placeholder="0.00" groups="super_market_pro.super_market_manager_group"/>
+                            <field name="fld_price_sell" widget="monetary" placeholder="0.00" force_save="1"/>
+                        </group>
+                        <group name="Store Info">
+                            <field name="fld_store_id"/>
+                            <field name="fld_count_store" widget="monetary"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

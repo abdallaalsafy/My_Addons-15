@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="merg_buys_r_form_id">
+		<field name="name">Merg_Buys_r_Form</field>
+		<field name="model">wzrd_merg_buys_r</field>
+		<field name="arch" type="xml">
+			<form string="Merge Purchase Returns">
+                <div class="alert alert-info">
+                    <strong><p>** Read Notes First **</p></strong>
+                    <p>(1) If There Is More Than One Vendor, Will Take First One</p>
+                    <p>(2) It Will Take Data Of The Oldest Return Buys With Date</p>
+                    <p>(3) After Merging Will Delete Other Return Buys</p>
+                </div>
+                <group name="merge_options" string="Merge Options">
+                    <field name="merge_date"/>
+                    <field name="merge_notes" placeholder="Optional notes about this merge operation..."/>
+                </group>
+				<footer>
+					<button name='fnc_merging_buys_r' string='Merge Returns' type='object' class="btn-primary"/>
+					<button special="cancel" string="Cancel" class="btn-secondary"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="merg_buys_r_action_id">
+		<field name="name">Merg_Buys_r_Action</field>
+		<field name="res_model">wzrd_merg_buys_r</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_id" ref="merg_buys_r_form_id"/>
+		<field name="binding_model_id" ref="model_mdl_buys_r"/>
+		<field name="binding_view_types">list</field>
+	</record>
+</odoo>

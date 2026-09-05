@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb report template for Company Expense Details -->
+        <template id="report_company_expense_details">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-row { background-color: #f0f0f0; border: 1px solid #bbb; padding: 8px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .info-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .info-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .info-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .info-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .section-title {
+                        background-color: #2d5016;
+                        color: white;
+                        padding: 10px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Company Expense Details Report</h2>
+                    <h3 style="text-align: center;"><span t-field="doc.name"/></h3>
+
+                    <!-- Basic Information -->
+                    <div class="section-title">Basic Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Code:</span> <span t-field="doc.code"/></td>
+                                <td><span class="header-label">Description:</span> <span t-field="doc.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Expense Type:</span> <span t-field="doc.expense_type"/></td>
+                                <td><span class="header-label">Status:</span> <span t-field="doc.status"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Expense Date:</span> <span t-field="doc.expense_date"/></td>
+                                <td><span class="header-label">Category:</span> <span t-field="doc.category_id.name"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Financial Information -->
+                    <div class="section-title">Financial Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Amount:</span> <span t-esc="'{:,.2f}'.format(doc.amount)"/></td>
+                                <td><span class="header-label">Distribution Method:</span> <span t-field="doc.distribution_method"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">All Partners:</span> <span t-field="doc.all_partners"/></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Payment Information -->
+                    <div class="section-title">Payment Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Paid To:</span> <span t-field="doc.paid_to_contact_id.name"/></td>
+                                <td><span class="header-label">Payment Method:</span> <span t-field="doc.payment_method"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><span class="header-label">Payment Reference:</span> <span t-field="doc.payment_reference"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Partners -->
+                    <div class="section-title">Split Among Partners</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Partner Share</th>
+                                <th>Partner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.partner_ids">
+                                <t t-foreach="doc.partner_ids" t-as="partner">
+                                    <tr>
+                                        <td><span t-field="partner.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.partner_ids">
+                                <tr>
+                                    <td colspan="2" class="text-center">No partners selected.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Partner Distributions -->
+                    <div class="section-title">Partner Distributions</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Partner Share</th>
+                                <th>Percentage</th>
+                                <th>Partner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.distribution_ids">
+                                <t t-foreach="doc.distribution_ids" t-as="dist">
+                                    <tr>
+                                        <td><span t-esc="'{:,.2f}'.format(dist.partner_share)"/></td>
+                                        <td><span t-esc="'{:.2f}%'.format(dist.share_percentage * 100)"/></td>
+                                        <td><span t-field="dist.partner_id.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.distribution_ids">
+                                <tr>
+                                    <td colspan="3" class="text-center">No distributions found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Notes -->
+                    <div class="section-title">Notes</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span t-field="doc.notes"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_company_expense_details_action" model="ir.actions.report">
+            <field name="name">Company Expense Details</field>
+            <field name="model">real.estate.expense</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_company_expense_details</field>
+            <field name="report_file">real_estate_partnership_management.report_company_expense_details</field>
+            <field name="binding_model_id" ref="model_real_estate_expense"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

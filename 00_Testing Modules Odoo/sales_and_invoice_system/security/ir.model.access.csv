@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+model_installment_line_id,model_installment_line_name,model_installment_line,base.group_user,1,1,1,1
+model_res_region_id,model_res_region_name,model_res_region,base.group_user,1,1,1,1
+model_account_move_id,model_account_move_name,model_account_move,base.group_user,1,1,1,1
+model_sale_order_id,model_sale_order_name,model_sale_order,base.group_user,1,1,1,1

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+          <!-- Property Search View -->
+        <record id="view_real_estate_property_search" model="ir.ui.view">
+            <field name="name">real.estate.property.search</field>
+            <field name="model">real.estate.property</field>
+            <field name="arch" type="xml">
+                <search string="Properties">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="property_type"/>
+                    <field name="address"/>
+                    <field name="city_id"/>
+                    <field name="contact_id"/>
+                    <field name="deal_id"/>
+                    <field name="area_unit"/>
+                    <field name="total_area"/>
+                    <separator/>
+                    <filter string="Square Meter" name="meter" domain="[('area_unit', '=', 'meter')]"/>
+                    <filter string="Qirat" name="qirat" domain="[('area_unit', '=', 'qirat')]"/>
+                    <separator/>
+                    <filter string="House" name="house" domain="[('property_type', '=', 'house')]"/>
+                    <filter string="Apartment" name="apartment" domain="[('property_type', '=', 'apartment')]"/>
+                    <filter string="Land" name="land" domain="[('property_type', '=', 'land')]"/>
+                    <filter string="Building" name="building" domain="[('property_type', '=', 'building')]"/>
+                    <filter string="Villa" name="villa" domain="[('property_type', '=', 'villa')]"/>
+                    <filter string="Shop" name="shop" domain="[('property_type', '=', 'shop')]"/>
+                    <separator/>
+                    <filter string="Purchase Price Range" name="price_range" domain="[]"/>
+                    <filter string="Sold This Month" name="sold_this_month" domain="[('contract_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Recently Purchased" name="recently_purchased" domain="[('contract_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Property Type" name="group_type" context="{'group_by': 'property_type'}"/>
+                        <filter string="Purchase Date" name="group_purchase_date" context="{'group_by': 'contract_date'}"/>
+                        <filter string="Sale Date" name="group_sale_date" context="{'group_by': 'contract_date'}"/>
+                        <filter string="City" name="group_city" context="{'group_by': 'city_id'}"/>
+                        <filter string="Contacts" name="group_seller" context="{'group_by': 'contact_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Property Tree View -->
+        <record id="view_real_estate_property_tree" model="ir.ui.view">
+            <field name="name">real.estate.property.tree</field>
+            <field name="model">real.estate.property</field>
+            <field name="arch" type="xml">
+                <tree string="Properties">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="deal_id" optional="show"/>
+                    <field name="property_type"/>
+                    <field name="area_unit" optional="hide"/>
+                    <field name="total_area" optional="show"/>
+                    <field name="address" optional="hide"/>
+                    <field name="contact_id" optional="hide"/>
+                    <field name="contract_price" widget="monetary" sum="Total Purchase Price"/>
+                    <field name="down_payment" widget="monetary" sum="Total Down Payment" optional="show"/>
+                    <field name="total_cost" widget="monetary" sum="Total Cost"/>
+                    <field name="current_value" widget="monetary" optional="hide"/>
+                    <field name="contract_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Management Fee Summary Tree View -->
+        <record id="view_management_fee_summary_tree" model="ir.ui.view">
+            <field name="name">real.estate.management.fee.summary.tree</field>
+            <field name="model">real.estate.property</field>
+            <field name="arch" type="xml">
+                <tree string="Management Fees Summary">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="contract_date"/>
+                    <field name="deal_id" optional="show"/>
+                    <field name="contact_id" optional="hide"/>
+                    <field name="total_profit" widget="monetary" sum="Total Profit"/>
+                    <field name="management_fee_percentage"/>
+                    <field name="management_fee_amount" widget="monetary" sum="Total Management Fees"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Property Form View -->
+        <record id="view_real_estate_property_form" model="ir.ui.view">
+            <field name="name">real.estate.property.form</field>
+            <field name="model">real.estate.property</field>
+            <field name="arch" type="xml">
+                <form string="Property">
+                    <field name="is_purchased" invisible="1"/>
+                    <field name="deal_status" invisible="1"/>
+                    <header>
+                        <button name="action_create_expense" type="object" 
+                                string="Create Expense" class="btn-info"
+                                attrs="{'invisible':[('deal_status','=','closed')]}"/>
+                        <button name="action_create_payment_installment" type="object"
+                                string="Create Installment" class="btn-secondary"
+                                attrs="{'invisible':['|','|',('deal_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
+                        <button name="action_generate_purchase_payment_receipts" type="object"
+                                string="Generate Receipts" class="btn-primary"
+                                attrs="{'invisible':['|','|',('deal_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
+                        <button name="action_confirmed_sold_contract" type="object"
+                                string="Confirmed" class="btn-primary"
+                                attrs="{'invisible':[('status','=','confirmed')]}"/>
+                        <button name="action_draft_sold_contract" type="object"
+                                string="Mark As Draft" class="btn-secondary"
+                                attrs="{'invisible':['|','|',('deal_status','=','closed'),('status','=','draft'),('is_purchased','=',True)]}"/>
+                        <field name="status" widget="statusbar" 
+                               statusbar_visible="confirmed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_expenses" type="object"
+                                    class="oe_stat_button" icon="fa-file-text-o"
+                                    attrs="{'invisible': [('expense_count', '=', 0)]}">
+                                <field name="expense_count" widget="statinfo" string="Expenses"/>
+                            </button>
+                            <button name="action_view_payments_Installments" type="object"
+                                    class="oe_stat_button" icon="fa-arrow-down"  attrs="{'invisible': [('payment_count', '=', 0)]}">
+                                <field name="payment_count" widget="statinfo" string="Installments"/>
+                            </button>
+                            <button name="action_view_contract_profit" type="object"
+                                    class="oe_stat_button" icon="fa-line-chart"  attrs="{'invisible': [('profit_count', '=', 0)]}">
+                                <field name="profit_count" widget="statinfo" string="Profits"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Property Name"/>
+                            </h1>
+                            <h2>
+                                <field name="code" readonly="1"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group name="basic_info">
+                                <field name="deal_id"/>
+                                <field name="property_type"/>
+                                <field name="current_value" widget="monetary"/>
+                            </group>
+                            <group name="financial_info">
+                                <field name="total_expenses" widget="monetary"/>
+                                <field name="deal_expenses" widget="monetary" attrs="{'invisible': ['|',('is_purchased', '=', True),('status','=','draft')]}"/>
+                                <field name="total_cost" widget="monetary"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group name="area_specs" string="Property Specifications">
+                                <field name="area_unit"/>
+                                <field name="total_area"/>
+                            </group>
+                            <group name="location" string="Location Information">
+                                <field name="city_id"/>
+                                <field name="address"/>
+                            </group>
+                        </group>
+                         <group string="Purchase &amp; Information" attrs="{'invisible': [('is_purchased', '=', False)]}">
+                            <group string="Seller Details">
+                                <field name="contract_date" string='Purchase Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="contact_id" string='Buy From' attrs='{"required":[("status", "=", "confirmed")]}' context="{'default_is_seller': True}"/>
+                            </group>
+                            <group string="Purchase Price Details">
+                                <field name="contract_price" string='Purchase Price' widget="monetary" attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="down_payment" widget="monetary"/>
+                                <field name="remaining_amount" widget="monetary"/>
+                            </group>
+                        </group>
+                        <group string="Sale Information" attrs="{'invisible': [('is_purchased', '=', True)]}">
+                            <group string="Sale Details">
+                                <field name="contract_date" string='Sale Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="contact_id" string='Sale To' attrs='{"required":[("status","=","confirmed")]}' context="{'default_is_buyer': True}"/>
+                                <field name="contract_price" string='Sale Price' widget="monetary" attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="down_payment" widget="monetary"/>
+                                <field name="remaining_amount" widget="monetary"/>
+                            </group>
+                            <group string="Profit &amp; Loss">
+                                <field name="total_profit" widget="monetary"/>
+                                <field name="net_profit" widget="monetary"/>
+                                <field name="management_fee_percentage" widget="monetary"/>
+                                <field name="management_fee_amount" widget="monetary"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Documents">
+                                <field name="attachment_ids" widget="many2many_binary"/>
+                                <p class="text-muted">
+                                    Upload property documents, images, contracts, ownership papers, 
+                                    architectural plans, and other relevant files here.
+                                </p>
+                            </page>
+                            <page string="Description &amp; Notes">
+                                <group>
+                                    <field name="description" placeholder="Detailed description of the property..."/>
+                                    <field name="notes" placeholder="Additional notes..."/>
+                                </group>
+                            </page>
+                            <page string="Property Details">
+                                <group>
+                                    <group string="Rooms &amp; Area" attrs="{'invisible': [('property_type', 'not in', ['house', 'apartment', 'villa', 'building'])]}">
+                                        <field name="total_rooms"/>
+                                        <field name="bedrooms"/>
+                                        <field name="bathrooms"/>
+                                        <field name="kitchens"/>
+                                        <field name="living_rooms"/>
+                                        <field name="built_area"/>
+                                        <field name="number_of_floors"/>
+                                    </group>
+                                    <group string="Boundaries">
+                                        <field name="north_boundary" placeholder="What borders from north"/>
+                                        <field name="south_boundary" placeholder="What borders from south"/>
+                                        <field name="east_boundary" placeholder="What borders from east"/>
+                                        <field name="west_boundary" placeholder="What borders from west"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Property Kanban View -->
+        <record id="view_real_estate_property_kanban" model="ir.ui.view">
+            <field name="name">real.estate.property.kanban</field>
+            <field name="model">real.estate.property</field>
+            <field name="arch" type="xml">
+                <kanban string="Properties">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="property_type"/>
+                    <field name="total_cost"/>
+                    <field name="color"/>
+                    <field name="attachment_ids"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click #{1 == 1 ? 'o_kanban_disabled' : ''}">
+                                <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <div class="o_kanban_manage_button_section">
+                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
+                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_card_content">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <span><field name="code"/></span>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <field name="property_type"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom">
+                                            <div class="o_text_overflow">
+                                                <strong>Total Cost: </strong><field name="total_cost" widget="monetary"/>
+                                            </div>
+                                        </div>
+                                        <div class="o_kanban_record_bottom" t-if="record.attachment_ids.raw_value and record.attachment_ids.raw_value.length > 0">
+                                            <div class="o_text_overflow">
+                                                <i class="fa fa-paperclip" title="Has Documents"/>
+                                                <span t-esc="record.attachment_ids.raw_value.length + ' Documents'"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="o_kanban_primary_right">
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Property Action -->
+        <record id="action_real_estate_purchase_contract" model="ir.actions.act_window">
+            <field name="name">Purchase Contracts</field>
+            <field name="res_model">real.estate.property</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="context">{'default_is_purchased': True, 'default_status': 'confirmed'}</field>
+            <field name="domain">[('is_purchased','=',True)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first purchase contract
+                </p>
+            </field>
+        </record>
+        <record id="action_real_estate_sale_contract" model="ir.actions.act_window">
+            <field name="name">Sale Contracts</field>
+            <field name="res_model">real.estate.property</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[('is_purchased','=',False)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first sale contract
+                </p>
+            </field>
+        </record>
+
+        <record id="action_real_estate_load_management_fees" model="ir.actions.act_window">
+            <field name="name">Load Management Fees</field>
+            <field name="res_model">real.estate.property</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_management_fee_summary_tree"/>
+            <field name="context">{}</field>
+            <field name="domain">[('is_purchased','=',False),('status', '=', 'confirmed')]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    There are no sold contract to load management fees
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

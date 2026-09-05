@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb report template for Investment Details -->
+        <template id="report_investment_details">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                <style>
+                    body { direction: rtl; text-align: right; }
+                    .page { direction: rtl; }
+                    table { direction: rtl; }
+                    .report-title { margin-bottom: 20px; }
+                    .header-row { background-color: #f0f0f0; border: 1px solid #bbb; padding: 8px; }
+                    .header-label { font-weight: bold; padding-right: 10px; }
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                        border: 1px solid #999;
+                    }
+                    .info-table thead {
+                        background-color: #2d5016;
+                        color: white;
+                    }
+                    .info-table thead th {
+                        border: 1px solid #1e3410;
+                        padding: 10px 5px;
+                        font-weight: bold;
+                        text-align: right;
+                        color: white;
+                    }
+                    .info-table tbody td {
+                        border: 1px solid #ddd;
+                        padding: 8px 5px;
+                        text-align: right;
+                    }
+                    .info-table tbody tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .section-title {
+                        background-color: #2d5016;
+                        color: white;
+                        padding: 10px;
+                        font-weight: bold;
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .text-right { text-align: right; }
+                    .text-center { text-align: center; }
+                </style>
+                <main>
+                <div class="page">
+                    <h2 style="text-align: center;">Investment Details Report</h2>
+                    <h3 style="text-align: center;"><span t-field="doc.name"/></h3>
+
+                    <!-- Basic Information -->
+                    <div class="section-title">Basic Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Reference:</span> <span t-field="doc.name"/></td>
+                                <td><span class="header-label">Investment Date:</span> <span t-field="doc.investment_date"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Partner:</span> <span t-field="doc.partner_id.name"/></td>
+                                <td><span class="header-label">Property:</span> <span t-field="doc.property_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Status:</span> <span t-field="doc.status"/></td>
+                                <td/>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Financial Information -->
+                    <div class="section-title">Financial Information</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span class="header-label">Total Cost:</span> <span t-esc="'{:,.2f}'.format(doc.total_cost)"/></td>
+                                <td><span class="header-label">Total Amount:</span> <span t-esc="'{:,.2f}'.format(doc.amount)"/></td>
+                            </tr>
+                            <tr>
+                                <td><span class="header-label">Percentage:</span> <span t-esc="'{:.2f}%'.format(doc.percentage)"/></td>
+                                <td><span class="header-label">Input Percentage:</span> <span t-esc="'{:.2f}%'.format(doc.input_percentage)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Withdrawal Information (if withdrawn) -->
+                    <t t-if="doc.status == 'withdrawn'">
+                        <div class="section-title">Withdrawal Information</div>
+                        <table class="info-table">
+                            <tbody>
+                                <tr>
+                                    <td><span class="header-label">Withdrawal Date:</span> <span t-field="doc.withdrawal_date"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><span class="header-label">Withdrawal Reason:</span> <span t-field="doc.withdrawal_ref"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+
+                    <!-- Payment Installments -->
+                    <div class="section-title">Payment Installments</div>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Payment Date</th>
+                                <th>Amount</th>
+                                <th>Payment Method</th>
+                                <th>Reference</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="doc.payment_line_ids">
+                                <t t-foreach="doc.payment_line_ids" t-as="pay">
+                                    <tr>
+                                        <td><span t-field="pay.payment_date"/></td>
+                                        <td><span t-esc="'{:,.2f}'.format(pay.amount)"/></td>
+                                        <td><span t-field="pay.payment_method"/></td>
+                                        <td><span t-field="pay.name"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <t t-if="not doc.payment_line_ids">
+                                <tr>
+                                    <td colspan="4" class="text-center">No payment installments found.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Notes -->
+                    <div class="section-title">Notes</div>
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <td><span t-field="doc.notes"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                </main>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- Report action -->
+        <record id="report_investment_details_action" model="ir.actions.report">
+            <field name="name">Investment Details</field>
+            <field name="model">real.estate.property.investment</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management.report_investment_details</field>
+            <field name="report_file">real_estate_partnership_management.report_investment_details</field>
+            <field name="binding_model_id" ref="model_real_estate_property_investment"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

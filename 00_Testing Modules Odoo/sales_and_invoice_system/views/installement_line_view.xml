@@ -1,0 +1,139 @@
+<odoo>
+    <data>
+        <record id="installment_line_cron" model="ir.cron">
+            <field name="name">Delete Installment Lines Automatic</field>
+            <field name="model_id" ref="model_installment_line"/>
+            <field name="state">code</field>
+            <field name="code">model.delete_installment_lines_automatic()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+        <record id="installment_line_form" model="ir.ui.view">
+            <field name="name">installment.line.form</field>
+            <field name="model">installment.line</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="paid,new"/>
+                        <button name="set_to_paid" string="Set To Paid" type="object" class="oe_highlight"/>
+                        <button name="print_report" string="Print Report" type="object" class="oe_highlight" attrs="{'invisible':[('is_print','=',True)]}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="installment_name"/>
+                                <field name="customer_name"/>
+                                <field name="reference"/>
+                                <field name="is_print"/>
+                                <field name="sales_man"/>
+                                <field name="sales_person"/>
+                                <field name="due_date"/>
+                            </group>
+                            <group>
+                                <field name="type"/>
+                                <field name="amount"/>
+                                <field name="region"/>
+                                <field name="phone"/>
+                                <field name="customer_address"/>
+                                <field name="national_id"/>
+                                <field name="installment_line_number" invisible="1"/>
+                                <field name="paid_or_offered" invisible="1"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="installment_line_tree" model="ir.ui.view">
+            <field name="name">installment.line.tree</field>
+            <field name="model">installment.line</field>
+            <!--<field name="field_parent">children_ids if_want_to_add_Childs</field>-->
+            <field name="arch" type="xml">
+                <tree default_order="id">
+                    <header>
+                        <button name="print_report" string="Print Report" type="object" class="oe_highlight"/>
+                    </header>
+                    <field name="installment_name" optional="show"/>
+                    <field name="customer_name" optional="show"/>
+                    <field name="reference" optional="show"/>
+                    <field name="is_print" optional="show"/>
+                    <field name="sales_man" optional="hide"/>
+                    <field name="sales_person" optional="hide"/>
+                    <field name="due_date" optional="show"/>
+                    <field name="type" optional="show"/>
+                    <field name="amount" optional="show"/>
+                    <field name="region" optional="show"/>
+                    <field name="phone" optional="hide"/>
+                    <field name="customer_address" optional="hide"/>
+                    <field name="national_id" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+        <record id="installment_line_search" model="ir.ui.view">
+            <field name="name">installment.line.search</field>
+            <field name="model">installment.line</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="installment_name"/>
+                    <field name="customer_name"/>
+                    <field name="reference"/>
+                    <field name="sales_man"/>
+                    <field name="sales_person"/>
+                    <field name="customer_address"/>
+                    <field name="national_id"/>
+                    <filter string="Paid" name="filter_paid" domain="[('state','=','paid')]"/>
+                    <filter string="New" name="filter_new" domain="[('state','=','new')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Customer" name="group_customer_name" context="{'group_by':'customer_name'}"/>
+                        <filter string="Date" name="due_date" context="{'group_by':'due_date'}"/>
+                        <filter string="Reference" name="reference" context="{'group_by':'reference'}"/>
+                        <filter string="Address" name="customer_address" context="{'group_by':'customer_address'}"/>
+                        <filter string="Region" name="region" context="{'group_by':'region'}"/>
+                        <filter string="Type" name="type" context="{'group_by':'type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_paid_installment" model="ir.cron">
+            <field name="name">Make installment state paid</field>
+            <field name="model_id" ref="model_installment_line"/>
+            <field name="state">code</field>
+            <field name="code">model.set_to_paid()</field>
+            <field name="active" eval="True"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+        <record id="installment_line_action" model="ir.actions.act_window">
+            <field name="name">Installment Lines</field>
+            <field name="res_model">installment.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Installment
+                </p>
+            </field>
+        </record>
+        <menuitem id="installment_line_menu"
+                  name="Installment Lines"
+                  action="installment_line_action"
+                  parent="account.menu_finance"
+                  sequence="4"
+        />
+
+    </data>
+</odoo>
+
+
+

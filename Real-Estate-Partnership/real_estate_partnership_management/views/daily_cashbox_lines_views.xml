@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Daily Cashbox Transaction Tree View -->
+        <record id="view_daily_cashbox_transaction_tree" model="ir.ui.view">
+            <field name="name">real.estate.daily.cashbox.transaction.tree</field>
+            <field name="model">real.estate.daily.cashbox.transaction</field>
+            <field name="arch" type="xml">
+                <tree string="Daily Cashbox Transactions" create="0">
+                    <field name="transaction_time"/>
+                    <field name="transaction_type" widget="badge" 
+                           decoration-success="transaction_type=='inflow'" 
+                           decoration-danger="transaction_type=='outflow'"/>
+                    <field name="category"/>
+                    <field name="amount" widget="monetary" sum="Total Amount"/>
+                    <field name="payment_method"/>
+                    <field name="reference"/>
+                    <field name="create_uid"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Daily Cashbox Transaction Form View -->
+        <record id="view_daily_cashbox_transaction_form" model="ir.ui.view">
+            <field name="name">real.estate.daily.cashbox.transaction.form</field>
+            <field name="model">real.estate.daily.cashbox.transaction</field>
+            <field name="arch" type="xml">
+                <form string="Daily Cashbox Transaction" create="0" edit="0">
+                    <sheet>
+                        <group>
+                            <group name="basic_info">
+                                <field name="cashbox_id" readonly="1"/>
+                                <field name="transaction_time"/>
+                                <field name="transaction_type" widget="radio"/>
+                                <field name="category"/>
+                            </group>
+                            <group name="amount_info">
+                                <field name="amount" widget="monetary"/>
+                                <field name="payment_method"/>
+                                <field name="reference"/>
+                                <field name="create_uid" readonly="1"/>
+                            </group>
+                        </group>
+                        <group name="notes" string="Additional Notes">
+                            <field name="notes" placeholder="Any additional notes..."/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Daily Cashbox Transaction Search View -->
+        <record id="view_daily_cashbox_transaction_search" model="ir.ui.view">
+            <field name="name">real.estate.daily.cashbox.transaction.search</field>
+            <field name="model">real.estate.daily.cashbox.transaction</field>
+            <field name="arch" type="xml">
+                <search string="Daily Cashbox Transactions">
+                    <field name="cashbox_id"/>
+                    <field name="reference"/>
+                    <field name="transaction_type"/>
+                    <field name="category"/>
+                    <field name="payment_method"/>
+                    
+                    <filter string="Inflows" name="inflows" domain="[('transaction_type', '=', 'inflow')]"/>
+                    <filter string="Outflows" name="outflows" domain="[('transaction_type', '=', 'outflow')]"/>
+                    <filter string="Property Sale" name="property_sale" domain="[('category', '=', 'property_sale')]"/>
+                    <filter string="Expense" name="expense" domain="[('category', '=', 'expense')]"/>
+                    <filter string="Today" name="today" 
+                            domain="[('transaction_time', '&gt;=', context_today().strftime('%Y-%m-%d 00:00:00')),
+                                    ('transaction_time', '&lt;=', context_today().strftime('%Y-%m-%d 23:59:59'))]"/>
+                    
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Transaction Type" name="group_type" context="{'group_by': 'transaction_type'}"/>
+                        <filter string="Category" name="group_category" context="{'group_by': 'category'}"/>
+                        <filter string="Payment Method" name="group_payment" context="{'group_by': 'payment_method'}"/>
+                        <filter string="Created By" name="group_user" context="{'group_by': 'create_uid'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Daily Cashbox Transaction Action -->
+        <record id="action_daily_cashbox_transaction" model="ir.actions.act_window">
+            <field name="name">Daily Cashbox Transactions</field>
+            <field name="res_model">real.estate.daily.cashbox.transaction</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No transactions yet
+                </p>
+                <p>
+                    Add transactions to track daily cash movements and manage your cashbox.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

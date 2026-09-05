@@ -1,0 +1,28 @@
+<odoo>
+    <record model="ir.ui.view" id="received_isalls_form_id">
+        <field name="name">Received Isalls Form</field>
+        <field name="model">wzrd_received_isalls</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="fld_collctr_isal_id" />
+                </group>
+                <footer>
+                    <button name="fnc_set_collctr_isal" string="OK" type="object" class="oe_highlight"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="received_isalls_action_id">
+		<field name="name">Received Isalls Action</field>
+		<field name="res_model">wzrd_received_isalls</field>
+		<field name="view_mode">form</field>
+		<field name="target" >new</field>
+        <field name="view_id" ref="received_isalls_form_id"/>
+		<field name="binding_model_id"    ref="model_mdl_isalls"/>
+		<field name="binding_view_types">list,form</field>
+	</record>
+</odoo>

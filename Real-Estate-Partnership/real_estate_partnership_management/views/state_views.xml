@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- State Tree View -->
+        <record id="view_real_estate_state_tree" model="ir.ui.view">
+            <field name="name">real.estate.state.tree</field>
+            <field name="model">real.estate.state</field>
+            <field name="arch" type="xml">
+                <tree string="States/Provinces">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="country_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- State Form View -->
+        <record id="view_real_estate_state_form" model="ir.ui.view">
+            <field name="name">real.estate.state.form</field>
+            <field name="model">real.estate.state</field>
+            <field name="arch" type="xml">
+                <form string="State/Province">
+                    <sheet>
+                        <group>
+                            <group name="state_info">
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="country_id"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description" placeholder="Add state/province description here..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- State Search View -->
+        <record id="view_real_estate_state_search" model="ir.ui.view">
+            <field name="name">real.estate.state.search</field>
+            <field name="model">real.estate.state</field>
+            <field name="arch" type="xml">
+                <search string="States/Provinces">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="country_id"/>
+                    <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Country" name="group_country" context="{'group_by': 'country_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- State Action -->
+        <record id="action_real_estate_state" model="ir.actions.act_window">
+            <field name="name">States/Provinces</field>
+            <field name="res_model">real.estate.state</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first state/province
+                </p>
+                <p>
+                    States/Provinces are used to organize cities geographically.
+                    Each state can belong to a country.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

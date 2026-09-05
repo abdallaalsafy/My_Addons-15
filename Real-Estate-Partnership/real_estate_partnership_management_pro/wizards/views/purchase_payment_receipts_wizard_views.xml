@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Purchase Payment Receipts Wizard Form View -->
+        <record id="view_purchase_payment_receipts_wizard_form" model="ir.ui.view">
+            <field name="name">purchase.payment.receipts.wizard.form</field>
+            <field name="model">purchase.payment.receipts.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generate Purchase Payment Receipts">
+                    <group>
+                        <field name="contract_id"/>
+                        <field name="is_purchased" invisible="1"/>
+                        <field name="amount" widget="monetary"/>
+                        <field name="start_date"/>
+                        <field name="duration"/>
+                        <field name="duration_unit"/>
+                        <field name="number_of_receipts"/>
+                        <field name="generation_mode" widget="radio"/>
+                    </group>
+                    <footer>
+                        <button name="action_generate_receipts" type="object" string="Generate" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Purchase Payment Receipts Wizard Action -->
+        <record id="action_purchase_payment_receipts_wizard" model="ir.actions.act_window">
+            <field name="name">Generate Purchase Payment Receipts</field>
+            <field name="res_model">purchase.payment.receipts.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{'default_contract_id': active_id}</field>
+        </record>
+    </data>
+</odoo>
