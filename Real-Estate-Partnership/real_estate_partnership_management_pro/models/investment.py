@@ -1,57 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-""""
-## CONDITIONS OF ((Creating/Updating/Deleting)) Investments
-    -------------------------------------------------------
-The Conditions Of ((Creating)) A New Investment:
-    (1) The status of the Investment must be opening.
-        ** In domain Of field deal_id
-    (2) AND -->> The (total_investments_percentage must be less than 100 and the investment_method be 'percentage') or (the investment_method be 'amount').
-        ** In domain Of field deal_id
-    (3) AND -->> The deal must have no confirmed sold contracts.
-        ** In constrains Of field deal_id ==> _check_deal_id_confirmed_sold_contracts
-    (4) AND -->> The partner must be active.
-        ** In domain Of field partner_id    
-
-The Conditions Of NOT ((Updating)) An Investment:
-    (1) Cannot update any investment if :
-        ** the status is not opening.
-    (2) Cannot update opening investment if :
-        ** The deal has confirmed sold contracts.
-        ** The update fields are not only notes.
-
-The Conditions Of NOT((Deleting)) An Investment:
-    (1) Cannot delete any investment if :
-        ** the status is not opening.
-    (2) Cannot delete opening investment if :
-        ** The deal has confirmed sold contracts.
-
-===================================================
-
-## Constrains ((Creating/Updating)) Investments
-    -------------------------------------------
-    (1) deal_id
-        ** _check_deal_id_confirmed_sold_contracts
-            == Donnot allowed to add investment to deal with confirmed sold contracts
-        ** _check_unique_investment
-            == Donnot allowed to add investment to partner already has an investment to this deal
-        ** _check_investment_date
-            == Donnot allowed to add investment date earlier than deal open date
-
-    (2) partner_id
-        ** _check_investment_date
-            == Donnot allowed to add investment date earlier than partner join date
-        ** _check_unique_investment
-            == Donnot allowed to add investment to partner already has an investment to this deal
-
-    (3) investment_date
-        ** _check_investment_date
-            == Donnot allowed to add investment date in the future
-            == Donnot allowed to add investment date earlier than deal open date
-            == Donnot allowed to add investment date earlier than partner join date
-"""
-
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
 

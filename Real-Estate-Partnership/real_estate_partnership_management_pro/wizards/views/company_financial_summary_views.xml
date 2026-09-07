@@ -14,31 +14,6 @@
                         </div>
                         
                         <notebook>
-                            <page string="Company balance">
-                                <group>
-                                    <group>
-                                        <field name="total_company_balance" widget="monetary" style="font-weight: bold;font-size: 16px;"/>
-                                    </group>
-                                    <group string="Calculation elements">
-                                        <field name="partners_actual_balance" widget="monetary"/>
-                                        <field name="property_assets" widget="monetary"/>
-                                        <field name="management_fees" widget="monetary"/>
-                                        <field name="sold_child_property_assets" widget="monetary" style="color: red;"/>
-                                        <field name="undistributed_company_expenses" widget="monetary" style="color: red;"/>
-                                    </group>
-                                </group>
-                                <div class="alert alert-info" role="alert">
-                                    <p><strong>Note:</strong> The company's balance represents all funds and assets managed by the company.</p>
-                                    <p><strong>It consists of:</strong></p>
-                                    <ul>
-                                        <li><b>1 Partners Actual Balance:</b> The current positive balance in the partners' accounts</li>
-                                        <li><b>2 Property Assets:</b> Total cost of the unsold properties of the fathers.</li>
-                                        <li><b>3 Management Fees:</b> The total management fees from sales transactions</li>
-                                        <li><b>4 Sold Child Property Assets:</b> Total cost of the sold properties of the childern.</li>
-                                        <li><b>5 Undistributed Company Expenses:</b> Deduction of company expenses related to management</li>
-                                    </ul>
-                                </div>
-                            </page>
                             <page string="Actual Liquidity">
                                 <group>
                                     <group>
@@ -46,10 +21,10 @@
                                     </group>
                                     <group string="Calculation elements">
                                         <field name="positive_transactions" widget="monetary"/>
-                                        <field name="sale_paid" widget="monetary"/>
+                                        <field name="sales_paid_amount" widget="monetary"/>
                                         <field name="negative_transactions" widget="monetary" style="color: red;"/>
-                                        <field name="expense_paid" widget="monetary" style="color: red;"/>
-                                        <field name="purchase_paid" widget="monetary" style="color: red;"/>
+                                        <field name="expenses_paid_amount" widget="monetary" style="color: red;"/>
+                                        <field name="purchases_paid_amount" widget="monetary" style="color: red;"/>
                                     </group>
                                 </group>
                                 <div class="alert alert-info" role="alert">
@@ -154,7 +129,7 @@
                                     </group>
                                     <group>
                                         <field name="expenses_total_amount" widget="monetary"/>
-                                        <field name="expense_paid" widget="monetary"/>
+                                        <field name="expenses_paid_amount" widget="monetary"/>
                                         <field name="expenses_unpaid_amount" widget="monetary" style="color: red;"/>
                                     </group>
                                 </group>
