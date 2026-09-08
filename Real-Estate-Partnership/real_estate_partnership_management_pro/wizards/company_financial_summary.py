@@ -88,10 +88,10 @@ class CompanyFinancialSummary(models.TransientModel):
         for record in self:
             # Get all relevant records
             partners = self.env['res.partner'].search([('is_partner', '=', True)])
-            contracts = self.env['real.estate.property'].search([])
+            properties = self.env['real.estate.property'].search([])
             expenses = self.env['real.estate.expense'].search([])
             deals = self.env['real.estate.deal'].search([])
-            partnerships = self.env['real.estate.property.investment'].search([('status', '=', 'opening')])
+            partnerships = self.env['real.estate.investment'].search([('status', '=', 'opening')])
             transactions = self.env['real.estate.transaction'].search([])            
 
             # Deals Statistics ==========================================
@@ -120,31 +120,31 @@ class CompanyFinancialSummary(models.TransientModel):
             record.partners_debtor_balance = abs(sum(partner.current_balance for partner in partners if partner.current_balance < 0))
             
             # Purchases Statistics =================================================
-            purchaseContracts = contracts.filtered(lambda p: p.is_purchased and p.status == 'confirmed')
-            record.purchases_count = len(purchaseContracts)
-            record.purchases_paid_count = len(purchaseContracts.filtered(lambda p: p.remaining_amount <= 0))
-            record.purchases_unpaid_count = len(purchaseContracts.filtered(lambda p: p.remaining_amount > 0))
+            purchaseProperties = properties.filtered(lambda p: p.is_purchased and p.status == 'confirmed')
+            record.purchases_count = len(purchaseProperties)
+            record.purchases_paid_count = len(purchaseProperties.filtered(lambda p: p.remaining_amount <= 0))
+            record.purchases_unpaid_count = len(purchaseProperties.filtered(lambda p: p.remaining_amount > 0))
 
-            record.purchases_total_price = sum(p.contract_price for p in purchaseContracts)
-            record.purchases_paid_amount = sum(p.contract_price - p.remaining_amount for p in purchaseContracts)
-            record.purchases_unpaid_amount = sum(p.remaining_amount for p in purchaseContracts)
+            record.purchases_total_price = sum(p.property_price for p in purchaseProperties)
+            record.purchases_paid_amount = sum(p.property_price - p.remaining_amount for p in purchaseProperties)
+            record.purchases_unpaid_amount = sum(p.remaining_amount for p in purchaseProperties)
 
             # Sales Statistics ==================================================
-            salesContracts = contracts.filtered(lambda p: not p.is_purchased and p.status == 'confirmed')
+            salesProperties = properties.filtered(lambda p: not p.is_purchased and p.status == 'confirmed')
 
-            record.sales_count = len(salesContracts)
-            record.sales_total_price = sum(sale.contract_price for sale in salesContracts)
+            record.sales_count = len(salesProperties)
+            record.sales_total_price = sum(sale.property_price for sale in salesProperties)
 
-            record.sales_paid_count = len(salesContracts.filtered(lambda s: s.remaining_amount <= 0))
-            record.sales_unpaid_count = len(salesContracts.filtered(lambda s: s.remaining_amount > 0))
+            record.sales_paid_count = len(salesProperties.filtered(lambda s: s.remaining_amount <= 0))
+            record.sales_unpaid_count = len(salesProperties.filtered(lambda s: s.remaining_amount > 0))
 
-            record.sales_paid_amount = sum(sale.contract_price - sale.remaining_amount for sale in salesContracts)
-            record.sales_unpaid_amount = sum(sale.remaining_amount for sale in salesContracts)
+            record.sales_paid_amount = sum(sale.property_price - sale.remaining_amount for sale in salesProperties)
+            record.sales_unpaid_amount = sum(sale.remaining_amount for sale in salesProperties)
 
-            record.sales_total_profit = sum(sale.total_profit for sale in salesContracts)
-            record.sales_total_management_fees = sum(sale.management_fee_amount for sale in salesContracts)
-            record.sales_total_net_profit = sum(sale.net_profit for sale in salesContracts)
-            
+            record.sales_total_profit = sum(sale.total_profit for sale in salesProperties)
+            record.sales_total_management_fees = sum(sale.management_fee_amount for sale in salesProperties)
+            record.sales_total_net_profit = sum(sale.net_profit for sale in salesProperties)
+
             # Expenses Statistics ===========================================================
             investment_expenses = expenses.filtered(lambda e: e.expense_type == 'investment')
             company_expenses = expenses.filtered(lambda e: e.expense_type == 'company')

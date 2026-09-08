@@ -21,9 +21,9 @@ class RealEstatePaymentInstallment(models.Model):
     color = fields.Integer(string='Color', default=_get_default_color)
     
     # Relations
-    contract_id = fields.Many2one('real.estate.property', string='Contract', required=True, tracking=True, index=True, ondelete='cascade')
-    is_purchased = fields.Boolean(related="contract_id.is_purchased", store=True)
-    contact_id = fields.Many2one(related="contract_id.contact_id", store=True)
+    property_id = fields.Many2one('real.estate.property', string='Property', required=True, tracking=True, index=True, ondelete='cascade')
+    is_purchased = fields.Boolean(related="property_id.is_purchased", store=True)
+    contact_id = fields.Many2one(related="property_id.contact_id", store=True)
     
     # Payment Details
     amount = fields.Float(string='Amount', required=True, tracking=True)
@@ -80,19 +80,19 @@ class RealEstatePaymentInstallment(models.Model):
             if installment.amount <= 0:
                 raise ValidationError(_('Amount must be positive.'))
 
-    @api.constrains('due_date', 'contract_id')
+    @api.constrains('due_date', 'property_id')
     def _check_due_date_vs_transaction_date(self):
         """Ensure payment due date is not earlier than purchase/sale date"""
         for installment in self:
-            if installment.due_date < installment.contract_id.contract_date:
+            if installment.due_date < installment.property_id.property_date:
                 if installment.is_purchased:
-                    raise ValidationError(_('Payment due date cannot be earlier than contract purchase date. '
+                    raise ValidationError(_('Payment due date cannot be earlier than property purchase date. '
                                             'Purchase date: %s, Due date: %s') % 
-                                        (installment.contract_id.contract_date, installment.due_date))
-                elif installment.contract_id.status == 'confirmed':
+                                        (installment.property_id.property_date, installment.due_date))
+                elif installment.property_id.status == 'confirmed':
                     raise ValidationError(_('Payment due date cannot be earlier than sale date. '
                                             'Sale date: %s, Due date: %s') % 
-                                        (installment.contract_id.contract_date, installment.due_date))
+                                        (installment.property_id.property_date, installment.due_date))
 
     # =========================== Onchange Functions ===========================
     
@@ -101,17 +101,17 @@ class RealEstatePaymentInstallment(models.Model):
         """Filter property_id domain based on payment_type"""
         if not self.is_purchased:
             # Show only sold properties for sale payments
-            return {'domain': {'contract_id': [('is_purchased', '=', False)]}}
+            return {'domain': {'property_id': [('is_purchased', '=', False)]}}
         else:
-            # Show only child properties for purchase payments
-            return {'domain': {'contract_id': [('is_purchased', '=', True)]}}
+            # Show only purchased properties for purchase payments
+            return {'domain': {'property_id': [('is_purchased', '=', True)]}}
 
     # =========================== Logic Functions ===========================
 
     def validation_on_create_update_delete(self):
         for payment in self:
-            if payment.contract_id.deal_id.status != 'opening':
+            if payment.property_id.deal_id.status != 'opening':
                 raise ValidationError(_('Cannot update or delete or create payment when deal status is not opening.'))
 
-            if payment.contract_id.status == 'draft' and payment.is_purchased == False:
-                raise ValidationError(_('Cannot update or delete or create payment when sale contract status is draft.'))
+            if payment.property_id.status == 'draft' and payment.is_purchased == False:
+                raise ValidationError(_('Cannot update or delete or create payment when sale property status is draft.'))

@@ -28,13 +28,13 @@
                     <filter string="Shop" name="shop" domain="[('property_type', '=', 'shop')]"/>
                     <separator/>
                     <filter string="Purchase Price Range" name="price_range" domain="[]"/>
-                    <filter string="Sold This Month" name="sold_this_month" domain="[('contract_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
-                    <filter string="Recently Purchased" name="recently_purchased" domain="[('contract_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Sold This Month" name="sold_this_month" domain="[('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Recently Purchased" name="recently_purchased" domain="[('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
                     <group expand="0" string="Group By">
                         <filter string="Property Type" name="group_type" context="{'group_by': 'property_type'}"/>
-                        <filter string="Purchase Date" name="group_purchase_date" context="{'group_by': 'contract_date'}"/>
-                        <filter string="Sale Date" name="group_sale_date" context="{'group_by': 'contract_date'}"/>
+                        <filter string="Purchase Date" name="group_purchase_date" context="{'group_by': 'property_date'}"/>
+                        <filter string="Sale Date" name="group_sale_date" context="{'group_by': 'property_date'}"/>
                         <filter string="City" name="group_city" context="{'group_by': 'city_id'}"/>
                         <filter string="Contacts" name="group_seller" context="{'group_by': 'contact_id'}"/>
                     </group>
@@ -56,11 +56,11 @@
                     <field name="total_area" optional="show"/>
                     <field name="address" optional="hide"/>
                     <field name="contact_id" optional="hide"/>
-                    <field name="contract_price" widget="monetary" sum="Total Purchase Price"/>
+                    <field name="property_price" widget="monetary" sum="Total Purchase Price"/>
                     <field name="down_payment" widget="monetary" sum="Total Down Payment" optional="show"/>
                     <field name="total_cost" widget="monetary" sum="Total Cost"/>
                     <field name="current_value" widget="monetary" optional="hide"/>
-                    <field name="contract_date"/>
+                    <field name="property_date"/>
                 </tree>
             </field>
         </record>
@@ -73,7 +73,7 @@
                 <tree string="Management Fees Summary">
                     <field name="code"/>
                     <field name="name"/>
-                    <field name="contract_date"/>
+                    <field name="property_date"/>
                     <field name="deal_id" optional="show"/>
                     <field name="contact_id" optional="hide"/>
                     <field name="total_profit" widget="monetary" sum="Total Profit"/>
@@ -101,10 +101,10 @@
                         <button name="action_generate_purchase_payment_receipts" type="object"
                                 string="Generate Receipts" class="btn-primary"
                                 attrs="{'invisible':['|','|',('deal_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
-                        <button name="action_confirmed_sold_contract" type="object"
+                        <button name="action_confirmed_sold_property" type="object"
                                 string="Confirmed" class="btn-primary"
                                 attrs="{'invisible':[('status','=','confirmed')]}"/>
-                        <button name="action_draft_sold_contract" type="object"
+                        <button name="action_draft_sold_property" type="object"
                                 string="Mark As Draft" class="btn-secondary"
                                 attrs="{'invisible':['|','|',('deal_status','=','closed'),('status','=','draft'),('is_purchased','=',True)]}"/>
                         <field name="status" widget="statusbar" 
@@ -121,7 +121,7 @@
                                     class="oe_stat_button" icon="fa-arrow-down"  attrs="{'invisible': [('payment_count', '=', 0)]}">
                                 <field name="payment_count" widget="statinfo" string="Installments"/>
                             </button>
-                            <button name="action_view_contract_profit" type="object"
+                            <button name="action_view_property_profit" type="object"
                                     class="oe_stat_button" icon="fa-line-chart"  attrs="{'invisible': [('profit_count', '=', 0)]}">
                                 <field name="profit_count" widget="statinfo" string="Profits"/>
                             </button>
@@ -158,20 +158,20 @@
                         </group>
                          <group string="Purchase &amp; Information" attrs="{'invisible': [('is_purchased', '=', False)]}">
                             <group string="Seller Details">
-                                <field name="contract_date" string='Purchase Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="property_date" string='Purchase Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
                                 <field name="contact_id" string='Buy From' attrs='{"required":[("status", "=", "confirmed")]}' context="{'default_is_seller': True}"/>
                             </group>
                             <group string="Purchase Price Details">
-                                <field name="contract_price" string='Purchase Price' widget="monetary" attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="property_price" string='Purchase Price' widget="monetary" attrs='{"required":[("status", "=", "confirmed")]}'/>
                                 <field name="down_payment" widget="monetary"/>
                                 <field name="remaining_amount" widget="monetary"/>
                             </group>
                         </group>
                         <group string="Sale Information" attrs="{'invisible': [('is_purchased', '=', True)]}">
                             <group string="Sale Details">
-                                <field name="contract_date" string='Sale Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="property_date" string='Sale Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
                                 <field name="contact_id" string='Sale To' attrs='{"required":[("status","=","confirmed")]}' context="{'default_is_buyer': True}"/>
-                                <field name="contract_price" string='Sale Price' widget="monetary" attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="property_price" string='Sale Price' widget="monetary" attrs='{"required":[("status", "=", "confirmed")]}'/>
                                 <field name="down_payment" widget="monetary"/>
                                 <field name="remaining_amount" widget="monetary"/>
                             </group>
@@ -186,7 +186,7 @@
                             <page string="Documents">
                                 <field name="attachment_ids" widget="many2many_binary"/>
                                 <p class="text-muted">
-                                    Upload property documents, images, contracts, ownership papers, 
+                                    Upload property documents, images, ownership papers, 
                                     architectural plans, and other relevant files here.
                                 </p>
                             </page>
@@ -287,27 +287,27 @@
         </record>
 
         <!-- Property Action -->
-        <record id="action_real_estate_purchase_contract" model="ir.actions.act_window">
-            <field name="name">Purchase Contracts</field>
+        <record id="action_real_estate_purchase_property" model="ir.actions.act_window">
+            <field name="name">Purchase Properties</field>
             <field name="res_model">real.estate.property</field>
             <field name="view_mode">tree,kanban,form</field>
             <field name="context">{'default_is_purchased': True, 'default_status': 'confirmed'}</field>
             <field name="domain">[('is_purchased','=',True)]</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create your first purchase contract
+                    Create your first purchase property
                 </p>
             </field>
         </record>
-        <record id="action_real_estate_sale_contract" model="ir.actions.act_window">
-            <field name="name">Sale Contracts</field>
+        <record id="action_real_estate_sale_property" model="ir.actions.act_window">
+            <field name="name">Sale Properties</field>
             <field name="res_model">real.estate.property</field>
             <field name="view_mode">tree,kanban,form</field>
             <field name="context">{}</field>
             <field name="domain">[('is_purchased','=',False)]</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create your first sale contract
+                    Create your first sale property
                 </p>
             </field>
         </record>
@@ -321,7 +321,7 @@
             <field name="domain">[('is_purchased','=',False),('status', '=', 'confirmed')]</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    There are no sold contract to load management fees
+                    There are no sold property to load management fees
                 </p>
             </field>
         </record>

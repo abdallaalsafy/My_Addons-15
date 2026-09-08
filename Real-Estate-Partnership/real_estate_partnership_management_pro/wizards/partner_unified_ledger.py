@@ -51,15 +51,15 @@ class PartnerUnifiedLedger(models.TransientModel):
                 'amount': amount,
             })
 
-        # 2. Property Sale Lines (real.estate.property.sale.line)
+        # 2. Property Sale Lines (real.estate.sale.line)
         try:
-            sale_lines = partner.sale_line_ids.filtered(lambda x: x.sale_date <= date_to and x.sale_date >= date_from)
+            sale_lines = partner.sale_line_ids.filtered(lambda x: x.property_date <= date_to and x.property_date >= date_from)
             for sale_line in sale_lines:
                 all_items.append({
-                    'date': sale_line.contract_date,
+                    'date': sale_line.property_date,
                     'source': 'sale_line',
-                    'source_id': sale_line.contract_id.id,
-                    'name': sale_line.contract_id.name,
+                    'source_id': sale_line.property_id.id,
+                    'name': sale_line.property_id.name,
                     'transaction_type': 'sale_profit',
                     'description': _('Sale Profit'),
                     'amount': sale_line.profit_amount,  # Positive
@@ -79,7 +79,7 @@ class PartnerUnifiedLedger(models.TransientModel):
                 else:
                     opening_balance += tx.amount
 
-            opening_sales = partner.sale_line_ids.filtered(lambda x: x.sale_date < date_from)
+            opening_sales = partner.sale_line_ids.filtered(lambda x: x.property_date < date_from)
             opening_balance += sum(sale_line.profit_amount for sale_line in opening_sales)
 
             # Add opening balance line if there's a range

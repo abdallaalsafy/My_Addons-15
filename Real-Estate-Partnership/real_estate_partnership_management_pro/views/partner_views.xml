@@ -93,13 +93,13 @@
                         <field name="profit_count" widget="statinfo" string="Profits"/>
                     </button>
 
-                    <button name="action_view_purchases_contracts" type="object" class="btn-primary" 
-                        attrs="{'invisible': [('contract_purchase_count', '=', 0)]}">
-                        <field name="contract_purchase_count" widget="statinfo" string="Purchases Contracts"/>
+                    <button name="action_view_purchases_properties" type="object" class="btn-primary" 
+                        attrs="{'invisible': [('property_purchase_count', '=', 0)]}">
+                        <field name="property_purchase_count" widget="statinfo" string="Purchases Properties"/>
                     </button>
-                    <button name="action_view_sale_contracts" type="object" class="btn-primary" 
-                        attrs="{'invisible': [('contract_sale_count', '=', 0)]}">
-                        <field name="contract_sale_count" widget="statinfo" string="Sale Contracts"/>
+                    <button name="action_view_sale_properties" type="object" class="btn-primary" 
+                        attrs="{'invisible': [('property_sale_count', '=', 0)]}">
+                        <field name="property_sale_count" widget="statinfo" string="Sale Properties"/>
                     </button>
                     <button name="action_view_expenses" type="object" class="btn-info" 
                         attrs="{'invisible': [('expense_count', '=', 0)]}">

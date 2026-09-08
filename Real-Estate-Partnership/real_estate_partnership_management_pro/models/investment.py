@@ -4,9 +4,9 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
 
  
-class RealEstatePropertyInvestment(models.Model):
-    _name = 'real.estate.property.investment'
-    _description = 'Real Estate Property Investment'
+class RealEstateInvestment(models.Model):
+    _name = 'real.estate.investment'
+    _description = 'Real Estate Investment'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'deal_id,investment_date'
 
@@ -38,9 +38,9 @@ class RealEstatePropertyInvestment(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            vals['name'] = self.env['ir.sequence'].next_by_code('real.estate.property.investment') or _('New')
+            vals['name'] = self.env['ir.sequence'].next_by_code('real.estate.investment') or _('New')
         
-        rtn =  super(RealEstatePropertyInvestment, self).create(vals_list)
+        rtn =  super(RealEstateInvestment, self).create(vals_list)
         return rtn
 
     def write(self, vals):
@@ -48,14 +48,14 @@ class RealEstatePropertyInvestment(models.Model):
         all_fields_allowed = set(vals).issubset({'notes'})
         self.validation_update_delete(all_fields_allowed=all_fields_allowed)
 
-        rtn = super(RealEstatePropertyInvestment, self).write(vals)
+        rtn = super(RealEstateInvestment, self).write(vals)
 
         return rtn
 
     def unlink(self):
         self.validation_update_delete()
 
-        ren =  super(RealEstatePropertyInvestment, self).unlink()
+        ren =  super(RealEstateInvestment, self).unlink()
         return ren
 
     def name_get(self):
@@ -87,10 +87,10 @@ class RealEstatePropertyInvestment(models.Model):
     # =========================== Constraints Functions ===========================
 
     @api.constrains('deal_id')
-    def _check_deal_id_confirmed_sold_contracts(self):
+    def _check_deal_id_confirmed_sold_properties(self):
         for investment in self:
-            if investment.deal_id.confirmed_sold_contracts_count > 0:
-                raise ValidationError(_('This deal has confirmed sold contracts. Cannot add investment to this deal.'))
+            if investment.deal_id.confirmed_sold_properties_count > 0:
+                raise ValidationError(_('This deal has confirmed sold properties. Cannot add investment to this deal.'))
 
     @api.constrains('partner_id', 'deal_id')
     def _check_unique_investment(self):
@@ -127,5 +127,5 @@ class RealEstatePropertyInvestment(models.Model):
             if investment.status != 'opening':
                 raise ValidationError(_('Investment is not opening. Cannot update or delete investment.'))
                     
-            if investment.deal_id.confirmed_sold_contracts_count > 0 and not all_fields_allowed:
-                raise ValidationError(_('This deal has confirmed sold contracts. Cannot update or delete investment to this deal.'))
+            if investment.deal_id.confirmed_sold_properties_count > 0 and not all_fields_allowed:
+                raise ValidationError(_('This deal has confirmed sold properties. Cannot update or delete investment to this deal.'))

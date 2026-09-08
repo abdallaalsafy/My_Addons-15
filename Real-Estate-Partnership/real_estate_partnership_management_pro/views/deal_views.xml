@@ -49,12 +49,12 @@
             <field name="arch" type="xml">
                 <form string="deal">
                     <header>
-                        <field name="draft_sold_contracts_count" invisible="1"/>
+                        <field name="draft_sold_properties_count" invisible="1"/>
                         <field name="is_restructured" invisible="1"/>
-                        <button name="action_create_purchased_contract" type="object" 
+                        <button name="action_create_purchased_property" type="object" 
                                 string="Create Purchase" class="btn-warning"
                                 attrs="{'invisible':[('status','=','closed')]}"/>
-                        <button name="action_create_sold_contract" type="object" 
+                        <button name="action_create_sold_property" type="object" 
                                 string="Create Sale" class="btn-success"
                                 attrs="{'invisible':['|',('status','=','closed'),('remaining_area','=',0)]}"/>
                         <button name="action_create_investment" type="object" 
@@ -65,25 +65,25 @@
                                 attrs="{'invisible':[('status','=','closed')]}"/>
                         <button name="action_close_deal" type="object" 
                                 string="Close Deal" class="btn-info"
-                                attrs="{'invisible':['|','|','|',('draft_sold_contracts_count','>',0),('remaining_area','>',0),('status','=','closed'),('total_area','=',0)]}"/>
+                                attrs="{'invisible':['|','|','|',('draft_sold_properties_count','>',0),('remaining_area','>',0),('status','=','closed'),('total_area','=',0)]}"/>
                         <button name="action_reopen_deal" type="object" 
                                 string="Reopen Deal" class="btn-info"
                                 attrs="{'invisible':['|',('status','=','opening'),('is_restructured','=',True)]}"/>
                         <button name="action_restructuring_deal" type="object" 
                                 string="Restructuring Deal" class="btn-info"
-                                attrs="{'invisible':['|','|','|','|',('total_investments_percentage','&lt;',100),('draft_sold_contracts_count','=',0),('remaining_area','>',0),('status','=','closed'),('total_area','=',0)]}"/>
+                                attrs="{'invisible':['|','|','|','|',('total_investments_percentage','&lt;',100),('draft_sold_properties_count','=',0),('remaining_area','>',0),('status','=','closed'),('total_area','=',0)]}"/>
                         <field name="status" widget="statusbar"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                            <button name="action_view_purchased_contracts" type="object"
-                                    class="oe_stat_button" icon="fa-shopping-cart" attrs="{'invisible':[('purchased_contracts_count','=',0)]}">
-                                <field name="purchased_contracts_count" widget="statinfo"
+                            <button name="action_view_purchased_properties" type="object"
+                                    class="oe_stat_button" icon="fa-shopping-cart" attrs="{'invisible':[('purchased_properties_count','=',0)]}">
+                                <field name="purchased_properties_count" widget="statinfo"
                                        string="Purchased"/>
                             </button>
-                            <button name="action_view_sold_contracts" type="object"
-                                    class="oe_stat_button" icon="fa-cart-arrow-down" attrs="{'invisible':[('sold_contracts_count','=',0)]}">
-                                <field name="sold_contracts_count" widget="statinfo"
+                            <button name="action_view_sold_properties" type="object"
+                                    class="oe_stat_button" icon="fa-cart-arrow-down" attrs="{'invisible':[('sold_properties_count','=',0)]}">
+                                <field name="sold_properties_count" widget="statinfo"
                                        string="Sales"/>
                             </button>
                             <button name="action_view_investments" type="object"
@@ -144,7 +144,7 @@
                             <page string="Documents">
                                 <field name="attachment_ids" widget="many2many_binary"/>
                                 <p class="text-muted">
-                                    Upload deal documents, images, contracts, ownership papers, 
+                                    Upload deal documents, images, properties, ownership papers, 
                                     architectural plans, and other relevant files here.
                                 </p>
                             </page>
@@ -154,7 +154,7 @@
                                     <field name="notes" placeholder="Additional notes..."/>
                                 </group>
                             </page>
-                            <page string="Deal Details" attrs="{'invisible': [('purchased_contracts_count', '=', 0)]}">
+                            <page string="Deal Details" attrs="{'invisible': [('purchased_properties_count', '=', 0)]}">
                                 <group>
                                     <group string="Rooms &amp; Area" attrs="{'invisible': [('deal_type', 'not in', ['house', 'apartment', 'villa', 'building'])]}">
                                         <field name="total_rooms"/>
@@ -166,10 +166,10 @@
                                         <field name="number_of_floors"/>
                                     </group>
                                     <group string="Boundaries">
-                                        <field name="north_boundary" placeholder="What borders from north" attrs="{'readonly': [('purchased_contracts_count', '=', 1)]}"/>
-                                        <field name="south_boundary" placeholder="What borders from south" attrs="{'readonly': [('purchased_contracts_count', '=', 1)]}"/>
-                                        <field name="east_boundary" placeholder="What borders from east" attrs="{'readonly': [('purchased_contracts_count', '=', 1)]}"/>
-                                        <field name="west_boundary" placeholder="What borders from west" attrs="{'readonly': [('purchased_contracts_count', '=', 1)]}"/>
+                                        <field name="north_boundary" placeholder="What borders from north" attrs="{'readonly': [('purchased_properties_count', '=', 1)]}"/>
+                                        <field name="south_boundary" placeholder="What borders from south" attrs="{'readonly': [('purchased_properties_count', '=', 1)]}"/>
+                                        <field name="east_boundary" placeholder="What borders from east" attrs="{'readonly': [('purchased_properties_count', '=', 1)]}"/>
+                                        <field name="west_boundary" placeholder="What borders from west" attrs="{'readonly': [('purchased_properties_count', '=', 1)]}"/>
                                     </group>
                                 </group>
                             </page>

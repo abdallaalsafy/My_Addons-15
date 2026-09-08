@@ -9,7 +9,7 @@
                 <search string="Property Expenses">
                     <field name="name"/>
                     <field name="code"/>
-                    <field name="contract_id"/>
+                    <field name="property_id"/>
                     <field name="deal_id"/>
                     <field name="contact_id"/>
                     <filter string="Confirmed" name="confirmed" domain="[('status', '=', 'confirmed')]"/>
@@ -30,7 +30,7 @@
                     <separator/>
                     <group expand="0" string="Group By">
                         <filter string="Deal" name="group_deal" context="{'group_by': 'deal_id'}" invisible="context.get('default_expense_type')=='company'"/>
-                        <filter string="Property" name="group_property" context="{'group_by': 'contract_id'}" invisible="context.get('default_expense_type')=='investment'" />
+                        <filter string="Property" name="group_property" context="{'group_by': 'property_id'}" invisible="context.get('default_expense_type')=='investment'" />
                         <filter string="Category" name="group_category" context="{'group_by': 'category_id'}"/>
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                         <filter string="Expense Date" name="group_date" context="{'group_by': 'expense_date'}"/>
@@ -48,7 +48,7 @@
                     <field name="code"/>
                     <field name="name"/>
                     <field name="expense_type" attrs="{'column_invisible': True}"/>
-                    <field name="contract_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
+                    <field name="property_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
                     <field name="deal_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
                     <field name="category_id"/>
                     <field name="amount" widget="monetary" sum="Total Amount"/>
@@ -85,10 +85,10 @@
                             <group name="expense_details">
                                 <field name="expense_date"/>
                                 <field name="expense_type" invisible="context.get('default_expense_type')"/>
-                                <field name="deal_id" readonly="context.get('default_deal_id')" invisible="context.get('default_contract_id') or context.get('expenses_contracts')"
-                                        attrs="{'required': [('expense_type', '=', 'investment'),('contract_id', '=', False)], 
-                                                'invisible': ['|','|',('expense_type', '=', 'company'),('expense_type', '=', False),('contract_id', '!=', False)]}"/>
-                                <field name="contract_id" readonly="context.get('default_contract_id')" invisible="context.get('default_deal_id') or context.get('expenses_deals')" 
+                                <field name="deal_id" readonly="context.get('default_deal_id')" invisible="context.get('default_property_id') or context.get('expenses_properties')"
+                                        attrs="{'required': [('expense_type', '=', 'investment'),('property_id', '=', False)], 
+                                                'invisible': ['|','|',('expense_type', '=', 'company'),('expense_type', '=', False),('property_id', '!=', False)]}"/>
+                                <field name="property_id" readonly="context.get('default_property_id')" invisible="context.get('default_deal_id') or context.get('expenses_deals')" 
                                         attrs="{'required': [('expense_type', '=', 'investment'),('deal_id', '=', False)], 
                                                 'invisible': ['|','|',('expense_type', '=', 'company'),('expense_type', '=', False),('deal_id', '!=', False)]}"/>
                                 <field name="amount" widget="monetary"/>
@@ -128,7 +128,7 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="deal_id"/>
-                    <field name="contract_id"/>
+                    <field name="property_id"/>
                     <field name="amount"/>
                     <field name="category_id"/>
                     <field name="status"/>
@@ -155,7 +155,7 @@
                                         </div>
                                         <div class="o_kanban_record_bottom">
                                             <div class="o_text_overflow">
-                                                <field name="contract_id"/>
+                                                <field name="property_id"/>
                                                 <field name="deal_id"/>
                                             </div>
                                         </div>
@@ -177,13 +177,13 @@
             </field>
         </record>
 
-        <!-- Expense Action for Contract Expenses -->
-        <record id="action_real_estate_contract_expense" model="ir.actions.act_window">
-            <field name="name">Contracts Expenses</field>
+        <!-- Expense Action for Property Expenses -->
+        <record id="action_real_estate_property_expense" model="ir.actions.act_window">
+            <field name="name">Property Expenses</field>
             <field name="res_model">real.estate.expense</field>
             <field name="view_mode">tree,kanban,form</field>
-            <field name="domain">[('expense_type', '=', 'investment'), ('contract_id', '!=', False)]</field>
-            <field name="context">{'default_expense_type': 'investment', 'expenses_contracts': True}</field>
+            <field name="domain">[('expense_type', '=', 'investment'), ('property_id', '!=', False)]</field>
+            <field name="context">{'default_expense_type': 'investment', 'expenses_properties': True}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create your first investment expense

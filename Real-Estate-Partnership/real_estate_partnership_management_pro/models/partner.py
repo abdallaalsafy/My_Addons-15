@@ -13,9 +13,9 @@ class RealEstatePartner(models.Model):
     national_id = fields.Char(string='National ID', tracking=True)
     nickname = fields.Char(string='Nickname', tracking=True)
 
-    is_seller = fields.Boolean(string='Seller', compute='_compute_is_seller', tracking=True, readonly=True, store=True, help="This contact can be a seller of contracts")
+    is_seller = fields.Boolean(string='Seller', compute='_compute_is_seller', tracking=True, readonly=True, store=True, help="This contact can be a seller of properties")
     is_payee = fields.Boolean(string='Payee', compute='_compute_is_payee', tracking=True, readonly=True, store=True, help="This contact can receive payments for expenses")
-    is_buyer = fields.Boolean(string='Buyer', compute='_compute_is_buyer', tracking=True, readonly=True, store=True, help="This contact can buy contracts")
+    is_buyer = fields.Boolean(string='Buyer', compute='_compute_is_buyer', tracking=True, readonly=True, store=True, help="This contact can buy properties")
     is_partner = fields.Boolean(string='Partner', compute='_compute_is_partner', tracking=True, readonly=True, store=True, help="This contact is a partner")
 
     # Status and Dates
@@ -41,16 +41,16 @@ class RealEstatePartner(models.Model):
     open_investments_count = fields.Integer(string='Open Investments Count', compute='_compute_opening_investment_count')
     transaction_count = fields.Integer(string='Transaction Count', compute='_compute_transaction_count')
     profit_count = fields.Integer(string='Profit Count', compute='_compute_profit_count')
-    contract_purchase_count = fields.Integer(string='Contract Count', compute='_compute_contract_count')
-    contract_sale_count = fields.Integer(string='Contract Count', compute='_compute_contract_count')
+    property_purchase_count = fields.Integer(string='Property Count', compute='_compute_property_count')
+    property_sale_count = fields.Integer(string='Property Count', compute='_compute_property_count')
     expense_count = fields.Integer(string='Expense Count', compute='_compute_expense_count')
 
     # Related Data
     transaction_ids = fields.One2many('real.estate.transaction', 'partner_id', string='Transactions')
-    investment_ids = fields.One2many('real.estate.property.investment', 'partner_id', string='Investments')
-    sale_line_ids = fields.One2many('real.estate.property.sale.line', 'partner_id', string='Property Sales')
-    contract_purchase_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Sold', domain=[('is_purchased', '=', True)])
-    contract_sale_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Sold', domain=[('is_purchased', '=', False)])
+    investment_ids = fields.One2many('real.estate.investment', 'partner_id', string='Investments')
+    sale_line_ids = fields.One2many('real.estate.sale.line', 'partner_id', string='Property Sales')
+    property_purchase_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Purchased', domain=[('is_purchased', '=', True)])
+    property_sale_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Sold', domain=[('is_purchased', '=', False)])
     expense_ids = fields.One2many('real.estate.expense', 'contact_id', string='Expenses Paid')
 
     #-------------------------------
@@ -122,22 +122,22 @@ class RealEstatePartner(models.Model):
         for partner in self:
             partner.expense_count = len(partner.expense_ids)
 
-    def _compute_contract_count(self):
+    def _compute_property_count(self):
         for partner in self:
-            partner.contract_purchase_count = len(partner.contract_purchase_ids)
-            partner.contract_sale_count = len(partner.contract_sale_ids)
+            partner.property_purchase_count = len(partner.property_purchase_ids)
+            partner.property_sale_count = len(partner.property_sale_ids)
 
 # -----------------------------------------------
 
-    @api.depends('contract_sale_ids.contact_id')
+    @api.depends('property_sale_ids.contact_id')
     def _compute_is_seller(self):
         for partner in self:
-            partner.is_seller = bool(partner.contract_purchase_count)
+            partner.is_seller = bool(partner.property_purchase_count)
 
-    @api.depends('contract_sale_ids.contact_id')
+    @api.depends('property_sale_ids.contact_id')
     def _compute_is_buyer(self):
         for contact in self:
-            contact.is_buyer = bool(contact.contract_sale_ids)
+            contact.is_buyer = bool(contact.property_sale_ids)
 
     @api.depends('expense_ids.contact_id')
     def _compute_is_payee(self):
@@ -213,11 +213,11 @@ class RealEstatePartner(models.Model):
                 if partner.join_date > min_transaction_date:
                     raise UserError(_('Partner join date cannot be bigger than transaction date.'))
 
-            if partner.contract_purchase_ids or partner.contract_sale_ids:
-                min_contract_date = min(
-                    set(partner.contract_purchase_ids | partner.contract_sale_ids).filtered(lambda contract: contract.contract_date).mapped('contract_date'))
-                if partner.join_date > min_contract_date:
-                    raise UserError(_('Partner join date cannot be bigger than contract date.'))
+            if partner.property_purchase_ids or partner.property_sale_ids:
+                min_property_date = min(
+                    set(partner.property_purchase_ids | partner.property_sale_ids).filtered(lambda property: property.property_date).mapped('property_date'))
+                if partner.join_date > min_property_date:
+                    raise UserError(_('Partner join date cannot be bigger than property date.'))
 
     # ========================= Action Functions =================================
 
@@ -226,7 +226,7 @@ class RealEstatePartner(models.Model):
         return {
             'name': _('Create New Investment'),
             'type': 'ir.actions.act_window',
-            'res_model': 'real.estate.property.investment',
+            'res_model': 'real.estate.investment',
             'view_mode': 'form',
             'target': 'new',
             'context': {
@@ -289,7 +289,7 @@ class RealEstatePartner(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'name': _('Partner Investments'),
-            'res_model': 'real.estate.property.investment',
+            'res_model': 'real.estate.investment',
             'view_mode': 'tree,form',
             'domain': [('partner_id', '=', self.id)],
             'context': {'default_partner_id': self.id,},
@@ -299,26 +299,26 @@ class RealEstatePartner(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'name': _('Partner Profits'),
-            'res_model': 'real.estate.property.sale.line',
+            'res_model': 'real.estate.sale.line',
             'view_mode': 'tree,form',
             'domain': [('partner_id', '=', self.id)],
         }
 
-    def action_view_purchases_contracts(self):
-            """View properties sold by this contact"""
+    def action_view_purchases_properties(self):
+            """View properties purchased by this contact"""
             return {
                 'type': 'ir.actions.act_window',
-                'name': _('Purchases Contracts'),
+                'name': _('Purchases Properties'),
                 'res_model': 'real.estate.property',
                 'view_mode': 'tree,form',
                 'domain': [('contact_id', '=', self.id), ('is_purchased', '=', True)],
                 'context': {'default_contact_id': self.id, 'default_is_purchased': True},
             }
-    def action_view_sale_contracts(self):
+    def action_view_sale_properties(self):
         """View properties sold by this contact"""
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Sale Contracts'),
+            'name': _('Sale Properties'),
             'res_model': 'real.estate.property',
             'view_mode': 'tree,form',
             'domain': [('contact_id', '=', self.id),('is_purchased', '=', False)],

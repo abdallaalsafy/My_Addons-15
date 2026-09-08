@@ -1,45 +1,4 @@
 # -*- coding: utf-8 -*-
-""""
-## CONDITIONS OF ((Creating/Updating/Deleting)) Payments:
-    (1) The status of the Investment must be opening.
-        ** In domain Of field investment_id
-    (2) AND -->> The (total_investments_percentage must be less than 100 and the investment_method be 'percentage') or (the investment_method be 'amount').
-        ** In constrains Of field investment_id ==> _check_deal_id_confirmed_sold_contracts
-    (3) AND -->> The deal must have no confirmed sold contracts.
-        ** In constrains Of field investment_id ==> _check_deal_id_confirmed_sold_contracts
-    
-The Conditions Of NOT ((Updating)) An Payment:
-    (1) Cannot update any payment if :
-        ** the status of investment is not opening.
-    (2) Cannot update payment of opening investment if :
-        ** The deal has confirmed sold contracts.
-        ** The update fields are not only notes or payment_date.
-
-The Conditions Of NOT((Deleting)) An Payment:
-    (1) Cannot delete any payment if :
-        ** the status of investment is not opening.
-    (2) Cannot delete payment of opening investment if :
-        ** The deal has confirmed sold contracts.
-
-===================================================
-
-## Constrains ((Creating/Updating)) Payments
-    -------------------------------------------
-    (1) investment_id
-        ** _check_deal_id_confirmed_sold_contracts
-            == Donnot allowed to add payment to deal with confirmed sold contracts
-            == Donnot allowed to add payment to deal with total investments percentage > 100 and percentage method
-        ** _check_payment_date_vs_investment_date
-            == Donnot allowed to add payment date earlier than investment date
-
-    (2) payment_date
-        ** _check_payment_date_vs_investment_date
-            == Donnot allowed to add payment date earlier than investment date
-
-    (3) amount
-        ** _check_amount
-            == Donnot allowed to add payment amount <= 0
-"""
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
 
@@ -51,7 +10,7 @@ class RealEstateInvestmentPayment(models.Model):
     _order = 'investment_id,payment_date'
 
     name = fields.Char(string='Reference', required=True, readonly=True, copy=False, default=lambda self: _('New'))
-    investment_id = fields.Many2one('real.estate.property.investment', string='Investment', required=True, tracking=True, ondelete='cascade',
+    investment_id = fields.Many2one('real.estate.investment', string='Investment', required=True, tracking=True, ondelete='cascade',
                                     domain="[('status', '=', 'opening')]")
     partner_id = fields.Many2one(related='investment_id.partner_id', store=True,)
 
@@ -99,10 +58,10 @@ class RealEstateInvestmentPayment(models.Model):
     # ============================ Constrains Methods ============================
 
     @api.constrains('investment_id')
-    def _check_deal_id_confirmed_sold_contracts(self):
+    def _check_deal_id_confirmed_sold_properties(self):
         for payment in self:
-            if payment.investment_id.deal_id.confirmed_sold_contracts_count > 0:
-                raise ValidationError(_('Cannot add payment lines for investments with confirmed sold contracts.'))
+            if payment.investment_id.deal_id.confirmed_sold_properties_count > 0:
+                raise ValidationError(_('Cannot add payment lines for investments with confirmed sold properties.'))
 
             if payment.investment_id.deal_id.total_investments_percentage > 100 and payment.investment_id.investment_method == 'percentage':
                 raise ValidationError(_('Cannot add payment lines for investments with total investments percentage > 100 and percentage method.'))

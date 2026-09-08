@@ -11,19 +11,9 @@ Real Estate Partnership Management Module
 This module provides a complete solution for managing real estate partnerships:
 
 Features:
-* Partner management with balance tracking
-* Property management with detailed specifications
-* Investment tracking per property
-* Expense management and distribution
-* Transaction management (deposits/withdrawals)
-* Property sale and profit distribution
-* Daily cashbox management with opening/closing balances
-* Manual transaction entry and reporting
-* Professional UI with organized views and menus
 
-The module is built from scratch without dependencies on standard Odoo modules.
     """,
-    'author': 'Mohamed Eid',
+    'author': 'Abdallaalsafy',
     'website': 'https://www.example.com',
     'license': 'LGPL-3',
     'depends': [
@@ -38,7 +28,7 @@ The module is built from scratch without dependencies on standard Odoo modules.
 
         'wizards/views/payment_filter_wizard_views.xml',
         'wizards/views/partner_unified_ledger_views.xml',
-        'wizards/views/purchase_payment_receipts_wizard_views.xml',
+        'wizards/views/property_payment_receipts_wizard_views.xml',
         'wizards/views/company_financial_summary_views.xml',
 
         'views/partner_views.xml',

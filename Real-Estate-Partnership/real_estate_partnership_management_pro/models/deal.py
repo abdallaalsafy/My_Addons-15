@@ -38,18 +38,18 @@ class RealEstateDeal(models.Model):
     city_id = fields.Many2one('real.estate.city', string='City', tracking=True, index=True)
     address = fields.Text(string='Full Address', tracking=True)
     # Property Boundaries
-    north_boundary = fields.Text(string='North Boundary', compute='_compute_purchased_contract_boundary', store=True, readonly=False, help='What borders the property from the north')
-    south_boundary = fields.Text(string='South Boundary', compute='_compute_purchased_contract_boundary', store=True, readonly=False, help='What borders the property from the south')
-    east_boundary = fields.Text(string='East Boundary', compute='_compute_purchased_contract_boundary', store=True, readonly=False, help='What borders the property from the east')
-    west_boundary = fields.Text(string='West Boundary', compute='_compute_purchased_contract_boundary', store=True, readonly=False, help='What borders the property from the west')
+    north_boundary = fields.Text(string='North Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the north')
+    south_boundary = fields.Text(string='South Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the south')
+    east_boundary = fields.Text(string='East Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the east')
+    west_boundary = fields.Text(string='West Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the west')
     # Room Details
-    built_area = fields.Float(string='Built Area', tracking=True, compute='_compute_purchased_contract_rooms', store=True, help='Built area of the property (used for area ratio calculations)')
-    number_of_floors = fields.Integer(string='Number of Floors', tracking=True, compute='_compute_purchased_contract_rooms', store=True, help='Number of floors in the property')
-    total_rooms = fields.Integer(string='Total Rooms', tracking=True,  compute='_compute_purchased_contract_rooms', store=True, help='Total number of rooms in the property')
-    bedrooms = fields.Integer(string='Bedrooms', tracking=True, compute='_compute_purchased_contract_rooms', store=True, help='Number of bedrooms in the property')
-    bathrooms = fields.Integer(string='Bathrooms', tracking=True, compute='_compute_purchased_contract_rooms', store=True, help='Number of bathrooms in the property')
-    kitchens = fields.Integer(string='Kitchens', tracking=True, compute='_compute_purchased_contract_rooms', store=True, help='Number of kitchens in the property')
-    living_rooms = fields.Integer(string='Living Rooms', tracking=True, compute='_compute_purchased_contract_rooms', store=True, help='Number of living rooms in the property')
+    built_area = fields.Float(string='Built Area', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Built area of the property (used for area ratio calculations)')
+    number_of_floors = fields.Integer(string='Number of Floors', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Number of floors in the property')
+    total_rooms = fields.Integer(string='Total Rooms', tracking=True,  compute='_compute_purchased_property_rooms', store=True, help='Total number of rooms in the property')
+    bedrooms = fields.Integer(string='Bedrooms', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Number of bedrooms in the property')
+    bathrooms = fields.Integer(string='Bathrooms', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Number of bathrooms in the property')
+    kitchens = fields.Integer(string='Kitchens', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Number of kitchens in the property')
+    living_rooms = fields.Integer(string='Living Rooms', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Number of living rooms in the property')
     # Area and Units
     total_area = fields.Float(string='Total Area', compute='_compute_total_area', store=True,)
     sold_area = fields.Float(string='Sold Area', compute='_compute_sold_remaining_area', store=True,)
@@ -66,23 +66,23 @@ class RealEstateDeal(models.Model):
     expense_count = fields.Integer(string='Expense Count', compute='_compute_expense_count')
     investment_count = fields.Integer(string='Investment Count', compute='_compute_investment_count')
     attachment_count = fields.Integer(string='Document Count', compute='_compute_attachment_count')
-    purchased_contracts_count = fields.Integer(string='Purchased Contracts Count', compute='_compute_contracts_count')
-    sold_contracts_count = fields.Integer(string='Sold Contracts Count', compute='_compute_contracts_count')
-    confirmed_sold_contracts_count = fields.Integer(string='ConfirmedSold Contracts Count', compute='_compute_contracts_count')
-    draft_sold_contracts_count = fields.Integer(string='ConfirmedSold Contracts Count', compute='_compute_contracts_count', store=True)
+    purchased_properties_count = fields.Integer(string='Purchased Properties Count', compute='_compute_properties_count')
+    sold_properties_count = fields.Integer(string='Sold Properties Count', compute='_compute_properties_count')
+    confirmed_sold_properties_count = fields.Integer(string='ConfirmedSold Properties Count', compute='_compute_properties_count')
+    draft_sold_properties_count = fields.Integer(string='Draft Sold Properties Count', compute='_compute_properties_count', store=True)
     profit_count = fields.Integer(string='Profit Count', compute='_compute_profit_count')
     
     # Notes and Documents
     description = fields.Text(string='Description')
     notes = fields.Text(string='Notes')
-    attachment_ids = fields.Many2many('ir.attachment', string='Attachments', help='Upload property documents, images, contracts, etc.')
+    attachment_ids = fields.Many2many('ir.attachment', string='Attachments', help='Upload property documents, images, properties, etc.')
     
     # Related Data
-    purchased_contracts_ids = fields.One2many('real.estate.property', 'deal_id', string='Purchased Contracts', domain=[('is_purchased', '=', True)])
-    sold_contracts_ids = fields.One2many('real.estate.property', 'deal_id', string='Sold Contracts', domain=[('is_purchased', '=', False)])
-    investment_ids = fields.One2many('real.estate.property.investment', 'deal_id', string='Investments')
+    purchased_properties_ids = fields.One2many('real.estate.property', 'deal_id', string='Purchased Properties', domain=[('is_purchased', '=', True)])
+    sold_properties_ids = fields.One2many('real.estate.property', 'deal_id', string='Sold Properties', domain=[('is_purchased', '=', False)])
+    investment_ids = fields.One2many('real.estate.investment', 'deal_id', string='Investments')
     expense_ids = fields.One2many('real.estate.expense', 'deal_id', string='Expenses')
-    sale_line_ids = fields.One2many('real.estate.property.sale.line', 'deal_id', string='Sale Lines')
+    sale_line_ids = fields.One2many('real.estate.sale.line', 'deal_id', string='Sale Lines')
 
     # ====================== Built-in methods =================================
     @api.model_create_multi
@@ -112,12 +112,12 @@ class RealEstateDeal(models.Model):
 
     # =========================== Compute Functions ===========================
 
-    def _compute_contracts_count(self):
+    def _compute_properties_count(self):
         for deal in self:
-            deal.purchased_contracts_count = len(deal.purchased_contracts_ids)
-            deal.sold_contracts_count = len(deal.sold_contracts_ids)
-            deal.confirmed_sold_contracts_count = len([contract for contract in deal.sold_contracts_ids if contract.status == 'confirmed'])
-            deal.draft_sold_contracts_count = len([contract for contract in deal.sold_contracts_ids if contract.status == 'draft'])
+            deal.purchased_properties_count = len(deal.purchased_properties_ids)
+            deal.sold_properties_count = len(deal.sold_properties_ids)
+            deal.confirmed_sold_properties_count = len([property for property in deal.sold_properties_ids if property.status == 'confirmed'])
+            deal.draft_sold_properties_count = len([property for property in deal.sold_properties_ids if property.status == 'draft'])
 
     def _compute_expense_count(self):
         for deal in self:
@@ -136,28 +136,28 @@ class RealEstateDeal(models.Model):
             deal.profit_count = len(deal.sale_line_ids)
     #-------------------------------------------------
 
-    @api.depends('purchased_contracts_ids.area_unit')
-    def _compute_purchased_contract_area_unit(self):
+    @api.depends('purchased_properties_ids.area_unit')
+    def _compute_purchased_property_area_unit(self):
         for deal in self:
-            if deal.purchased_contracts_ids:
-                # Assuming the first purchased contract's area unit is representative
-                first_contract = deal.purchased_contracts_ids[0]
-                deal.area_unit = first_contract.area_unit
+            if deal.purchased_properties_ids:
+                # Assuming the first purchased property's area unit is representative
+                first_property = deal.purchased_properties_ids[0]
+                deal.area_unit = first_property.area_unit
             else:
                 deal.area_unit = False
 
-    @api.depends('purchased_contracts_ids.built_area', 'purchased_contracts_ids.number_of_floors', 'purchased_contracts_ids.total_rooms', 'purchased_contracts_ids.bedrooms', 'purchased_contracts_ids.bathrooms', 'purchased_contracts_ids.kitchens', 'purchased_contracts_ids.living_rooms')
-    def _compute_purchased_contract_rooms(self):
+    @api.depends('purchased_properties_ids.built_area', 'purchased_properties_ids.number_of_floors', 'purchased_properties_ids.total_rooms', 'purchased_properties_ids.bedrooms', 'purchased_properties_ids.bathrooms', 'purchased_properties_ids.kitchens', 'purchased_properties_ids.living_rooms')
+    def _compute_purchased_property_rooms(self):
         for deal in self:
-            # If there are purchased contracts, sum their room specifications; otherwise, set to zero
-            if deal.purchased_contracts_ids:
-                deal.built_area = sum(contract.built_area for contract in deal.purchased_contracts_ids)
-                deal.number_of_floors = sum(contract.number_of_floors for contract in deal.purchased_contracts_ids)
-                deal.total_rooms = sum(contract.total_rooms for contract in deal.purchased_contracts_ids)
-                deal.bedrooms = sum(contract.bedrooms for contract in deal.purchased_contracts_ids)
-                deal.bathrooms = sum(contract.bathrooms for contract in deal.purchased_contracts_ids)
-                deal.kitchens = sum(contract.kitchens for contract in deal.purchased_contracts_ids)
-                deal.living_rooms = sum(contract.living_rooms for contract in deal.purchased_contracts_ids)
+            # If there are purchased properties, sum their room specifications; otherwise, set to zero
+            if deal.purchased_properties_ids:
+                deal.built_area = sum(property.built_area for property in deal.purchased_properties_ids)
+                deal.number_of_floors = sum(property.number_of_floors for property in deal.purchased_properties_ids)
+                deal.total_rooms = sum(property.total_rooms for property in deal.purchased_properties_ids)
+                deal.bedrooms = sum(property.bedrooms for property in deal.purchased_properties_ids)
+                deal.bathrooms = sum(property.bathrooms for property in deal.purchased_properties_ids)
+                deal.kitchens = sum(property.kitchens for property in deal.purchased_properties_ids)
+                deal.living_rooms = sum(property.living_rooms for property in deal.purchased_properties_ids)
             else:
                 deal.built_area = 0
                 deal.number_of_floors = 0
@@ -167,51 +167,51 @@ class RealEstateDeal(models.Model):
                 deal.kitchens = 0
                 deal.living_rooms = 0
 
-    @api.depends('purchased_contracts_ids.north_boundary', 'purchased_contracts_ids.south_boundary', 'purchased_contracts_ids.east_boundary', 'purchased_contracts_ids.west_boundary')
-    def _compute_purchased_contract_boundary(self):
+    @api.depends('purchased_properties_ids.north_boundary', 'purchased_properties_ids.south_boundary', 'purchased_properties_ids.east_boundary', 'purchased_properties_ids.west_boundary')
+    def _compute_purchased_property_boundary(self):
         for deal in self:
-            if len(deal.purchased_contracts_ids) == 1:
-                # Assuming the first purchased contract's boundaries are representative
-                first_contract = deal.purchased_contracts_ids[0]
-                deal.north_boundary = first_contract.north_boundary
-                deal.south_boundary = first_contract.south_boundary
-                deal.east_boundary = first_contract.east_boundary
-                deal.west_boundary = first_contract.west_boundary
+            if len(deal.purchased_properties_ids) == 1:
+                # Assuming the first purchased property's boundaries are representative
+                first_property = deal.purchased_properties_ids[0]
+                deal.north_boundary = first_property.north_boundary
+                deal.south_boundary = first_property.south_boundary
+                deal.east_boundary = first_property.east_boundary
+                deal.west_boundary = first_property.west_boundary
             else:
                 deal.north_boundary = False
                 deal.south_boundary = False
                 deal.east_boundary = False
                 deal.west_boundary = False
 
-    @api.depends('purchased_contracts_ids.current_value')
+    @api.depends('purchased_properties_ids.current_value')
     def _compute_total_current_value(self):
         for deal in self:
-            if deal.purchased_contracts_ids:
-                deal.total_current_value = sum(contract.current_value for contract in deal.purchased_contracts_ids)
+            if deal.purchased_properties_ids:
+                deal.total_current_value = sum(property.current_value for property in deal.purchased_properties_ids)
             else:
                 deal.total_current_value = 0.0
 
-    @api.depends('purchased_contracts_ids.total_cost', 'sold_contracts_ids.total_expenses', 'total_expenses')
+    @api.depends('purchased_properties_ids.total_cost', 'sold_properties_ids.total_expenses', 'total_expenses')
     def _compute_total_deal_cost(self):
         for deal in self:
-            total_purchase_contracts_cost = sum(contract.total_cost for contract in deal.purchased_contracts_ids)
-            total_sold_contracts_expenses = sum(contract.total_expenses for contract in deal.sold_contracts_ids)
-            total_cost_before_sold = total_purchase_contracts_cost + deal.total_expenses
-            deal.total_deal_cost = total_cost_before_sold + total_sold_contracts_expenses
+            total_purchase_properties_cost = sum(property.total_cost for property in deal.purchased_properties_ids)
+            total_sold_properties_expenses = sum(property.total_expenses for property in deal.sold_properties_ids)
+            total_cost_before_sold = total_purchase_properties_cost + deal.total_expenses
+            deal.total_deal_cost = total_cost_before_sold + total_sold_properties_expenses
             deal.total_cost_before_sold = total_cost_before_sold
 
-    @api.depends('purchased_contracts_ids.total_area')
+    @api.depends('purchased_properties_ids.total_area')
     def _compute_total_area(self):
         for deal in self:
-            if deal.purchased_contracts_ids:
-                deal.total_area = sum(contract.total_area for contract in deal.purchased_contracts_ids)
+            if deal.purchased_properties_ids:
+                deal.total_area = sum(property.total_area for property in deal.purchased_properties_ids)
             else:
                 deal.total_area = 0.0
 
-    @api.depends('sold_contracts_ids.total_area', 'total_area')
+    @api.depends('sold_properties_ids.total_area', 'total_area')
     def _compute_sold_remaining_area(self):
         for deal in self:
-            deal.sold_area = sum(contract.total_area for contract in deal.sold_contracts_ids)
+            deal.sold_area = sum(property.total_area for property in deal.sold_properties_ids)
             deal.remaining_area = deal.total_area - deal.sold_area
 
     @api.depends('expense_ids.amount')
@@ -230,19 +230,6 @@ class RealEstateDeal(models.Model):
     def _compute_total_investments_percentage(self):
         for deal in self:
             deal.total_investments_percentage = sum(inv.percentage for inv in deal.investment_ids)
-
-    # =========================== Constraints Functions ===========================
-
-    # @api.constrains('investment_method')
-    # def _check_investment_method_change(self):
-    #     """Prevent changing investment method when investments exist"""
-    #     for deal in self:
-    #         if deal.investment_count > 0:
-    #             raise ValidationError(
-    #                 _('Cannot change investment method for property "%s" while there are existing investments. '
-    #                   'Please remove all investments before changing the investment method.') %
-    #                 (deal.name or deal.code)
-                # )
             
 # =========================== Action Functions ===========================
 
@@ -251,7 +238,7 @@ class RealEstateDeal(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'name': _('Deal Investments'),
-            'res_model': 'real.estate.property.investment',
+            'res_model': 'real.estate.investment',
             'view_mode': 'tree,form',
             'domain': [('deal_id', '=', self.id)],
             'context': {'default_deal_id': self.id,},
@@ -268,8 +255,8 @@ class RealEstateDeal(models.Model):
             'context': {'default_deal_id': self.id,'default_expense_type': 'investment',},
         }
 
-    def action_view_purchased_contracts(self):
-        """View Purchased Contracts"""
+    def action_view_purchased_properties(self):
+        """View Purchased Properties"""
         return {
             'type': 'ir.actions.act_window',
             'name': _('Child Properties'),
@@ -279,11 +266,11 @@ class RealEstateDeal(models.Model):
             'context': {'default_deal_id': self.id},
         }
 
-    def action_view_sold_contracts(self):
-        """View Sold Contracts"""
+    def action_view_sold_properties(self):
+        """View Sold Properties"""
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Sold Contracts'),
+            'name': _('Sold Properties'),
             'res_model': 'real.estate.property',
             'view_mode': 'tree,form',
             'domain': [('deal_id', '=', self.id),('is_purchased','=', False)],
@@ -293,8 +280,8 @@ class RealEstateDeal(models.Model):
     def action_view_deal_profit(self):
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Contract Profits'),
-            'res_model': 'real.estate.property.sale.line',
+            'name': _('Property Profits'),
+            'res_model': 'real.estate.sale.line',
             'view_mode': 'tree,form',
             'domain': [('deal_id', '=', self.id)],
         }
@@ -304,7 +291,7 @@ class RealEstateDeal(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'name': _('Create Investment'),
-            'res_model': 'real.estate.property.investment',
+            'res_model': 'real.estate.investment',
             'view_mode': 'form',
             'target': 'new',
             'context': {
@@ -328,33 +315,33 @@ class RealEstateDeal(models.Model):
         }
 
 
-    def action_create_purchased_contract(self):
-        """Create Purchased Contracts"""
+    def action_create_purchased_property(self):
+        """Create Purchased Properties"""
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Create Child Property'),
+            'name': _('Create Purchase Property'),
             'res_model': 'real.estate.property',
             'view_mode': 'form',
             'target': 'new',
             'context': {
                 'default_deal_id': self.id,
                 'default_is_purchased':True,
-                'default_name': _('%s - Purchased Contract %s') % (self.code, len(self.purchased_contracts_ids) + 1),
+                'default_name': _('%s - Purchased Property %s') % (self.code, len(self.purchased_properties_ids) + 1),
                 'default_status': 'confirmed',
-                'default_purchase_date': fields.Date.today(),
+                'default_property_date': fields.Date.today(),
             },
         }
 
-    def action_create_sold_contract(self):
+    def action_create_sold_property(self):
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Create Sale Contract'),
+            'name': _('Create Sale Property'),
             'res_model': 'real.estate.property',
             'view_mode': 'form',
             'target': 'new',
             'context': {
                 'default_deal_id': self.id,
-                'default_name': _('%s - PurSold Contract %s') % (self.code, len(self.sold_contracts_ids) + 1),
+                'default_name': _('%s - Sold Property %s') % (self.code, len(self.sold_properties_ids) + 1),
                 'default_total_area': self.remaining_area,
             },
         }
@@ -372,18 +359,18 @@ class RealEstateDeal(models.Model):
     def action_restructuring_deal(self):
         self.ensure_one()
 
-        draft_sold_contracts = self.sold_contracts_ids.filtered(lambda contract: contract.status == 'draft')
-        for contract in draft_sold_contracts:
-            if contract.contract_price == 0:
-                raise ValidationError(_(f'Contract {contract.name} its contract price must be greater than zero.'))
+        draft_sold_properties = self.sold_properties_ids.filtered(lambda property: property.status == 'draft')
+        for property in draft_sold_properties:
+            if property.property_price == 0:
+                raise ValidationError(_(f'Property {property.name} its property price must be greater than zero.'))
 
-            contract.write({
+            property.write({
                 'is_conversion': True,
-                'contract_date': fields.Date.today(),
+                'property_date': fields.Date.today(),
                 'contact_id': self.env.company.partner_id.id,
-                'down_payment': contract.contract_price,
+                'down_payment': property.property_price,
                 })
-            contract.action_confirmed_sold_contract()
+            property.action_confirmed_sold_property()
 
             deal = self.create({
                 'name': _('ٌRestructuring - %s') % (self.name),
@@ -398,24 +385,24 @@ class RealEstateDeal(models.Model):
 
             self.env['real.estate.property'].create({
                 'deal_id': deal.id,
-                'name':  _('ٌRestructuring - %s') % (contract.name),
+                'name':  _('ٌRestructuring - %s') % (property.name),
                 'status': 'confirmed',
-                'contract_date': fields.Date.today(),
-                'contract_price': contract.contract_price,
-                'down_payment': contract.contract_price,
-                'current_value': contract.contract_price,
-                'total_area': contract.total_area,
-                'contact_id': contract.contact_id.id,
+                'property_date': fields.Date.today(),
+                'property_price': property.property_price,
+                'down_payment': property.property_price,
+                'current_value': property.property_price,
+                'total_area': property.total_area,
+                'contact_id': property.contact_id.id,
                 'is_purchased': True,
-                'north_boundary': contract.north_boundary,
-                'south_boundary': contract.south_boundary,
-                'east_boundary': contract.east_boundary,
-                'west_boundary': contract.west_boundary,
+                'north_boundary': property.north_boundary,
+                'south_boundary': property.south_boundary,
+                'east_boundary': property.east_boundary,
+                'west_boundary': property.west_boundary,
             })
 
             records = []
             for partnership in self.investment_ids:
-                amount = (contract.contract_price * partnership.percentage) / 100
+                amount = (property.property_price * partnership.percentage) / 100
                 records.append({
                     'partner_id': partnership.partner_id.id,
                     'deal_id': deal.id,
@@ -425,7 +412,7 @@ class RealEstateDeal(models.Model):
                     'amount': amount,    
                     })],
                 })
-            self.env['real.estate.property.investment'].create(records)
+            self.env['real.estate.investment'].create(records)
             
         self.is_restructured = True
         self.status = 'closed'

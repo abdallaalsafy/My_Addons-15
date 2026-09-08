@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <search string="Payment Installments">
                     <field name="name"/>
-                    <field name="contract_id"/>
+                    <field name="property_id"/>
                     <field name="contact_id"/>
                     <field name="is_purchased"/>
                     <field name="status"/>
@@ -25,7 +25,7 @@
                     <filter string="Filter by Due Date" name="filter_by_due_date" date="due_date"/>
                     <separator/>
                     <group expand="0" string="Group By">
-                        <filter string="Contracts" name="group_contract" context="{'group_by': 'contract_id'}"/>
+                        <filter string="Properties" name="group_property" context="{'group_by': 'property_id'}"/>
                         <filter string="Payment Type" name="group_payment_type" context="{'group_by': 'is_purchased'}"/>
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                         <filter string="Contact" name="group_contact" context="{'group_by': 'contact_id'}"/>
@@ -42,7 +42,7 @@
             <field name="arch" type="xml">
                 <tree string="Payment Installments">
                     <field name="name"/>
-                    <field name="contract_id"/>
+                    <field name="property_id"/>
                     <field name="contact_id"/>
                     <field name="is_purchased" attrs="{'column_invisible': True}"/>
                     <field name="amount" widget="monetary" sum="Total Amount"/>
@@ -79,7 +79,7 @@
                         </div>
                         <group>
                             <group name="basic_info">
-                                <field name="contract_id" options="{'no_create': True}" readonly="context.get('default_contract_id')"/>
+                                <field name="property_id" options="{'no_create': True}" readonly="context.get('default_property_id')"/>
                                 <field name="contact_id"/>
                             </group>
                             <group name="payment_info">
