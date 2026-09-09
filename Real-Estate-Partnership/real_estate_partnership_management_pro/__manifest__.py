@@ -32,10 +32,11 @@ Features:
         'wizards/views/company_financial_summary_views.xml',
 
         'views/partner_views.xml',
+        'views/city_views.xml',
         'views/property_views.xml',
-        'views/deal_views.xml',
         'views/investment_views.xml',
-        'views/investment_payment_views.xml',
+        'views/partnership_views.xml',
+        'views/partnership_payment_views.xml',
         'views/expense_views.xml',
         'views/expense_category_views.xml',
         'views/sale_lines_views.xml',

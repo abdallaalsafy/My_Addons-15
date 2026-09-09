@@ -13,7 +13,7 @@
                     <field name="address"/>
                     <field name="city_id"/>
                     <field name="contact_id"/>
-                    <field name="deal_id"/>
+                    <field name="investment_id"/>
                     <field name="area_unit"/>
                     <field name="total_area"/>
                     <separator/>
@@ -50,7 +50,7 @@
                 <tree string="Properties">
                     <field name="code"/>
                     <field name="name"/>
-                    <field name="deal_id" optional="show"/>
+                    <field name="investment_id" optional="show"/>
                     <field name="property_type"/>
                     <field name="area_unit" optional="hide"/>
                     <field name="total_area" optional="show"/>
@@ -74,7 +74,7 @@
                     <field name="code"/>
                     <field name="name"/>
                     <field name="property_date"/>
-                    <field name="deal_id" optional="show"/>
+                    <field name="investment_id" optional="show"/>
                     <field name="contact_id" optional="hide"/>
                     <field name="total_profit" widget="monetary" sum="Total Profit"/>
                     <field name="management_fee_percentage"/>
@@ -90,23 +90,23 @@
             <field name="arch" type="xml">
                 <form string="Property">
                     <field name="is_purchased" invisible="1"/>
-                    <field name="deal_status" invisible="1"/>
+                    <field name="investment_status" invisible="1"/>
                     <header>
                         <button name="action_create_expense" type="object" 
                                 string="Create Expense" class="btn-info"
-                                attrs="{'invisible':[('deal_status','=','closed')]}"/>
+                                attrs="{'invisible':[('investment_status','=','closed')]}"/>
                         <button name="action_create_payment_installment" type="object"
                                 string="Create Installment" class="btn-secondary"
-                                attrs="{'invisible':['|','|',('deal_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
+                                attrs="{'invisible':['|','|',('investment_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
                         <button name="action_generate_purchase_payment_receipts" type="object"
                                 string="Generate Receipts" class="btn-primary"
-                                attrs="{'invisible':['|','|',('deal_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
+                                attrs="{'invisible':['|','|',('investment_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
                         <button name="action_confirmed_sold_property" type="object"
                                 string="Confirmed" class="btn-primary"
                                 attrs="{'invisible':[('status','=','confirmed')]}"/>
                         <button name="action_draft_sold_property" type="object"
                                 string="Mark As Draft" class="btn-secondary"
-                                attrs="{'invisible':['|','|',('deal_status','=','closed'),('status','=','draft'),('is_purchased','=',True)]}"/>
+                                attrs="{'invisible':['|','|',('investment_status','=','closed'),('status','=','draft'),('is_purchased','=',True)]}"/>
                         <field name="status" widget="statusbar" 
                                statusbar_visible="confirmed"/>
                     </header>
@@ -136,13 +136,13 @@
                         </div>
                         <group>
                             <group name="basic_info">
-                                <field name="deal_id"/>
+                                <field name="investment_id"/>
                                 <field name="property_type"/>
                                 <field name="current_value" widget="monetary"/>
                             </group>
                             <group name="financial_info">
                                 <field name="total_expenses" widget="monetary"/>
-                                <field name="deal_expenses" widget="monetary" attrs="{'invisible': ['|',('is_purchased', '=', True),('status','=','draft')]}"/>
+                                <field name="investment_expenses" widget="monetary" attrs="{'invisible': ['|',('is_purchased', '=', True),('status','=','draft')]}"/>
                                 <field name="total_cost" widget="monetary"/>
                             </group>
                         </group>
@@ -237,7 +237,6 @@
                     <field name="code"/>
                     <field name="property_type"/>
                     <field name="total_cost"/>
-                    <field name="color"/>
                     <field name="attachment_ids"/>
                     <templates>
                         <t t-name="kanban-box">

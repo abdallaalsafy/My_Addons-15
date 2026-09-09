@@ -1,12 +1,15 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_real_estate_city_user,real.estate.city.user,model_real_estate_city,group_real_estate_user,1,1,1,0
+access_real_estate_city_manager,real.estate.city.manager,model_real_estate_city,group_real_estate_manager,1,1,1,1
+
 access_real_estate_property_user,real.estate.property.user,model_real_estate_property,group_real_estate_user,1,1,1,0
 access_real_estate_property_manager,real.estate.property.manager,model_real_estate_property,group_real_estate_manager,1,1,1,1
 
-access_real_estate_deal_user,real.estate.deal.user,model_real_estate_deal,group_real_estate_user,1,1,1,0
-access_real_estate_deal_manager,real.estate.deal.manager,model_real_estate_deal,group_real_estate_manager,1,1,1,1
-
 access_real_estate_investment_user,real.estate.investment.user,model_real_estate_investment,group_real_estate_user,1,1,1,0
 access_real_estate_investment_manager,real.estate.investment.manager,model_real_estate_investment,group_real_estate_manager,1,1,1,1
+
+access_real_estate_partnership_user,real.estate.partnership.user,model_real_estate_partnership,group_real_estate_user,1,1,1,0
+access_real_estate_partnership_manager,real.estate.partnership.manager,model_real_estate_partnership,group_real_estate_manager,1,1,1,1
 access_real_estate_expense_user,real.estate.expense.user,model_real_estate_expense,group_real_estate_user,1,1,1,0
 access_real_estate_expense_manager,real.estate.expense.manager,model_real_estate_expense,group_real_estate_manager,1,1,1,1
 access_real_estate_expense_category_user,real.estate.expense.category.user,model_real_estate_expense_category,group_real_estate_user,1,1,1,0
@@ -15,8 +18,8 @@ access_real_estate_transaction_user,real.estate.transaction.user,model_real_esta
 access_real_estate_transaction_manager,real.estate.transaction.manager,model_real_estate_transaction,group_real_estate_manager,1,1,1,1
 access_real_estate_sale_line_user,real.estate.sale.line.user,model_real_estate_sale_line,group_real_estate_user,1,1,1,0
 access_real_estate_sale_line_manager,real.estate.sale.line.manager,model_real_estate_sale_line,group_real_estate_manager,1,1,1,1
-access_real_estate_investment_payment_user,real.estate.investment.payment.user,model_real_estate_investment_payment,group_real_estate_user,1,1,1,0
-access_real_estate_investment_payment_manager,real.estate.investment.payment.manager,model_real_estate_investment_payment,group_real_estate_manager,1,1,1,1
+access_real_estate_partnership_payment_user,real.estate.partnership.payment.user,model_real_estate_partnership_payment,group_real_estate_user,1,1,1,0
+access_real_estate_partnership_payment_manager,real.estate.partnership.payment.manager,model_real_estate_partnership_payment,group_real_estate_manager,1,1,1,1
 access_res_company_manager,res.company.manager,base.model_res_company,group_real_estate_manager,1,1,0,0
 
 access_real_estate_payment_installment_user,real.estate.payment.installment.user,model_real_estate_payment_installment,group_real_estate_user,1,1,1,0

@@ -40,26 +40,26 @@
                                 </div>
                             </page>
 
-                            <page string="Deals Statistics">
+                            <page string="investments Statistics">
                                 <group>
                                     <group string="Overview">
-                                        <field name="deals_count"/>
-                                        <field name="deals_open_count"/>
-                                        <field name="deals_closed_count"/>
+                                        <field name="investments_count"/>
+                                        <field name="investments_open_count"/>
+                                        <field name="investments_closed_count"/>
                                     </group>
                                     <group string="Financial Summary">
-                                        <field name="deals_total_amount"/>
-                                        <field name="deals_open_amount" widget="monetary"/>
-                                        <field name="deals_closed_amount" widget="monetary"/>
+                                        <field name="investments_total_amount"/>
+                                        <field name="investments_open_amount" widget="monetary"/>
+                                        <field name="investments_closed_amount" widget="monetary"/>
                                     </group>
                                 </group>
                                 <group>
                                     <group string="Partnership Statistics">
                                         <field name="Partnership_partners_count" />
                                     </group>
-                                    <group string="Deals Amounts"> 
-                                        <field name="deals_maximum_amount" widget="monetary"/>
-                                        <field name="deals_minimum_amount" widget="monetary"/>
+                                    <group string="investments Amounts"> 
+                                        <field name="investments_maximum_amount" widget="monetary"/>
+                                        <field name="investments_minimum_amount" widget="monetary"/>
                                          <field name="partnerships_debtor_amount" widget="monetary"/>
                                     </group>
                                 </group>

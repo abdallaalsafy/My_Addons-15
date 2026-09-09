@@ -74,7 +74,7 @@ class PropertyPaymentReceiptsWizard(models.TransientModel):
             receipt_vals = {
                 'name': _('New'),
                 'property_id': self.property_id.id,
-                 #Although this field is related, I pass it because it doesn't deal with a form.Because i need it in create function
+                 #Although this field is related, I pass it because it doesn't investment with a form.Because i need it in create function
                 'is_purchased': self.is_purchased,
                 'amount': result_lst[i],
                 'due_date': current_date,

@@ -55,8 +55,8 @@
                         <field name="is_seller" invisible="1"/>
                         <field name="is_buyer" invisible="1"/>
                         <field name="is_payee" invisible="1"/>
-                        <button name="action_create_investment" type="object"
-                            string="Create Investment" class="btn-primary"
+                        <button name="action_create_partnership" type="object"
+                            string="Create partnership" class="btn-primary"
                             attrs="{'invisible': ['|','|',('status', '=', 'exited'),('active', '=', False),('is_partner', '=', False)]}"/>
                         <button name="action_create_transaction" type="object"
                                 string="Create Transaction" class="btn-primary"
@@ -83,10 +83,10 @@
                             attrs="{'invisible': [('transaction_count', '=', 0)]}">
                         <field name="transaction_count" widget="statinfo" string="Transactions"/>
                     </button>
-                    <button name="action_view_investments" type="object" 
+                    <button name="action_view_partnerships" type="object" 
                             class="oe_stat_button" icon="fa-building"
-                            attrs="{'invisible': [('open_investments_count', '=', 0)]}">
-                        <field name="open_investments_count" widget="statinfo" string="Investments"/>
+                            attrs="{'invisible': [('open_partnerships_count', '=', 0)]}">
+                        <field name="open_partnerships_count" widget="statinfo" string="partnerships"/>
                     </button>
                     <button name="action_view_partner_profit" type="object"
                             class="oe_stat_button" icon="fa-line-chart"  attrs="{'invisible': [('profit_count', '=', 0)]}">
@@ -131,10 +131,10 @@
                 <xpath expr="//page[@name='internal_notes']" position="before">
                     <page string="Financial Information" attrs="{'invisible': [('is_partner', '=', False)]}">
                         <group>
-                            <group string="Balance &amp; Investments">
+                            <group string="Balance &amp; Partnerships">
                                 <field name="current_balance"/>
                                 <field name="actual_balance"/>
-                                <field name="total_investments"/>
+                                <field name="total_partnerships"/>
                             </group>
                             <group string="Expenses &amp; Profits">
                                 <field name="total_expenses"/>

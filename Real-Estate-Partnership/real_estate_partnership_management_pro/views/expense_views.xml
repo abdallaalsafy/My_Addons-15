@@ -10,7 +10,7 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="property_id"/>
-                    <field name="deal_id"/>
+                    <field name="investment_id"/>
                     <field name="contact_id"/>
                     <filter string="Confirmed" name="confirmed" domain="[('status', '=', 'confirmed')]"/>
                     <filter string="Paid" name="paid" domain="[('status', '=', 'paid')]"/>
@@ -29,7 +29,7 @@
                                     ('expense_date', '&lt;', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
                     <group expand="0" string="Group By">
-                        <filter string="Deal" name="group_deal" context="{'group_by': 'deal_id'}" invisible="context.get('default_expense_type')=='company'"/>
+                        <filter string="investment" name="group_investment" context="{'group_by': 'investment_id'}" invisible="context.get('default_expense_type')=='company'"/>
                         <filter string="Property" name="group_property" context="{'group_by': 'property_id'}" invisible="context.get('default_expense_type')=='investment'" />
                         <filter string="Category" name="group_category" context="{'group_by': 'category_id'}"/>
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
@@ -49,7 +49,7 @@
                     <field name="name"/>
                     <field name="expense_type" attrs="{'column_invisible': True}"/>
                     <field name="property_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
-                    <field name="deal_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
+                    <field name="investment_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
                     <field name="category_id"/>
                     <field name="amount" widget="monetary" sum="Total Amount"/>
                     <field name="expense_date"/>
@@ -85,12 +85,12 @@
                             <group name="expense_details">
                                 <field name="expense_date"/>
                                 <field name="expense_type" invisible="context.get('default_expense_type')"/>
-                                <field name="deal_id" readonly="context.get('default_deal_id')" invisible="context.get('default_property_id') or context.get('expenses_properties')"
+                                <field name="investment_id" readonly="context.get('default_investment_id')" invisible="context.get('default_property_id') or context.get('expenses_properties')"
                                         attrs="{'required': [('expense_type', '=', 'investment'),('property_id', '=', False)], 
                                                 'invisible': ['|','|',('expense_type', '=', 'company'),('expense_type', '=', False),('property_id', '!=', False)]}"/>
-                                <field name="property_id" readonly="context.get('default_property_id')" invisible="context.get('default_deal_id') or context.get('expenses_deals')" 
-                                        attrs="{'required': [('expense_type', '=', 'investment'),('deal_id', '=', False)], 
-                                                'invisible': ['|','|',('expense_type', '=', 'company'),('expense_type', '=', False),('deal_id', '!=', False)]}"/>
+                                <field name="property_id" readonly="context.get('default_property_id')" invisible="context.get('default_investment_id') or context.get('expenses_investments')" 
+                                        attrs="{'required': [('expense_type', '=', 'investment'),('investment_id', '=', False)], 
+                                                'invisible': ['|','|',('expense_type', '=', 'company'),('expense_type', '=', False),('investment_id', '!=', False)]}"/>
                                 <field name="amount" widget="monetary"/>
                                 <field name="category_id"/>
                             </group>
@@ -127,12 +127,11 @@
                     <field name="id"/>
                     <field name="name"/>
                     <field name="code"/>
-                    <field name="deal_id"/>
+                    <field name="investment_id"/>
                     <field name="property_id"/>
                     <field name="amount"/>
                     <field name="category_id"/>
                     <field name="status"/>
-                    <field name="color"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div>
@@ -156,7 +155,7 @@
                                         <div class="o_kanban_record_bottom">
                                             <div class="o_text_overflow">
                                                 <field name="property_id"/>
-                                                <field name="deal_id"/>
+                                                <field name="investment_id"/>
                                             </div>
                                         </div>
                                         <div class="o_kanban_record_bottom">
@@ -191,13 +190,13 @@
             </field>
         </record>
 
-        <!-- Expense Action for Deals Expenses -->
-        <record id="action_real_estate_deal_expense" model="ir.actions.act_window">
-            <field name="name">Deals Expenses</field>
+        <!-- Expense Action for investments Expenses -->
+        <record id="action_real_estate_investment_expense" model="ir.actions.act_window">
+            <field name="name">investments Expenses</field>
             <field name="res_model">real.estate.expense</field>
             <field name="view_mode">tree,kanban,form</field>
-            <field name="domain">[('expense_type', '=', 'investment'), ('deal_id', '!=', False)]</field>
-            <field name="context">{'default_expense_type': 'investment', 'expenses_deals': True}</field>
+            <field name="domain">[('expense_type', '=', 'investment'), ('investment_id', '!=', False)]</field>
+            <field name="context">{'default_expense_type': 'investment', 'expenses_investments': True}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create your first investment expense

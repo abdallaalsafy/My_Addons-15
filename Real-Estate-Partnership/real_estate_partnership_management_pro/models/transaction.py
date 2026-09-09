@@ -1,45 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-Real Estate Transaction Model
-==============================
-
-This model manages all financial transactions for real estate partners in the partnership management system.
-
-Key Components:
----------------
-1. **Transaction Types:**
-   - deposit: Money deposited by partner (increases balance)
-   - profit_distribution: Profit/loss distributed to partner (can be negative for losses)
-   - investment_return: Returns from investments (increases balance)
-   - withdrawal: Money withdrawn by partner (decreases balance)
-   - expense: Expenses charged to partner (decreases balance)
-
-2. **Balance Calculation:**
-   Transactions affect partner's current_balance computed field in partner model:
-   - Deposits, profit_distribution, investment_return: Increase balance
-   - Withdrawals, expenses: Decrease balance
-
-3. **Important Constraints:**
-   - Partner must be active (status='active' AND active=True) for any transaction
-   - Transaction date cannot be in the future
-   - Transaction date cannot be earlier than partner's join date
-   - Amount must be positive (except profit_distribution which can be negative for losses)
-   - Withdrawals require sufficient balance
-   - Cannot modify/delete transactions that affect balance for inactive partners
-
-4. **Security Rules:**
-   - write() method prevents modifying balance-affecting fields (amount, transaction_type, partner_id) for inactive partners
-   - unlink() method prevents deleting transactions for inactive partners
-   - _check_partner_active constraint ensures partner is active
-
-5. **Payment Methods:**
-   - cash, bank, check, credit_card
-
-6. **Tracking:**
-   - All key fields are tracked for audit trail
-   - Inherits mail.thread for chatter and messaging
-"""
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -52,11 +12,8 @@ class RealEstateTransaction(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'transaction_date desc, id desc'
 
-    def _get_default_color(self):
-        return randint(1, 11)
 
     name = fields.Char(string='Transaction Reference', required=True, copy=False, default=lambda self: _('New'))
-    color = fields.Integer(string='Color', default=_get_default_color)
 
     # Relations
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, tracking=True,

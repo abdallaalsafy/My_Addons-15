@@ -14,7 +14,7 @@
         <record id="seq_real_estate_property_purchase" model="ir.sequence">
             <field name="name">Real Estate Property Purchase</field>
             <field name="code">real.estate.property.purchase</field>
-            <field name="prefix">RPP</field>
+            <field name="prefix">RPPU</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -28,19 +28,19 @@
             <field name="number_increment">1</field>
         </record>
 
-        <record id="seq_real_estate_deal" model="ir.sequence">
-            <field name="name">Real Estate Deal</field>
-            <field name="code">real.estate.deal</field>
+        <record id="seq_real_estate_investment" model="ir.sequence">
+            <field name="name">Real Estate investment</field>
+            <field name="code">real.estate.investment</field>
             <field name="prefix">RDL</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
         </record>
 
-        <record id="seq_real_estate_investment" model="ir.sequence">
-            <field name="name">Real Estate Investment</field>
-            <field name="code">real.estate.investment</field>
-            <field name="prefix">RPI</field>
+        <record id="seq_real_estate_partnership" model="ir.sequence">
+            <field name="name">Real Estate Partnership</field>
+            <field name="code">real.estate.partnership</field>
+            <field name="prefix">RPS</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
@@ -73,10 +73,10 @@
             <field name="number_increment">1</field>
         </record>
         
-        <!-- Investment Payment Sequence -->
-        <record id="seq_real_estate_investment_payment" model="ir.sequence">
-            <field name="name">Real Estate Investment Payment</field>
-            <field name="code">real.estate.investment.payment</field>
+        <!-- Partnership Payment Sequence -->
+        <record id="seq_real_estate_partnership_payment" model="ir.sequence">
+            <field name="name">Real Estate Partnership Payment</field>
+            <field name="code">real.estate.partnership.payment</field>
             <field name="prefix">PAY</field>
             <field name="padding">5</field>
             <field name="number_next">1</field>

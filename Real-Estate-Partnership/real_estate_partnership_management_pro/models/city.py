@@ -14,7 +14,7 @@ class RealEstateCity(models.Model):
     @api.constrains('name')
     def _check_name_city(self):
         for city in self:
-            if not city.name or not city.name.strip():
+            if not city.name.strip():
                 raise ValidationError(_('City name is required.'))
 
             city = self.search([('name', '=', city.name), ('id', '!=', city.id)])

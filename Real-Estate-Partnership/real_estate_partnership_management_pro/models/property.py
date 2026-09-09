@@ -13,43 +13,17 @@ class RealEstateProperty(models.Model):
     _SELECTION_PROPERTY_TYPE = [('house', 'House'),('apartment', 'Apartment'), ('shop', 'Shop'), ('land', 'Land'),('building', 'Building'), ('villa', 'Villa'), ('office', 'Office'), ('warehouse', 'Warehouse')]
     _SELECTION_AREA_UNIT = [('meter', 'Square Meter (m²)'), ('qirat', 'Qirat'), ('unit', 'By Unit')]
 
-    def _get_default_color(self):
-        return randint(1, 11)
-
-    @staticmethod
-    def _convert_to_meters(area, unit):
-        """Convert area to meters based on unit"""
-        return area if unit in ['meter','unit'] else area * 175.0
-
-    @staticmethod
-    def get_available_properties_domain():
-        """Get domain for available properties (not sold)"""
-        return [('status', '!=', 'sold')]
-    @staticmethod
-    def get_available_for_sale_properties_domain():
-        """Get domain for available properties (not sold)"""
-        return [('status', '!=', 'sold'), ('has_any_children', '=', False)]
-    @staticmethod
-    def get_investment_properties_domain():
-        """Get domain for properties available for investment (not sold, or child)"""
-        return [('status', '!=', 'sold'), ('is_child', '=', False)]
-    @staticmethod
-    def get_exit_properties_domain():
-        """Get domain for properties available for exit (not sold, or child)"""
-        return [('status', '!=', 'sold'), ('is_child', '=', False),('total_investments', '>', 0)]
-
 
     name = fields.Char(string='Name', required=True, tracking=True, index=True)
     code = fields.Char(string='Code', required=True, copy=False, default=lambda self: _('New'), index=True)
-    color = fields.Integer(string='Color', default=_get_default_color)
 
-    # Deal Relationship
-    deal_id = fields.Many2one('real.estate.deal', string='Deal', required=True,
-                                help='The deal this property is associated with (if any)',
+    # Investment Relationship
+    investment_id = fields.Many2one('real.estate.investment', string='investment', required=True,
+                                help='The investment this property is associated with (if any)',
                                 domain="[('status', '!=', 'closed')]") 
     # Property Type and Classification
-    property_type = fields.Selection(related='deal_id.deal_type', store=True,)
-    deal_status = fields.Selection(related='deal_id.status', store=True,)
+    property_type = fields.Selection(related='investment_id.investment_type', store=True,)
+    investment_status = fields.Selection(related='investment_id.status', store=True,)
     status = fields.Selection([
         ('draft', 'Draft'),
         ('confirmed', 'Confirmed'),
@@ -67,8 +41,8 @@ class RealEstateProperty(models.Model):
     payment_reference = fields.Char(string='Payment Reference', tracking=True)
 
     # Location Information
-    city_id = fields.Many2one(related='deal_id.city_id', store=True,)
-    address = fields.Text(related='deal_id.address', store=True,)
+    city_id = fields.Many2one(related='investment_id.city_id', store=True,)
+    address = fields.Text(related='investment_id.address', store=True,)
     
     # Property Boundaries
     north_boundary = fields.Text(string='North Boundary', help='What borders the property from the north')
@@ -86,12 +60,12 @@ class RealEstateProperty(models.Model):
     
     # Property Specifications
     total_area = fields.Float(string='Total Area', required=True,  tracking=True, help='Total area of the property (used for area ratio calculations)')
-    area_unit = fields.Selection(related='deal_id.area_unit', store=True)
+    area_unit = fields.Selection(related='investment_id.area_unit', store=True)
     # Expenses Information
     total_expenses = fields.Float(string='Total Expenses', compute='_compute_expenses', store=True)
-    deal_expenses = fields.Float(string='Deal Expenses', help="""
+    investment_expenses = fields.Float(string='investment Expenses', help="""
         This field is for (Sale Property) only.
-        It get share of Sale Property in the deal's expenses not deal's cost.
+        It get share of Sale Property in the investment's expenses not investment's cost.
         It is calculated based on the (action confirming the sale).
         It is set to zero when it is a draft.
         The field only appears in the confirmed state.
@@ -147,14 +121,14 @@ class RealEstateProperty(models.Model):
     def unlink(self):
         """Override unlink to add validation before deletion"""
         for property in self:
-            if property.deal_status == 'closed':
-                raise ValidationError(_('Cannot delete property becose deal is closed.'))
+            if property.investment_status == 'closed':
+                raise ValidationError(_('Cannot delete property becose investment is closed.'))
             elif property.is_purchased:
                 sold_area = self.get_sum_all_sold_cotracts_area()
-                if sold_area > property.deal_id.total_area - self.total_area:
+                if sold_area > property.investment_id.total_area - self.total_area:
                     raise ValidationError(_('Cannot delete property becose it sold from it.'))
 
-            # Deleted Expense Manually Becose Deal Depend On It In Computed Fields
+            # Deleted Expense Manually Becose investment Depend On It In Computed Fields
             property.expense_ids.unlink() 
         return super(RealEstateProperty, self).unlink()
 
@@ -192,7 +166,7 @@ class RealEstateProperty(models.Model):
             installment_paid = sum(p.amount for p in property.payment_ids if p.status == 'paid')
             property.remaining_amount = property.property_price - installment_paid - property.down_payment
 
-    @api.depends('property_price', 'total_expenses', 'deal_expenses')
+    @api.depends('property_price', 'total_expenses', 'investment_expenses')
     def _compute_total_cost(self):
         """ Calculate total cost for property"""
         total_cost = 0
@@ -201,7 +175,7 @@ class RealEstateProperty(models.Model):
             if property.is_purchased:
                 total_cost += property.property_price
             else:
-                total_cost += property.deal_expenses
+                total_cost += property.investment_expenses
         property.total_cost = total_cost
 
     @api.depends('total_cost', 'property_price', 'management_fee_percentage')
@@ -225,14 +199,14 @@ class RealEstateProperty(models.Model):
             if not property.contact_id:
                 raise ValidationError(_('Confirmed property must have a contact.'))
 
-    @api.constrains('total_area', 'deal_id')
+    @api.constrains('total_area', 'investment_id')
     def _check_area_for_sold_property(self):
         for property in self:
             if property.is_purchased:
                 continue
             sold_area = property.get_sum_all_sold_cotracts_area()
-            if property.deal_id.total_area < sold_area + property.total_area:
-                raise ValidationError(_('All sold total area is greater than total area of deal.'))
+            if property.investment_id.total_area < sold_area + property.total_area:
+                raise ValidationError(_('All sold total area is greater than total area of investment.'))
         
     @api.constrains('total_area','property_price', 'down_payment','status')
     def _check_area_price_payment(self):
@@ -264,14 +238,14 @@ class RealEstateProperty(models.Model):
             if property.property_date > fields.Date.today():
                 raise ValidationError(_('Property date cannot be in the future.'))
 
-            # Check deal date
-            if property.property_date < property.deal_id.open_date:
+            # Check investment date
+            if property.property_date < property.investment_id.open_date:
                 raise ValidationError(
-                    _('Cannot change property date to %s because deal %s with open date %s is Later.'
+                    _('Cannot change property date to %s because investment %s with open date %s is Later.'
                         'Please update expense dates first.') % 
-                    (property.property_date, property.deal_id.name, property.deal_id.open_date))
+                    (property.property_date, property.investment_id.name, property.investment_id.open_date))
         
-            # Check expenses (only investment expenses) whith property date
+            # Check expenses (only partnership expenses) whith property date
             for expense in property.expense_ids:
                 if expense.property_id.is_purchased:
                     if expense.expense_date < property.property_date:
@@ -364,18 +338,22 @@ class RealEstateProperty(models.Model):
     def action_confirmed_sold_property(self):
         for property in self:
             if property.status == 'confirmed': continue
+            restrict_sale_on_low_balance = self .env.company.sale_restrict_on_low_balance
+            
+            if property.investment_id.total_partnerships_percentage < 100:
+                raise ValidationError(_('Cannot confirm property because investment total partnerships percentage is less than 100.'))
 
-            if property.deal_id.total_investments_percentage < 100:
-                raise ValidationError(_('Cannot confirm property becose deal total investments percentage is less than 100.'))
-                
-            property.deal_expenses = property.get_sold_property_deal_expense()
+            property.investment_expenses = property.get_sold_property_investment_expense()
 
             vals_list = []
-            for investment in property.deal_id.investment_ids:
-                partner_profit = (property.net_profit * investment.percentage) / 100
+            for partnership in property.investment_id.partnership_ids:
+                if restrict_sale_on_low_balance and partnership.remaining_amount > 0:
+                    raise ValidationError(_('Cannot confirm property because partner "%s" has a remaining amount of partnership: %s. Please pay the pending amount before confirming the sale.') % (partnership.partner_id.name, partnership.name))
+
+                partner_profit = (property.net_profit * partnership.percentage) / 100
                 vals_list.append({
                     'property_id': self.id,
-                    'partner_id': investment.partner_id.id,
+                    'partner_id': partnership.partner_id.id,
                     'profit_amount': partner_profit,
                 })
 
@@ -389,39 +367,39 @@ class RealEstateProperty(models.Model):
 
             property.sale_line_ids.unlink()
 
-            property.deal_expenses = 0
+            property.investment_expenses = 0
             property.status = 'draft'
 
     # ============== Logic Functions  ========================
     def get_sum_all_sold_properties_area(self):
-        sold_area = sum(sold.total_area for sold in self.deal_id.sold_properties_ids if sold.id != self.id)
+        sold_area = sum(sold.total_area for sold in self.investment_id.sold_properties_ids if sold.id != self.id)
         return sold_area
 
     def get_sum_confirmed_sold_properties_area(self):
-            sold_area = sum(sold.total_area for sold in self.deal_id.sold_properties_ids if sold.id != self.id and sold.status == 'confirmed')
+            sold_area = sum(sold.total_area for sold in self.investment_id.sold_properties_ids if sold.id != self.id and sold.status == 'confirmed')
             return sold_area
 
-    def get_remaining_expenses(self,deal_id):
-        sold_deal_expenses = sum(sold.deal_expenses for sold in deal_id.sold_properties_ids)
-        remaining_expenses = deal_id.total_cost_before_sold - sold_deal_expenses
+    def get_remaining_expenses(self,investment_id):
+        sold_investment_expenses = sum(sold.investment_expenses for sold in investment_id.sold_properties_ids)
+        remaining_expenses = investment_id.total_cost_before_sold - sold_investment_expenses
         return remaining_expenses
 
-    def get_sold_property_deal_expense(self):
-        deal_id = self.deal_id
+    def get_sold_property_investment_expense(self):
+        investment_id = self.investment_id
         property_area = self.total_area
-        deal_area = deal_id.total_area
+        investment_area = investment_id.total_area
 
         # (1) Calculate total area of sold property
         sold_area = self.get_sum_confirmed_sold_properties_area()
 
         # (2) Apply the new formula
-        remaining_area = deal_area - sold_area
+        remaining_area = investment_area - sold_area
         if remaining_area > 0:
             # Calculate expense ratio based on remaining area
             expense_ratio = (property_area / remaining_area) * 100
-            # Calculate deal expenses from remaining expenses + parent profit from exits
-            remaining_expenses = self.get_remaining_expenses(deal_id)
-            deal_expenses = remaining_expenses * (expense_ratio / 100)
-            return int(deal_expenses) # Make it as (int) because I do not want any digits
+            # Calculate investment expenses from remaining expenses + parent profit from exits
+            remaining_expenses = self.get_remaining_expenses(investment_id)
+            investment_expenses = remaining_expenses * (expense_ratio / 100)
+            return int(investment_expenses) # Make it as (int) because I do not want any digits
         else:
             return 0.0

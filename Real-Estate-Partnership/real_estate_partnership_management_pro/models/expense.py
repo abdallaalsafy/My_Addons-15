@@ -13,16 +13,8 @@ class RealEstateExpense(models.Model):
 
     _SELECTION_PAYMENT_METHOD = [('cash', 'Cash'),('bank', 'Bank Transfer'),('check', 'Check'),('credit_card', 'Credit Card'),]
 
-    def _get_default_color(self):
-        return randint(1, 11)
-
-    def _get_available_properties_domain(self):
-        """Return domain for available properties for investment expenses"""
-        return [('deal_id', '=', self.deal_id), ('status', '!=', 'sold')]
-
     name = fields.Char(string='Expense Description', required=True, tracking=True)
     code = fields.Char(string='Expense Code', required=True, copy=False, default=lambda self: _('New'))
-    color = fields.Integer(string='Color', default=_get_default_color)
 
     expense_type = fields.Selection([
         ('investment', 'Investment Expense'),
@@ -37,11 +29,11 @@ class RealEstateExpense(models.Model):
     expense_date = fields.Date(string='Expense Date', required=True, default=fields.Date.today, tracking=True)
     
     # Relations
-    deal_id = fields.Many2one('real.estate.deal', string='Deal', tracking=True, index=True, ondelete='cascade',
+    investment_id = fields.Many2one('real.estate.investment', string='investment', tracking=True, index=True, ondelete='cascade',
                               domain="[('status', '=', 'opening')]", 
-                              help="Select the deal associated with this expense (for investment expenses only)")
+                              help="Select the investment associated with this expense (for investment expenses only)")
     property_id = fields.Many2one('real.estate.property', string='Property', tracking=True, index=True, ondelete='cascade',
-                                 domain=[('deal_status','=','opening')],)
+                                 domain=[('investment_status','=','opening')],)
     category_id = fields.Many2one('real.estate.expense.category', string='Expense Category', 
                                  required=True, tracking=True, ondelete='restrict')
     
@@ -71,7 +63,7 @@ class RealEstateExpense(models.Model):
         return expenses
 
     def write(self, vals):
-        if 'deal_id' in vals or 'property_id' in vals or 'expense_type' in vals:
+        if 'investment_id' in vals or 'property_id' in vals or 'expense_type' in vals:
             amount = 0
         elif 'amount' in vals:
             amount = vals['amount']
@@ -79,7 +71,7 @@ class RealEstateExpense(models.Model):
 
         rtn = super(RealEstateExpense, self).write(vals)
 
-        if 'deal_id' in vals or 'property_id' in vals or 'expense_type' in vals:
+        if 'investment_id' in vals or 'property_id' in vals or 'expense_type' in vals:
             self.validation_on_create_delete()
 
         return rtn
@@ -93,7 +85,7 @@ class RealEstateExpense(models.Model):
     @api.onchange('expense_type')
     def _onchange_expense_type(self):
         for expense in self:
-            expense.deal_id = False
+            expense.investment_id = False
             expense.property_id = False
             
     # =========================== Constraints Functions ===========================
@@ -104,17 +96,17 @@ class RealEstateExpense(models.Model):
             if expense.amount <= 0:
                 raise ValidationError(_('Expense amount must be positive.'))
 
-    @api.constrains('expense_date', 'deal_id', 'property_id')
+    @api.constrains('expense_date', 'investment_id', 'property_id')
     def _check_date(self):
         for expense in self:
             if expense.expense_date > fields.Date.today():
                 raise ValidationError(_('Expense date cannot be in the future.'))
 
-            if expense.expense_type == 'investment' and expense.deal_id:
-                if expense.expense_date < expense.deal_id.open_date:
-                    raise ValidationError(_('Expense date cannot be earlier than deal open date. '
-                                            'Deal open date: %s, Expense date: %s') % 
-                                        (expense.deal_id.open_date, expense.expense_date))
+            if expense.expense_type == 'investment' and expense.investment_id:
+                if expense.expense_date < expense.investment_id.open_date:
+                    raise ValidationError(_('Expense date cannot be earlier than investment open date. '
+                                            'investment open date: %s, Expense date: %s') % 
+                                        (expense.investment_id.open_date, expense.expense_date))
 
             if expense.expense_type == 'investment' and expense.property_id and expense.property_id.property_date:
                 if expense.property_id.is_purchased:
@@ -139,22 +131,22 @@ class RealEstateExpense(models.Model):
         for expense in self:
             if expense.expense_type == 'company': continue
 
-            deal_id = expense.deal_id if expense.deal_id else expense.property_id.deal_id
-            deal_status = deal_id.status
+            investment_id = expense.investment_id if expense.investment_id else expense.property_id.investment_id
+            investment_status = investment_id.status
 
-            if deal_status != 'opening':
-                raise UserError(_('Cannot create an expense for a deal that is not in opening status.'))
+            if investment_status != 'opening':
+                raise UserError(_('Cannot create an expense for a investment that is not in opening status.'))
 
             if expense.property_id and expense.property_id.is_purchased == False and expense.property_id.status != 'draft':
                 raise UserError(_('Cannot create an expense for a sold property that is not in draft status.'))
 
 
-            if deal_id.remaining_area == 0 and deal_id.draft_sold_properties_count == 0: 
-                raise UserError(_('Cannot create an expense for a deal that has no remaining area and no draft sold properties.'))
+            if investment_id.remaining_area == 0 and investment_id.draft_sold_properties_count == 0: 
+                raise UserError(_('Cannot create an expense for a investment that has no remaining area and no draft sold properties.'))
 
             #----------------------------------
-            if ((expense.property_id and expense.property_id.is_purchased == True) or expense.deal_id) and delete:
+            if ((expense.property_id and expense.property_id.is_purchased == True) or expense.investment_id) and delete:
                 expense_amunt = expense.amount - amount
-                remaining_expenses = self.env['real.estate.property'].get_remaining_expenses(deal_id)
+                remaining_expenses = self.env['real.estate.property'].get_remaining_expenses(investment_id)
                 if remaining_expenses < expense_amunt:
                     raise UserError(_('Cannot delete an expense that exceeds the remaining expenses.'))

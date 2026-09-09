@@ -12,13 +12,8 @@ class RealEstatePaymentInstallment(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'due_date'
 
-    def _get_default_color(self):
-    # Generate a random color value between 1 and 11
-    # This method is likely used to provide a default color when none is specified
-        return randint(1, 11)
 
     name = fields.Char(string='Installment Reference', required=True, copy=False, default=lambda self: _('New'))
-    color = fields.Integer(string='Color', default=_get_default_color)
     
     # Relations
     property_id = fields.Many2one('real.estate.property', string='Property', required=True, tracking=True, index=True, ondelete='cascade')
@@ -110,8 +105,8 @@ class RealEstatePaymentInstallment(models.Model):
 
     def validation_on_create_update_delete(self):
         for payment in self:
-            if payment.property_id.deal_id.status != 'opening':
-                raise ValidationError(_('Cannot update or delete or create payment when deal status is not opening.'))
+            if payment.property_id.investment_id.status != 'opening':
+                raise ValidationError(_('Cannot update or delete or create payment when investment status is not opening.'))
 
             if payment.property_id.status == 'draft' and payment.is_purchased == False:
                 raise ValidationError(_('Cannot update or delete or create payment when sale property status is draft.'))

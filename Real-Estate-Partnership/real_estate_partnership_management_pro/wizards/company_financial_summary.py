@@ -14,15 +14,15 @@ class CompanyFinancialSummary(models.TransientModel):
     positive_transactions = fields.Float(string='Positive Transactions', compute='_compute_financial_summary', store=True)
     negative_transactions = fields.Float(string='Negative Transactions', compute='_compute_financial_summary', store=True)
 
-    # Deals Statistics
-    deals_count = fields.Integer(string='Deals Count', compute='_compute_financial_summary', store=True)
-    deals_open_count = fields.Integer(string='Deals Open Count', compute='_compute_financial_summary', store=True)
-    deals_closed_count = fields.Integer(string='Deals Closed Count', compute='_compute_financial_summary', store=True)
-    deals_total_amount = fields.Float(string='Deals Total Amount', compute='_compute_financial_summary', store=True)
-    deals_open_amount = fields.Float(string='Deals Open Amount', compute='_compute_financial_summary', store=True)
-    deals_closed_amount = fields.Float(string='Deals Closed Amount', compute='_compute_financial_summary', store=True)
-    deals_maximum_amount = fields.Float(string='Deals Maximum Amount', compute='_compute_financial_summary', store=True)
-    deals_minimum_amount = fields.Float(string='Deals Minimum Amount', compute='_compute_financial_summary', store=True)
+    # investments Statistics
+    investments_count = fields.Integer(string='investments Count', compute='_compute_financial_summary', store=True)
+    investments_open_count = fields.Integer(string='investments Open Count', compute='_compute_financial_summary', store=True)
+    investments_closed_count = fields.Integer(string='investments Closed Count', compute='_compute_financial_summary', store=True)
+    investments_total_amount = fields.Float(string='investments Total Amount', compute='_compute_financial_summary', store=True)
+    investments_open_amount = fields.Float(string='investments Open Amount', compute='_compute_financial_summary', store=True)
+    investments_closed_amount = fields.Float(string='investments Closed Amount', compute='_compute_financial_summary', store=True)
+    investments_maximum_amount = fields.Float(string='investments Maximum Amount', compute='_compute_financial_summary', store=True)
+    investments_minimum_amount = fields.Float(string='investments Minimum Amount', compute='_compute_financial_summary', store=True)
     # Partnership Statistics
     Partnership_partners_count = fields.Integer(string='Partnership Partners Count', compute='_compute_financial_summary', store=True)
     partnerships_debtor_amount = fields.Float(string='Total Debtor Amount', compute='_compute_financial_summary', store=True)
@@ -90,21 +90,21 @@ class CompanyFinancialSummary(models.TransientModel):
             partners = self.env['res.partner'].search([('is_partner', '=', True)])
             properties = self.env['real.estate.property'].search([])
             expenses = self.env['real.estate.expense'].search([])
-            deals = self.env['real.estate.deal'].search([])
-            partnerships = self.env['real.estate.investment'].search([('status', '=', 'opening')])
+            investments = self.env['real.estate.investment'].search([])
+            partnerships = self.env['real.estate.partnership'].search([('status', '=', 'opening')])
             transactions = self.env['real.estate.transaction'].search([])            
 
-            # Deals Statistics ==========================================
-            record.deals_count = len(deals)
-            record.deals_open_count = len(deals.filtered(lambda d: d.status == 'opening'))
-            record.deals_closed_count = len(deals.filtered(lambda d: d.status == 'closed'))
+            # investments Statistics ==========================================
+            record.investments_count = len(investments)
+            record.investments_open_count = len(investments.filtered(lambda d: d.status == 'opening'))
+            record.investments_closed_count = len(investments.filtered(lambda d: d.status == 'closed'))
 
-            record.deals_total_amount = sum(deal.total_deal_cost for deal in deals)
-            record.deals_open_amount = sum(deal.total_deal_cost for deal in deals.filtered(lambda d: d.status == 'opening'))
-            record.deals_closed_amount = sum(deal.total_deal_cost for deal in deals.filtered(lambda d: d.status == 'closed'))
+            record.investments_total_amount = sum(investment.total_investment_cost for investment in investments)
+            record.investments_open_amount = sum(investment.total_investment_cost for investment in investments.filtered(lambda d: d.status == 'opening'))
+            record.investments_closed_amount = sum(investment.total_investment_cost for investment in investments.filtered(lambda d: d.status == 'closed'))
 
-            record.deals_maximum_amount = max(deal.total_deal_cost for deal in deals) if deals else 0
-            record.deals_minimum_amount = min(deal.total_deal_cost for deal in deals) if deals else 0
+            record.investments_maximum_amount = max(investment.total_investment_cost for investment in investments) if investments else 0
+            record.investments_minimum_amount = min(investment.total_investment_cost for investment in investments) if investments else 0
 
             record.Partnership_partners_count = len(partnerships.mapped('partner_id'))
             record.partnerships_debtor_amount = sum(partnership.remaining_amount for partnership in partnerships if partnership.remaining_amount > 0)

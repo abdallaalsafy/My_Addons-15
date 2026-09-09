@@ -9,7 +9,7 @@
                 <search string="Property Sales Lines">
                     <field name="property_id"/>
                     <field name="property_date"/>
-                    <field name="deal_id"/>
+                    <field name="investment_id"/>
                     <field name="partner_id"/>
                     <separator/>
                     <filter string="Profit This Month" name="profit_this_month" domain="[('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
@@ -21,7 +21,7 @@
                     <group expand="0" string="Group By">
                         <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
                         <filter string="Property Date" name="group_property_date" context="{'group_by': 'property_date'}"/>
-                        <filter string="Deal" name="group_deal" context="{'group_by': 'deal_id'}"/>
+                        <filter string="Investment" name="group_investment" context="{'group_by': 'investment_id'}"/>
                         <filter string="Property" name="group_property" context="{'group_by': 'property_id'}"/>
                     </group>
 
@@ -37,7 +37,7 @@
                 <tree string="Property Sales Lines" create="0" delete="0">
                     <field name="property_id"/>
                     <field name="property_date"/>
-                    <field name="deal_id"/>
+                    <field name="investment_id"/>
                     <field name="partner_id"/>
                     <field name="profit_amount" widget="monetary" sum="Total Profit"/>
                 </tree>
@@ -54,7 +54,7 @@
                         <group>
                             <field name="property_id"/>
                             <field name="property_date"/>
-                            <field name="deal_id"/>
+                            <field name="investment_id"/>
                             <field name="partner_id"/>
                             <field name="profit_amount" widget="monetary"/>
                         </group>

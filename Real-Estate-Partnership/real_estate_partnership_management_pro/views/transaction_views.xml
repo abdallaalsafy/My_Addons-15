@@ -106,7 +106,6 @@
                     <field name="transaction_type"/>
                     <field name="amount"/>
                     <field name="transaction_date"/>
-                    <field name="color"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div>

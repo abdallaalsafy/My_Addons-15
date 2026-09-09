@@ -11,7 +11,7 @@ class RealEstateSaleLine(models.Model):
 
     property_id = fields.Many2one('real.estate.property', string='Property',)
     property_date = fields.Date(related='property_id.property_date', store=True)
-    deal_id = fields.Many2one(related='property_id.deal_id', store=True,)
+    investment_id = fields.Many2one(related='property_id.investment_id', store=True,)
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, index=True, ondelete='restrict')
     profit_amount = fields.Float(string='Profit Amount', required=True)

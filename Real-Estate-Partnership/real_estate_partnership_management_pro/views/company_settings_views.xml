@@ -18,7 +18,7 @@
                                 <div class="o_setting_right_pane">
                                     <label for="restrict_sale_on_low_balance"/>
                                     <div class="text-muted">
-                                        If enabled, property sale will be restricted when any partner has balance less than their investment amount.
+                                        If enabled, property sale will be restricted when any partner has balance less than their partnership amount.
                                     </div>
                                 </div>
                             </div>
