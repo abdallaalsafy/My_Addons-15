@@ -11,7 +11,6 @@
                     <field name="code"/>
                     <field name="property_id"/>
                     <field name="investment_id"/>
-                    <field name="contact_id"/>
                     <filter string="Confirmed" name="confirmed" domain="[('status', '=', 'confirmed')]"/>
                     <filter string="Paid" name="paid" domain="[('status', '=', 'paid')]"/>
                     <separator/>
@@ -44,16 +43,16 @@
             <field name="name">real.estate.expense.tree</field>
             <field name="model">real.estate.expense</field>
             <field name="arch" type="xml">
-                <tree string="Property Expenses">
+                <tree string="Property Expenses" sample="1">
+                    <field name="company_currency" invisible="1"/>
                     <field name="code"/>
                     <field name="name"/>
                     <field name="expense_type" attrs="{'column_invisible': True}"/>
                     <field name="property_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
                     <field name="investment_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
                     <field name="category_id"/>
-                    <field name="amount" widget="monetary" sum="Total Amount"/>
+                    <field name="amount" sum="Total Amount"/>
                     <field name="expense_date"/>
-                    <field name="contact_id"/>
                     <field name="status" widget="badge"/>
                 </tree>
             </field>
@@ -69,8 +68,11 @@
                         <button name="action_mark_paid" type="object" 
                                 string="Mark as Paid" class="btn-primary"
                                 attrs="{'invisible': [('status', '!=', 'confirmed')]}"/>
+                        <button name="action_mark_unpaid" type="object" 
+                                string="Mark as Unpaid" class="btn-primary"
+                                attrs="{'invisible': [('status', '!=', 'paid')]}"/>
                         <field name="status" widget="statusbar" 
-                               statusbar_visible="confirmed,paid"/>
+                               statusbar_visible="confirmed"/>
                     </header>
                     <sheet>
                         <div class="oe_title">
@@ -79,10 +81,11 @@
                             </h1>
                             <h2>
                                 <field name="code" readonly="1"/>
+                                <field name="company_currency" invisible="1"/>
                             </h2>
                         </div>
                         <group>
-                            <group name="expense_details">
+                            <group name="expense_details" string="Expense Details">
                                 <field name="expense_date"/>
                                 <field name="expense_type" invisible="context.get('default_expense_type')"/>
                                 <field name="investment_id" readonly="context.get('default_investment_id')" invisible="context.get('default_property_id') or context.get('expenses_properties')"
@@ -91,11 +94,13 @@
                                 <field name="property_id" readonly="context.get('default_property_id')" invisible="context.get('default_investment_id') or context.get('expenses_investments')" 
                                         attrs="{'required': [('expense_type', '=', 'investment'),('investment_id', '=', False)], 
                                                 'invisible': ['|','|',('expense_type', '=', 'company'),('expense_type', '=', False),('investment_id', '!=', False)]}"/>
-                                <field name="amount" widget="monetary"/>
+                                <field name="amount"/>
                                 <field name="category_id"/>
                             </group>
-                            <group name="payment_info">
-                                <field name="contact_id" attrs="{'required':[('status','=','paid')]}" context="{'default_is_payee': True}"/>
+                            <group name="payment_info" string="Payment Information">
+                                <field name="paid_date" 
+                                    attrs="{'required': [('status', '=', 'paid')],
+                                            'invisible': [('status', '!=', 'paid')]}"/>
                                 <field name="payment_method"/>
                                 <field name="payment_reference"/>
                             </group>
@@ -160,7 +165,7 @@
                                         </div>
                                         <div class="o_kanban_record_bottom">
                                             <div class="o_text_overflow">
-                                                <strong>Amount: </strong><field name="amount" widget="monetary"/>
+                                                <strong>Amount: </strong><field name="amount"/>
                                             </div>
                                         </div>
                                     </div>

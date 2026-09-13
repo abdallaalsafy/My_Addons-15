@@ -142,12 +142,13 @@ class PartnerUnifiedLedgerLine(models.TransientModel):
     _description = 'Partner Unified Ledger Line'
 
     ledger_id = fields.Many2one('partner.unified.ledger', string='Ledger', ondelete='cascade')
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     date = fields.Date(string='Date')
     source = fields.Char(string='Source Type')  # transaction, expense_distribution, exit_line, sale_line
     source_id = fields.Integer(string='Source ID')
     name = fields.Char(string='Reference/Description')
     transaction_type = fields.Char(string='Type')
     description = fields.Text(string='Details')
-    amount = fields.Float(string='Amount', digits=(12, 2))
-    balance = fields.Float(string='Balance', digits=(12, 2))
+    amount = fields.Monetary(string='Amount', currency_field='company_currency', digits=(12, 2))
+    balance = fields.Monetary(string='Balance', currency_field='company_currency', digits=(12, 2))
 

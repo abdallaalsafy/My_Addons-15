@@ -16,6 +16,7 @@ class RealEstateInvestment(models.Model):
     open_date = fields.Date(string='Open Date', required=True, default=fields.Date.today, tracking=True)
     close_date = fields.Date(string='Close Date', readonly=True, tracking=True)
     is_restructured = fields.Boolean(string='Restructured', default=False, tracking=True)
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     
     investment_method = fields.Selection([
             ('percentage', 'Percentage'),
@@ -50,11 +51,11 @@ class RealEstateInvestment(models.Model):
     sold_area = fields.Float(string='Sold Area', compute='_compute_sold_remaining_area', store=True,)
     remaining_area = fields.Float(string='Remaining Area', compute='_compute_sold_remaining_area', store=True,)
     # Financial Information
-    total_current_value = fields.Float(string='Total Current Value', compute='_compute_total_current_value', store=True)
-    total_investment_cost = fields.Float(string='Total Investment Cost', compute='_compute_total_investment_cost', store=True)
-    total_cost_before_sold = fields.Float(string='Total Purchase Cost', compute='_compute_total_investment_cost', store=True)
-    total_expenses = fields.Float(string='Total Expenses', compute='_compute_investment_expenses', store=True)
-    total_partnerships = fields.Float(string='Total Partnerships', compute='_compute_partnerships', store=True)
+    total_current_value = fields.Monetary(string='Total Current Value', currency_field='company_currency', compute='_compute_total_current_value', store=True)
+    total_investment_cost = fields.Monetary(string='Total Investment Cost', currency_field='company_currency', compute='_compute_total_investment_cost', store=True)
+    total_cost_before_sold = fields.Monetary(string='Total Purchase Cost', currency_field='company_currency', compute='_compute_total_investment_cost', store=True)
+    total_expenses = fields.Monetary(string='Total Expenses', currency_field='company_currency', compute='_compute_investment_expenses', store=True)
+    total_partnerships = fields.Monetary(string='Total Partnerships', currency_field='company_currency', compute='_compute_partnerships', store=True)
     total_partnerships_percentage = fields.Float(string='Total Percentage', compute='_compute_total_partnerships_percentage', store=True)
     
     # Counts for related records

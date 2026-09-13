@@ -18,9 +18,10 @@ class RealEstateTransaction(models.Model):
     # Relations
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, tracking=True,
                                  domain="[('status', '=', 'active')]",ondelete='restrict')
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     
     # Transaction Details
-    amount = fields.Float(string='Amount', required=True, tracking=True)
+    amount = fields.Monetary(string='Amount', required=True, currency_field='company_currency')
     transaction_type = fields.Selection([
         ('deposit', 'Deposit'),
         ('investment_return', 'Investment Return'),

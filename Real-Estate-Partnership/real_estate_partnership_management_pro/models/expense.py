@@ -25,7 +25,7 @@ class RealEstateExpense(models.Model):
             ('paid', 'Paid'),
             ], string='Status', default='confirmed', tracking=True)
 
-    amount = fields.Float(string='Expense Amount', required=True, tracking=True)
+    amount = fields.Monetary(string='Expense Amount', required=True, currency_field='company_currency', tracking=True)
     expense_date = fields.Date(string='Expense Date', required=True, default=fields.Date.today, tracking=True)
     
     # Relations
@@ -36,9 +36,10 @@ class RealEstateExpense(models.Model):
                                  domain=[('investment_status','=','opening')],)
     category_id = fields.Many2one('real.estate.expense.category', string='Expense Category', 
                                  required=True, tracking=True, ondelete='restrict')
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     
     # Payment Information
-    contact_id = fields.Many2one('res.partner', string='Paid To', tracking=True,ondelete='restrict')
+    paid_date = fields.Date(string='Paid Date', tracking=True)
     payment_method = fields.Selection(_SELECTION_PAYMENT_METHOD, string='Payment Method',default='cash', tracking=True)
     payment_reference = fields.Char(string='Payment Reference', tracking=True)
     
@@ -63,10 +64,7 @@ class RealEstateExpense(models.Model):
         return expenses
 
     def write(self, vals):
-        if 'investment_id' in vals or 'property_id' in vals or 'expense_type' in vals:
-            amount = 0
-        elif 'amount' in vals:
-            amount = vals['amount']
+        amount = vals['amount'] if 'amount' in vals else 0
         self.validation_on_create_delete(delete=True,amount=amount)
 
         rtn = super(RealEstateExpense, self).write(vals)
@@ -96,6 +94,12 @@ class RealEstateExpense(models.Model):
             if expense.amount <= 0:
                 raise ValidationError(_('Expense amount must be positive.'))
 
+    @api.constrains('paid_date')
+    def _check_paid_date(self):
+        for expense in self:
+            if expense.paid_date and expense.paid_date < expense.expense_date:
+                raise ValidationError(_('Paid date cannot be earlier than expense date.'))
+
     @api.constrains('expense_date', 'investment_id', 'property_id')
     def _check_date(self):
         for expense in self:
@@ -123,7 +127,11 @@ class RealEstateExpense(models.Model):
     # =========================== Action Functions ===========================
     def action_mark_paid(self):
         """Mark expense as paid and distribute among partners if it's a company expense"""
-        self.status = 'paid'
+        self.write({'status': 'paid', 'paid_date': fields.Date.today()})
+
+    def action_mark_unpaid(self):
+        """Mark expense as unpaid"""
+        self.write({'status': 'confirmed', 'paid_date': False})
 
     # =========================== Other Functions ===========================
      

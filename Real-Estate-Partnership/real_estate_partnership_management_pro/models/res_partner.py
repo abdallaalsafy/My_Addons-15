@@ -14,7 +14,6 @@ class RealEstatePartner(models.Model):
     nickname = fields.Char(string='Nickname', tracking=True)
 
     is_seller = fields.Boolean(string='Seller', compute='_compute_is_seller', tracking=True, readonly=True, store=True, help="This contact can be a seller of properties")
-    is_payee = fields.Boolean(string='Payee', compute='_compute_is_payee', tracking=True, readonly=True, store=True, help="This contact can receive payments for expenses")
     is_buyer = fields.Boolean(string='Buyer', compute='_compute_is_buyer', tracking=True, readonly=True, store=True, help="This contact can buy properties")
     is_partner = fields.Boolean(string='Partner', compute='_compute_is_partner', tracking=True, readonly=True, store=True, help="This contact is a partner")
 
@@ -26,15 +25,13 @@ class RealEstatePartner(models.Model):
         ('exited', 'Exited'),
     ], string='Status', default='active', tracking=True)
     
-    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,
-                                           readonly=True)
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     current_balance = fields.Monetary(string='Current Balance', currency_field='company_currency', compute='_compute_balance', store=True)
     actual_balance = fields.Monetary(string='Actual balance', currency_field='company_currency', compute='_compute_actual_balance', store=True,
                                   help="Current balance after deducting confirmed partnerships")
     total_partnerships = fields.Monetary(string='Total partnerships', currency_field='company_currency', compute='_compute_total_partnerships', store=True)
     total_profits = fields.Monetary(string='Total Profits', currency_field='company_currency',
                                       compute='_compute_total_profit_from_sales', store=True)
-    total_expenses = fields.Monetary(string='Total Expenses', currency_field='company_currency', compute='_compute_total_expenses', store=True)
 
     # compute fields of counts
     all_partnerships_count = fields.Integer(string='All partnerships Count', compute='_compute_all_partnership_count')
@@ -43,7 +40,6 @@ class RealEstatePartner(models.Model):
     profit_count = fields.Integer(string='Profit Count', compute='_compute_profit_count')
     property_purchase_count = fields.Integer(string='Property Count', compute='_compute_property_count')
     property_sale_count = fields.Integer(string='Property Count', compute='_compute_property_count')
-    expense_count = fields.Integer(string='Expense Count', compute='_compute_expense_count')
 
     # Related Data
     transaction_ids = fields.One2many('real.estate.transaction', 'partner_id', string='Transactions')
@@ -51,7 +47,7 @@ class RealEstatePartner(models.Model):
     sale_line_ids = fields.One2many('real.estate.sale.line', 'partner_id', string='Property Sales')
     property_purchase_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Purchased', domain=[('is_purchased', '=', True)])
     property_sale_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Sold', domain=[('is_purchased', '=', False)])
-    expense_ids = fields.One2many('real.estate.expense', 'contact_id', string='Expenses Paid')
+
 
     #-------------------------------
     country_id = fields.Many2one(default=lambda self: self.env.user.company_id.country_id.id)
@@ -96,11 +92,6 @@ class RealEstatePartner(models.Model):
             opening_partnerships_ids = partner.partnership_ids.filtered(lambda inv: inv.status == 'opening')
             partner.total_partnerships = sum(inv.down_payment for inv in opening_partnerships_ids)
 
-    @api.depends('expense_ids.amount')
-    def _compute_total_expenses(self):
-        for partner in self:
-            partner.total_expenses = sum(expense.amount for expense in partner.expense_ids)
-
 # -------------------------------------------------------------
     def _compute_transaction_count(self):
         for partner in self:
@@ -118,10 +109,6 @@ class RealEstatePartner(models.Model):
         for partner in self:
             partner.profit_count = len(partner.sale_line_ids)
 
-    def _compute_expense_count(self):
-        for partner in self:
-            partner.expense_count = len(partner.expense_ids)
-
     def _compute_property_count(self):
         for partner in self:
             partner.property_purchase_count = len(partner.property_purchase_ids)
@@ -129,20 +116,15 @@ class RealEstatePartner(models.Model):
 
 # -----------------------------------------------
 
-    @api.depends('property_sale_ids.contact_id')
+    @api.depends('property_purchase_ids.contact_id')
     def _compute_is_seller(self):
         for partner in self:
-            partner.is_seller = bool(partner.property_purchase_count)
+            partner.is_seller = bool(partner.property_purchase_ids)
 
     @api.depends('property_sale_ids.contact_id')
     def _compute_is_buyer(self):
         for contact in self:
             contact.is_buyer = bool(contact.property_sale_ids)
-
-    @api.depends('expense_ids.contact_id')
-    def _compute_is_payee(self):
-        for contact in self:
-            contact.is_payee = bool(contact.expense_ids)
 
     @api.depends('transaction_ids.partner_id', 'partnership_ids.partner_id')
     def _compute_is_partner(self):
@@ -323,16 +305,5 @@ class RealEstatePartner(models.Model):
             'view_mode': 'tree,form',
             'domain': [('contact_id', '=', self.id),('is_purchased', '=', False)],
             'context': {'default_contact_id': self.id, 'default_is_purchased': False},
-        }
-
-    def action_view_expenses(self):
-        """View expenses paid to this contact"""
-        return {
-            'type': 'ir.actions.act_window',
-            'name': _('Expenses Paid'),
-            'res_model': 'real.estate.expense',
-            'view_mode': 'tree,form',
-            'domain': [('contact_id', '=', self.id)],
-            'context': {'default_contact_id': self.id},
         }
     

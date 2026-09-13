@@ -7,10 +7,11 @@
             <field name="model">property.payment.receipts.wizard</field>
             <field name="arch" type="xml">
                 <form string="Generate Property Payment Receipts">
+                    <field name="company_currency" invisible="1"/>
                     <group>
                         <field name="property_id"/>
                         <field name="is_purchased" invisible="1"/>
-                        <field name="amount" widget="monetary"/>
+                        <field name="amount"/>
                         <field name="start_date"/>
                         <field name="duration"/>
                         <field name="duration_unit"/>

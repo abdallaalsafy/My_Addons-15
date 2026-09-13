@@ -41,11 +41,12 @@
             <field name="model">real.estate.payment.installment</field>
             <field name="arch" type="xml">
                 <tree string="Payment Installments">
+                    <field name="company_currency" invisible="1"/>
                     <field name="name"/>
                     <field name="property_id"/>
                     <field name="contact_id"/>
                     <field name="is_purchased" attrs="{'column_invisible': True}"/>
-                    <field name="amount" widget="monetary" sum="Total Amount"/>
+                    <field name="amount" sum="Total Amount"/>
                     <field name="due_date"/>
                     <field name="status" widget="badge"
                            decoration-muted="status=='draft'"
@@ -62,6 +63,7 @@
             <field name="arch" type="xml">
                 <form string="Payment Installment">
                     <field name="is_purchased" invisible="True"/>
+                    <field name="company_currency" invisible="1"/>
                     <header>
                         <button name="action_mark_paid" type="object" 
                                 string="Mark as Paid" class="btn-success"
@@ -78,13 +80,14 @@
                             </h1>
                         </div>
                         <group>
-                            <group name="basic_info">
+                            <group name="basic_info" string="Basic Information">
                                 <field name="property_id" options="{'no_create': True}" readonly="context.get('default_property_id')"/>
                                 <field name="contact_id"/>
-                            </group>
-                            <group name="payment_info">
-                                <field name="amount" widget="monetary"/>
+                                <field name="amount"/>
                                 <field name="due_date"/>
+                            </group>
+                            <group name="payment_info" string="Payment Information">
+                                <field name="paid_date" attrs="{'invisible': [('status', '=', 'draft')], 'required': [('status', '=', 'paid')]}"/>
                                 <field name="payment_method"/>
                                 <field name="payment_reference"/>
                             </group>

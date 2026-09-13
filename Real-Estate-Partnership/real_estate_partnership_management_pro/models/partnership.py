@@ -17,16 +17,17 @@ class RealEstatePartnership(models.Model):
                                  domain="[('status', '=', 'active')]",ondelete='restrict')
     investment_id = fields.Many2one('real.estate.investment', string='investment', required=True, tracking=True, index=True,ondelete='cascade',
                               domain="[('status', '=', 'opening'),'|','&',('total_partnerships_percentage', '<', 100),('investment_method', '=', 'percentage'),('investment_method', '=', 'amount')]")
-    
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
+
     # Related fields for easy access
     investment_method = fields.Selection(related='investment_id.investment_method', store=True)
     status = fields.Selection(related='investment_id.status', store=True, index=True)
-    total_cost = fields.Float(related='investment_id.total_investment_cost', store=True)
+    total_cost = fields.Monetary(related='investment_id.total_investment_cost', currency_field='company_currency', store=True)
 
     # partnership Details
-    amount = fields.Float(string='Total Amount', compute='_compute_amount', store=True,)
-    down_payment = fields.Float(string='Down Payment', compute='_compute_down_payment', store=True, tracking=True, help='Down payment amount for the partnership')
-    remaining_amount = fields.Float(string='Remaining Amount', compute='_compute_remaining_amount', store=True)
+    amount = fields.Monetary(string='Total Amount', currency_field='company_currency', compute='_compute_amount', store=True)
+    down_payment = fields.Monetary(string='Down Payment', currency_field='company_currency', compute='_compute_down_payment', store=True, tracking=True, help='Down payment amount for the partnership')
+    remaining_amount = fields.Monetary(string='Remaining Amount', currency_field='company_currency', compute='_compute_remaining_amount', store=True)
     percentage = fields.Float(string='Percentage %', readonly=True)
 
     notes = fields.Text(string='Notes')

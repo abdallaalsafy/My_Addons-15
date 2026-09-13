@@ -43,10 +43,11 @@
             <field name="model">real.estate.transaction</field>
             <field name="arch" type="xml">
                 <tree string="Partner Transactions">
+                    <field name="company_currency" invisible="1"/>
                     <field name="name"/>
                     <field name="partner_id"/>
                     <field name="transaction_type"/>
-                    <field name="amount" widget="monetary"/>
+                    <field name="amount"/>
                     <field name="transaction_date"/>
                 </tree>
             </field>
@@ -58,6 +59,7 @@
             <field name="model">real.estate.transaction</field>
             <field name="arch" type="xml">
                 <form string="Partner Transaction">
+                    <field name="company_currency" invisible="1"/>
                     <sheet>
                         <div class="oe_title">
                             <h1>
@@ -68,7 +70,7 @@
                             <group name="transaction_details">
                                 <field name="partner_id" readonly="context.get('default_partner_id')" context="{'default_is_partner': True}"/>
                                 <field name="transaction_type" readonly="context.get('readonly_transaction_type')"/>
-                                <field name="amount" widget="monetary"/>
+                                <field name="amount"/>
                                 <field name="transaction_date" readonly="context.get('readonly_transaction_date')"/>
                             </group>
                             <group name="payment_info">

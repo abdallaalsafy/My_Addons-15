@@ -43,13 +43,14 @@
             <field name="model">real.estate.partnership</field>
             <field name="arch" type="xml">
                 <tree string="partnerships">
+                    <field name="company_currency" invisible="1"/>
                     <field name="name"/>
                     <field name="investment_id"/>
                     <field name="partner_id"/>
                     <field name="percentage"/>
-                    <field name="amount" widget="monetary" sum="Total Amount"/>
-                    <field name="down_payment" widget="monetary" sum="Total Down Payment"/>
-                    <field name="remaining_amount" widget="monetary" sum="Total Remaining"/>
+                    <field name="amount" sum="Total Amount"/>
+                    <field name="down_payment" sum="Total Down Payment"/>
+                    <field name="remaining_amount" sum="Total Remaining"/>
                     <field name="partnership_date"/>
                     <field name="status" widget="badge"/>
                 </tree>
@@ -70,6 +71,7 @@
                         <div class="oe_title">
                             <h1>
                                 <field name="name" readonly="1"/>
+                                <field name="company_currency" invisible="1"/>
                             </h1>
                         </div>
                         <group>
@@ -81,15 +83,16 @@
                             </group>
                             <group string="Financial Details">
                                 <field name="percentage"/>
-                                <field name="amount" widget="monetary"/>
-                                <field name="down_payment" widget="monetary"/>
-                                <field name="remaining_amount" widget="monetary"/>
+                                <field name="amount"/>
+                                <field name="down_payment"/>
+                                <field name="remaining_amount"/>
                             </group>
                         </group>
                         <notebook>
                             <page string="Payment Installments">
                                 <field name="payment_line_ids">
                                     <tree string="Payment Installments" editable="buttom">
+                                        <field name="company_currency" invisible="1"/>
                                         <field name="name" readonly="1"/>
                                         <field name="amount"/>
                                         <field name="payment_date"/>

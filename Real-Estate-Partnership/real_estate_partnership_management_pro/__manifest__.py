@@ -28,10 +28,11 @@ Features:
 
         'wizards/views/payment_filter_wizard_views.xml',
         'wizards/views/partner_unified_ledger_views.xml',
+        'wizards/views/cash_flow_into_cash_box_views.xml',
         'wizards/views/property_payment_receipts_wizard_views.xml',
         'wizards/views/company_financial_summary_views.xml',
 
-        'views/partner_views.xml',
+        'views/res_partner_views.xml',
         'views/city_views.xml',
         'views/property_views.xml',
         'views/investment_views.xml',

@@ -35,11 +35,12 @@
             <field name="model">real.estate.sale.line</field>
             <field name="arch" type="xml">
                 <tree string="Property Sales Lines" create="0" delete="0">
+                    <field name="company_currency" invisible="1"/>
                     <field name="property_id"/>
                     <field name="property_date"/>
                     <field name="investment_id"/>
                     <field name="partner_id"/>
-                    <field name="profit_amount" widget="monetary" sum="Total Profit"/>
+                    <field name="profit_amount" sum="Total Profit"/>
                 </tree>
             </field>
         </record>
@@ -50,13 +51,14 @@
             <field name="model">real.estate.sale.line</field>
             <field name="arch" type="xml">
                 <form string="Property Sale Line" create="0" delete="0" edit="0">
+                    <field name="company_currency" invisible="1"/>
                     <sheet>
                         <group>
                             <field name="property_id"/>
                             <field name="property_date"/>
                             <field name="investment_id"/>
                             <field name="partner_id"/>
-                            <field name="profit_amount" widget="monetary"/>
+                            <field name="profit_amount"/>
                         </group>
                         
                     </sheet>

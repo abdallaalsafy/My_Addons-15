@@ -7,6 +7,7 @@
             <field name="model">company.financial.summary</field>
             <field name="arch" type="xml">
                 <form string="Company Financial Summary">
+                    <field name="company_currency" invisible="1"/>
                     <sheet>
                         <div class="oe_title">
                             <h1>Company Financial Summary</h1>
@@ -17,14 +18,14 @@
                             <page string="Actual Liquidity">
                                 <group>
                                     <group>
-                                        <field name="actual_liquidity" widget="monetary" style="font-weight: bold;font-size: 16px;"/>
+                                        <field name="actual_liquidity" style="font-weight: bold;font-size: 16px;"/>
                                     </group>
                                     <group string="Calculation elements">
-                                        <field name="positive_transactions" widget="monetary"/>
-                                        <field name="sales_paid_amount" widget="monetary"/>
-                                        <field name="negative_transactions" widget="monetary" style="color: red;"/>
-                                        <field name="expenses_paid_amount" widget="monetary" style="color: red;"/>
-                                        <field name="purchases_paid_amount" widget="monetary" style="color: red;"/>
+                                        <field name="positive_transactions"/>
+                                        <field name="sales_paid_amount"/>
+                                        <field name="negative_transactions" style="color: red;"/>
+                                        <field name="expenses_paid_amount" style="color: red;"/>
+                                        <field name="purchases_paid_amount" style="color: red;"/>
                                     </group>
                                 </group>
                                 <div class="alert alert-info" role="alert">
@@ -49,8 +50,8 @@
                                     </group>
                                     <group string="Financial Summary">
                                         <field name="investments_total_amount"/>
-                                        <field name="investments_open_amount" widget="monetary"/>
-                                        <field name="investments_closed_amount" widget="monetary"/>
+                                        <field name="investments_open_amount"/>
+                                        <field name="investments_closed_amount"/>
                                     </group>
                                 </group>
                                 <group>
@@ -58,9 +59,9 @@
                                         <field name="Partnership_partners_count" />
                                     </group>
                                     <group string="investments Amounts"> 
-                                        <field name="investments_maximum_amount" widget="monetary"/>
-                                        <field name="investments_minimum_amount" widget="monetary"/>
-                                         <field name="partnerships_debtor_amount" widget="monetary"/>
+                                        <field name="investments_maximum_amount"/>
+                                        <field name="investments_minimum_amount"/>
+                                         <field name="partnerships_debtor_amount"/>
                                     </group>
                                 </group>
                             </page>
@@ -74,10 +75,10 @@
                                         <field name="partners_debtor_count"/>
                                     </group>
                                     <group string="Financial Summary">
-                                        <field name="partners_current_balance" widget="monetary"/>
-                                        <field name="partners_maximum_balance" widget="monetary"/>
-                                        <field name="partners_minimum_balance" widget="monetary" style="color: red;"/>
-                                        <field name="partners_debtor_balance" widget="monetary" style="color: red;"/>
+                                        <field name="partners_current_balance"/>
+                                        <field name="partners_maximum_balance"/>
+                                        <field name="partners_minimum_balance"/>
+                                        <field name="partners_debtor_balance" style="color: red;"/>
                                     </group>
                                 </group>
                             </page>
@@ -90,9 +91,9 @@
                                         <field name="purchases_unpaid_count"/>
                                     </group>
                                     <group string="Financial Summary">
-                                        <field name="purchases_total_price" widget="monetary"/>
-                                        <field name="purchases_paid_amount" widget="monetary"/>
-                                        <field name="purchases_unpaid_amount" widget="monetary"/>
+                                        <field name="purchases_total_price"/>
+                                        <field name="purchases_paid_amount"/>
+                                        <field name="purchases_unpaid_amount"/>
                                     </group>
                                 </group>
                             </page>
@@ -105,16 +106,16 @@
                                         <field name="sales_unpaid_count"/>
                                     </group>
                                     <group string="Financial Summary">
-                                        <field name="sales_total_price" widget="monetary"/>
-                                        <field name="sales_paid_amount" widget="monetary"/>
-                                        <field name="sales_unpaid_amount" widget="monetary"/>
+                                        <field name="sales_total_price"/>
+                                        <field name="sales_paid_amount"/>
+                                        <field name="sales_unpaid_amount"/>
                                     </group>
                                 </group>
                                 <group>
                                     <group string="Profits">
-                                        <field name="sales_total_profit" widget="monetary"/>
-                                        <field name="sales_total_management_fees" widget="monetary"/>
-                                        <field name="sales_total_net_profit" widget="monetary"/>
+                                        <field name="sales_total_profit"/>
+                                        <field name="sales_total_management_fees"/>
+                                        <field name="sales_total_net_profit"/>
                                     </group>
                                     <group></group>
                                 </group>
@@ -128,9 +129,9 @@
                                         <field name="expenses_unpaid_count"/>
                                     </group>
                                     <group>
-                                        <field name="expenses_total_amount" widget="monetary"/>
-                                        <field name="expenses_paid_amount" widget="monetary"/>
-                                        <field name="expenses_unpaid_amount" widget="monetary" style="color: red;"/>
+                                        <field name="expenses_total_amount"/>
+                                        <field name="expenses_paid_amount"/>
+                                        <field name="expenses_unpaid_amount" style="color: red;"/>
                                     </group>
                                 </group>
                                 <group string="Investment Expenses Payment Status">
@@ -140,9 +141,9 @@
                                         <field name="expenses_investment_unpaid_count"/>
                                     </group>
                                     <group>
-                                        <field name="expenses_investment_amount" widget="monetary"/>
-                                        <field name="expenses_investment_paid_amount" widget="monetary"/>
-                                        <field name="expenses_investment_unpaid_amount" widget="monetary" style="color: red;"/>
+                                        <field name="expenses_investment_amount"/>
+                                        <field name="expenses_investment_paid_amount"/>
+                                        <field name="expenses_investment_unpaid_amount" style="color: red;"/>
                                     </group>
                                 </group>
                                 <group string="Company Expenses Payment Status">
@@ -152,9 +153,9 @@
                                         <field name="expenses_company_unpaid_count"/>
                                     </group>
                                     <group>
-                                        <field name="expenses_company_amount" widget="monetary"/>
-                                        <field name="expenses_company_paid_amount" widget="monetary"/>
-                                        <field name="expenses_company_unpaid_amount" widget="monetary" style="color: red;"/>
+                                        <field name="expenses_company_amount"/>
+                                        <field name="expenses_company_paid_amount"/>
+                                        <field name="expenses_company_unpaid_amount" style="color: red;"/>
                                     </group>
                                 </group>
                             </page>

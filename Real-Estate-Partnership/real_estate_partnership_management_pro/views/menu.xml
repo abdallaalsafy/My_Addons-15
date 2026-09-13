@@ -13,8 +13,8 @@
                   action="action_real_estate_buyer" sequence="20"/>
         <menuitem id="menu_real_estate_saller" name="Sallers" parent="menu_real_estate_contacts" 
                   action="action_real_estate_saller" sequence="30"/>
-        <menuitem id="menu_real_estate_payee" name="Payees" parent="menu_real_estate_contacts" 
-                  action="action_real_estate_payee" sequence="40"/>
+        <menuitem id="menu_real_estate_all_partners" name="All Contacts" parent="menu_real_estate_contacts" 
+                  action="action_real_estate_all_partner" sequence="40"/>
         <menuitem id="menu_real_estate_transactions" name="Transactions" parent="menu_real_estate_contacts"
                   action="action_real_estate_transaction" sequence="50"/>
                   
@@ -71,12 +71,16 @@
                   action="action_real_estate_load_management_fees" sequence="10"/>
         <menuitem id="menu_company_financial_summary" name="Company Financial Summary" parent="menu_real_estate_reports"
                   action="action_company_financial_summary" sequence="20"/>
+        <menuitem id="menu_cash_flow_into_cash_box" name="Daily Cashbox" parent="menu_real_estate_reports"
+                  action="action_cash_flow_into_cash_box" sequence="30"/>
 
 
         <!-- Configuration Menu for Real Estate Manager -->
         <menuitem id="menu_real_estate_configuration" name="Configuration" parent="menu_real_estate_root" sequence="80"
                   groups="real_estate_partnership_management_pro.group_real_estate_manager"/>
-        <menuitem id="menu_real_estate_company_settings" name="Company Settings" parent="menu_real_estate_configuration"
+        <menuitem id="menu_real_estate_general_settings" name="Settings" parent="menu_real_estate_configuration"
+            sequence="0" action="action_real_estate_configuration" groups="base.group_system"/>
+        <menuitem id="menu_real_estate_company_settings" name="Company" parent="menu_real_estate_configuration"
                   action="base.action_res_company_form" sequence="10"/>
         <menuitem id="menu_real_estate_expense_categories" name="Expense Categories" parent="menu_real_estate_configuration"
                   action="action_real_estate_expense_category" sequence="20" />

@@ -56,10 +56,10 @@
                     <field name="total_area" optional="show"/>
                     <field name="address" optional="hide"/>
                     <field name="contact_id" optional="hide"/>
-                    <field name="property_price" widget="monetary" sum="Total Purchase Price"/>
-                    <field name="down_payment" widget="monetary" sum="Total Down Payment" optional="show"/>
-                    <field name="total_cost" widget="monetary" sum="Total Cost"/>
-                    <field name="current_value" widget="monetary" optional="hide"/>
+                    <field name="property_price" sum="Total Purchase Price"/>
+                    <field name="down_payment" sum="Total Down Payment" optional="show"/>
+                    <field name="total_cost" sum="Total Cost"/>
+                    <field name="current_value" optional="hide"/>
                     <field name="property_date"/>
                 </tree>
             </field>
@@ -71,14 +71,15 @@
             <field name="model">real.estate.property</field>
             <field name="arch" type="xml">
                 <tree string="Management Fees Summary">
+                    <field name="company_currency" invisible="1"/>
                     <field name="code"/>
                     <field name="name"/>
                     <field name="property_date"/>
                     <field name="investment_id" optional="show"/>
                     <field name="contact_id" optional="hide"/>
-                    <field name="total_profit" widget="monetary" sum="Total Profit"/>
+                    <field name="total_profit" sum="Total Profit"/>
                     <field name="management_fee_percentage"/>
-                    <field name="management_fee_amount" widget="monetary" sum="Total Management Fees"/>
+                    <field name="management_fee_amount" sum="Total Management Fees"/>
                 </tree>
             </field>
         </record>
@@ -91,6 +92,7 @@
                 <form string="Property">
                     <field name="is_purchased" invisible="1"/>
                     <field name="investment_status" invisible="1"/>
+                    <field name="company_currency" invisible="1"/>
                     <header>
                         <button name="action_create_expense" type="object" 
                                 string="Create Expense" class="btn-info"
@@ -138,12 +140,12 @@
                             <group name="basic_info">
                                 <field name="investment_id"/>
                                 <field name="property_type"/>
-                                <field name="current_value" widget="monetary"/>
+                                <field name="current_value"/>
                             </group>
                             <group name="financial_info">
-                                <field name="total_expenses" widget="monetary"/>
-                                <field name="investment_expenses" widget="monetary" attrs="{'invisible': ['|',('is_purchased', '=', True),('status','=','draft')]}"/>
-                                <field name="total_cost" widget="monetary"/>
+                                <field name="total_expenses"/>
+                                <field name="investment_expenses" attrs="{'invisible': ['|',('is_purchased', '=', True),('status','=','draft')]}"/>
+                                <field name="total_cost"/>
                             </group>
                         </group>
                         <group>
@@ -159,27 +161,27 @@
                          <group string="Purchase &amp; Information" attrs="{'invisible': [('is_purchased', '=', False)]}">
                             <group string="Seller Details">
                                 <field name="property_date" string='Purchase Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
-                                <field name="contact_id" string='Buy From' attrs='{"required":[("status", "=", "confirmed")]}' context="{'default_is_seller': True}"/>
+                                <field name="contact_id" string='Buy From' attrs='{"required":[("status", "=", "confirmed")]}'/>
                             </group>
                             <group string="Purchase Price Details">
-                                <field name="property_price" string='Purchase Price' widget="monetary" attrs='{"required":[("status", "=", "confirmed")]}'/>
-                                <field name="down_payment" widget="monetary"/>
-                                <field name="remaining_amount" widget="monetary"/>
+                                <field name="property_price" string='Purchase Price' attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="down_payment"/>
+                                <field name="remaining_amount"/>
                             </group>
                         </group>
                         <group string="Sale Information" attrs="{'invisible': [('is_purchased', '=', True)]}">
                             <group string="Sale Details">
                                 <field name="property_date" string='Sale Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
-                                <field name="contact_id" string='Sale To' attrs='{"required":[("status","=","confirmed")]}' context="{'default_is_buyer': True}"/>
-                                <field name="property_price" string='Sale Price' widget="monetary" attrs='{"required":[("status", "=", "confirmed")]}'/>
-                                <field name="down_payment" widget="monetary"/>
-                                <field name="remaining_amount" widget="monetary"/>
+                                <field name="contact_id" string='Sale To' attrs='{"required":[("status","=","confirmed")]}'/>
+                                <field name="property_price" string='Sale Price' attrs='{"required":[("status", "=", "confirmed")]}'/>
+                                <field name="down_payment"/>
+                                <field name="remaining_amount"/>
                             </group>
                             <group string="Profit &amp; Loss">
-                                <field name="total_profit" widget="monetary"/>
-                                <field name="net_profit" widget="monetary"/>
-                                <field name="management_fee_percentage" widget="monetary"/>
-                                <field name="management_fee_amount" widget="monetary"/>
+                                <field name="total_profit"/>
+                                <field name="net_profit"/>
+                                <field name="management_fee_percentage"/>
+                                <field name="management_fee_amount"/>
                             </group>
                         </group>
                         <notebook>
@@ -265,7 +267,7 @@
                                         </div>
                                         <div class="o_kanban_record_bottom">
                                             <div class="o_text_overflow">
-                                                <strong>Total Cost: </strong><field name="total_cost" widget="monetary"/>
+                                                <strong>Total Cost: </strong><field name="total_cost"/>
                                             </div>
                                         </div>
                                         <div class="o_kanban_record_bottom" t-if="record.attachment_ids.raw_value and record.attachment_ids.raw_value.length > 0">

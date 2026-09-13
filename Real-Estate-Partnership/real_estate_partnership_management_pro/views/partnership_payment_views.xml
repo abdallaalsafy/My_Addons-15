@@ -30,10 +30,11 @@
             <field name="model">real.estate.partnership.payment</field>
             <field name="arch" type="xml">
                 <tree string="Partnership Payments">
+                    <field name="company_currency" invisible="1"/>
                     <field name="name"/>
                     <field name="partnership_id"/>
                     <field name="partner_id"/>
-                    <field name="amount" widget="monetary" sum="Total Amount"/>
+                    <field name="amount" sum="Total Amount"/>
                     <field name="payment_date"/>
                 </tree>
             </field>
@@ -45,6 +46,7 @@
             <field name="model">real.estate.partnership.payment</field>
             <field name="arch" type="xml">
                 <form string="Partnership Payment">
+                    <field name="company_currency" invisible="1"/>
                     <sheet>
                         <group>
                             <group>

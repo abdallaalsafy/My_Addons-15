@@ -20,7 +20,9 @@ class RealEstateProperty(models.Model):
     # Investment Relationship
     investment_id = fields.Many2one('real.estate.investment', string='investment', required=True,
                                 help='The investment this property is associated with (if any)',
-                                domain="[('status', '!=', 'closed')]") 
+                                domain="[('status', '!=', 'closed')]")
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
+
     # Property Type and Classification
     property_type = fields.Selection(related='investment_id.investment_type', store=True,)
     investment_status = fields.Selection(related='investment_id.status', store=True,)
@@ -62,8 +64,8 @@ class RealEstateProperty(models.Model):
     total_area = fields.Float(string='Total Area', required=True,  tracking=True, help='Total area of the property (used for area ratio calculations)')
     area_unit = fields.Selection(related='investment_id.area_unit', store=True)
     # Expenses Information
-    total_expenses = fields.Float(string='Total Expenses', compute='_compute_expenses', store=True)
-    investment_expenses = fields.Float(string='investment Expenses', help="""
+    total_expenses = fields.Monetary(string='Total Expenses', compute='_compute_expenses', store=True, currency_field='company_currency')
+    investment_expenses = fields.Monetary(string='investment Expenses', currency_field='company_currency', help="""
         This field is for (Sale Property) only.
         It get share of Sale Property in the investment's expenses not investment's cost.
         It is calculated based on the (action confirming the sale).
@@ -71,21 +73,21 @@ class RealEstateProperty(models.Model):
         The field only appears in the confirmed state.
         """)
     # Financial Information
-    current_value = fields.Float(string='Current Estimated Value', tracking=True)
-    total_cost = fields.Float(string='Total Cost', compute='_compute_total_cost', store=True)
+    current_value = fields.Monetary(string='Current Estimated Value', tracking=True, currency_field='company_currency')
+    total_cost = fields.Monetary(string='Total Cost', compute='_compute_total_cost', store=True, currency_field='company_currency')
 
     # Sale & Purchase Fields
     property_date = fields.Date(tracking=True)
     contact_id = fields.Many2one('res.partner', tracking=True,)
-    property_price = fields.Float(tracking=True,)
-    down_payment = fields.Float(string='Down Payment', tracking=True, help='Down payment amount for the property')
-    remaining_amount = fields.Float(string='Remaining Amount', compute='_compute_payment_remaining', store=True)
+    property_price = fields.Monetary(string='Property Price', tracking=True, currency_field='company_currency')
+    down_payment = fields.Monetary(string='Down Payment', tracking=True, currency_field='company_currency', help='Down payment amount for the property')
+    remaining_amount = fields.Monetary(string='Remaining Amount', compute='_compute_payment_remaining', store=True, currency_field='company_currency')
     # Profit Information
-    total_profit = fields.Float(string='Total Profit', compute='_compute_financials', store=True)
-    net_profit = fields.Float(string='Net Profit', compute='_compute_financials', store=True)
+    total_profit = fields.Monetary(string='Total Profit', compute='_compute_financials', store=True, currency_field='company_currency')
+    net_profit = fields.Monetary(string='Net Profit', compute='_compute_financials', store=True, currency_field='company_currency')
     management_fee_percentage = fields.Float(string='Management Fee %', default=5.0, tracking=True)
-    management_fee_amount = fields.Float(string='Management Fee Amount', compute='_compute_financials', store=True)
-    
+    management_fee_amount = fields.Monetary(string='Management Fee Amount', compute='_compute_financials', store=True, currency_field='company_currency')
+
     # Notes and Documents
     description = fields.Text(string='Description')
     notes = fields.Text(string='Notes')

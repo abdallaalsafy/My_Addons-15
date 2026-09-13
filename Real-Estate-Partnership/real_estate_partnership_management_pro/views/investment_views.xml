@@ -51,6 +51,7 @@
                     <header>
                         <field name="draft_sold_properties_count" invisible="1"/>
                         <field name="is_restructured" invisible="1"/>
+                        <field name="company_currency" invisible="1"/>
                         <button name="action_create_purchased_property" type="object" 
                                 string="Create Purchase" class="btn-warning"
                                 attrs="{'invisible':[('status','=','closed')]}"/>
@@ -120,12 +121,12 @@
                             <group string="Basic Information &amp; Financials">
                                 <field name="investment_type"/>
                                 <field name="total_current_value"/>
-                                <field name="total_expenses" widget="monetary"/>
-                                <field name="total_investment_cost" widget="monetary"/>
+                                <field name="total_expenses"/>
+                                <field name="total_investment_cost"/>
                             </group>
                             <group string="partnership &amp; Profit Information">
                                 <field name="total_partnerships_percentage"/>
-                                <field name="total_partnerships" widget="monetary"/>
+                                <field name="total_partnerships"/>
                             </group>
                         </group>
                         <group>
@@ -237,7 +238,7 @@
                                         </div>
                                         <div class="o_kanban_record_bottom">
                                             <div class="o_text_overflow">
-                                                <strong>Total Cost: </strong><field name="total_investment_cost" widget="monetary"/>
+                                                <strong>Total Cost: </strong><field name="total_investment_cost"/>
                                             </div>
                                         </div>
                                         <div class="o_kanban_record_bottom" t-if="record.attachment_ids.raw_value and record.attachment_ids.raw_value.length > 0">

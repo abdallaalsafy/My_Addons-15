@@ -28,14 +28,20 @@ access_payment_filter_wizard_user,payment.filter.wizard.user,model_payment_filte
 access_payment_filter_wizard_manager,payment.filter.wizard.manager,model_payment_filter_wizard,group_real_estate_manager,1,1,1,1
 access_property_payment_receipts_wizard_user,property.payment.receipts.wizard.user,model_property_payment_receipts_wizard,group_real_estate_user,1,1,1,0
 access_property_payment_receipts_wizard_manager,property.payment.receipts.wizard.manager,model_property_payment_receipts_wizard,group_real_estate_manager,1,1,1,1
+
 access_real_estate_city_user,real.estate.city.user,model_real_estate_city,group_real_estate_user,1,1,1,0
 access_real_estate_city_manager,real.estate.city.manager,model_real_estate_city,group_real_estate_manager,1,1,1,1
 
 
 access_partner_unified_ledger_wizard_user,partner.unified.ledger.wizard.user,model_partner_unified_ledger,group_real_estate_user,1,1,1,0
 access_partner_unified_ledger_wizard_manager,partner.unified.ledger.wizard.manager,model_partner_unified_ledger,group_real_estate_manager,1,1,1,1
-
 access_partner_unified_ledger_line_wizard_user,partner.unified.ledger.line.wizard.user,model_partner_unified_ledger_line,group_real_estate_user,1,1,1,0
 access_partner_unified_ledger_line_wizard_manager,partner.unified.ledger.line.wizard.manager,model_partner_unified_ledger_line,group_real_estate_manager,1,1,1,1
+
 access_company_financial_summary_user,company.financial.summary.user,model_company_financial_summary,group_real_estate_user,1,0,0,0
 access_company_financial_summary_manager,company.financial.summary.manager,model_company_financial_summary,group_real_estate_manager,1,1,1,1
+
+access_cash_flow_into_cash_box_manager,cash.flow.into.cash.box.manager,model_cash_flow_into_cash_box,group_real_estate_manager,1,1,1,1
+access_cash_flow_into_cash_box_user,cash.flow.into.cash.box.user,model_cash_flow_into_cash_box,group_real_estate_user,1,1,1,0
+access_cash_flow_into_cash_box_line_manager,cash.flow.into.cash.box.line.manager,model_cash_flow_into_cash_box_line,group_real_estate_manager,1,1,1,1
+access_cash_flow_into_cash_box_line_user,cash.flow.into.cash.box.line.user,model_cash_flow_into_cash_box_line,group_real_estate_user,1,1,1,0

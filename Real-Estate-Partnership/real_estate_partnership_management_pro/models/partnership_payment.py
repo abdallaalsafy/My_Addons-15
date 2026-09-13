@@ -14,8 +14,9 @@ class RealEstatePartnershipPayment(models.Model):
     partnership_id = fields.Many2one('real.estate.partnership', string='Partnership', required=True, tracking=True, ondelete='cascade',
                                     domain="[('status', '=', 'opening')]")
     partner_id = fields.Many2one(related='partnership_id.partner_id', store=True,)
-
-    amount = fields.Float(string='Amount', required=True, tracking=True)
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
+    
+    amount = fields.Monetary(string='Amount', required=True, tracking=True, currency_field='company_currency')
     payment_date = fields.Date(string='Date', required=True, default=fields.Date.today, tracking=True)
     notes = fields.Text(string='Notes')
 

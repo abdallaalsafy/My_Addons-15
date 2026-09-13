@@ -11,8 +11,9 @@ class PropertyPaymentReceiptsWizard(models.TransientModel):
     _description = 'Property Payment Receipts Generator Wizard'
 
     property_id = fields.Many2one('real.estate.property', string='Property', required=True, readonly=True)
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     is_purchased = fields.Boolean(related="property_id.is_purchased", store=True)
-    amount = fields.Float(string='Amount', help='Total amount to be distributed across receipts', compute='_compute_amount')
+    amount = fields.Monetary(string='Amount', currency_field='company_currency', help='Total amount to be distributed across receipts', compute='_compute_amount')
     
     # Date or installment field
     start_date = fields.Date(string='Start Date', required=True, default=fields.Date.today,

@@ -14,14 +14,16 @@ class RealEstatePaymentInstallment(models.Model):
 
 
     name = fields.Char(string='Installment Reference', required=True, copy=False, default=lambda self: _('New'))
-    
+    paid_date = fields.Date(string='Paid Date', tracking=True)
+
     # Relations
     property_id = fields.Many2one('real.estate.property', string='Property', required=True, tracking=True, index=True, ondelete='cascade')
     is_purchased = fields.Boolean(related="property_id.is_purchased", store=True)
     contact_id = fields.Many2one(related="property_id.contact_id", store=True)
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     
     # Payment Details
-    amount = fields.Float(string='Amount', required=True, tracking=True)
+    amount = fields.Monetary(string='Amount', required=True, tracking=True, currency_field='company_currency')
     due_date = fields.Date(string='Due Date', required=True, tracking=True)
     
     status = fields.Selection([
@@ -74,20 +76,21 @@ class RealEstatePaymentInstallment(models.Model):
         for installment in self:
             if installment.amount <= 0:
                 raise ValidationError(_('Amount must be positive.'))
-
-    @api.constrains('due_date', 'property_id')
+            
+    @api.constrains('due_date', 'paid_date', 'property_id')
     def _check_due_date_vs_transaction_date(self):
         """Ensure payment due date is not earlier than purchase/sale date"""
         for installment in self:
-            if installment.due_date < installment.property_id.property_date:
+            if installment.due_date < installment.property_id.property_date or (installment.paid_date and installment.paid_date < installment.property_id.property_date):
+                paid_date_msg = (_(', Paid date: %s') % installment.paid_date if installment.paid_date else '')
                 if installment.is_purchased:
-                    raise ValidationError(_('Payment due date cannot be earlier than property purchase date. '
-                                            'Purchase date: %s, Due date: %s') % 
-                                        (installment.property_id.property_date, installment.due_date))
+                    raise ValidationError(_('Payment due date or paid date cannot be earlier than property purchase date. '
+                                            'Purchase date: %s, Due date: %s%s') % 
+                                        (installment.property_id.property_date, installment.due_date, paid_date_msg))
                 elif installment.property_id.status == 'confirmed':
-                    raise ValidationError(_('Payment due date cannot be earlier than sale date. '
-                                            'Sale date: %s, Due date: %s') % 
-                                        (installment.property_id.property_date, installment.due_date))
+                    raise ValidationError(_('Payment due date or paid date cannot be earlier than sale date. '
+                                            'Sale date: %s, Due date: %s%s') % 
+                                        (installment.property_id.property_date, installment.due_date, paid_date_msg))
 
     # =========================== Onchange Functions ===========================
     
