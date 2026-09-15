@@ -10,6 +10,7 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="property_type"/>
+                    <field name="status"/>
                     <field name="address"/>
                     <field name="city_id"/>
                     <field name="contact_id"/>
@@ -20,21 +21,30 @@
                     <filter string="Square Meter" name="meter" domain="[('area_unit', '=', 'meter')]"/>
                     <filter string="Qirat" name="qirat" domain="[('area_unit', '=', 'qirat')]"/>
                     <separator/>
+                    <filter string="Purchased Properties" name="is_purchased" domain="[('is_purchased', '=', True)]"/>
+                    <filter string="Sold/For Sale Properties" name="is_sold" domain="[('is_purchased', '=', False)]"/>
+                    <separator/>
+                    <filter string="Draft" name="draft" domain="[('status', '=', 'draft')]"/>
+                    <filter string="Confirmed" name="confirmed" domain="[('status', '=', 'confirmed')]"/>
+                    <separator />
                     <filter string="House" name="house" domain="[('property_type', '=', 'house')]"/>
                     <filter string="Apartment" name="apartment" domain="[('property_type', '=', 'apartment')]"/>
                     <filter string="Land" name="land" domain="[('property_type', '=', 'land')]"/>
                     <filter string="Building" name="building" domain="[('property_type', '=', 'building')]"/>
                     <filter string="Villa" name="villa" domain="[('property_type', '=', 'villa')]"/>
                     <filter string="Shop" name="shop" domain="[('property_type', '=', 'shop')]"/>
+                    <filter string="Office" name="office" domain="[('property_type', '=', 'office')]"/>
+                    <filter string="Warehouse" name="warehouse" domain="[('property_type', '=', 'warehouse')]"/>
                     <separator/>
-                    <filter string="Purchase Price Range" name="price_range" domain="[]"/>
-                    <filter string="Sold This Month" name="sold_this_month" domain="[('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
-                    <filter string="Recently Purchased" name="recently_purchased" domain="[('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Sold This Month" name="sold_this_month" domain="[('is_purchased', '=', False), ('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Recently Purchased" name="recently_purchased" domain="[('is_purchased', '=', True), ('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
                     <group expand="0" string="Group By">
+                        <filter string="Investment" name="group_investment" context="{'group_by': 'investment_id'}"/>
+                        <filter string="Purchased / Sold" name="group_is_purchased" context="{'group_by': 'is_purchased'}"/>
+                        <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                         <filter string="Property Type" name="group_type" context="{'group_by': 'property_type'}"/>
-                        <filter string="Purchase Date" name="group_purchase_date" context="{'group_by': 'property_date'}"/>
-                        <filter string="Sale Date" name="group_sale_date" context="{'group_by': 'property_date'}"/>
+                        <filter string="Property Date" name="group_purchase_date" context="{'group_by': 'property_date'}"/>
                         <filter string="City" name="group_city" context="{'group_by': 'city_id'}"/>
                         <filter string="Contacts" name="group_seller" context="{'group_by': 'contact_id'}"/>
                     </group>

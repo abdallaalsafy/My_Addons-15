@@ -28,7 +28,7 @@ class RealEstatePartnership(models.Model):
     amount = fields.Monetary(string='Total Amount', currency_field='company_currency', compute='_compute_amount', store=True)
     down_payment = fields.Monetary(string='Down Payment', currency_field='company_currency', compute='_compute_down_payment', store=True, tracking=True, help='Down payment amount for the partnership')
     remaining_amount = fields.Monetary(string='Remaining Amount', currency_field='company_currency', compute='_compute_remaining_amount', store=True)
-    percentage = fields.Float(string='Percentage %', readonly=True)
+    percentage = fields.Float(string='Percentage %')
 
     notes = fields.Text(string='Notes')
     # partnership Payment Lines

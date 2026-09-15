@@ -16,6 +16,11 @@
                     <filter string="With Balance" name="with_balance" domain="[('current_balance', '>', 0)]"/>
                     <filter string="No Balance" name="no_balance" domain="[('current_balance', '=', 0)]"/>
                     <separator/>
+                    <filter string="Partners" name="is_partner" domain="[('is_partner', '=', True)]"/>
+                    <filter string="Sellers" name="is_seller" domain="[('is_seller', '=', True)]"/>
+                    <filter string="Buyers" name="is_buyer" domain="[('is_buyer', '=', True)]"/>
+                    <separator/>
+                    <filter string="Has Open Partnerships" name="has_open_partnerships" domain="[('total_partnerships', '>', 0)]"/>
                 </xpath>
                  <xpath expr="//group[@name='group_by']" position="inside">
                     <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>

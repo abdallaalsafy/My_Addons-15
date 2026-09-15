@@ -20,11 +20,14 @@
                     <filter string="Amount Method" name="amount_method" domain="[('investment_method', '=', 'amount')]"/>
                     <separator/>
                     <filter string="This Month" name="this_month"
-                            domain="[('partnership_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
-                                    ('partnership_date', '&lt;=', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                            domain="[('partnership_date', '&gt;=', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d')),
+                                    ('partnership_date', '&lt;=', (context_today() + relativedelta(days=31)).strftime('%Y-%m-%d'))]"/>
                     <filter string="This Year" name="this_year"
-                            domain="[('partnership_date', '&gt;=', (context_today() - relativedelta(day=1, month=1)).strftime('%Y-%m-%d')),
-                                    ('partnership_date', '&lt;=', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
+                            domain="[('partnership_date', '&gt;=', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d')),
+                                    ('partnership_date', '&lt;=', (context_today() + relativedelta(days=31)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <filter string="Fully Paid" name="fully_paid" domain="[('remaining_amount', '&lt;=', 0)]"/>
+                    <filter string="Pending Payment" name="pending_payment" domain="[('remaining_amount', '&gt;', 0)]"/>
                     <separator/>
                     <group expand="0" string="Group By">
                         <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
@@ -82,7 +85,7 @@
                                 <field name="investment_method"/>
                             </group>
                             <group string="Financial Details">
-                                <field name="percentage"/>
+                                <field name="percentage" attrs="{'readonly': [('investment_method', '=', 'amount')]}"/>
                                 <field name="amount"/>
                                 <field name="down_payment"/>
                                 <field name="remaining_amount"/>
@@ -91,9 +94,10 @@
                         <notebook>
                             <page string="Payment Installments">
                                 <field name="payment_line_ids">
-                                    <tree string="Payment Installments" editable="buttom">
+                                    <tree string="Payment Installments" editable="bottom">
                                         <field name="company_currency" invisible="1"/>
                                         <field name="name" readonly="1"/>
+                                        <field name="auto_create_transaction" attrs="{'readonly': [('id', '!=', False)]}"/>
                                         <field name="amount"/>
                                         <field name="payment_date"/>
                                     </tree>

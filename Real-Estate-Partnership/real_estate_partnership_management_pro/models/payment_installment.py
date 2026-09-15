@@ -18,6 +18,7 @@ class RealEstatePaymentInstallment(models.Model):
 
     # Relations
     property_id = fields.Many2one('real.estate.property', string='Property', required=True, tracking=True, index=True, ondelete='cascade')
+    investment_id = fields.Many2one(related="property_id.investment_id", store=True)
     is_purchased = fields.Boolean(related="property_id.is_purchased", store=True)
     contact_id = fields.Many2one(related="property_id.contact_id", store=True)
     company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
@@ -41,7 +42,7 @@ class RealEstatePaymentInstallment(models.Model):
     def create(self, vals_list):
         for vals in vals_list:
            
-            code = "real.estate.purchase.payment" if vals.get('is_purchase') == True else "real.estate.sale.payment"
+            code = "real.estate.purchase.payment" if vals.get('is_purchased') == True else "real.estate.sale.payment"
             if vals.get('name', _('New')) == _('New'):
                 vals['name'] = self.env['ir.sequence'].next_by_code(code)
         

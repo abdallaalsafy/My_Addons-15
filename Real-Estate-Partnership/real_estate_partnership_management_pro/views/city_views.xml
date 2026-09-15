@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- City Search View -->
+        <record id="view_real_estate_city_search" model="ir.ui.view">
+            <field name="name">real.estate.city.search</field>
+            <field name="model">real.estate.city</field>
+            <field name="arch" type="xml">
+                <search string="Cities">
+                    <field name="name"/>
+                    <filter string="With Investments" name="with_investments" domain="[('investment_count', '>', 0)]"/>
+                    <filter string="Without Investments" name="without_investments" domain="[('investment_count', '=', 0)]"/>
+                    <filter string="With Properties" name="with_properties" domain="[('property_count', '>', 0)]"/>
+                    <filter string="Without Properties" name="without_properties" domain="[('property_count', '=', 0)]"/>
+                </search>
+            </field>
+        </record>
+
         <!-- City Tree View -->
         <record id="view_real_estate_city_tree" model="ir.ui.view">
             <field name="name">real.estate.city.tree</field>
@@ -19,6 +34,20 @@
             <field name="arch" type="xml">
                 <form string="City">
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="%(action_real_estate_investment)d" type="action" class="oe_stat_button" icon="fa-building" 
+                                    context="{'search_default_city_id': id}" attrs="{'invisible': [('investment_count', '=', 0)]}">
+                                <field name="investment_count" widget="statinfo" string="Investments"/>
+                            </button>
+                            <button name="%(action_real_estate_purchase_property)d" type="action" class="oe_stat_button" icon="fa-home" 
+                                    context="{'search_default_city_id': id}" attrs="{'invisible': [('purchased_property_count', '=', 0)]}">
+                                <field name="purchased_property_count" widget="statinfo" string="Purchased"/>
+                            </button>
+                            <button name="%(action_real_estate_sale_property)d" type="action" class="oe_stat_button" icon="fa-tags" 
+                                    context="{'search_default_city_id': id}" attrs="{'invisible': [('sold_property_count', '=', 0)]}" >
+                                <field name="sold_property_count" widget="statinfo" string="Sold"/>
+                            </button>
+                        </div>
                         <group>
                             <group name="Name">
                                 <field name="name"/>
@@ -26,17 +55,6 @@
                         </group>
                     </sheet>
                 </form>
-            </field>
-        </record>
-
-        <!-- City Search View -->
-        <record id="view_real_estate_city_search" model="ir.ui.view">
-            <field name="name">real.estate.city.search</field>
-            <field name="model">real.estate.city</field>
-            <field name="arch" type="xml">
-                <search string="Cities">
-                    <field name="name"/>
-                </search>
             </field>
         </record>
 

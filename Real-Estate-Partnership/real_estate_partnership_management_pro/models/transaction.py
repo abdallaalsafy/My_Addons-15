@@ -102,11 +102,7 @@ class RealEstateTransaction(models.Model):
     @api.constrains('amount','transaction_type')
     def _check_amount(self):
         for transaction in self:
-            # Allow negative amounts for profit distribution (losses)
-            if transaction.transaction_type != 'profit_distribution' and transaction.amount <= 0:
-                raise ValidationError(_('Transaction amount must be positive.'))
-
             if transaction.transaction_type == 'withdrawal':
-                if transaction.partner_id.current_balance < 0:
+                if transaction.partner_id.actual_balance < transaction.amount:
                     raise ValidationError(_('Insufficient balance. Available: %s, Required: %s') %
-                                          (transaction.partner_id.current_balance+transaction.amount, transaction.amount))
+                                          (transaction.partner_id.actual_balance, transaction.amount))

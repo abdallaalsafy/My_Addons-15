@@ -1,7 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_real_estate_city_user,real.estate.city.user,model_real_estate_city,group_real_estate_user,1,1,1,0
-access_real_estate_city_manager,real.estate.city.manager,model_real_estate_city,group_real_estate_manager,1,1,1,1
-
 access_real_estate_property_user,real.estate.property.user,model_real_estate_property,group_real_estate_user,1,1,1,0
 access_real_estate_property_manager,real.estate.property.manager,model_real_estate_property,group_real_estate_manager,1,1,1,1
 

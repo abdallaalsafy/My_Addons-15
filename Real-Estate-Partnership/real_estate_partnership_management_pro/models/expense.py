@@ -126,7 +126,6 @@ class RealEstateExpense(models.Model):
 
     # =========================== Action Functions ===========================
     def action_mark_paid(self):
-        """Mark expense as paid and distribute among partners if it's a company expense"""
         self.write({'status': 'paid', 'paid_date': fields.Date.today()})
 
     def action_mark_unpaid(self):

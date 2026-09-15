@@ -14,11 +14,17 @@ class RealEstatePartnershipPayment(models.Model):
     partnership_id = fields.Many2one('real.estate.partnership', string='Partnership', required=True, tracking=True, ondelete='cascade',
                                     domain="[('status', '=', 'opening')]")
     partner_id = fields.Many2one(related='partnership_id.partner_id', store=True,)
+    investment_id = fields.Many2one(related='partnership_id.investment_id', store=True,)
     company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     
     amount = fields.Monetary(string='Amount', required=True, tracking=True, currency_field='company_currency')
     payment_date = fields.Date(string='Date', required=True, default=fields.Date.today, tracking=True)
     notes = fields.Text(string='Notes')
+
+    auto_create_transaction = fields.Boolean(string='Auto-create Transaction',default=lambda self: self.env.company.auto_create_transaction_default,tracking=True,
+                            help='If checked, saving this payment will automatically create a matching deposit transaction '
+                                    'for the partner, so you do not need to create it manually beforehand. '
+                                    'This option cannot be changed anymore once the payment has been saved.')
 
     #========================== Built-In Function ===================================
 
@@ -29,11 +35,28 @@ class RealEstatePartnershipPayment(models.Model):
                 vals['name'] = self.env['ir.sequence'].next_by_code('real.estate.partnership.payment') or _('New')
         rtn = super(RealEstatePartnershipPayment, self).create(vals_list)
 
+        # If auto_create_transaction is checked, create a matching deposit transaction for the partner
+        for payment in rtn:
+            if payment.auto_create_transaction:
+                self.env['real.estate.transaction'].create({
+                    'partner_id': payment.partner_id.id,
+                    'transaction_type': 'deposit',
+                    'amount': payment.amount,
+                    'transaction_date': payment.payment_date,
+                    'description': _('Auto-created from partnership payment %s (%s).') % (payment.name, payment.partnership_id.name),
+                })
+
         self.get_percentage_value(rtn.mapped('partnership_id')) 
 
         return rtn
 
     def write(self, vals):
+        # If auto_create_transaction is being changed, prevent it from being changed after the payment has been saved
+        if 'auto_create_transaction' in vals:
+            for payment in self:
+                if payment.auto_create_transaction != vals['auto_create_transaction']:
+                    raise ValidationError(_('The "Auto-create Transaction" option cannot be changed after the payment has been saved.'))
+                
         old_partnerships = self.mapped('partnership_id')
 
         all_fields_allowed = set(vals).issubset({'notes', 'payment_date'})

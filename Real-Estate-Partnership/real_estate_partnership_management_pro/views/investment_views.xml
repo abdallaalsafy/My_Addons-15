@@ -10,6 +10,7 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="investment_type"/>
+                    <field name="city_id"/>
                     <separator/>
                     <filter string="House" name="house" domain="[('investment_type', '=', 'house')]"/>
                     <filter string="Apartment" name="apartment" domain="[('investment_type', '=', 'apartment')]"/>
@@ -17,10 +18,20 @@
                     <filter string="Building" name="building" domain="[('investment_type', '=', 'building')]"/>
                     <filter string="Villa" name="villa" domain="[('investment_type', '=', 'villa')]"/>
                     <filter string="Shop" name="shop" domain="[('investment_type', '=', 'shop')]"/>
+                    <filter string="Office" name="office" domain="[('investment_type', '=', 'office')]"/>
+                    <filter string="Warehouse" name="warehouse" domain="[('investment_type', '=', 'warehouse')]"/>
                     <separator/>
+                    <filter string="Opening" name="opening" domain="[('status', '=', 'opening')]"/>
+                    <filter string="Closed" name="closed" domain="[('status', '=', 'closed')]"/>
+                    <filter string="Restructured" name="is_restructured" domain="[('is_restructured', '=', True)]"/>
+                    <separator/>
+                    <filter string="Opened This Year" name="opened_this_year" domain="[('open_date', '&gt;=', context_today().replace(day=1,month=1).strftime('%Y-%m-%d')), ('open_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                    <separator />
                     <group expand="0" string="Group By">
                         <filter string="investment Type" name="group_type" context="{'group_by': 'investment_type'}"/>
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                        <filter string="City" name="group_city" context="{'group_by': 'city_id'}"/>
+                        <filter string="Open Date" name="group_open_date" context="{'group_by': 'open_date'}"/>
                     </group>
                 </search>
             </field>
@@ -213,7 +224,7 @@
                     <field name="attachment_ids"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div t-attf-class="oe_kanban_card oe_kanban_global_click #{record.status.raw_value == 'sold' ? 'o_kanban_disabled' : ''}">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click #{record.status.raw_value == 'closed' ? 'o_kanban_disabled' : ''}">
                                 <div class="o_kanban_card_header">
                                     <div class="o_kanban_card_header_title">
                                         <strong><field name="name"/></strong>
@@ -249,8 +260,7 @@
                                         </div>
                                     </div>
                                     <div class="o_kanban_primary_right">
-                                        <field name="status" widget="label_selection" 
-                                               options="{'classes': {'available': 'success', 'sold': 'danger'}}"/>
+                                        <field name="status" widget="label_selection" options="{'classes': {'opening': 'success', 'closed': 'danger'}}"/>
                                     </div>
                                 </div>
                             </div>

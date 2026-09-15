@@ -13,7 +13,7 @@
                     <field name="partner_id"/>
                     <separator/>
                     <filter string="Profit This Month" name="profit_this_month" domain="[('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
-                    <filter string="Profit This Year" name="profit_this_year" domain="[('property_date', '>=', (context_today() - datetime.timedelta(years=1)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Profit This Year" name="profit_this_year" domain="[('property_date', '>=', (context_today() - relativedelta(years=1)).strftime('%Y-%m-%d'))]"/>
                     <filter string="Profit This Quarter" name="profit_this_quarter" domain="[('property_date', '>=', (context_today() - datetime.timedelta(days=90)).strftime('%Y-%m-%d'))]"/>
                     <filter string="Profit This Week" name="profit_this_week" domain="[('property_date', '>=', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"/>
                     <filter string="Profit This Day" name="profit_today" domain="[('property_date', '=', context_today().strftime('%Y-%m-%d'))]"/>

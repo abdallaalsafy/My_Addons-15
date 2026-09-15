@@ -10,17 +10,19 @@
                     <field name="name"/>
                     <field name="property_id"/>
                     <field name="contact_id"/>
+                    <field name="investment_id"/>
                     <field name="is_purchased"/>
                     <field name="status"/>
                     <field name="due_date"/>
                     <filter string="Draft" name="draft" domain="[('status', '=', 'draft')]"/>
                     <filter string="Paid" name="paid" domain="[('status', '=', 'paid')]"/>
+                    <filter string="Paid This Month" name="paid_this_month" domain="[('status', '=', 'paid'), ('paid_date', '>=', context_today().replace(day=1).strftime('%Y-%m-%d')), ('paid_date', '&lt;=', (context_today().replace(day=1) + relativedelta(days=30)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
                     <filter string="Purchase Payments" name="purchase" domain="[('is_purchased', '=', True)]"/>
                     <filter string="Sale Payments" name="sale" domain="[('is_purchased', '=', False)]"/>
                     <separator/>
                     <filter string="Overdue" name="overdue" domain="[('status', '=', 'draft'), ('due_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
-                    <filter string="Due This Month" name="due_this_month" domain="[('due_date', '>=', (context_today().replace(day=1)).strftime('%Y-%m-%d')), ('due_date', '&lt;=', (context_today().replace(day=28) + datetime.timedelta(days=4)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Due This Month" name="due_this_month" domain="[('due_date', '>=', (context_today().replace(day=1)).strftime('%Y-%m-%d')), ('due_date', '&lt;=', (context_today().replace(day=1) + relativedelta(months=1)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
                     <filter string="Filter by Due Date" name="filter_by_due_date" date="due_date"/>
                     <separator/>
@@ -30,6 +32,8 @@
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                         <filter string="Contact" name="group_contact" context="{'group_by': 'contact_id'}"/>
                         <filter string="Due Date" name="group_due_date" context="{'group_by': 'due_date'}"/>
+                        <filter string="Investment" name="group_investment" context="{'group_by': 'investment_id'}"/>
+                        <filter string="Payment Method" name="group_payment_method" context="{'group_by': 'payment_method'}"/>
                     </group>
                 </search>
             </field>

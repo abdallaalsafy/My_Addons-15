@@ -11,6 +11,7 @@
                     <field name="partnership_id"/>
                     <field name="partner_id" string="Partner" filter_domain="[('partnership_id.partner_id', 'ilike', self)]"/>
                     <field name="payment_date"/>
+                    <field name="investment_id"/>
                     <separator/>
                     <filter string="This Month" name="this_month" domain="[('payment_date', '>=', (context_today() - relativedelta(days=30)).strftime('%Y-%m-%d')), ('payment_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
                     <filter string="This Year" name="this_year" domain="[('payment_date', '>=', (context_today() - relativedelta(days=365)).strftime('%Y-%m-%d')), ('payment_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
@@ -19,6 +20,7 @@
                         <filter string="Partnership" name="group_partnership" context="{'group_by': 'partnership_id'}"/>
                         <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
                         <filter string="Payment Date" name="group_payment_date" context="{'group_by': 'payment_date'}"/>
+                        <filter string="Investment" name="group_investment" context="{'group_by': 'investment_id'}"/>
                     </group>
                 </search>
             </field>
@@ -36,6 +38,7 @@
                     <field name="partner_id"/>
                     <field name="amount" sum="Total Amount"/>
                     <field name="payment_date"/>
+                    <field name="auto_create_transaction"/>
                 </tree>
             </field>
         </record>
@@ -55,6 +58,7 @@
                                 <field name="partner_id"/>
                                 <field name="amount"/>
                                 <field name="payment_date"/>
+                                <field name="auto_create_transaction"/>
                             </group>
                         </group>
                         <notebook>

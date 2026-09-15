@@ -9,8 +9,8 @@ class PartnerUnifiedLedger(models.TransientModel):
     _description = 'Partner Unified Ledger with All Transactions'
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, readonly=True)
-    date_from = fields.Date(string='From Date')
-    date_to = fields.Date(string='To Date')
+    date_from = fields.Date(string='From Date', required=True)
+    date_to = fields.Date(string='To Date', required=True)
     line_ids = fields.One2many('partner.unified.ledger.line', 'ledger_id', string='Unified Ledger Lines')
 
     @api.model
@@ -52,20 +52,17 @@ class PartnerUnifiedLedger(models.TransientModel):
             })
 
         # 2. Property Sale Lines (real.estate.sale.line)
-        try:
-            sale_lines = partner.sale_line_ids.filtered(lambda x: x.property_date <= date_to and x.property_date >= date_from)
-            for sale_line in sale_lines:
-                all_items.append({
-                    'date': sale_line.property_date,
-                    'source': 'sale_line',
-                    'source_id': sale_line.property_id.id,
-                    'name': sale_line.property_id.name,
-                    'transaction_type': 'sale_profit',
-                    'description': _('Sale Profit'),
-                    'amount': sale_line.profit_amount,  # Positive
-                })
-        except Exception:
-            pass
+        sale_lines = partner.sale_line_ids.filtered(lambda x: x.property_date <= date_to and x.property_date >= date_from)
+        for sale_line in sale_lines:
+            all_items.append({
+                'date': sale_line.property_date,
+                'source': 'sale_line',
+                'source_id': sale_line.property_id.id,
+                'name': sale_line.property_id.name,
+                'transaction_type': 'sale_profit',
+                'description': _('Sale Profit'),
+                'amount': sale_line.profit_amount,  # Positive
+            })
 
         # Calculate opening balance (sum of all items before date_from)
         opening_balance = 0.0

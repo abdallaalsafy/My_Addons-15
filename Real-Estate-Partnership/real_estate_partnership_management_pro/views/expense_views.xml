@@ -11,21 +11,21 @@
                     <field name="code"/>
                     <field name="property_id"/>
                     <field name="investment_id"/>
+                    <field name="category_id"/>
+                    <separator/>
                     <filter string="Confirmed" name="confirmed" domain="[('status', '=', 'confirmed')]"/>
                     <filter string="Paid" name="paid" domain="[('status', '=', 'paid')]"/>
                     <separator/>
-                    <filter string="Renovation" name="renovation" domain="[('category_id.name', '=ilike', 'Renovation')]"/>
-                    <filter string="Maintenance" name="maintenance" domain="[('category_id.name', '=ilike', 'Maintenance')]"/>
-                    <filter string="Licenses" name="licenses" domain="[('category_id.name', '=ilike', 'Licenses')]"/>
-                    <filter string="Taxes" name="taxes" domain="[('category_id.name', '=ilike', 'Taxes')]"/>
-                    <filter string="Management Fees" name="management" domain="[('category_id.name', '=ilike', 'Management')]"/>
-                    <separator/>
                     <filter string="This Month" name="this_month" 
-                            domain="[('expense_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
-                                    ('expense_date', '&lt;', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                            domain="[('expense_date', '&gt;=', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d')),
+                                    ('expense_date', '&lt;', (context_today() + relativedelta(days=31)).strftime('%Y-%m-%d'))]"/>
                     <filter string="This Year" name="this_year" 
-                            domain="[('expense_date', '&gt;', (context_today() - relativedelta(day=1, month=1)).strftime('%Y-%m-%d')),
-                                    ('expense_date', '&lt;', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
+                            domain="[('expense_date', '&gt;', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d')),
+                                    ('expense_date', '&lt;', (context_today() + relativedelta(days=31)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <filter string="Investment Expenses" name="type_investment" domain="[('expense_type', '=', 'investment')]"/>
+                    <filter string="Company Expenses" name="type_company" domain="[('expense_type', '=', 'company')]"/>
+                    <filter string="Filter by Expense Date" name="filter_by_expense_date" date="expense_date"/>
                     <separator/>
                     <group expand="0" string="Group By">
                         <filter string="investment" name="group_investment" context="{'group_by': 'investment_id'}" invisible="context.get('default_expense_type')=='company'"/>
@@ -33,6 +33,8 @@
                         <filter string="Category" name="group_category" context="{'group_by': 'category_id'}"/>
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                         <filter string="Expense Date" name="group_date" context="{'group_by': 'expense_date'}"/>
+                        <filter string="Expense Type" name="group_expense_type" context="{'group_by': 'expense_type'}"/>
+                        <filter string="Payment Method" name="group_payment_method" context="{'group_by': 'payment_method'}"/>
                     </group>
                 </search>
             </field>

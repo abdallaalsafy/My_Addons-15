@@ -2,7 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from random import randint
+
 
 class RealEstateProperty(models.Model):
     _name = 'real.estate.property'
@@ -108,7 +108,7 @@ class RealEstateProperty(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            code = "real.estate.property.purchase" if vals.get('is_purchase') == True else "real.estate.property.sale"
+            code = "real.estate.property.purchase" if vals.get('is_purchased') == True else "real.estate.property.sale"
             if vals.get('code', _('New')) == _('New'):
                 vals['code'] = self.env['ir.sequence'].next_by_code(code) or _('New')
 
@@ -126,7 +126,7 @@ class RealEstateProperty(models.Model):
             if property.investment_status == 'closed':
                 raise ValidationError(_('Cannot delete property becose investment is closed.'))
             elif property.is_purchased:
-                sold_area = self.get_sum_all_sold_cotracts_area()
+                sold_area = self.get_sum_all_sold_properties_area()
                 if sold_area > property.investment_id.total_area - self.total_area:
                     raise ValidationError(_('Cannot delete property becose it sold from it.'))
 
@@ -178,7 +178,7 @@ class RealEstateProperty(models.Model):
                 total_cost += property.property_price
             else:
                 total_cost += property.investment_expenses
-        property.total_cost = total_cost
+            property.total_cost = total_cost
 
     @api.depends('total_cost', 'property_price', 'management_fee_percentage')
     def _compute_financials(self):
@@ -206,7 +206,7 @@ class RealEstateProperty(models.Model):
         for property in self:
             if property.is_purchased:
                 continue
-            sold_area = property.get_sum_all_sold_cotracts_area()
+            sold_area = property.get_sum_all_sold_properties_area()
             if property.investment_id.total_area < sold_area + property.total_area:
                 raise ValidationError(_('All sold total area is greater than total area of investment.'))
         
@@ -340,7 +340,7 @@ class RealEstateProperty(models.Model):
     def action_confirmed_sold_property(self):
         for property in self:
             if property.status == 'confirmed': continue
-            restrict_sale_on_low_balance = self .env.company.sale_restrict_on_low_balance
+            restrict_sale_on_low_balance = self .env.company.restrict_sale_on_low_balance
             
             if property.investment_id.total_partnerships_percentage < 100:
                 raise ValidationError(_('Cannot confirm property because investment total partnerships percentage is less than 100.'))
@@ -402,6 +402,6 @@ class RealEstateProperty(models.Model):
             # Calculate investment expenses from remaining expenses + parent profit from exits
             remaining_expenses = self.get_remaining_expenses(investment_id)
             investment_expenses = remaining_expenses * (expense_ratio / 100)
-            return int(investment_expenses) # Make it as (int) because I do not want any digits
+            return investment_expenses # Make it as (int) because I do not want any digits
         else:
             return 0.0

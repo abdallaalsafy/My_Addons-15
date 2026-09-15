@@ -99,7 +99,7 @@ class CashFlowIntoCashBox(models.TransientModel):
             opening_conformed_properties_purchase = conformed_properties.filtered(lambda x: x.property_date < date_from and x.is_purchased)
             opening_balance -= sum(property.down_payment for property in opening_conformed_properties_purchase)
 
-            opening_paid_installments_sale = paid_installments.filtered(lambda x: x.paid_date < date_from and x.is_purchased)
+            opening_paid_installments_sale = paid_installments.filtered(lambda x: x.paid_date < date_from and not x.is_purchased)
             opening_balance += sum(installment.amount for installment in opening_paid_installments_sale)
 
             opening_paid_installments_purchase = paid_installments.filtered(lambda x: x.paid_date < date_from and x.is_purchased == True)

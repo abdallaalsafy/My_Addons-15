@@ -3,7 +3,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 from random import randint
-from .property import RealEstateProperty as property
+from .property import RealEstateProperty as propertySL
 
 class RealEstateInvestment(models.Model):
     _name = 'real.estate.investment'
@@ -28,8 +28,8 @@ class RealEstateInvestment(models.Model):
                 ('closed', 'Closed'),
             ], string='Status', default='opening', tracking=True, index=True)
     
-    investment_type = fields.Selection(property._SELECTION_PROPERTY_TYPE, string='Investment Type', required=True, index=True)
-    area_unit = fields.Selection(property._SELECTION_AREA_UNIT, string='Area Unit', required=True, index=True, help='Unit of measurement for the property area')
+    investment_type = fields.Selection(propertySL._SELECTION_PROPERTY_TYPE, string='Investment Type', required=True, index=True)
+    area_unit = fields.Selection(propertySL._SELECTION_AREA_UNIT, string='Area Unit', required=True, index=True, help='Unit of measurement for the property area')
     # Location Information
     city_id = fields.Many2one('real.estate.city', string='City', tracking=True, index=True)
     address = fields.Text(string='Full Address', tracking=True)

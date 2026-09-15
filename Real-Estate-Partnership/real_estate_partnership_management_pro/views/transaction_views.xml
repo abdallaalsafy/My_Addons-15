@@ -14,19 +14,19 @@
                     <separator/>
                     <filter string="Deposits" name="deposits" domain="[('transaction_type', '=', 'deposit')]"/>
                     <filter string="Withdrawals" name="withdrawals" domain="[('transaction_type', '=', 'withdrawal')]"/>
-                    <filter string="Profit Distribution" name="profit" domain="[('transaction_type', '=', 'profit_distribution')]"/>
                     <filter string="Investment Return" name="return" domain="[('transaction_type', '=', 'investment_return')]"/>
                     <separator/>
+                    <filter string="Filter by Date" name="filter_by_transaction_date" date="transaction_date"/>
                     <filter string="Today" name="today" domain="[('transaction_date', '=', context_today())]"/>
                     <filter string="This Week" name="this_week"
                             domain="[('transaction_date', '&gt;=', (context_today() - datetime.timedelta(days=context_today().weekday())).strftime('%Y-%m-%d')),
                                     ('transaction_date', '&lt;=', (context_today() + datetime.timedelta(days=6-context_today().weekday())).strftime('%Y-%m-%d'))]"/>
                     <filter string="This Month" name="this_month"
-                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
-                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d')),
+                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(days=31)).strftime('%Y-%m-%d'))]"/>
                     <filter string="This Year" name="this_year"
-                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(day=1, month=1)).strftime('%Y-%m-%d')),
-                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
+                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d')),
+                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(days=31)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
                     <group expand="0" string="Group By">
                         <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
