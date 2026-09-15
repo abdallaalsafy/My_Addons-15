@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Property Payment Receipts Wizard Form View -->
+        <record id="view_property_payment_receipts_wizard_form" model="ir.ui.view">
+            <field name="name">property.payment.receipts.wizard.form</field>
+            <field name="model">property.payment.receipts.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generate Property Payment Receipts">
+                    <field name="company_currency" invisible="1"/>
+                    <group>
+                        <field name="property_id"/>
+                        <field name="is_purchased" invisible="1"/>
+                        <field name="amount"/>
+                        <field name="start_date"/>
+                        <field name="duration"/>
+                        <field name="duration_unit"/>
+                        <field name="number_of_receipts"/>
+                        <field name="generation_mode" widget="radio"/>
+                    </group>
+                    <footer>
+                        <button name="action_generate_receipts" type="object" string="Generate" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

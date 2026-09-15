@@ -5,7 +5,7 @@
         <record id="expense_category_renovation" model="real.estate.expense.category">
             <field name="name">Renovation</field>
             <field name="code">REN</field>
-            <field name="description">Expenses related to property renovation and remodeling work</field>
+            <field name="description">Expenses related to properties renovation and remodeling work</field>
         </record>
         
         <record id="expense_category_maintenance" model="real.estate.expense.category">
@@ -35,13 +35,13 @@
         <record id="expense_category_insurance" model="real.estate.expense.category">
             <field name="name">Insurance</field>
             <field name="code">INS</field>
-            <field name="description">Property insurance premiums and coverage expenses</field>
+            <field name="description">Properties insurance premiums and coverage expenses</field>
         </record>
         
         <record id="expense_category_legal" model="real.estate.expense.category">
             <field name="name">Legal Fees</field>
             <field name="code">LEGAL</field>
-            <field name="description">Legal consultation, contracts, and litigation expenses</field>
+            <field name="description">Legal consultation, properties, and litigation expenses</field>
         </record>
         
         <record id="expense_category_marketing" model="real.estate.expense.category">

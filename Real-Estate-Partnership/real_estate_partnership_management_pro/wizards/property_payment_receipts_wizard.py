@@ -6,13 +6,14 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 
-class PurchasePaymentReceiptsWizard(models.TransientModel):
-    _name = 'purchase.payment.receipts.wizard'
-    _description = 'Purchase Payment Receipts Generator Wizard'
+class PropertyPaymentReceiptsWizard(models.TransientModel):
+    _name = 'property.payment.receipts.wizard'
+    _description = 'Property Payment Receipts Generator Wizard'
 
-    contract_id = fields.Many2one('real.estate.property', string='Contract', required=True, readonly=True)
-    is_purchased = fields.Boolean(related="contract_id.is_purchased", store=True)
-    amount = fields.Float(string='Amount', help='Total amount to be distributed across receipts', compute='_compute_amount')
+    property_id = fields.Many2one('real.estate.property', string='Property', required=True, readonly=True)
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
+    is_purchased = fields.Boolean(related="property_id.is_purchased", store=True)
+    amount = fields.Monetary(string='Amount', currency_field='company_currency', help='Total amount to be distributed across receipts', compute='_compute_amount')
     
     # Date or installment field
     start_date = fields.Date(string='Start Date', required=True, default=fields.Date.today,
@@ -42,14 +43,14 @@ class PurchasePaymentReceiptsWizard(models.TransientModel):
         """Update amount based on generation mode"""
         for record in self:
             if record.generation_mode == 'unpaid':
-                record.amount = record.contract_id.remaining_amount
+                record.amount = record.property_id.remaining_amount
             else:  # all
-                record.amount = record.contract_id.contract_price - record.contract_id.down_payment
+                record.amount = record.property_id.property_price - record.property_id.down_payment
 
 # =========================== Action Generate ===========================
 
     def action_generate_receipts(self):
-        """Generate purchase or sale payment receipts based on wizard settings"""
+        """Generate property payment receipts based on wizard settings"""
         if self.number_of_receipts <= 0:
             raise ValidationError(_('Number of receipts must be positive.'))
         if self.duration <= 0:
@@ -61,7 +62,7 @@ class PurchasePaymentReceiptsWizard(models.TransientModel):
         
         # Calculate amount per receipt
         base_amount = self.amount // self.number_of_receipts
-        remain_amount = int(self.amount % self.number_of_receipts)
+        remain_amount = self.amount % self.number_of_receipts
         result_lst = [base_amount] * self.number_of_receipts
         for i in range(remain_amount):
             result_lst[i] += 1
@@ -73,8 +74,8 @@ class PurchasePaymentReceiptsWizard(models.TransientModel):
         for i in range(self.number_of_receipts):
             receipt_vals = {
                 'name': _('New'),
-                'contract_id': self.contract_id.id,
-                 #Although this field is related, I pass it because it doesn't deal with a form.Because i need it in create function
+                'property_id': self.property_id.id,
+                 #Although this field is related, I pass it because it doesn't investment with a form.Because i need it in create function
                 'is_purchased': self.is_purchased,
                 'amount': result_lst[i],
                 'due_date': current_date,
@@ -90,7 +91,7 @@ class PurchasePaymentReceiptsWizard(models.TransientModel):
                 current_date += relativedelta(years=self.duration)
 
         # Delete existing receipts based on generation mode
-        domain = [('contract_id', '=', self.contract_id.id)]
+        domain = [('property_id', '=', self.property_id.id)]
         if self.generation_mode == 'unpaid':
             domain.append(('status', '=', 'draft'))
         self.env['real.estate.payment.installment'].search(domain).unlink()
@@ -103,6 +104,6 @@ class PurchasePaymentReceiptsWizard(models.TransientModel):
             'name': _('Payment Receipts'),
             'res_model': 'real.estate.payment.installment',
             'view_mode': 'tree,form',
-            'domain': [('contract_id', '=', self.contract_id.id)],
-            'context': {'default_contract_id': self.contract_id.id,},
+            'domain': [('property_id', '=', self.property_id.id)],
+            'context': {'default_property_id': self.property_id.id,},
         }

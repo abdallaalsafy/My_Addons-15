@@ -4,14 +4,15 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
 
 # Sale Line Model
-class RealEstatePropertySaleLine(models.Model):
-    _name = 'real.estate.property.sale.line'
-    _description = 'Real Estate Property Sale Line'
+class RealEstateSaleLine(models.Model):
+    _name = 'real.estate.sale.line'
+    _description = 'Real Estate Sale Line'
 
 
-    contract_id = fields.Many2one('real.estate.property', string='Contract',)
-    contract_date = fields.Date(related='contract_id.contract_date', store=True)
-    deal_id = fields.Many2one(related='contract_id.deal_id', store=True,)
+    property_id = fields.Many2one('real.estate.property', string='Property',)
+    property_date = fields.Date(related='property_id.property_date', store=True)
+    investment_id = fields.Many2one(related='property_id.investment_id', store=True,)
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, index=True, ondelete='restrict')
-    profit_amount = fields.Float(string='Profit Amount', required=True)
+    profit_amount = fields.Monetary(string='Profit Amount', required=True, currency_field='company_currency')

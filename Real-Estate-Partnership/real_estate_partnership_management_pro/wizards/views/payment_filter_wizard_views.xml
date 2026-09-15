@@ -10,7 +10,7 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="contract_id"/>
+                                <field name="property_id"/>
                                 <field name="contact_id"/>
                             </group>
                             <group>

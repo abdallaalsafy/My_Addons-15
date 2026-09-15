@@ -18,7 +18,19 @@
                                 <div class="o_setting_right_pane">
                                     <label for="restrict_sale_on_low_balance"/>
                                     <div class="text-muted">
-                                        If enabled, property sale will be restricted when any partner has balance less than their investment amount.
+                                        If enabled, property sale will be restricted when any partner has balance less than their partnership amount.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="auto_create_transaction_default"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="auto_create_transaction_default"/>
+                                    <div class="text-muted">
+                                        Default value of the "Auto-create Transaction" option when a new partnership payment is created.
+                                        Users can still change it per payment before saving it; it becomes locked once the payment is saved.
                                     </div>
                                 </div>
                             </div>
@@ -26,6 +38,15 @@
                     </div>
                 </xpath>
             </field>
+        </record>
+
+        <record id="action_real_estate_configuration" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'real_estate', 'bin_size': False}</field>
         </record>
 
     </data>

@@ -13,9 +13,8 @@ class RealEstatePartner(models.Model):
     national_id = fields.Char(string='National ID', tracking=True)
     nickname = fields.Char(string='Nickname', tracking=True)
 
-    is_seller = fields.Boolean(string='Seller', compute='_compute_is_seller', tracking=True, readonly=True, store=True, help="This contact can be a seller of contracts")
-    is_payee = fields.Boolean(string='Payee', compute='_compute_is_payee', tracking=True, readonly=True, store=True, help="This contact can receive payments for expenses")
-    is_buyer = fields.Boolean(string='Buyer', compute='_compute_is_buyer', tracking=True, readonly=True, store=True, help="This contact can buy contracts")
+    is_seller = fields.Boolean(string='Seller', compute='_compute_is_seller', tracking=True, readonly=True, store=True, help="This contact can be a seller of properties")
+    is_buyer = fields.Boolean(string='Buyer', compute='_compute_is_buyer', tracking=True, readonly=True, store=True, help="This contact can buy properties")
     is_partner = fields.Boolean(string='Partner', compute='_compute_is_partner', tracking=True, readonly=True, store=True, help="This contact is a partner")
 
     # Status and Dates
@@ -26,32 +25,29 @@ class RealEstatePartner(models.Model):
         ('exited', 'Exited'),
     ], string='Status', default='active', tracking=True)
     
-    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,
-                                           readonly=True)
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     current_balance = fields.Monetary(string='Current Balance', currency_field='company_currency', compute='_compute_balance', store=True)
     actual_balance = fields.Monetary(string='Actual balance', currency_field='company_currency', compute='_compute_actual_balance', store=True,
-                                  help="Current balance after deducting confirmed investments")
-    total_investments = fields.Monetary(string='Total Investments', currency_field='company_currency', compute='_compute_total_investments', store=True)
+                                  help="Current balance after deducting confirmed partnerships")
+    total_partnerships = fields.Monetary(string='Total partnerships', currency_field='company_currency', compute='_compute_total_partnerships', store=True)
     total_profits = fields.Monetary(string='Total Profits', currency_field='company_currency',
                                       compute='_compute_total_profit_from_sales', store=True)
-    total_expenses = fields.Monetary(string='Total Expenses', currency_field='company_currency', compute='_compute_total_expenses', store=True)
 
     # compute fields of counts
-    all_investments_count = fields.Integer(string='All Investments Count', compute='_compute_all_investment_count')
-    open_investments_count = fields.Integer(string='Open Investments Count', compute='_compute_opening_investment_count')
+    all_partnerships_count = fields.Integer(string='All partnerships Count', compute='_compute_all_partnership_count')
+    open_partnerships_count = fields.Integer(string='Open partnerships Count', compute='_compute_opening_partnership_count')
     transaction_count = fields.Integer(string='Transaction Count', compute='_compute_transaction_count')
     profit_count = fields.Integer(string='Profit Count', compute='_compute_profit_count')
-    contract_purchase_count = fields.Integer(string='Contract Count', compute='_compute_contract_count')
-    contract_sale_count = fields.Integer(string='Contract Count', compute='_compute_contract_count')
-    expense_count = fields.Integer(string='Expense Count', compute='_compute_expense_count')
+    property_purchase_count = fields.Integer(string='Property Count', compute='_compute_property_count')
+    property_sale_count = fields.Integer(string='Property Count', compute='_compute_property_count')
 
     # Related Data
     transaction_ids = fields.One2many('real.estate.transaction', 'partner_id', string='Transactions')
-    investment_ids = fields.One2many('real.estate.property.investment', 'partner_id', string='Investments')
-    sale_line_ids = fields.One2many('real.estate.property.sale.line', 'partner_id', string='Property Sales')
-    contract_purchase_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Sold', domain=[('is_purchased', '=', True)])
-    contract_sale_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Sold', domain=[('is_purchased', '=', False)])
-    expense_ids = fields.One2many('real.estate.expense', 'contact_id', string='Expenses Paid')
+    partnership_ids = fields.One2many('real.estate.partnership', 'partner_id', string='partnerships')
+    sale_line_ids = fields.One2many('real.estate.sale.line', 'partner_id', string='Property Sales')
+    property_purchase_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Purchased', domain=[('is_purchased', '=', True)])
+    property_sale_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Sold', domain=[('is_purchased', '=', False)])
+
 
     #-------------------------------
     country_id = fields.Many2one(default=lambda self: self.env.user.company_id.country_id.id)
@@ -70,17 +66,17 @@ class RealEstatePartner(models.Model):
     @api.depends('transaction_ids.amount', 'transaction_ids.transaction_type', 'total_profits')
     def _compute_balance(self):
         for partner in self:
-        # Sum all deposits, profit distributions, and investment returns
+        # Sum all deposits, profit distributions, and partnership returns
             deposits = sum(t.amount for t in partner.transaction_ids if t.transaction_type in ['deposit','investment_return'])
         # Sum all withdrawals and expenses
             withdrawals = sum(t.amount for t in partner.transaction_ids if t.transaction_type in ['withdrawal'])
         # Calculate and set the current balance
             partner.current_balance = deposits + partner.total_profits - withdrawals
 
-    @api.depends('current_balance', 'total_investments')
+    @api.depends('current_balance', 'total_partnerships')
     def _compute_actual_balance(self):
         for partner in self:
-            partner.actual_balance = partner.current_balance - partner.total_investments
+            partner.actual_balance = partner.current_balance - partner.total_partnerships
 
     @api.depends('sale_line_ids.profit_amount')
     def _compute_total_profit_from_sales(self):
@@ -90,64 +86,50 @@ class RealEstatePartner(models.Model):
             total_profit += sum(line.profit_amount for line in partner.sale_line_ids)
             partner.total_profits = total_profit
 
-    @api.depends('investment_ids.amount', 'investment_ids.status')
-    def _compute_total_investments(self):
+    @api.depends('partnership_ids.amount', 'partnership_ids.status')
+    def _compute_total_partnerships(self):
         for partner in self:
-            opening_investments_ids = partner.investment_ids.filtered(lambda inv: inv.status == 'opening')
-            partner.total_investments = sum(inv.down_payment for inv in opening_investments_ids)
-
-    @api.depends('expense_ids.amount')
-    def _compute_total_expenses(self):
-        for partner in self:
-            partner.total_expenses = sum(expense.amount for expense in partner.expense_ids)
+            opening_partnerships_ids = partner.partnership_ids.filtered(lambda inv: inv.status == 'opening')
+            partner.total_partnerships = sum(inv.down_payment for inv in opening_partnerships_ids)
 
 # -------------------------------------------------------------
     def _compute_transaction_count(self):
         for partner in self:
             partner.transaction_count = len(partner.transaction_ids)
 
-    def _compute_all_investment_count(self):
+    def _compute_all_partnership_count(self):
         for partner in self:
-            partner.all_investments_count = len(partner.investment_ids)
+            partner.all_partnerships_count = len(partner.partnership_ids)
 
-    def _compute_opening_investment_count(self):
+    def _compute_opening_partnership_count(self):
             for partner in self:
-                partner.open_investments_count = len(partner.investment_ids.filtered(lambda inv: inv.status == 'opening'))
+                partner.open_partnerships_count = len(partner.partnership_ids.filtered(lambda inv: inv.status == 'opening'))
 
     def _compute_profit_count(self):
         for partner in self:
             partner.profit_count = len(partner.sale_line_ids)
 
-    def _compute_expense_count(self):
+    def _compute_property_count(self):
         for partner in self:
-            partner.expense_count = len(partner.expense_ids)
-
-    def _compute_contract_count(self):
-        for partner in self:
-            partner.contract_purchase_count = len(partner.contract_purchase_ids)
-            partner.contract_sale_count = len(partner.contract_sale_ids)
+            partner.property_purchase_count = len(partner.property_purchase_ids)
+            partner.property_sale_count = len(partner.property_sale_ids)
 
 # -----------------------------------------------
 
-    @api.depends('contract_sale_ids.contact_id')
+    @api.depends('property_purchase_ids.contact_id')
     def _compute_is_seller(self):
         for partner in self:
-            partner.is_seller = bool(partner.contract_purchase_count)
+            partner.is_seller = bool(partner.property_purchase_ids)
 
-    @api.depends('contract_sale_ids.contact_id')
+    @api.depends('property_sale_ids.contact_id')
     def _compute_is_buyer(self):
         for contact in self:
-            contact.is_buyer = bool(contact.contract_sale_ids)
+            contact.is_buyer = bool(contact.property_sale_ids)
 
-    @api.depends('expense_ids.contact_id')
-    def _compute_is_payee(self):
-        for contact in self:
-            contact.is_payee = bool(contact.expense_ids)
-
-    @api.depends('transaction_ids.partner_id', 'investment_ids.partner_id')
+    @api.depends('transaction_ids.partner_id', 'partnership_ids.partner_id')
     def _compute_is_partner(self):
         for partner in self:
-            partner.is_partner = bool(partner.investment_ids) or bool(partner.transaction_ids)
+            partner.is_partner = bool(partner.partnership_ids) or bool(partner.transaction_ids)
 
 #========================= Constrain Functions =================================
 
@@ -183,11 +165,11 @@ class RealEstatePartner(models.Model):
     def _check_partner_status(self):
         for partner in self:
             if partner.status == 'exited' or not partner.active:
-                open_investment_count = partner.open_investments_count
-                if open_investment_count > 0:
+                open_partnership_count = partner.open_partnerships_count
+                if open_partnership_count > 0:
                     raise UserError(
-                        _('Cannot exit partner with %d active investment(s). Please close or transfer investments first.')
-                        % open_investment_count
+                        _('Cannot exit partner with %d active partnership(s). Please close or transfer partnerships first.')
+                        % open_partnership_count
                     )
 
                 if partner.current_balance != 0:
@@ -202,10 +184,10 @@ class RealEstatePartner(models.Model):
             if partner.join_date and partner.join_date > fields.Date.today():
                 raise ValidationError(_('Partner join date cannot be in the future.'))
 
-            if partner.investment_ids:
-                min_investments_date = min(partner.investment_ids.filtered(lambda inv: inv.investment_date).mapped('investment_date'))
-                if partner.join_date > min_investments_date:
-                    raise UserError(_('Partner join date cannot be bigger than investment date.'))
+            if partner.partnership_ids:
+                min_partnerships_date = min(partner.partnership_ids.filtered(lambda inv: inv.partnership_date).mapped('partnership_date'))
+                if partner.join_date > min_partnerships_date:
+                    raise UserError(_('Partner join date cannot be bigger than partnership date.'))
 
             if partner.transaction_ids:
                 min_transaction_date = min(
@@ -213,20 +195,20 @@ class RealEstatePartner(models.Model):
                 if partner.join_date > min_transaction_date:
                     raise UserError(_('Partner join date cannot be bigger than transaction date.'))
 
-            if partner.contract_purchase_ids or partner.contract_sale_ids:
-                min_contract_date = min(
-                    set(partner.contract_purchase_ids | partner.contract_sale_ids).filtered(lambda contract: contract.contract_date).mapped('contract_date'))
-                if partner.join_date > min_contract_date:
-                    raise UserError(_('Partner join date cannot be bigger than contract date.'))
+            if partner.property_purchase_ids or partner.property_sale_ids:
+                min_property_date = min(
+                    set(partner.property_purchase_ids | partner.property_sale_ids).filtered(lambda property: property.property_date).mapped('property_date'))
+                if partner.join_date > min_property_date:
+                    raise UserError(_('Partner join date cannot be bigger than property date.'))
 
     # ========================= Action Functions =================================
 
-    def action_create_investment(self):
-        """Open investment form with default values for new investment"""
+    def action_create_partnership(self):
+        """Open partnership form with default values for new partnership"""
         return {
-            'name': _('Create New Investment'),
+            'name': _('Create New partnership'),
             'type': 'ir.actions.act_window',
-            'res_model': 'real.estate.property.investment',
+            'res_model': 'real.estate.partnership',
             'view_mode': 'form',
             'target': 'new',
             'context': {
@@ -237,7 +219,7 @@ class RealEstatePartner(models.Model):
     def action_create_transaction(self):
         """Open transaction form with default values for profit distribution"""
         return {
-            'name': _('Create Investment Return'),
+            'name': _('Create partnership Return'),
             'type': 'ir.actions.act_window',
             'res_model': 'real.estate.transaction',
             'view_mode': 'form',
@@ -284,12 +266,12 @@ class RealEstatePartner(models.Model):
             'context': {'default_partner_id': self.id,},
         }
 
-    def action_view_investments(self):
-        """View partner investments"""
+    def action_view_partnerships(self):
+        """View partner partnerships"""
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Partner Investments'),
-            'res_model': 'real.estate.property.investment',
+            'name': _('Partner partnerships'),
+            'res_model': 'real.estate.partnership',
             'view_mode': 'tree,form',
             'domain': [('partner_id', '=', self.id)],
             'context': {'default_partner_id': self.id,},
@@ -299,40 +281,29 @@ class RealEstatePartner(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'name': _('Partner Profits'),
-            'res_model': 'real.estate.property.sale.line',
+            'res_model': 'real.estate.sale.line',
             'view_mode': 'tree,form',
             'domain': [('partner_id', '=', self.id)],
         }
 
-    def action_view_purchases_contracts(self):
-            """View properties sold by this contact"""
+    def action_view_purchases_properties(self):
+            """View properties purchased by this contact"""
             return {
                 'type': 'ir.actions.act_window',
-                'name': _('Purchases Contracts'),
+                'name': _('Purchases Properties'),
                 'res_model': 'real.estate.property',
                 'view_mode': 'tree,form',
                 'domain': [('contact_id', '=', self.id), ('is_purchased', '=', True)],
                 'context': {'default_contact_id': self.id, 'default_is_purchased': True},
             }
-    def action_view_sale_contracts(self):
+    def action_view_sale_properties(self):
         """View properties sold by this contact"""
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Sale Contracts'),
+            'name': _('Sale Properties'),
             'res_model': 'real.estate.property',
             'view_mode': 'tree,form',
             'domain': [('contact_id', '=', self.id),('is_purchased', '=', False)],
             'context': {'default_contact_id': self.id, 'default_is_purchased': False},
-        }
-
-    def action_view_expenses(self):
-        """View expenses paid to this contact"""
-        return {
-            'type': 'ir.actions.act_window',
-            'name': _('Expenses Paid'),
-            'res_model': 'real.estate.expense',
-            'view_mode': 'tree,form',
-            'domain': [('contact_id', '=', self.id)],
-            'context': {'default_contact_id': self.id},
         }
     

@@ -8,10 +8,10 @@ class PaymentFilterWizard(models.TransientModel):
     _description = 'Payment Filter Wizard'
 
     # Filter Fields
-    contract_id = fields.Many2one('real.estate.property', string='Property')
+    property_id = fields.Many2one('real.estate.property', string='Property')
     contact_id = fields.Many2one('res.partner', string='Contact')
     payment_type = fields.Selection([
-        ('purchase', 'Purchase Payment (To Saller)'),
+        ('purchase', 'Purchase Payment (To Seller)'),
         ('sale', 'Sale Payment (From Buyer)'),
     ], string='Payment Type')
     status = fields.Selection([
@@ -25,8 +25,8 @@ class PaymentFilterWizard(models.TransientModel):
         """Open filtered payment installments list"""
         domain = []
         
-        if self.contract_id:
-            domain.append(('contract_id', '=', self.contract_id.id))
+        if self.property_id:
+            domain.append(('property_id', '=', self.property_id.id))
         if self.contact_id:
             domain.append(('contact_id', '=', self.contact_id.id))
         if self.payment_type:

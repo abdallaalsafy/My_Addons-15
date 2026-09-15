@@ -9,8 +9,8 @@ class PartnerUnifiedLedger(models.TransientModel):
     _description = 'Partner Unified Ledger with All Transactions'
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, readonly=True)
-    date_from = fields.Date(string='From Date')
-    date_to = fields.Date(string='To Date')
+    date_from = fields.Date(string='From Date', required=True)
+    date_to = fields.Date(string='To Date', required=True)
     line_ids = fields.One2many('partner.unified.ledger.line', 'ledger_id', string='Unified Ledger Lines')
 
     @api.model
@@ -51,21 +51,18 @@ class PartnerUnifiedLedger(models.TransientModel):
                 'amount': amount,
             })
 
-        # 2. Property Sale Lines (real.estate.property.sale.line)
-        try:
-            sale_lines = partner.sale_line_ids.filtered(lambda x: x.sale_date <= date_to and x.sale_date >= date_from)
-            for sale_line in sale_lines:
-                all_items.append({
-                    'date': sale_line.contract_date,
-                    'source': 'sale_line',
-                    'source_id': sale_line.contract_id.id,
-                    'name': sale_line.contract_id.name,
-                    'transaction_type': 'sale_profit',
-                    'description': _('Sale Profit'),
-                    'amount': sale_line.profit_amount,  # Positive
-                })
-        except Exception:
-            pass
+        # 2. Property Sale Lines (real.estate.sale.line)
+        sale_lines = partner.sale_line_ids.filtered(lambda x: x.property_date <= date_to and x.property_date >= date_from)
+        for sale_line in sale_lines:
+            all_items.append({
+                'date': sale_line.property_date,
+                'source': 'sale_line',
+                'source_id': sale_line.property_id.id,
+                'name': sale_line.property_id.name,
+                'transaction_type': 'sale_profit',
+                'description': _('Sale Profit'),
+                'amount': sale_line.profit_amount,  # Positive
+            })
 
         # Calculate opening balance (sum of all items before date_from)
         opening_balance = 0.0
@@ -79,7 +76,7 @@ class PartnerUnifiedLedger(models.TransientModel):
                 else:
                     opening_balance += tx.amount
 
-            opening_sales = partner.sale_line_ids.filtered(lambda x: x.sale_date < date_from)
+            opening_sales = partner.sale_line_ids.filtered(lambda x: x.property_date < date_from)
             opening_balance += sum(sale_line.profit_amount for sale_line in opening_sales)
 
             # Add opening balance line if there's a range
@@ -142,12 +139,13 @@ class PartnerUnifiedLedgerLine(models.TransientModel):
     _description = 'Partner Unified Ledger Line'
 
     ledger_id = fields.Many2one('partner.unified.ledger', string='Ledger', ondelete='cascade')
+    company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     date = fields.Date(string='Date')
     source = fields.Char(string='Source Type')  # transaction, expense_distribution, exit_line, sale_line
     source_id = fields.Integer(string='Source ID')
     name = fields.Char(string='Reference/Description')
     transaction_type = fields.Char(string='Type')
     description = fields.Text(string='Details')
-    amount = fields.Float(string='Amount', digits=(12, 2))
-    balance = fields.Float(string='Balance', digits=(12, 2))
+    amount = fields.Monetary(string='Amount', currency_field='company_currency', digits=(12, 2))
+    balance = fields.Monetary(string='Balance', currency_field='company_currency', digits=(12, 2))
 

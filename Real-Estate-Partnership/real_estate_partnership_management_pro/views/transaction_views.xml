@@ -14,19 +14,19 @@
                     <separator/>
                     <filter string="Deposits" name="deposits" domain="[('transaction_type', '=', 'deposit')]"/>
                     <filter string="Withdrawals" name="withdrawals" domain="[('transaction_type', '=', 'withdrawal')]"/>
-                    <filter string="Profit Distribution" name="profit" domain="[('transaction_type', '=', 'profit_distribution')]"/>
                     <filter string="Investment Return" name="return" domain="[('transaction_type', '=', 'investment_return')]"/>
                     <separator/>
+                    <filter string="Filter by Date" name="filter_by_transaction_date" date="transaction_date"/>
                     <filter string="Today" name="today" domain="[('transaction_date', '=', context_today())]"/>
                     <filter string="This Week" name="this_week"
                             domain="[('transaction_date', '&gt;=', (context_today() - datetime.timedelta(days=context_today().weekday())).strftime('%Y-%m-%d')),
                                     ('transaction_date', '&lt;=', (context_today() + datetime.timedelta(days=6-context_today().weekday())).strftime('%Y-%m-%d'))]"/>
                     <filter string="This Month" name="this_month"
-                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
-                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
+                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d')),
+                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(days=31)).strftime('%Y-%m-%d'))]"/>
                     <filter string="This Year" name="this_year"
-                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(day=1, month=1)).strftime('%Y-%m-%d')),
-                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(day=31, month=12)).strftime('%Y-%m-%d'))]"/>
+                            domain="[('transaction_date', '&gt;=', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d')),
+                                    ('transaction_date', '&lt;=', (context_today() + relativedelta(days=31)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
                     <group expand="0" string="Group By">
                         <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
@@ -43,10 +43,11 @@
             <field name="model">real.estate.transaction</field>
             <field name="arch" type="xml">
                 <tree string="Partner Transactions">
+                    <field name="company_currency" invisible="1"/>
                     <field name="name"/>
                     <field name="partner_id"/>
                     <field name="transaction_type"/>
-                    <field name="amount" widget="monetary"/>
+                    <field name="amount"/>
                     <field name="transaction_date"/>
                 </tree>
             </field>
@@ -58,6 +59,7 @@
             <field name="model">real.estate.transaction</field>
             <field name="arch" type="xml">
                 <form string="Partner Transaction">
+                    <field name="company_currency" invisible="1"/>
                     <sheet>
                         <div class="oe_title">
                             <h1>
@@ -68,7 +70,7 @@
                             <group name="transaction_details">
                                 <field name="partner_id" readonly="context.get('default_partner_id')" context="{'default_is_partner': True}"/>
                                 <field name="transaction_type" readonly="context.get('readonly_transaction_type')"/>
-                                <field name="amount" widget="monetary"/>
+                                <field name="amount"/>
                                 <field name="transaction_date" readonly="context.get('readonly_transaction_date')"/>
                             </group>
                             <group name="payment_info">
@@ -106,7 +108,6 @@
                     <field name="transaction_type"/>
                     <field name="amount"/>
                     <field name="transaction_date"/>
-                    <field name="color"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div>

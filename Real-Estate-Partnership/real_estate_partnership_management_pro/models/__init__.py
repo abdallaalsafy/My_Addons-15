@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from . import partner
+from . import res_partner
 from . import property
-from . import deal
 from . import investment
-from . import investment_payment
+from . import partnership
+from . import partnership_payment
 from . import expense
 from . import expense_category
 from . import transaction
