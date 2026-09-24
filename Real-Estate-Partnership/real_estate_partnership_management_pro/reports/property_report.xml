@@ -4,7 +4,7 @@
         <template id="report_real_estate_property_details_document">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="real_estate_partnership_management_pro.report_real_estate_property_details"/>
+                    <t t-call="real_estate_partnership_management_mini.report_real_estate_property_details"/>
                 </t>
             </t>
         </template>
@@ -159,8 +159,8 @@
             <field name="name">Property Detailed Report</field>
             <field name="model">real.estate.property</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">real_estate_partnership_management_pro.report_real_estate_property_details_document</field>
-            <field name="report_file">real_estate_partnership_management_pro.report_real_estate_property_details_document</field>
+            <field name="report_name">real_estate_partnership_management_mini.report_real_estate_property_details_document</field>
+            <field name="report_file">real_estate_partnership_management_mini.report_real_estate_property_details_document</field>
             <field name="print_report_name">'Property Report - %s' % (object.name)</field>
             <field name="binding_model_id" ref="model_real_estate_property"/>
             <field name="binding_type">report</field>

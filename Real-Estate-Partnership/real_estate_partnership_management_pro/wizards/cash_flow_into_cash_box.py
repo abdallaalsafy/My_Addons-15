@@ -155,7 +155,7 @@ class CashFlowIntoCashBox(models.TransientModel):
         """Build ledger (if needed) and return the PDF report action for this wizard."""
         self.ensure_one()
         self._build_cash_flow_into_cash_box()
-        return self.env.ref('real_estate_partnership_management_pro.action_report_cash_flow_into_cash_box').report_action(self)
+        return self.env.ref('real_estate_partnership_management_mini.action_report_cash_flow_into_cash_box').report_action(self)
 
 
 class CashFlowIntoCashBoxLine(models.TransientModel):

@@ -4,7 +4,7 @@
         <template id="report_real_estate_investment_details_document">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="real_estate_partnership_management_pro.report_real_estate_investment_details" t-lang="user.partner_id.lang"/>
+                    <t t-call="real_estate_partnership_management_mini.report_real_estate_investment_details" t-lang="user.partner_id.lang"/>
                 </t>
             </t>
         </template>
@@ -86,8 +86,8 @@
             <field name="name">Investment Detailed Report</field>
             <field name="model">real.estate.investment</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">real_estate_partnership_management_pro.report_real_estate_investment_details_document</field>
-            <field name="report_file">real_estate_partnership_management_pro.report_real_estate_investment_details_document</field>
+            <field name="report_name">real_estate_partnership_management_mini.report_real_estate_investment_details_document</field>
+            <field name="report_file">real_estate_partnership_management_mini.report_real_estate_investment_details_document</field>
             <field name="print_report_name">'Investment Report - %s' % (object.name)</field>
             <field name="binding_model_id" ref="model_real_estate_investment"/>
             <field name="binding_type">report</field>

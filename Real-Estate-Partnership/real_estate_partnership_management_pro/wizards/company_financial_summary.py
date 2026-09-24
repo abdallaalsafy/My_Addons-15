@@ -191,4 +191,4 @@ class CompanyFinancialSummary(models.TransientModel):
 
     def action_print_report(self):
         """Print the financial summary report"""
-        return self.env.ref('real_estate_partnership_management_pro.action_report_company_financial_summary').report_action(self)
+        return self.env.ref('real_estate_partnership_management_mini.action_report_company_financial_summary').report_action(self)

@@ -269,7 +269,7 @@ class RealEstateProperty(models.Model):
 
     def action_view_payments_Installments(self):
         """View payments installments for this property"""
-        action = self.env.ref('real_estate_partnership_management_pro.action_purchase_payment_installment').read()[0]
+        action = self.env.ref('real_estate_partnership_management_mini.action_purchase_payment_installment').read()[0]
         action['domain'] = [('property_id', '=', self.id)]
         action['context'] = {'default_property_id': self.id,}
         return action

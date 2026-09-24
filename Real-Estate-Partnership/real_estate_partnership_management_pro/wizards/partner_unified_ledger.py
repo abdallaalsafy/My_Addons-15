@@ -131,7 +131,7 @@ class PartnerUnifiedLedger(models.TransientModel):
         # make sure lines are up-to-date
         self._build_unified_ledger()
         # Use the report defined in XML to generate the PDF
-        return self.env.ref('real_estate_partnership_management_pro.report_partner_unified_ledger_action').report_action(self)
+        return self.env.ref('real_estate_partnership_management_mini.report_partner_unified_ledger_action').report_action(self)
 
 
 class PartnerUnifiedLedgerLine(models.TransientModel):

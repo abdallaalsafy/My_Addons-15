@@ -4,7 +4,7 @@
         <template id="report_company_financial_summary_document">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="real_estate_partnership_management_pro.report_company_financial_summary" t-lang="user.partner_id.lang"/>
+                    <t t-call="real_estate_partnership_management_mini.report_company_financial_summary" t-lang="user.partner_id.lang"/>
                 </t>
             </t>
         </template>
@@ -183,8 +183,8 @@
             <field name="name">Company Financial Summary Report</field>
             <field name="model">company.financial.summary</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">real_estate_partnership_management_pro.report_company_financial_summary_document</field>
-            <field name="report_file">real_estate_partnership_management_pro.report_company_financial_summary_document</field>
+            <field name="report_name">real_estate_partnership_management_mini.report_company_financial_summary_document</field>
+            <field name="report_file">real_estate_partnership_management_mini.report_company_financial_summary_document</field>
             <field name="print_report_name">'Company Financial Summary'</field>
         </record>
     </data>

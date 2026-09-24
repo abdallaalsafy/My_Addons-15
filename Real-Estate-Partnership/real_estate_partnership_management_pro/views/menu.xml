@@ -77,7 +77,7 @@
 
         <!-- Configuration Menu for Real Estate Manager -->
         <menuitem id="menu_real_estate_configuration" name="Configuration" parent="menu_real_estate_root" sequence="80"
-                  groups="real_estate_partnership_management_pro.group_real_estate_manager"/>
+                  groups="real_estate_partnership_management_mini.group_real_estate_manager"/>
         <menuitem id="menu_real_estate_general_settings" name="Settings" parent="menu_real_estate_configuration"
             sequence="0" action="action_real_estate_configuration" groups="base.group_system"/>
         <menuitem id="menu_real_estate_company_settings" name="Company" parent="menu_real_estate_configuration"
