@@ -29,7 +29,7 @@ class RealEstatePartner(models.Model):
     current_balance = fields.Monetary(string='Current Balance', currency_field='company_currency', compute='_compute_balance', store=True)
     actual_balance = fields.Monetary(string='Actual balance', currency_field='company_currency', compute='_compute_actual_balance', store=True,
                                   help="Current balance after deducting confirmed partnerships")
-    total_partnerships = fields.Monetary(string='Total partnerships', currency_field='company_currency', compute='_compute_total_partnerships', store=True)
+    total_partnerships = fields.Monetary(string='Total opening partnerships', currency_field='company_currency', compute='_compute_total_partnerships', store=True)
     total_profits = fields.Monetary(string='Total Profits', currency_field='company_currency',
                                       compute='_compute_total_profit_from_sales', store=True)
 
@@ -43,7 +43,7 @@ class RealEstatePartner(models.Model):
 
     # Related Data
     transaction_ids = fields.One2many('real.estate.transaction', 'partner_id', string='Transactions')
-    partnership_ids = fields.One2many('real.estate.partnership', 'partner_id', string='partnerships')
+    partnership_ids = fields.One2many('real.estate.partnership', 'partner_id', string='Partnerships')
     sale_line_ids = fields.One2many('real.estate.sale.line', 'partner_id', string='Property Sales')
     property_purchase_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Purchased', domain=[('is_purchased', '=', True)])
     property_sale_ids = fields.One2many('real.estate.property', 'contact_id', string='Properties Sold', domain=[('is_purchased', '=', False)])
@@ -195,9 +195,9 @@ class RealEstatePartner(models.Model):
                 if partner.join_date > min_transaction_date:
                     raise UserError(_('Partner join date cannot be bigger than transaction date.'))
 
-            if partner.property_purchase_ids or partner.property_sale_ids:
+            if (partner.property_purchase_ids or partner.property_sale_ids) and partner.is_partner:
                 min_property_date = min(
-                    set(partner.property_purchase_ids | partner.property_sale_ids).filtered(lambda property: property.property_date).mapped('property_date'))
+                    (partner.property_purchase_ids | partner.property_sale_ids).filtered(lambda property: property.property_date).mapped('property_date'))
                 if partner.join_date > min_property_date:
                     raise UserError(_('Partner join date cannot be bigger than property date.'))
 
@@ -219,7 +219,7 @@ class RealEstatePartner(models.Model):
     def action_create_transaction(self):
         """Open transaction form with default values for profit distribution"""
         return {
-            'name': _('Create partnership Return'),
+            'name': _('Create Transaction'),
             'type': 'ir.actions.act_window',
             'res_model': 'real.estate.transaction',
             'view_mode': 'form',
@@ -259,7 +259,7 @@ class RealEstatePartner(models.Model):
         """View partner transactions"""
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Partner Transactions'),
+            'name': _('Transactions'),
             'res_model': 'real.estate.transaction',
             'view_mode': 'tree,form',
             'domain': [('partner_id', '=', self.id)],

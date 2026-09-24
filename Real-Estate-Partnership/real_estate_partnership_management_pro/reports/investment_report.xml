@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_real_estate_investment_details_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="real_estate_partnership_management_pro.report_real_estate_investment_details" t-lang="user.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_real_estate_investment_details">
+            <t t-set="doc" t-value="doc.with_context(lang=user.partner_id.lang)"/>
+            <t t-call="web.external_layout">
+                <div class="page" style="font-family: 'Tahoma', sans-serif;">
+                    <h2 style="text-align: center; margin-bottom: 20px;"><span t-field="doc.name"/></h2>
+
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Code:</strong> <span t-field="doc.code"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Investment Type:</strong> <span t-field="doc.investment_type"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Open Date:</strong> <span t-field="doc.open_date"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">
+                                <strong t-if="doc.status == 'closed'">Close Date:</strong>
+                                <strong t-if="doc.status == 'opening'">Status:</strong>
+                                <span t-field="doc.close_date" t-if="doc.status == 'closed'"/>
+                                <span t-field="doc.status" t-if="doc.status == 'opening'"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>City:</strong> <span t-field="doc.city_id.name"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Method:</strong> <span t-field="doc.investment_method"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;" colspan="2"><strong>Address:</strong> <span t-field="doc.address"/></td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top: 20px;">Area and Property Details</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Area Unit:</strong> <span t-field="doc.area_unit"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 33%;"><strong>Total Area:</strong> <span t-field="doc.total_area"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 33%;"><strong>Sold Area:</strong> <span t-field="doc.sold_area"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 33%;"><strong>Remaining Area:</strong> <span t-field="doc.remaining_area"/></td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top: 20px;">Financial Summary</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;">
+                                <strong t-if="doc.status == 'opening'">Total Current Value:</strong> 
+                                <span t-if="doc.status == 'opening'" t-esc="'{:,.2f}'.format(doc.total_current_value)"/>
+                            </td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Total Percentage:</strong> <span t-field="doc.total_partnerships_percentage"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Total Expenses:</strong> <span t-esc="'{:,.2f}'.format(doc.total_expenses)"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Total Partnerships:</strong> <span t-esc="'{:,.2f}'.format(doc.total_partnerships)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Total Cost: </strong> <span t-esc="'{:,.2f}'.format(doc.total_investment_cost)"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Purchased Properties:</strong> <span t-field="doc.purchased_properties_count"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sold Properties:</strong> <span t-field="doc.sold_properties_count"/></td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top: 20px;">Notes</h3>
+                    <p style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9; min-height: 60px;">
+                        <span t-if="doc.notes" t-field="doc.notes"/>
+                        <span t-if="not doc.notes">No notes available.</span>
+                    </p>
+                </div>
+            </t>
+        </template>
+
+        <record id="action_report_real_estate_investment_details" model="ir.actions.report">
+            <field name="name">Investment Detailed Report</field>
+            <field name="model">real.estate.investment</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management_pro.report_real_estate_investment_details_document</field>
+            <field name="report_file">real_estate_partnership_management_pro.report_real_estate_investment_details_document</field>
+            <field name="print_report_name">'Investment Report - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_real_estate_investment"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

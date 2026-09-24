@@ -34,12 +34,12 @@ class RealEstateInvestment(models.Model):
     city_id = fields.Many2one('real.estate.city', string='City', tracking=True, index=True)
     address = fields.Text(string='Full Address', tracking=True)
     # Property Boundaries
-    north_boundary = fields.Text(string='North Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the north')
-    south_boundary = fields.Text(string='South Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the south')
-    east_boundary = fields.Text(string='East Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the east')
-    west_boundary = fields.Text(string='West Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the west')
+    north_boundary = fields.Text(string='North Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the north?')
+    south_boundary = fields.Text(string='South Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the south?')
+    east_boundary = fields.Text(string='East Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the east?')
+    west_boundary = fields.Text(string='West Boundary', compute='_compute_purchased_property_boundary', store=True, readonly=False, help='What borders the property from the west?')
     # Room Details
-    built_area = fields.Float(string='Built Area', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Built area of the property (used for area ratio calculations)')
+    built_area = fields.Float(string='Built Area', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Built area of the property (not used for area ratio calculations)')
     number_of_floors = fields.Integer(string='Number of Floors', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Number of floors in the property')
     total_rooms = fields.Integer(string='Total Rooms', tracking=True,  compute='_compute_purchased_property_rooms', store=True, help='Total number of rooms in the property')
     bedrooms = fields.Integer(string='Bedrooms', tracking=True, compute='_compute_purchased_property_rooms', store=True, help='Number of bedrooms in the property')
@@ -52,7 +52,7 @@ class RealEstateInvestment(models.Model):
     remaining_area = fields.Float(string='Remaining Area', compute='_compute_sold_remaining_area', store=True,)
     # Financial Information
     total_current_value = fields.Monetary(string='Total Current Value', currency_field='company_currency', compute='_compute_total_current_value', store=True)
-    total_investment_cost = fields.Monetary(string='Total Investment Cost', currency_field='company_currency', compute='_compute_total_investment_cost', store=True)
+    total_investment_cost = fields.Monetary(string='Total Cost', currency_field='company_currency', compute='_compute_total_investment_cost', store=True)
     total_cost_before_sold = fields.Monetary(string='Total Purchase Cost', currency_field='company_currency', compute='_compute_total_investment_cost', store=True)
     total_expenses = fields.Monetary(string='Total Expenses', currency_field='company_currency', compute='_compute_investment_expenses', store=True)
     total_partnerships = fields.Monetary(string='Total Partnerships', currency_field='company_currency', compute='_compute_partnerships', store=True)
@@ -64,7 +64,7 @@ class RealEstateInvestment(models.Model):
     attachment_count = fields.Integer(string='Document Count', compute='_compute_attachment_count')
     purchased_properties_count = fields.Integer(string='Purchased Properties Count', compute='_compute_properties_count')
     sold_properties_count = fields.Integer(string='Sold Properties Count', compute='_compute_properties_count')
-    confirmed_sold_properties_count = fields.Integer(string='ConfirmedSold Properties Count', compute='_compute_properties_count')
+    confirmed_sold_properties_count = fields.Integer(string='Confirmed Sold Properties Count', compute='_compute_properties_count')
     draft_sold_properties_count = fields.Integer(string='Draft Sold Properties Count', compute='_compute_properties_count', store=True)
     profit_count = fields.Integer(string='Profit Count', compute='_compute_profit_count')
     
@@ -233,7 +233,7 @@ class RealEstateInvestment(models.Model):
         """View investment partnerships"""
         return {
             'type': 'ir.actions.act_window',
-            'name': _('investment partnerships'),
+            'name': _('Investment Partnerships'),
             'res_model': 'real.estate.partnership',
             'view_mode': 'tree,form',
             'domain': [('investment_id', '=', self.id)],
@@ -255,7 +255,7 @@ class RealEstateInvestment(models.Model):
         """View Purchased Properties"""
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Child Properties'),
+            'name': _('Purchased Properties'),
             'res_model': 'real.estate.property',
             'view_mode': 'tree,form',
             'domain': [('investment_id', '=', self.id),('is_purchased','=', True)],

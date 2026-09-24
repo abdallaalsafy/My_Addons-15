@@ -13,8 +13,8 @@
                     <field name="status"/>
                     <field name="investment_method"/>
                     <field name="partnership_date"/>
-                    <filter string="opening" name="opening" domain="[('status', '=', 'opening')]"/>
-                    <filter string="closed" name="closed" domain="[('status', '=', 'closed')]"/>
+                    <filter string="Opening" name="opening" domain="[('status', '=', 'opening')]"/>
+                    <filter string="Closed" name="closed" domain="[('status', '=', 'closed')]"/>
                     <separator/>
                     <filter string="Percentage Method" name="percentage_method" domain="[('investment_method', '=', 'percentage')]"/>
                     <filter string="Amount Method" name="amount_method" domain="[('investment_method', '=', 'amount')]"/>
@@ -45,17 +45,17 @@
             <field name="name">real.estate.partnership.tree</field>
             <field name="model">real.estate.partnership</field>
             <field name="arch" type="xml">
-                <tree string="partnerships">
+                <tree string="Partnerships">
                     <field name="company_currency" invisible="1"/>
                     <field name="name"/>
                     <field name="investment_id"/>
                     <field name="partner_id"/>
                     <field name="percentage"/>
-                    <field name="amount" sum="Total Amount"/>
+                    <field name="amount" sum="Total Partnership Amount"/>
                     <field name="down_payment" sum="Total Down Payment"/>
                     <field name="remaining_amount" sum="Total Remaining"/>
                     <field name="partnership_date"/>
-                    <field name="status" widget="badge"/>
+                    <field name="status" widget="badge" decoration-muted="status=='closed'" decoration-success="status=='opening'"/>
                 </tree>
             </field>
         </record>

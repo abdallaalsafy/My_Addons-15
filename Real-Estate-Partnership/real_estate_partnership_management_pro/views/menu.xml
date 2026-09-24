@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <!-- Main Menu -->
-        <menuitem id="menu_real_estate_root" name="Real Estate Partnership" sequence="0"
+        <menuitem id="menu_real_estate_root" name="Real Estate Partnership Management" sequence="0"
                   web_icon="real_estate_partnership,static/description/icon.png"/>
         
         <!-- Partners Menu -->
@@ -51,7 +51,7 @@
         
         <!-- Expenses Menu -->
         <menuitem id="menu_real_estate_expenses" name="Expenses" parent="menu_real_estate_root" sequence="15"/>
-        <menuitem id="menu_real_estate_expense_investments" name="Investments Expense" parent="menu_real_estate_expenses"
+        <menuitem id="menu_real_estate_expense_investments" name="Investments Expenses" parent="menu_real_estate_expenses"
                   action="action_real_estate_investment_expense" sequence="10"/>
         <menuitem id="menu_real_estate_property_expenses" name="Property Expenses" parent="menu_real_estate_expenses"
                   action="action_real_estate_property_expense" sequence="20"/>

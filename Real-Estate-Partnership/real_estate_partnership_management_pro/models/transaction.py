@@ -3,7 +3,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from random import randint
+from .expense import RealEstateExpense as exepenseSL
 
 
 class RealEstateTransaction(models.Model):
@@ -31,12 +31,7 @@ class RealEstateTransaction(models.Model):
     transaction_date = fields.Date(string='Transaction Date', required=True, default=fields.Date.today, tracking=True)
     
     # Payment Information
-    payment_method = fields.Selection([
-        ('cash', 'Cash'),
-        ('bank', 'Bank Transfer'),
-        ('check', 'Check'),
-        ('credit_card', 'Credit Card'),
-    ], string='Payment Method', default='cash',tracking=True)
+    payment_method = fields.Selection(exepenseSL._SELECTION_PAYMENT_METHOD, string='Payment Method', default='cash',tracking=True)
     payment_reference = fields.Char(string='Payment Reference', tracking=True)
     
     # Reference and Description
@@ -57,19 +52,11 @@ class RealEstateTransaction(models.Model):
         # Check if balance-affecting fields are being modified for inactive partners
         balance_affecting_fields = ['amount', 'transaction_type', 'partner_id']
         if any(field in vals for field in balance_affecting_fields):
-            for transaction in self:
-                if transaction.partner_id.status != 'active' or not transaction.partner_id.active:
-                    raise ValidationError(_('Cannot modify transactions that affect balance for inactive partners. '
-                                          'Partner "%s" is currently %s.') % 
-                                        (transaction.partner_id.name, transaction.partner_id.status))
+            self.validate_transaction()
         return super(RealEstateTransaction, self).write(vals)
 
     def unlink(self):
-        for transaction in self:
-            if transaction.partner_id.status != 'active' or not transaction.partner_id.active:
-                raise ValidationError(_('Cannot delete transactions that affect balance for inactive partners. '
-                                      'Partner "%s" is currently %s.') %
-                                    (transaction.partner_id.name, transaction.partner_id.status))
+        self.validate_transaction()
         return super(RealEstateTransaction, self).unlink()
 
     # =========================== Constraints Functions ===========================
@@ -103,6 +90,15 @@ class RealEstateTransaction(models.Model):
     def _check_amount(self):
         for transaction in self:
             if transaction.transaction_type == 'withdrawal':
-                if transaction.partner_id.actual_balance < transaction.amount:
+                if transaction.partner_id.actual_balance < 0:
                     raise ValidationError(_('Insufficient balance. Available: %s, Required: %s') %
-                                          (transaction.partner_id.actual_balance, transaction.amount))
+                                          (transaction.partner_id.actual_balance, abs(transaction.partner_id.actual_balance)))
+
+    #=========================================================
+    def validate_transaction(self):
+        """Validate the transaction and update partner's actual balance."""
+        for transaction in self:
+            if transaction.partner_id.status != 'active' or not transaction.partner_id.active:
+                raise ValidationError(_('Cannot delete or modify transactions that affect balance for inactive partners. '
+                                        'Partner "%s" is currently %s.') %
+                                        (transaction.partner_id.name, transaction.partner_id.status))

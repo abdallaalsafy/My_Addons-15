@@ -25,10 +25,10 @@
                     <separator/>
                     <filter string="Investment Expenses" name="type_investment" domain="[('expense_type', '=', 'investment')]"/>
                     <filter string="Company Expenses" name="type_company" domain="[('expense_type', '=', 'company')]"/>
-                    <filter string="Filter by Expense Date" name="filter_by_expense_date" date="expense_date"/>
+                    <filter string="Expense Date" name="filter_by_expense_date" date="expense_date"/>
                     <separator/>
                     <group expand="0" string="Group By">
-                        <filter string="investment" name="group_investment" context="{'group_by': 'investment_id'}" invisible="context.get('default_expense_type')=='company'"/>
+                        <filter string="Investment" name="group_investment" context="{'group_by': 'investment_id'}" invisible="context.get('default_expense_type')=='company'"/>
                         <filter string="Property" name="group_property" context="{'group_by': 'property_id'}" invisible="context.get('default_expense_type')=='investment'" />
                         <filter string="Category" name="group_category" context="{'group_by': 'category_id'}"/>
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
@@ -55,7 +55,7 @@
                     <field name="category_id"/>
                     <field name="amount" sum="Total Amount"/>
                     <field name="expense_date"/>
-                    <field name="status" widget="badge"/>
+                    <field name="status" widget="badge" decoration-warning="status=='confirmed'" decoration-success="status=='paid'"/>
                 </tree>
             </field>
         </record>
@@ -65,13 +65,13 @@
             <field name="name">real.estate.expense.form</field>
             <field name="model">real.estate.expense</field>
             <field name="arch" type="xml">
-                <form string="Property Expense">
+                <form string="Property Expenses">
                     <header>
                         <button name="action_mark_paid" type="object" 
-                                string="Mark as Paid" class="btn-primary"
+                                string="Mark As Paid" class="btn-success"
                                 attrs="{'invisible': [('status', '!=', 'confirmed')]}"/>
                         <button name="action_mark_unpaid" type="object" 
-                                string="Mark as Unpaid" class="btn-primary"
+                                string="Mark As Unpaid" class="btn-primary"
                                 attrs="{'invisible': [('status', '!=', 'paid')]}"/>
                         <field name="status" widget="statusbar" 
                                statusbar_visible="confirmed"/>
@@ -146,11 +146,6 @@
                                     <div class="o_kanban_card_header_title">
                                         <strong><field name="name"/></strong>
                                     </div>
-                                    <div class="o_kanban_manage_button_section">
-                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
-                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
-                                        </a>
-                                    </div>
                                 </div>
                                 <div class="o_kanban_card_content">
                                     <div class="o_kanban_primary_left">
@@ -192,14 +187,14 @@
             <field name="context">{'default_expense_type': 'investment', 'expenses_properties': True}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create your first investment expense
+                    Create your first property expense
                 </p>
             </field>
         </record>
 
         <!-- Expense Action for investments Expenses -->
         <record id="action_real_estate_investment_expense" model="ir.actions.act_window">
-            <field name="name">investments Expenses</field>
+            <field name="name">Investments Expenses</field>
             <field name="res_model">real.estate.expense</field>
             <field name="view_mode">tree,kanban,form</field>
             <field name="domain">[('expense_type', '=', 'investment'), ('investment_id', '!=', False)]</field>

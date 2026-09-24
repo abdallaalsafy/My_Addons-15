@@ -9,8 +9,8 @@ class RealEstateExpenseCategory(models.Model):
     _description = 'Real Estate Expense Category'
     _order = 'name asc'
 
-    name = fields.Char(string='Category Name', required=True, translate=True)
-    code = fields.Char(string='Category Code', required=True, copy=False)
+    name = fields.Char(string='Name', required=True, translate=True)
+    code = fields.Char(string='Code', required=True, copy=False)
     description = fields.Text(string='Description')
     
     expense_ids = fields.One2many('real.estate.expense', 'category_id', string='Expenses')

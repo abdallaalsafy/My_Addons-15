@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_cash_flow_into_cash_box_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="real_estate_partnership_management_pro.report_cash_flow_into_cash_box" t-lang="user.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_cash_flow_into_cash_box">
+            <t t-set="doc" t-value="doc.with_context(lang=user.partner_id.lang)"/>
+            <t t-call="web.external_layout">
+                <div class="page" style="font-family: 'Tahoma', sans-serif;">
+                    <h2 style="text-align: center; margin-bottom: 20px;">Daily Cashbox</h2>
+
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 100%;"><strong>Period:</strong> <span t-field="doc.date_from"/> - <span t-field="doc.date_to"/></td>
+                        </tr>
+                    </table>
+
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2;">
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Date</th>
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Reference</th>
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Type</th>
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Source</th>
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">Amount</th>
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.line_ids" t-as="line">
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="line.date"/></td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="line.name"/></td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="line.transaction_type"/></td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="line.source"/></td>
+                                    <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">
+                                        <span t-esc="line.company_currency.name"/>
+                                        <span t-esc="'{:,.2f}'.format(line.amount)"/>
+                                    </td>
+                                    <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">
+                                        <span t-esc="line.company_currency.name"/>
+                                        <span t-esc="'{:,.2f}'.format(line.balance)"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <record id="action_report_cash_flow_into_cash_box" model="ir.actions.report">
+            <field name="name">Daily Cashbox Report</field>
+            <field name="model">cash.flow.into.cash.box</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management_pro.report_cash_flow_into_cash_box_document</field>
+            <field name="report_file">real_estate_partnership_management_pro.report_cash_flow_into_cash_box_document</field>
+            <field name="print_report_name">'Daily Cashbox - %s' % (object.date_from and object.date_from or '')</field>
+        </record>
+    </data>
+</odoo>

@@ -118,7 +118,7 @@ class PartnerUnifiedLedger(models.TransientModel):
         """Button action to (re)compute unified ledger lines"""
         self._build_unified_ledger()
         return {
-            'name': _('Unified Ledger'),
+            'name': _('Partner Ledger'),
             'type': 'ir.actions.act_window',
             'res_model': 'partner.unified.ledger.line',
             'domain': [('ledger_id', '=', self.id)],

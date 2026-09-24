@@ -48,7 +48,7 @@
             <field name="name">real.estate.partnership.payment.form</field>
             <field name="model">real.estate.partnership.payment</field>
             <field name="arch" type="xml">
-                <form string="Partnership Payment">
+                <form string="Partnership Payments">
                     <field name="company_currency" invisible="1"/>
                     <sheet>
                         <group>

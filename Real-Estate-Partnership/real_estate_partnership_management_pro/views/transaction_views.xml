@@ -6,17 +6,17 @@
             <field name="name">real.estate.transaction.search</field>
             <field name="model">real.estate.transaction</field>
             <field name="arch" type="xml">
-                <search string="Partner Transactions">
+                <search string="Transactions">
                     <field name="name"/>
                     <field name="partner_id"/>
                     <field name="transaction_type"/>
                     <field name="transaction_date"/>
                     <separator/>
-                    <filter string="Deposits" name="deposits" domain="[('transaction_type', '=', 'deposit')]"/>
-                    <filter string="Withdrawals" name="withdrawals" domain="[('transaction_type', '=', 'withdrawal')]"/>
+                    <filter string="Deposit" name="deposits" domain="[('transaction_type', '=', 'deposit')]"/>
+                    <filter string="Withdrawal" name="withdrawals" domain="[('transaction_type', '=', 'withdrawal')]"/>
                     <filter string="Investment Return" name="return" domain="[('transaction_type', '=', 'investment_return')]"/>
                     <separator/>
-                    <filter string="Filter by Date" name="filter_by_transaction_date" date="transaction_date"/>
+                    <filter string="Transaction Date" name="filter_by_transaction_date" date="transaction_date"/>
                     <filter string="Today" name="today" domain="[('transaction_date', '=', context_today())]"/>
                     <filter string="This Week" name="this_week"
                             domain="[('transaction_date', '&gt;=', (context_today() - datetime.timedelta(days=context_today().weekday())).strftime('%Y-%m-%d')),
@@ -42,7 +42,7 @@
             <field name="name">real.estate.transaction.tree</field>
             <field name="model">real.estate.transaction</field>
             <field name="arch" type="xml">
-                <tree string="Partner Transactions">
+                <tree string="Transactions">
                     <field name="company_currency" invisible="1"/>
                     <field name="name"/>
                     <field name="partner_id"/>
@@ -58,7 +58,7 @@
             <field name="name">real.estate.transaction.form</field>
             <field name="model">real.estate.transaction</field>
             <field name="arch" type="xml">
-                <form string="Partner Transaction">
+                <form string="Transactions">
                     <field name="company_currency" invisible="1"/>
                     <sheet>
                         <div class="oe_title">
@@ -101,7 +101,7 @@
             <field name="name">real.estate.transaction.kanban</field>
             <field name="model">real.estate.transaction</field>
             <field name="arch" type="xml">
-                <kanban string="Partner Transactions">
+                <kanban string="Transactions">
                     <field name="id"/>
                     <field name="name"/>
                     <field name="partner_id"/>
@@ -114,11 +114,6 @@
                                 <div class="o_kanban_card_header">
                                     <div class="o_kanban_card_header_title">
                                         <strong><field name="partner_id"/></strong>
-                                    </div>
-                                    <div class="o_kanban_manage_button_section">
-                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
-                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
-                                        </a>
                                     </div>
                                 </div>
                                 <div class="o_kanban_card_content">
@@ -149,16 +144,12 @@
 
         <!-- Transaction Action -->
         <record id="action_real_estate_transaction" model="ir.actions.act_window">
-            <field name="name">Partner Transactions</field>
+            <field name="name">Transactions</field>
             <field name="res_model">real.estate.transaction</field>
             <field name="view_mode">tree,kanban,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create your first transaction
-                </p>
-                <p>
-                    Transactions include deposits, withdrawals, profit distributions, and other
-                    financial movements between partners and the partnership.
                 </p>
             </field>
         </record>

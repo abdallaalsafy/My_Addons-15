@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_real_estate_property_details_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="real_estate_partnership_management_pro.report_real_estate_property_details"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_real_estate_property_details">
+            <t t-set="doc" t-value="doc.with_context(lang=user.partner_id.lang)"/>
+            <t t-call="web.external_layout">
+                <div class="page" style="font-family: 'Tahoma', sans-serif;">
+                    <h3 style="text-align: center;"><span t-field="doc.name"/></h3>
+                    <div style="text-align: center; margin-bottom: 20px;"><h5>Basic Information</h5></div>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                            <tr>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;">
+                                    <strong>Purchased/Saled:</strong>
+                                    <span t-if="doc.is_purchased">Purchased</span>
+                                    <span t-elif="not doc.is_purchased">Saled</span>
+                                </td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;">
+                                    <strong>Code:</strong>
+                                    <span t-field="doc.code"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Investment:</strong><span t-field="doc.investment_id.name"/></td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Property Type:</strong> <span t-field="doc.property_type"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Status:</strong> <span t-field="doc.status"/></td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;">
+                                    <strong t-if="doc.is_purchased">Buy Date:</strong> 
+                                    <strong t-else="">Sell Date:</strong> 
+                                    <span  t-field="doc.property_date"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>City:</strong> <span t-field="doc.city_id.name"/></td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;">
+                                    <strong t-if="doc.is_purchased">Seller:</strong> 
+                                    <strong t-else="">Buyer:</strong> 
+                                    <span t-field="doc.contact_id.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;" colspan="2"><strong>Address:</strong> <span t-field="doc.address"/></td>
+                            </tr>
+                    </table>
+
+                    <div style="text-align: center; margin-bottom: 20px;"><h5>Property Details</h5></div>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tbody>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;"><strong>Total Area:</strong> <span t-field="doc.total_area"/></td>
+                                <td style="width: 33%; padding: 8px; border: 1px solid #ddd;"><strong>Area Unit:</strong> <span t-field="doc.area_unit"/></td>
+                                <td style="width: 33%; padding: 8px; border: 1px solid #ddd;"><strong>Built Area:</strong> <span t-field="doc.built_area"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;"><strong>Rooms:</strong> <span t-field="doc.total_rooms"/></td>
+                                <td style="width: 33%; padding: 8px; border: 1px solid #ddd;"><strong>Bedrooms:</strong> <span t-field="doc.bedrooms"/></td>
+                                <td style="width: 33%; padding: 8px; border: 1px solid #ddd;"><strong>Floors:</strong> <span t-field="doc.number_of_floors"/></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;"><strong>Bathrooms:</strong> <span t-field="doc.bathrooms"/></td>
+                                <td style="width: 33%; padding: 8px; border: 1px solid #ddd;"><strong>Kitchens:</strong> <span t-field="doc.kitchens"/></td>
+                                <td style="width: 33%; padding: 8px; border: 1px solid #ddd;"><strong>Living Rooms:</strong> <span t-field="doc.living_rooms"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="text-align: center; margin-bottom: 20px;"><h5>Financial Information</h5></div>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Property Price:</strong> <span t-esc="'{:,.2f}'.format(doc.property_price)"/></td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Total Cost: </strong> <span t-esc="'{:,.2f}'.format(doc.total_cost)"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Down Payment:</strong> <span t-esc="'{:,.2f}'.format(doc.down_payment)"/></td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Total Expenses:</strong> <span t-esc="'{:,.2f}'.format(doc.total_expenses)"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Remaining Amount:</strong> <span t-esc="'{:,.2f}'.format(doc.remaining_amount)"/></td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;">
+                                    <strong t-if="doc.is_purchased or doc.status == 'draft'">Current Value:</strong> 
+                                    <t t-if="doc.is_purchased or doc.status == 'draft'">
+                                        <span t-esc="'{:,.2f}'.format(doc.current_value)"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr t-if="not doc.is_purchased">
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Total Profit:</strong> <span t-esc="'{:,.2f}'.format(doc.total_profit)"/></td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Management Fee:</strong> <span t-esc="'{:,.2f}'.format(doc.management_fee_amount)"/></td>
+                            </tr>
+                            <tr t-if="not doc.is_purchased">
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Net Profit:</strong> <span t-esc="'{:,.2f}'.format(doc.net_profit)"/></td>
+                                <td style="width: 50%; padding: 8px; border: 1px solid #ddd;"><strong>Management Fee %:</strong> <span t-field="doc.management_fee_percentage"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <h5><span t-if="doc.is_purchased">Seller Payment Schedule</span><span t-else="">Buyer Payment Schedule</span></h5>
+                    </div>
+                    <t t-if="doc.payment_ids">
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                            <thead>
+                                <tr style="background-color: #f2f2f2;">
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Name</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Due Date</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Amount</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Status</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Paid Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.payment_ids" t-as="payment">
+                                    <tr>
+                                        <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="payment.name"/></td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="payment.due_date"/></td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;">
+                                            <span t-esc="payment.company_currency.name"/>
+                                            <span t-esc="'{:,.2f}'.format(payment.amount)"/>
+                                        </td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="payment.status"/></td>
+                                        <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="payment.paid_date"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                    <t t-else="">
+                        <p style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9; margin-bottom: 20px;">
+                            No payment schedule available for this property.
+                        </p>
+                    </t>
+
+                    <div style="text-align: center; margin-bottom: 20px;"><h5>Notes</h5></div>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 100%; padding: 8px; border: 1px solid #ddd; min-height: 60px;">
+                                    <span t-if="doc.notes" t-field="doc.notes"/>
+                                    <span t-if="not doc.notes">No notes available.</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <record id="action_report_real_estate_property_details" model="ir.actions.report">
+            <field name="name">Property Detailed Report</field>
+            <field name="model">real.estate.property</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management_pro.report_real_estate_property_details_document</field>
+            <field name="report_file">real_estate_partnership_management_pro.report_real_estate_property_details_document</field>
+            <field name="print_report_name">'Property Report - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_real_estate_property"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

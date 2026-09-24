@@ -14,27 +14,27 @@ class RealEstateExpense(models.Model):
     _SELECTION_PAYMENT_METHOD = [('cash', 'Cash'),('bank', 'Bank Transfer'),('check', 'Check'),('credit_card', 'Credit Card'),]
 
     name = fields.Char(string='Expense Description', required=True, tracking=True)
-    code = fields.Char(string='Expense Code', required=True, copy=False, default=lambda self: _('New'))
+    code = fields.Char(string='Code', required=True, copy=False, default=lambda self: _('New'))
 
     expense_type = fields.Selection([
-        ('investment', 'Investment Expense'),
-        ('company', 'Company Expense'),
+        ('investment', 'Investment Expenses'),
+        ('company', 'Company Expenses'),
     ], string='Expense Type', required=True, tracking=True)
     status = fields.Selection([
             ('confirmed', 'Confirmed'),
             ('paid', 'Paid'),
             ], string='Status', default='confirmed', tracking=True)
 
-    amount = fields.Monetary(string='Expense Amount', required=True, currency_field='company_currency', tracking=True)
-    expense_date = fields.Date(string='Expense Date', required=True, default=fields.Date.today, tracking=True)
+    amount = fields.Monetary(string='Amount', required=True, currency_field='company_currency', tracking=True)
+    expense_date = fields.Date(string='Date', required=True, default=fields.Date.today, tracking=True)
     
     # Relations
-    investment_id = fields.Many2one('real.estate.investment', string='investment', tracking=True, index=True, ondelete='cascade',
+    investment_id = fields.Many2one('real.estate.investment', string='Investment', tracking=True, index=True, ondelete='cascade',
                               domain="[('status', '=', 'opening')]", 
                               help="Select the investment associated with this expense (for investment expenses only)")
     property_id = fields.Many2one('real.estate.property', string='Property', tracking=True, index=True, ondelete='cascade',
                                  domain=[('investment_status','=','opening')],)
-    category_id = fields.Many2one('real.estate.expense.category', string='Expense Category', 
+    category_id = fields.Many2one('real.estate.expense.category', string='Category', 
                                  required=True, tracking=True, ondelete='restrict')
     company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
     
@@ -83,8 +83,9 @@ class RealEstateExpense(models.Model):
     @api.onchange('expense_type')
     def _onchange_expense_type(self):
         for expense in self:
-            expense.investment_id = False
-            expense.property_id = False
+            if 'default_expense_type' not in self.env.context:
+                expense.investment_id = False
+                expense.property_id = False
             
     # =========================== Constraints Functions ===========================
 

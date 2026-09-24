@@ -40,7 +40,7 @@
                     <field name="property_date"/>
                     <field name="investment_id"/>
                     <field name="partner_id"/>
-                    <field name="profit_amount" sum="Total Profit"/>
+                    <field name="profit_amount" sum="Total Profits"/>
                 </tree>
             </field>
         </record>

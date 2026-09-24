@@ -11,11 +11,11 @@ class RealEstatePartnership(models.Model):
     _order = 'investment_id,partnership_date'
 
 
-    name = fields.Char(string='partnership Reference', required=True, copy=False, default=lambda self: _('New'))
+    name = fields.Char(string='Partnership Reference', required=True, copy=False, default=lambda self: _('New'))
     partnership_date = fields.Date(string='Date', required=True, default=fields.Date.today, tracking=True)
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, tracking=True, index=True,
                                  domain="[('status', '=', 'active')]",ondelete='restrict')
-    investment_id = fields.Many2one('real.estate.investment', string='investment', required=True, tracking=True, index=True,ondelete='cascade',
+    investment_id = fields.Many2one('real.estate.investment', string='Investment', required=True, tracking=True, index=True,ondelete='cascade',
                               domain="[('status', '=', 'opening'),'|','&',('total_partnerships_percentage', '<', 100),('investment_method', '=', 'percentage'),('investment_method', '=', 'amount')]")
     company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
 
@@ -25,9 +25,9 @@ class RealEstatePartnership(models.Model):
     total_cost = fields.Monetary(related='investment_id.total_investment_cost', currency_field='company_currency', store=True)
 
     # partnership Details
-    amount = fields.Monetary(string='Total Amount', currency_field='company_currency', compute='_compute_amount', store=True)
-    down_payment = fields.Monetary(string='Down Payment', currency_field='company_currency', compute='_compute_down_payment', store=True, tracking=True, help='Down payment amount for the partnership')
-    remaining_amount = fields.Monetary(string='Remaining Amount', currency_field='company_currency', compute='_compute_remaining_amount', store=True)
+    amount = fields.Monetary(string='Partnership Amount', currency_field='company_currency', compute='_compute_amount', store=True)
+    down_payment = fields.Monetary(string='Total Payment', currency_field='company_currency', compute='_compute_down_payment', store=True, tracking=True, help='Total payment amount for the partnership')
+    remaining_amount = fields.Monetary(string='Remaining', currency_field='company_currency', compute='_compute_remaining_amount', store=True)
     percentage = fields.Float(string='Percentage %')
 
     notes = fields.Text(string='Notes')

@@ -20,7 +20,7 @@
             <field name="name">real.estate.expense.category.form</field>
             <field name="model">real.estate.expense.category</field>
             <field name="arch" type="xml">
-                <form string="Expense Category">
+                <form string="Expense Categories">
                     <sheet>
                         <div class="oe_title">
                             <h1>
@@ -78,10 +78,6 @@
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create your first expense category
-                </p>
-                <p>
-                    Expense categories help you organize and classify different types of expenses
-                    for better reporting and analysis.
                 </p>
             </field>
         </record>

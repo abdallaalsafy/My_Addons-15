@@ -85,10 +85,10 @@ class RealEstatePartnershipPayment(models.Model):
     @api.constrains('partnership_id')
     def _check_investment_id_confirmed_sold_properties(self):
         for payment in self:
-            if payment.partnership_id.investment_id.confirmed_sold_properties_count > 0:
-                raise ValidationError(_('Cannot add payment lines for partnerships with confirmed sold properties.'))
+            if payment.partnership_id.investment_id.confirmed_sold_properties_count > 0 and payment.partnership_id.investment_method == 'amount':
+                raise ValidationError(_('Cannot add payment lines for partnerships with confirmed sold properties and amount method.'))
 
-            if payment.partnership_id.investment_id.total_partnerships_percentage > 100 and payment.partnership_id.investment_id.investment_method == 'percentage':
+            if payment.partnership_id.investment_id.total_partnerships_percentage > 100 and payment.partnership_id.investment_method == 'percentage':
                 raise ValidationError(_('Cannot add payment lines for partnerships with total partnerships percentage > 100 and percentage method.'))
 
     @api.constrains('amount')

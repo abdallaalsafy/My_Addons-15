@@ -32,16 +32,17 @@
                                     <p><strong>Note:</strong> The actual liquidity represents the current balance of the company's assets and liabilities.</p>
                                     <p><strong>It consists of:</strong></p>
                                     <ul>
-                                        <li><b>1 Positive Transactions:</b> Total positive transactions.</li>
-                                        <li><b>2 Sale Paid:</b> Total sale paid.</li>
-                                        <li><b>3 Negative Transactions:</b> The total negative transactions.</li>
-                                        <li><b>4 Expense Paid:</b> Total any expense paid.</li>
-                                        <li><b>5 Purchase Paid:</b> Total purchase paid.</li>
+                                        <li><b>1 Positive Transactions:</b></li>
+                                        <li><b>2 Sale Paid:</b></li>
+                                        <li><b>Minus</b></li>
+                                        <li><b>3 Negative Transactions:</b></li>
+                                        <li><b>4 Expense Paid:</b></li>
+                                        <li><b>5 Purchase Paid:</b></li>
                                     </ul>
                                 </div>
                             </page>
 
-                            <page string="investments Statistics">
+                            <page string="Investments Statistics">
                                 <group>
                                     <group string="Overview">
                                         <field name="investments_count"/>
@@ -58,7 +59,7 @@
                                     <group string="Partnership Statistics">
                                         <field name="Partnership_partners_count" />
                                     </group>
-                                    <group string="investments Amounts"> 
+                                    <group string="Investments Amounts"> 
                                         <field name="investments_maximum_amount"/>
                                         <field name="investments_minimum_amount"/>
                                          <field name="partnerships_debtor_amount"/>

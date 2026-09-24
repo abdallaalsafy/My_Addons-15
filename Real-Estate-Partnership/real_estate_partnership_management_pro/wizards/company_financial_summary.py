@@ -17,7 +17,7 @@ class CompanyFinancialSummary(models.TransientModel):
     negative_transactions = fields.Monetary(string='Negative Transactions', currency_field='company_currency', compute='_compute_financial_summary',)
 
     # investments Statistics
-    investments_count = fields.Integer(string='investments Count', compute='_compute_financial_summary',)
+    investments_count = fields.Integer(string='Investments Count', compute='_compute_financial_summary',)
     investments_open_count = fields.Integer(string='Open Investments Count', compute='_compute_financial_summary',)
     investments_closed_count = fields.Integer(string='Closed Investments Count', compute='_compute_financial_summary',)
     investments_total_amount = fields.Monetary(string='Total Investments Amount', currency_field='company_currency', compute='_compute_financial_summary',)

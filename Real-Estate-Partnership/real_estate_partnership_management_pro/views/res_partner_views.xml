@@ -91,7 +91,7 @@
                     <button name="action_view_partnerships" type="object" 
                             class="oe_stat_button" icon="fa-building"
                             attrs="{'invisible': [('open_partnerships_count', '=', 0)]}">
-                        <field name="open_partnerships_count" widget="statinfo" string="partnerships"/>
+                        <field name="open_partnerships_count" widget="statinfo" string="Partnerships"/>
                     </button>
                     <button name="action_view_partner_profit" type="object"
                             class="oe_stat_button" icon="fa-line-chart"  attrs="{'invisible': [('profit_count', '=', 0)]}">
@@ -100,7 +100,7 @@
 
                     <button name="action_view_purchases_properties" type="object" class="btn-primary" 
                         attrs="{'invisible': [('property_purchase_count', '=', 0)]}">
-                        <field name="property_purchase_count" widget="statinfo" string="Purchases Properties"/>
+                        <field name="property_purchase_count" widget="statinfo" string="Sale Properties"/>
                     </button>
                     <button name="action_view_sale_properties" type="object" class="btn-primary" 
                         attrs="{'invisible': [('property_sale_count', '=', 0)]}">

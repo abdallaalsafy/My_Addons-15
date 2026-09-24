@@ -22,7 +22,7 @@
                     <filter string="Qirat" name="qirat" domain="[('area_unit', '=', 'qirat')]"/>
                     <separator/>
                     <filter string="Purchased Properties" name="is_purchased" domain="[('is_purchased', '=', True)]"/>
-                    <filter string="Sold/For Sale Properties" name="is_sold" domain="[('is_purchased', '=', False)]"/>
+                    <filter string="Sold Properties" name="is_sold" domain="[('is_purchased', '=', False)]"/>
                     <separator/>
                     <filter string="Draft" name="draft" domain="[('status', '=', 'draft')]"/>
                     <filter string="Confirmed" name="confirmed" domain="[('status', '=', 'confirmed')]"/>
@@ -37,8 +37,9 @@
                     <filter string="Warehouse" name="warehouse" domain="[('property_type', '=', 'warehouse')]"/>
                     <separator/>
                     <filter string="Sold This Month" name="sold_this_month" domain="[('is_purchased', '=', False), ('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
-                    <filter string="Recently Purchased" name="recently_purchased" domain="[('is_purchased', '=', True), ('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Purchased This Month" name="recently_purchased" domain="[('is_purchased', '=', True), ('property_date', '>=', (context_today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
+                    <filter string="Fully Paid" name="fully_paid" domain="[('remaining_amount', '&lt;=', 0)]"/>
                     <group expand="0" string="Group By">
                         <filter string="Investment" name="group_investment" context="{'group_by': 'investment_id'}"/>
                         <filter string="Purchased / Sold" name="group_is_purchased" context="{'group_by': 'is_purchased'}"/>
@@ -46,7 +47,7 @@
                         <filter string="Property Type" name="group_type" context="{'group_by': 'property_type'}"/>
                         <filter string="Property Date" name="group_purchase_date" context="{'group_by': 'property_date'}"/>
                         <filter string="City" name="group_city" context="{'group_by': 'city_id'}"/>
-                        <filter string="Contacts" name="group_seller" context="{'group_by': 'contact_id'}"/>
+                        <filter string="Contact" name="group_seller" context="{'group_by': 'contact_id'}"/>
                     </group>
                 </search>
             </field>
@@ -87,7 +88,7 @@
                     <field name="property_date"/>
                     <field name="investment_id" optional="show"/>
                     <field name="contact_id" optional="hide"/>
-                    <field name="total_profit" sum="Total Profit"/>
+                    <field name="total_profit" sum="Total Profits"/>
                     <field name="management_fee_percentage"/>
                     <field name="management_fee_amount" sum="Total Management Fees"/>
                 </tree>
@@ -106,7 +107,7 @@
                     <header>
                         <button name="action_create_expense" type="object" 
                                 string="Create Expense" class="btn-info"
-                                attrs="{'invisible':[('investment_status','=','closed')]}"/>
+                                attrs="{'invisible':['|',('investment_status','=','closed'),'&amp;',('status','=','confirmed'),('is_purchased','=',False)]}"/>
                         <button name="action_create_payment_installment" type="object"
                                 string="Create Installment" class="btn-secondary"
                                 attrs="{'invisible':['|','|',('investment_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
@@ -114,7 +115,7 @@
                                 string="Generate Receipts" class="btn-primary"
                                 attrs="{'invisible':['|','|',('investment_status','=','closed'),('status','=','draft'),('remaining_amount','&lt;=',0)]}"/>
                         <button name="action_confirmed_sold_property" type="object"
-                                string="Confirmed" class="btn-primary"
+                                string="Confirmed Property" class="btn-primary"
                                 attrs="{'invisible':[('status','=','confirmed')]}"/>
                         <button name="action_draft_sold_property" type="object"
                                 string="Mark As Draft" class="btn-secondary"
@@ -168,18 +169,20 @@
                                 <field name="address"/>
                             </group>
                         </group>
-                         <group string="Purchase &amp; Information" attrs="{'invisible': [('is_purchased', '=', False)]}">
-                            <group string="Seller Details">
+                         <group string="Purchase Information" attrs="{'invisible': [('is_purchased', '=', False)]}">
+                            <group string="Purchase Details">
                                 <field name="property_date" string='Purchase Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
                                 <field name="contact_id" string='Buy From' attrs='{"required":[("status", "=", "confirmed")]}'/>
-                            </group>
-                            <group string="Purchase Price Details">
                                 <field name="property_price" string='Purchase Price' attrs='{"required":[("status", "=", "confirmed")]}'/>
                                 <field name="down_payment"/>
                                 <field name="remaining_amount"/>
                             </group>
+                            <group string="Payment Information Down Payment">
+                                <field name="payment_method"/>
+                                <field name="payment_reference"/>
+                            </group>
                         </group>
-                        <group string="Sale Information" attrs="{'invisible': [('is_purchased', '=', True)]}">
+                        <group col="3" string="Sale Information" attrs="{'invisible': [('is_purchased', '=', True)]}">
                             <group string="Sale Details">
                                 <field name="property_date" string='Sale Date' attrs='{"required":[("status", "=", "confirmed")]}'/>
                                 <field name="contact_id" string='Sale To' attrs='{"required":[("status","=","confirmed")]}'/>
@@ -192,6 +195,10 @@
                                 <field name="net_profit"/>
                                 <field name="management_fee_percentage"/>
                                 <field name="management_fee_amount"/>
+                            </group>
+                            <group string="Payment Information Down Payment">
+                                <field name="payment_method"/>
+                                <field name="payment_reference"/>
                             </group>
                         </group>
                         <notebook>
@@ -220,10 +227,10 @@
                                         <field name="number_of_floors"/>
                                     </group>
                                     <group string="Boundaries">
-                                        <field name="north_boundary" placeholder="What borders from north"/>
-                                        <field name="south_boundary" placeholder="What borders from south"/>
-                                        <field name="east_boundary" placeholder="What borders from east"/>
-                                        <field name="west_boundary" placeholder="What borders from west"/>
+                                        <field name="north_boundary" placeholder="What borders the property from the north?"/>
+                                        <field name="south_boundary" placeholder="What borders the property from the south?"/>
+                                        <field name="east_boundary" placeholder="What borders the property from the east?"/>
+                                        <field name="west_boundary" placeholder="What borders the property from the west?"/>
                                     </group>
                                 </group>
                             </page>
@@ -256,11 +263,6 @@
                                 <div class="o_kanban_card_header">
                                     <div class="o_kanban_card_header_title">
                                         <strong><field name="name"/></strong>
-                                    </div>
-                                    <div class="o_kanban_manage_button_section">
-                                        <a class="o_kanban_manage_toggle_button" href="#" tabindex="-1">
-                                            <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
-                                        </a>
                                     </div>
                                 </div>
                                 <div class="o_kanban_card_content">
@@ -302,6 +304,7 @@
             <field name="name">Purchase Properties</field>
             <field name="res_model">real.estate.property</field>
             <field name="view_mode">tree,kanban,form</field>
+            <field name="view_id" ref="view_real_estate_property_tree"/>
             <field name="context">{'default_is_purchased': True, 'default_status': 'confirmed'}</field>
             <field name="domain">[('is_purchased','=',True)]</field>
             <field name="help" type="html">
@@ -314,6 +317,7 @@
             <field name="name">Sale Properties</field>
             <field name="res_model">real.estate.property</field>
             <field name="view_mode">tree,kanban,form</field>
+            <field name="view_id" ref="view_real_estate_property_tree"/>
             <field name="context">{}</field>
             <field name="domain">[('is_purchased','=',False)]</field>
             <field name="help" type="html">
@@ -324,7 +328,7 @@
         </record>
 
         <record id="action_real_estate_load_management_fees" model="ir.actions.act_window">
-            <field name="name">Load Management Fees</field>
+            <field name="name">Management Fees</field>
             <field name="res_model">real.estate.property</field>
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_management_fee_summary_tree"/>

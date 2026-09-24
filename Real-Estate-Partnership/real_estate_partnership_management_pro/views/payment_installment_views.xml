@@ -24,7 +24,7 @@
                     <filter string="Overdue" name="overdue" domain="[('status', '=', 'draft'), ('due_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
                     <filter string="Due This Month" name="due_this_month" domain="[('due_date', '>=', (context_today().replace(day=1)).strftime('%Y-%m-%d')), ('due_date', '&lt;=', (context_today().replace(day=1) + relativedelta(months=1)).strftime('%Y-%m-%d'))]"/>
                     <separator/>
-                    <filter string="Filter by Due Date" name="filter_by_due_date" date="due_date"/>
+                    <filter string="Due Date" name="filter_by_due_date" date="due_date"/>
                     <separator/>
                     <group expand="0" string="Group By">
                         <filter string="Properties" name="group_property" context="{'group_by': 'property_id'}"/>
@@ -65,15 +65,15 @@
             <field name="name">payment.installment.form</field>
             <field name="model">real.estate.payment.installment</field>
             <field name="arch" type="xml">
-                <form string="Payment Installment">
+                <form string="Payment Installments">
                     <field name="is_purchased" invisible="True"/>
                     <field name="company_currency" invisible="1"/>
                     <header>
                         <button name="action_mark_paid" type="object" 
-                                string="Mark as Paid" class="btn-success"
+                                string="Mark As Paid" class="btn-success"
                                 attrs="{'invisible': [('status', '=', 'paid')]}"/>
                         <button name="action_mark_draft" type="object"
-                                string="Mark as Draft" class="btn-muted"
+                                string="Mark As Draft" class="btn-muted"
                                 attrs="{'invisible': [('status', '=', 'draft')]}"/>
                         <field name="status" widget="statusbar"/>
                     </header>

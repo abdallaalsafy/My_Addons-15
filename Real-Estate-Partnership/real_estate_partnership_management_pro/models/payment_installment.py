@@ -2,8 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from random import randint
-from .expense import RealEstateExpense
+from .expense import RealEstateExpense as exepenseSL
 
 
 class RealEstatePaymentInstallment(models.Model):
@@ -31,7 +30,7 @@ class RealEstatePaymentInstallment(models.Model):
         ('draft', 'Draft'),
         ('paid', 'Paid'),
     ], string='Status', default='draft', tracking=True)
-    payment_method = fields.Selection(RealEstateExpense._SELECTION_PAYMENT_METHOD, string='Payment Method', tracking=True)
+    payment_method = fields.Selection(exepenseSL._SELECTION_PAYMENT_METHOD, string='Payment Method', tracking=True)
     payment_reference = fields.Char(string='Payment Reference', tracking=True)
     
     notes = fields.Text(string='Notes')
@@ -64,11 +63,11 @@ class RealEstatePaymentInstallment(models.Model):
 
     def action_mark_paid(self):
         """Mark installment as paid"""
-        self.write({'status': 'paid'})
+        self.write({'status': 'paid', 'paid_date': fields.Date.today()})
 
     def action_mark_draft(self):
         """Mark installment as draft"""
-        self.write({'status': 'draft'})
+        self.write({'status': 'draft', 'paid_date': False})
 
     # ========================= Constrain Functions =================================
 

@@ -9,7 +9,7 @@ class RealEstateCity(models.Model):
     _description = 'Real Estate City'
     _order = 'name asc'
 
-    name = fields.Char(string='City Name', required=True)
+    name = fields.Char(string='Name', required=True)
 
     investment_ids = fields.One2many('real.estate.investment', 'city_id', string='Investments')
     property_ids = fields.One2many('real.estate.property', 'city_id', string='Properties')
@@ -33,9 +33,6 @@ class RealEstateCity(models.Model):
     @api.constrains('name')
     def _check_name_city(self):
         for city in self:
-            if not city.name.strip():
-                raise ValidationError(_('City name is required.'))
-
             city = self.search([('name', '=', city.name), ('id', '!=', city.id)])
             if city:
                 raise ValidationError(_('City name must be unique.'))

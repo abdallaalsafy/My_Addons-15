@@ -12,7 +12,7 @@
                     <field name="name"/>
                     <field name="transaction_type"/>
                     <field name="description"/>
-                    <field name="amount" sum="total_amount"/>
+                    <field name="amount" sum="Total Amount"/>
                     <field name="balance"/>
                 </tree>
             </field>
@@ -37,7 +37,7 @@
                     </group>
                     <footer>
                         <button name="action_view_tree_ledger" type="object" string="List View" class="btn-primary"/>
-                        <button name="action_print_report" type="object" string="Print" class="btn-primary"/>
+                        <button name="action_print_report" type="object" string="Print PDF" class="btn-primary"/>
                         <button special="cancel" string="Close" class="btn-secondary"/>
                     </footer>
                 </form>

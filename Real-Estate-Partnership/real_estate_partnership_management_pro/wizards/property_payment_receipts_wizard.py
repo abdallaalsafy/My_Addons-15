@@ -64,7 +64,7 @@ class PropertyPaymentReceiptsWizard(models.TransientModel):
         base_amount = self.amount // self.number_of_receipts
         remain_amount = self.amount % self.number_of_receipts
         result_lst = [base_amount] * self.number_of_receipts
-        for i in range(remain_amount):
+        for i in range(int(remain_amount)):
             result_lst[i] += 1
         
         # Create receipts

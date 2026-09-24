@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from .expense import RealEstateExpense as exepenseSL
 
 
 class RealEstateProperty(models.Model):
@@ -18,8 +19,8 @@ class RealEstateProperty(models.Model):
     code = fields.Char(string='Code', required=True, copy=False, default=lambda self: _('New'), index=True)
 
     # Investment Relationship
-    investment_id = fields.Many2one('real.estate.investment', string='investment', required=True,
-                                help='The investment this property is associated with (if any)',
+    investment_id = fields.Many2one('real.estate.investment', string='Investment', required=True,
+                                help='The investment this property is associated with',
                                 domain="[('status', '!=', 'closed')]")
     company_currency = fields.Many2one("res.currency", string='Currency', default=lambda self: self.env.company.currency_id,)
 
@@ -34,12 +35,7 @@ class RealEstateProperty(models.Model):
     is_conversion = fields.Boolean(string='Is Conversioned')
 
     # Payment Information
-    payment_method = fields.Selection([
-                ('cash', 'Cash'),
-                ('bank', 'Bank Transfer'),
-                ('check', 'Check'),
-                ('installment', 'Installment'),
-            ], string='Payment Method', default='cash', tracking=True)
+    payment_method = fields.Selection(exepenseSL._SELECTION_PAYMENT_METHOD, string='Payment Method', default='cash', tracking=True)
     payment_reference = fields.Char(string='Payment Reference', tracking=True)
 
     # Location Information
@@ -47,10 +43,10 @@ class RealEstateProperty(models.Model):
     address = fields.Text(related='investment_id.address', store=True,)
     
     # Property Boundaries
-    north_boundary = fields.Text(string='North Boundary', help='What borders the property from the north')
-    south_boundary = fields.Text(string='South Boundary', help='What borders the property from the south')
-    east_boundary = fields.Text(string='East Boundary', help='What borders the property from the east')
-    west_boundary = fields.Text(string='West Boundary', help='What borders the property from the west')
+    north_boundary = fields.Text(string='North Boundary', help='What borders the property from the north?')
+    south_boundary = fields.Text(string='South Boundary', help='What borders the property from the south?')
+    east_boundary = fields.Text(string='East Boundary', help='What borders the property from the east?')
+    west_boundary = fields.Text(string='West Boundary', help='What borders the property from the west?')
     # Room Details
     built_area = fields.Float(string='Built Area', tracking=True)
     number_of_floors = fields.Integer(string='Number of Floors', tracking=True)
@@ -65,7 +61,7 @@ class RealEstateProperty(models.Model):
     area_unit = fields.Selection(related='investment_id.area_unit', store=True)
     # Expenses Information
     total_expenses = fields.Monetary(string='Total Expenses', compute='_compute_expenses', store=True, currency_field='company_currency')
-    investment_expenses = fields.Monetary(string='investment Expenses', currency_field='company_currency', help="""
+    investment_expenses = fields.Monetary(string='Investment Expenses', currency_field='company_currency', help="""
         This field is for (Sale Property) only.
         It get share of Sale Property in the investment's expenses not investment's cost.
         It is calculated based on the (action confirming the sale).
@@ -81,9 +77,9 @@ class RealEstateProperty(models.Model):
     contact_id = fields.Many2one('res.partner', tracking=True,)
     property_price = fields.Monetary(string='Property Price', tracking=True, currency_field='company_currency')
     down_payment = fields.Monetary(string='Down Payment', tracking=True, currency_field='company_currency', help='Down payment amount for the property')
-    remaining_amount = fields.Monetary(string='Remaining Amount', compute='_compute_payment_remaining', store=True, currency_field='company_currency')
+    remaining_amount = fields.Monetary(string='Remaining', compute='_compute_payment_remaining', store=True, currency_field='company_currency')
     # Profit Information
-    total_profit = fields.Monetary(string='Total Profit', compute='_compute_financials', store=True, currency_field='company_currency')
+    total_profit = fields.Monetary(string='Total Profits', compute='_compute_financials', store=True, currency_field='company_currency')
     net_profit = fields.Monetary(string='Net Profit', compute='_compute_financials', store=True, currency_field='company_currency')
     management_fee_percentage = fields.Float(string='Management Fee %', default=5.0, tracking=True)
     management_fee_amount = fields.Monetary(string='Management Fee Amount', compute='_compute_financials', store=True, currency_field='company_currency')
@@ -214,11 +210,11 @@ class RealEstateProperty(models.Model):
     def _check_area_price_payment(self):
         for property in self:
             if property.total_area <= 0:
-                raise ValidationError(_('property area must be greater than zero.'))
+                raise ValidationError(_('Property area must be greater than zero.'))
 
             # Check property price
             if property.property_price == 0 and property.status == 'confirmed':
-                raise ValidationError(_('property price must be greater than zero.'))
+                raise ValidationError(_('Property price must be greater than zero.'))
             if property.property_price < 0:
                 raise ValidationError(_('Property price must be positive.'))
 
@@ -243,8 +239,7 @@ class RealEstateProperty(models.Model):
             # Check investment date
             if property.property_date < property.investment_id.open_date:
                 raise ValidationError(
-                    _('Cannot change property date to %s because investment %s with open date %s is Later.'
-                        'Please update expense dates first.') % 
+                    _('Cannot change property date to %s because investment %s with open date %s is Later.') % 
                     (property.property_date, property.investment_id.name, property.investment_id.open_date))
         
             # Check expenses (only partnership expenses) whith property date
@@ -308,8 +303,8 @@ class RealEstateProperty(models.Model):
             'view_mode': 'form',
             'target': 'new',
             'context': {
-                'default_property_id': self.id,
                 'default_expense_type': 'investment',
+                'default_property_id': self.id,
             },
         }
 
@@ -341,6 +336,7 @@ class RealEstateProperty(models.Model):
         for property in self:
             if property.status == 'confirmed': continue
             restrict_sale_on_low_balance = self .env.company.restrict_sale_on_low_balance
+            print("===================restrict_sale_on_low_balance", restrict_sale_on_low_balance)
             
             if property.investment_id.total_partnerships_percentage < 100:
                 raise ValidationError(_('Cannot confirm property because investment total partnerships percentage is less than 100.'))

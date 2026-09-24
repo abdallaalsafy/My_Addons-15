@@ -36,7 +36,7 @@ class CashFlowIntoCashBox(models.TransientModel):
             })
 
         # 2. Paid Expenses (real.estate.expense)
-        paid_expenses = self.env['real.estate.expense'].search([('status', '=', 'paid')])
+        paid_expenses = self.env['real.estate.expense'].search([('status', '=', 'paid'),('paid_date', '!=', False)])
         match_paid_expenses = paid_expenses.filtered(lambda x: (not date_from or x.paid_date >= date_from) and (not date_to or x.paid_date <= date_to))
         for expense in match_paid_expenses:
             all_items.append({
@@ -53,7 +53,7 @@ class CashFlowIntoCashBox(models.TransientModel):
         conformed_properties = self.env['real.estate.property'].search([('status', '=', 'confirmed')])
         match_properties = conformed_properties.filtered(lambda x: (not date_from or x.property_date >= date_from) and (not date_to or x.property_date <= date_to))
         for prop in match_properties:
-            type_prop = 'purchased' if prop.is_purchased else 'sold'
+            type_prop = _('Purchased') if prop.is_purchased else _('Sold')
             all_items.append({
                 'date': prop.property_date,
                 'source': 'Down Payment Property',
@@ -65,17 +65,17 @@ class CashFlowIntoCashBox(models.TransientModel):
             })
 
         # 4. Paid payment installments of properties (real.estate.payment.installment)
-        paid_installments = match_properties.mapped('payment_ids').filtered(lambda x: x.status == 'paid')
+        paid_installments = match_properties.mapped('payment_ids').filtered(lambda x: x.status == 'paid' and x.paid_date)
         match_paid_installments = paid_installments.filtered(lambda x: (not date_from or x.paid_date >= date_from) and (not date_to or x.paid_date <= date_to))
         for installment in match_paid_installments:
-            type_installment = 'Purchase' if installment.is_purchased else 'Sale'
+            type_installment = _('Purchase') if installment.is_purchased else _('Sale')
             all_items.append({
                 'date': installment.paid_date,
                 'source': 'Sale Installment',
                 'source_id': installment.id,
                 'name': installment.name,
                 'transaction_type': 'Paid Installment',
-                'description': _('%s Installment paid: %s') % (type_installment,installment.name),
+                'description': _('Paid %s Installment: %s') % (type_installment,installment.name),
                 'amount': installment.amount if not installment.is_purchased else -installment.amount,
             })
 
@@ -154,10 +154,8 @@ class CashFlowIntoCashBox(models.TransientModel):
     def action_print_report(self):
         """Build ledger (if needed) and return the PDF report action for this wizard."""
         self.ensure_one()
-        # make sure lines are up-to-date
         self._build_cash_flow_into_cash_box()
-        # Use the report defined in XML to generate the PDF
-        # return self.env.ref('real_estate_partnership_management_pro.report_partner_unified_ledger_action').report_action(self)
+        return self.env.ref('real_estate_partnership_management_pro.action_report_cash_flow_into_cash_box').report_action(self)
 
 
 class CashFlowIntoCashBoxLine(models.TransientModel):

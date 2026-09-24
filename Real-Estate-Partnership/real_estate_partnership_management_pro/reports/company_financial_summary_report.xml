@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_company_financial_summary_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="real_estate_partnership_management_pro.report_company_financial_summary" t-lang="user.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+        <template id="report_company_financial_summary">
+            <t t-set="doc" t-value="doc.with_context(lang=user.partner_id.lang)"/>
+            <t t-call="web.external_layout">
+                <div class="page" style="font-family: 'Tahoma', sans-serif;">
+                    <h2 style="text-align: center; margin-bottom: 20px;">Company Financial Summary</h2>
+
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; width: 50%;"><strong>Actual Liquidity:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.actual_liquidity)"/></td>
+                            <td style="padding: 10px; border: 1px solid #ddd; width: 50%;"><strong>Period From:</strong> <span t-field="doc.date_from"/></td>
+                        </tr>
+                    </table>
+
+                    <h3>Actual Liquidity Components</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Positive Transactions:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.positive_transactions)"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Negative Transactions:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.negative_transactions)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Paid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.sales_paid_amount)"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Paid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_paid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"/>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Purchases Paid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.purchases_paid_amount)"/></td>
+                        </tr>
+                    </table>
+
+                    <h3>Investments</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Investments Count:</strong> <span t-field="doc.investments_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Total Investments Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.investments_total_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Open Investments Count:</strong> <span t-field="doc.investments_open_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Open Investments Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.investments_open_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Closed Investments Count:</strong> <span t-field="doc.investments_closed_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Closed Investments Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.investments_closed_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;" colspan="2"><span></span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Partnership Partners Count:</strong> <span t-esc="doc.Partnership_partners_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Maximum Investments Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.investments_maximum_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Total Debtor Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.partnerships_debtor_amount)"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Minimum Investment Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.investments_minimum_amount)"/></td>
+                        </tr>
+                    </table>
+
+                    <h3>Partners</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Partners Count:</strong> <span t-field="doc.partners_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Current Balance:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.partners_current_balance)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Active Partners:</strong> <span t-field="doc.partners_active_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Max Balance:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.partners_maximum_balance)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Exited Partners:</strong> <span t-field="doc.partners_exited_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Min Balance:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.partners_minimum_balance)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Debtor Partners:</strong> <span t-field="doc.partners_debtor_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Debtor Balance:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.partners_debtor_balance)"/></td>
+                        </tr>
+                    </table>
+
+                    <h3>Purchases</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Purchase Count:</strong> <span t-field="doc.purchases_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Purchases Total Price:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.purchases_total_price)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Purchases Paid Count:</strong> <span t-esc="doc.purchases_paid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Purchases Paid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.purchases_paid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Purchases Unpaid Count:</strong> <span t-esc="doc.purchases_unpaid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Purchases Unpaid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.purchases_unpaid_amount)"/></td>
+                        </tr>
+                    </table>
+
+                    <h3>Sales</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Sales Count:</strong> <span t-field="doc.sales_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Total Price:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.sales_total_price)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Paid Count:</strong> <span t-esc="doc.sales_paid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Paid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.sales_paid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Unpaid Count:</strong> <span t-esc="doc.sales_unpaid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Unpaid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.sales_unpaid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;" colspan="2"><span> Profit/Loss </span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Total Profit:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.sales_total_profit)"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Total Net Profit:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.sales_total_net_profit)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Sales Total Management Fees:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.sales_total_management_fees)"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"></td>
+                        </tr>
+                    </table>
+
+                    <h3>Expenses</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: center;" colspan="2"><strong>All Expenses</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Expenses Count:</strong> <span t-field="doc.expenses_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Expenses Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_total_amount)"/></td>
+                        </tr>
+                         <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Expenses Paid Count:</strong> <span t-field="doc.expenses_paid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Expenses Paid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_paid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Expenses Unpaid Count:</strong> <span t-field="doc.expenses_unpaid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Expenses Unpaid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_unpaid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: center;" colspan="2"><strong>Investment Expenses Payment Status</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Count:</strong> <span t-esc="doc.expenses_investment_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_investment_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Paid Count:</strong> <span t-esc="doc.expenses_investment_paid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Paid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_investment_paid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Unpaid Count:</strong> <span t-esc="doc.expenses_investment_unpaid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Unpaid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_investment_unpaid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: center;" colspan="2"><strong>Company Expenses Payment Status</strong></td>
+                        </tr>
+                         <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Count:</strong> <span t-esc="doc.expenses_company_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_company_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Paid Count:</strong> <span t-esc="doc.expenses_company_paid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Paid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_company_paid_amount)"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Unpaid Count:</strong> <span t-esc="doc.expenses_company_unpaid_count"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Expenses Unpaid Amount:</strong> <span t-esc="doc.company_currency.name"/> <span t-esc="'{:,.2f}'.format(doc.expenses_company_unpaid_amount)"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <record id="action_report_company_financial_summary" model="ir.actions.report">
+            <field name="name">Company Financial Summary Report</field>
+            <field name="model">company.financial.summary</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management_pro.report_company_financial_summary_document</field>
+            <field name="report_file">real_estate_partnership_management_pro.report_company_financial_summary_document</field>
+            <field name="print_report_name">'Company Financial Summary'</field>
+        </record>
+    </data>
+</odoo>
