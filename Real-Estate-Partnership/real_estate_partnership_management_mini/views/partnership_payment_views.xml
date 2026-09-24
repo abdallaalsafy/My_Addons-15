@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- partnership Payment Search View -->
+        <record id="view_partnership_payment_search" model="ir.ui.view">
+            <field name="name">real.estate.partnership.payment.search</field>
+            <field name="model">real.estate.partnership.payment</field>
+            <field name="arch" type="xml">
+                <search string="Partnership Payments">
+                    <field name="name"/>
+                    <field name="partnership_id"/>
+                    <field name="partner_id" string="Partner" filter_domain="[('partnership_id.partner_id', 'ilike', self)]"/>
+                    <field name="payment_date"/>
+                    <field name="investment_id"/>
+                    <separator/>
+                    <filter string="This Month" name="this_month" domain="[('payment_date', '>=', (context_today() - relativedelta(days=30)).strftime('%Y-%m-%d')), ('payment_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                    <filter string="This Year" name="this_year" domain="[('payment_date', '>=', (context_today() - relativedelta(days=365)).strftime('%Y-%m-%d')), ('payment_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                    
+                    <group expand="0" string="Group By">
+                        <filter string="Partnership" name="group_partnership" context="{'group_by': 'partnership_id'}"/>
+                        <filter string="Partner" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Payment Date" name="group_payment_date" context="{'group_by': 'payment_date'}"/>
+                        <filter string="Investment" name="group_investment" context="{'group_by': 'investment_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- partnership Payment Tree View -->
+        <record id="view_partnership_payment_tree" model="ir.ui.view">
+            <field name="name">real.estate.partnership.payment.tree</field>
+            <field name="model">real.estate.partnership.payment</field>
+            <field name="arch" type="xml">
+                <tree string="Partnership Payments">
+                    <field name="company_currency" invisible="1"/>
+                    <field name="name"/>
+                    <field name="partnership_id"/>
+                    <field name="partner_id"/>
+                    <field name="amount" sum="Total Amount"/>
+                    <field name="payment_date"/>
+                    <field name="auto_create_transaction"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- partnership Payment Form View -->
+        <record id="view_partnership_payment_form" model="ir.ui.view">
+            <field name="name">real.estate.partnership.payment.form</field>
+            <field name="model">real.estate.partnership.payment</field>
+            <field name="arch" type="xml">
+                <form string="Partnership Payments">
+                    <field name="company_currency" invisible="1"/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="partnership_id" readonly="context.get('default_partnership_id')"/>
+                                <field name="partner_id"/>
+                                <field name="amount"/>
+                                <field name="payment_date"/>
+                                <field name="auto_create_transaction"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="notes" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- partnership Payment Action -->
+        <record id="action_partnership_payment" model="ir.actions.act_window">
+            <field name="name">Partnership Payments</field>
+            <field name="res_model">real.estate.partnership.payment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first partnership payment installment
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

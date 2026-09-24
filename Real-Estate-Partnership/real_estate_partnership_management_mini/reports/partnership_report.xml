@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_real_estate_partnership_details_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="real_estate_partnership_management_mini.report_real_estate_partnership_details" t-lang="user.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_real_estate_partnership_details">
+            <t t-set="doc" t-value="doc.with_context(lang=user.partner_id.lang)"/>
+            <t t-call="web.external_layout">
+                <div class="page" style="font-family: 'Tahoma', sans-serif;">
+                    <h2 style="text-align: center; margin-bottom: 20px;">Partnership Detailed Report</h2>
+
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Partnership Reference:</strong> <span t-field="doc.name"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Partner:</strong> <span t-field="doc.partner_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Investment:</strong> <span t-field="doc.investment_id.name"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Investment Method:</strong> <span t-field="doc.investment_method"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Partnership Date:</strong> <span t-field="doc.partnership_date"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Status:</strong> <span t-field="doc.status"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Percentage:</strong> <span t-field="doc.percentage"/> %</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Investment Total Cost:</strong> <span t-esc="'{:,.2f}'.format(doc.total_cost)"/> <span t-esc="doc.company_currency.name"/></td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top: 20px;">Financial Summary</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Total Amount:</strong> <span t-esc="'{:,.2f}'.format(doc.amount)"/> <span t-esc="doc.company_currency.name"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd; width: 50%;"><strong>Total Payment:</strong> <span t-esc="'{:,.2f}'.format(doc.down_payment)"/> <span t-esc="doc.company_currency.name"/></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Remaining Amount:</strong> <span t-esc="'{:,.2f}'.format(doc.remaining_amount)"/> <span t-esc="doc.company_currency.name"/></td>
+                            <td style="padding: 8px; border: 1px solid #ddd;"></td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top: 20px;">Payment Installments</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <thead>
+                            <tr style="background-color: #f2f2f2;">
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Payment Reference</th>
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Date</th>
+                                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.payment_line_ids" t-as="payment">
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="payment.name"/></td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"><span t-field="payment.payment_date"/></td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"> <span t-esc="'{:,.2f}'.format(payment.amount)"/> <span t-esc="doc.company_currency.name"/></td>
+                                </tr>
+                            </t>
+                            <t t-if="not doc.payment_line_ids">
+                                <tr>
+                                    <td colspan="4" style="padding: 10px; border: 1px solid #ddd; text-align: center;">No payment installments recorded.</td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <h3 style="margin-top: 20px;">Notes</h3>
+                    <p style="padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9; min-height: 60px;">
+                        <span t-if="doc.notes" t-field="doc.notes"/>
+                        <span t-if="not doc.notes">No notes available.</span>
+                    </p>
+                </div>
+            </t>
+        </template>
+
+        <record id="action_report_real_estate_partnership_details" model="ir.actions.report">
+            <field name="name">Partnership Detailed Report</field>
+            <field name="model">real.estate.partnership</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">real_estate_partnership_management_mini.report_real_estate_partnership_details_document</field>
+            <field name="report_file">real_estate_partnership_management_mini.report_real_estate_partnership_details_document</field>
+            <field name="print_report_name">'Partnership Report - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_real_estate_partnership"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
