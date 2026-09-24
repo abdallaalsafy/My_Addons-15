@@ -36,7 +36,6 @@ This module helps manage:
         'wizards/views/company_financial_summary_views.xml',
 
         'views/res_partner_views.xml',
-        'views/city_views.xml',
         'views/property_views.xml',
         'views/investment_views.xml',
         'views/partnership_views.xml',
@@ -47,6 +46,7 @@ This module helps manage:
         'views/transaction_views.xml',
         'views/company_settings_views.xml',
         'views/payment_installment_views.xml',
+        'views/city_views.xml',
 
         'reports/property_report.xml',
         'reports/investment_report.xml',

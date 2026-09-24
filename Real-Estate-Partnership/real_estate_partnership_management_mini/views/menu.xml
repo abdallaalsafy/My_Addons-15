@@ -7,6 +7,7 @@
         
         <!-- Partners Menu -->
         <menuitem id="menu_real_estate_contacts" name="Contacts" parent="menu_real_estate_root" sequence="10"/>
+
         <menuitem id="menu_real_estate_partner" name="Partners" parent="menu_real_estate_contacts" 
                   action="action_real_estate_partner" sequence="10"/>
         <menuitem id="menu_real_estate_buyer" name="Buyers" parent="menu_real_estate_contacts" 
@@ -15,42 +16,53 @@
                   action="action_real_estate_saller" sequence="30"/>
         <menuitem id="menu_real_estate_all_partners" name="All Contacts" parent="menu_real_estate_contacts" 
                   action="action_real_estate_all_partner" sequence="40"/>
-        <menuitem id="menu_real_estate_transactions" name="Transactions" parent="menu_real_estate_contacts"
-                  action="action_real_estate_transaction" sequence="50"/>
-                  
-        <!-- Partnerships Menu -->
+        
+                  <!-- =========================================================== -->
+
+        <!-- Investments Menu -->
         <menuitem id="menu_real_estate_investment" name="Investments" parent="menu_real_estate_root" sequence="20"/>
+        
         <!-- Investments & Properties -->
         <menuitem id="menu_real_estate_investments_properties" name="Investments &amp; Properties" parent="menu_real_estate_investment" sequence="10"/>
+        
         <menuitem id="menu_real_estate_property_investments" name="Investments" parent="menu_real_estate_investments_properties"
                   action="action_real_estate_investment" sequence="10"/>
         <menuitem id="menu_real_estate_purchase_property" name="Purchase Properties" parent="menu_real_estate_investments_properties" 
-                  action="action_real_estate_purchase_property" sequence="10"/>
+                  action="action_real_estate_purchase_property" sequence="20"/>
         <menuitem id="menu_real_estate_sale_property" name="Sale Properties" parent="menu_real_estate_investments_properties" 
-                  action="action_real_estate_sale_property" sequence="15"/>
-        <!-- Payments -->
+                  action="action_real_estate_sale_property" sequence="35"/>
+        
+                  <!-- Payments -->
         <menuitem id="menu_real_estate_payments" name="Payments" parent="menu_real_estate_investment" sequence="20"/>
+        
         <menuitem id="menu_purchase_payments" name="Purchase Payments" parent="menu_real_estate_payments"
                   action="action_purchase_payment_installment" sequence="10"/>
         <menuitem id="menu_sale_payments" name="Sale Payments" parent="menu_real_estate_payments"
                   action="action_sale_payment_installment" sequence="20"/>
         <menuitem id="menu_advanced_search_payments" name="Advanced Search Payments" parent="menu_real_estate_payments"
                   action="action_payment_filter_wizard" sequence="30"/>
-        <!-- Profits -->
-        <menuitem id="menu_real_estate_profits" name="Profits" parent="menu_real_estate_investment" sequence="30"/>
-        <menuitem id="menu_real_estate_property_profits" name="Property Profits" parent="menu_real_estate_profits"
-                action="action_real_estate_property_sale_lines" sequence="40"/>
         
+                  <!-- Profits -->
+        <menuitem id="menu_real_estate_profits" name="Profits" parent="menu_real_estate_investment" sequence="30"/>
+        
+        <menuitem id="menu_real_estate_property_profits" name="Property Profits" parent="menu_real_estate_profits"
+                action="action_real_estate_property_sale_lines" sequence="10"/>
+        
+                <!-- ==================================================== -->
+
         <!-- Partnership Menu -->
         <menuitem id="menu_real_estate_partnerships" name="Partnerships" parent="menu_real_estate_root" sequence="30"/>
+
         <menuitem id="menu_real_estate_partnership" name="Partnership" 
                   parent="menu_real_estate_partnerships" action="action_real_estate_partnership" sequence="10"/>
         <menuitem id="menu_real_estate_partnership_payments" name="Partnership Payments" 
                   parent="menu_real_estate_partnerships" action="action_partnership_payment" sequence="20"/>
 
-        
+        <!-- ====================================================== -->
+
         <!-- Expenses Menu -->
-        <menuitem id="menu_real_estate_expenses" name="Expenses" parent="menu_real_estate_root" sequence="15"/>
+        <menuitem id="menu_real_estate_expenses" name="Expenses" parent="menu_real_estate_root" sequence="40"/>
+        
         <menuitem id="menu_real_estate_expense_investments" name="Investments Expenses" parent="menu_real_estate_expenses"
                   action="action_real_estate_investment_expense" sequence="10"/>
         <menuitem id="menu_real_estate_property_expenses" name="Property Expenses" parent="menu_real_estate_expenses"
@@ -58,15 +70,19 @@
         <menuitem id="menu_real_estate_company_expenses" name="Company Expenses" parent="menu_real_estate_expenses" 
                   action="action_company_expense" sequence="30"/>
         <menuitem id="menu_real_estate_all_expenses" name="All Expenses" parent="menu_real_estate_expenses" 
-                  action="action_all_expense" sequence="30"/>
+                  action="action_all_expense" sequence="40"/>
 
-
+<!-- =============================================================== -->
 
         <!-- Financial Menu -->
-        <menuitem id="menu_real_estate_financial" name="Financial" parent="menu_real_estate_root" sequence="40"/>
+        <menuitem id="menu_real_estate_financial" name="Financial" parent="menu_real_estate_root" sequence="50"/>
 
-        <!-- Reports Menu (for future implementation) -->
-        <menuitem id="menu_real_estate_reports" name="Reports" parent="menu_real_estate_financial" sequence="60"/>
+        <menuitem id="menu_real_estate_transactions" name="Transactions" parent="menu_real_estate_financial"
+                  action="action_real_estate_transaction" sequence="10"/>
+
+        <!-- Reports -->
+        <menuitem id="menu_real_estate_reports" name="Reports" parent="menu_real_estate_financial" sequence="20"/>
+
         <menuitem id="menu_management_fee_summary" name="Management Fees Summary" parent="menu_real_estate_reports"
                   action="action_real_estate_load_management_fees" sequence="10"/>
         <menuitem id="menu_company_financial_summary" name="Company Financial Summary" parent="menu_real_estate_reports"
@@ -76,8 +92,9 @@
 
 
         <!-- Configuration Menu for Real Estate Manager -->
-        <menuitem id="menu_real_estate_configuration" name="Configuration" parent="menu_real_estate_root" sequence="80"
+        <menuitem id="menu_real_estate_configuration" name="Configuration" parent="menu_real_estate_root" sequence="60"
                   groups="real_estate_partnership_management_mini.group_real_estate_manager"/>
+
         <menuitem id="menu_real_estate_general_settings" name="Settings" parent="menu_real_estate_configuration"
             sequence="0" action="action_real_estate_configuration" groups="base.group_system"/>
         <menuitem id="menu_real_estate_company_settings" name="Company" parent="menu_real_estate_configuration"
