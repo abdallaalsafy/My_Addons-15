@@ -9,7 +9,7 @@ class RealEstatePartner(models.Model):
     _inherit = 'res.partner'
 
 
-    code = fields.Char(string='Code', required=True, copy=False, default=lambda self: _('New'))
+    code = fields.Char(string='Code', required=True, copy=False, default=lambda self:'New')
     national_id = fields.Char(string='National ID', tracking=True)
     nickname = fields.Char(string='Nickname', tracking=True)
 

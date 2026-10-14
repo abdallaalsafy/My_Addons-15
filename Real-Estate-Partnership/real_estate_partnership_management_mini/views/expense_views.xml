@@ -50,8 +50,8 @@
                     <field name="code"/>
                     <field name="name"/>
                     <field name="expense_type" attrs="{'column_invisible': True}"/>
-                    <field name="property_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
-                    <field name="investment_id" attrs="{'column_invisible': [('expense_type', '=', 'company')]}"/>
+                    <field name="property_id" invisible="context.get('default_expense_type') == 'company' or context.get('expenses_investments') or bool(context.get('default_investment_id'))"/>
+                    <field name="investment_id" invisible="context.get('default_expense_type') == 'company' or context.get('expenses_properties') or bool(context.get('default_property_id'))"/>
                     <field name="category_id"/>
                     <field name="amount" sum="Total Amount"/>
                     <field name="expense_date"/>

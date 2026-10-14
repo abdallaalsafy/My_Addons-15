@@ -405,7 +405,8 @@ class RealEstateInvestment(models.Model):
                     'percentage': partnership.percentage if partnership.investment_method == 'percentage' else 0.0,
                     'payment_line_ids':[(0, 0, {
                     'payment_date': fields.Date.today(),
-                    'amount': amount,    
+                    'amount': amount,
+                    'auto_create_transaction': False,    
                     })],
                 })
             self.env['real.estate.partnership'].create(records)
