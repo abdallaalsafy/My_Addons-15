@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="city_cairo_demo" model="real.estate.city">
+            <field name="name">Cairo</field>
+        </record>
+
+        <record id="city_giza_demo" model="real.estate.city">
+            <field name="name">Giza</field>
+        </record>
+    </data>
+</odoo>

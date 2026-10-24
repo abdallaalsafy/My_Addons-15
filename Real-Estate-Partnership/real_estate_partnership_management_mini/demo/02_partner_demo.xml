@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="partner_ahmed_hassan_demo" model="res.partner">
+            <field name="name">Ahmed Hassan</field>
+            <field name="code">REP00001</field>
+            <field name="national_id">30101010101010</field>
+            <field name="nickname">Ahmed</field>
+            <field name="join_date">2025-12-20</field>
+            <field name="status">active</field>
+            <field name="email">ahmed.hassan@example.com</field>
+            <field name="phone">01000000001</field>
+        </record>
+
+        <record id="partner_sara_ibrahim_demo" model="res.partner">
+            <field name="name">Sara Ibrahim</field>
+            <field name="code">REP00002</field>
+            <field name="national_id">30202020202020</field>
+            <field name="nickname">Sara</field>
+            <field name="join_date">2025-12-25</field>
+            <field name="status">active</field>
+            <field name="email">sara.ibrahim@example.com</field>
+            <field name="phone">01000000002</field>
+        </record>
+
+        <record id="partner_omar_nabil_demo" model="res.partner">
+            <field name="name">Omar Nabil</field>
+            <field name="code">REP00003</field>
+            <field name="national_id">30303030303030</field>
+            <field name="nickname">Omar</field>
+            <field name="join_date">2025-12-28</field>
+            <field name="status">active</field>
+            <field name="email">omar.nabil@example.com</field>
+            <field name="phone">01000000003</field>
+        </record>
+
+        <record id="partner_mona_saleh_demo" model="res.partner">
+            <field name="name">Mona Saleh</field>
+            <field name="code">REP00004</field>
+            <field name="national_id">30404040404040</field>
+            <field name="nickname">Mona</field>
+            <field name="join_date">2025-12-30</field>
+            <field name="status">active</field>
+            <field name="email">mona.saleh@example.com</field>
+            <field name="phone">01000000004</field>
+        </record>
+
+        <record id="partner_khaled_mostafa_demo" model="res.partner">
+            <field name="name">Khaled Mostafa</field>
+            <field name="code">REP00005</field>
+            <field name="national_id">30505050505050</field>
+            <field name="nickname">Khaled</field>
+            <field name="join_date">2026-01-05</field>
+            <field name="status">active</field>
+            <field name="email">khaled.mostafa@example.com</field>
+            <field name="phone">01000000005</field>
+        </record>
+
+        <record id="partner_mai_ali_demo" model="res.partner">
+            <field name="name">Mai Ali</field>
+            <field name="code">REP00006</field>
+            <field name="national_id">30606060606060</field>
+            <field name="nickname">Mai</field>
+            <field name="join_date">2026-01-15</field>
+            <field name="status">active</field>
+            <field name="email">mai.ali@example.com</field>
+            <field name="phone">01000000006</field>
+        </record>
+
+        <record id="partner_youssef_adel_demo" model="res.partner">
+            <field name="name">Youssef Adel</field>
+            <field name="code">REP00007</field>
+            <field name="national_id">30707070707070</field>
+            <field name="nickname">Youssef</field>
+            <field name="join_date">2026-01-20</field>
+            <field name="status">active</field>
+            <field name="email">youssef.adel@example.com</field>
+            <field name="phone">01000000007</field>
+        </record>
+
+        <record id="partner_noor_hatem_demo" model="res.partner">
+            <field name="name">Noor Hatem</field>
+            <field name="code">REP00008</field>
+            <field name="national_id">30808080808080</field>
+            <field name="nickname">Noor</field>
+            <field name="join_date">2026-02-01</field>
+            <field name="status">active</field>
+            <field name="email">noor.hatem@example.com</field>
+            <field name="phone">01000000008</field>
+        </record>
+    </data>
+</odoo>

@@ -155,44 +155,44 @@ export class RealEstateDashboard extends Component {
         const inst = this.state.data.installments;
         return [
             {
-                key: "liquidity", color: PALETTE[1], label: tr("Actual Liquidity"),
+                key: "liquidity", color: PALETTE[1], label: tr(_t("Actual Liquidity")),
                 value: this.fmt(k.actual_liquidity),
-                sub: [tr("Deposits") + ": " + this.fmt(k.positive_transactions), tr("Withdrawals") + ": " + this.fmt(k.negative_transactions)],
+                sub: [tr(_t("Deposits")) + ": " + this.fmt(k.positive_transactions), tr(_t("Withdrawals")) + ": " + this.fmt(k.negative_transactions)],
             },
             {
-                key: "investments", color: PALETTE[0], label: tr("Open Investments"),
+                key: "investments", color: PALETTE[0], label: tr(_t("Open Investments")),
                 value: this.count(k.investments_open_count),
-                sub: [tr("Total investments") + ": " + this.count(k.investments_count), tr("Open amount") + ": " + this.fmt(k.investments_open_amount)],
+                sub: [tr(_t("Total investments")) + ": " + this.count(k.investments_count), tr(_t("Open amount")) + ": " + this.fmt(k.investments_open_amount)],
             },
             {
-                key: "partners", color: PALETTE[3], label: tr("Partners Balance"),
+                key: "partners", color: PALETTE[3], label: tr(_t("Partners Balance")),
                 value: this.fmt(k.partners_current_balance),
-                sub: [tr("Active partners") + ": " + this.count(k.partners_active_count), tr("Debtor partners") + ": " + this.count(k.partners_debtor_count)],
+                sub: [tr(_t("Active partners")) + ": " + this.count(k.partners_active_count), tr(_t("Debtor partners")) + ": " + this.count(k.partners_debtor_count)],
             },
             {
-                key: "purchases", color: PALETTE[2], label: tr("Purchases"),
+                key: "purchases", color: PALETTE[2], label: tr(_t("Purchases")),
                 value: this.fmt(k.purchases_total_price),
-                sub: [tr("Count") + ": " + this.count(k.purchases_count), tr("Unpaid") + ": " + this.fmt(k.purchases_unpaid_amount)],
+                sub: [tr(_t("Count")) + ": " + this.count(k.purchases_count), tr(_t("Unpaid")) + ": " + this.fmt(k.purchases_unpaid_amount)],
             },
             {
-                key: "sales", color: PALETTE[4], label: tr("Sales"),
+                key: "sales", color: PALETTE[4], label: tr(_t("Sales")),
                 value: this.fmt(k.sales_total_price),
-                sub: [tr("Count") + ": " + this.count(k.sales_count), tr("Unpaid") + ": " + this.fmt(k.sales_unpaid_amount)],
+                sub: [tr(_t("Count")) + ": " + this.count(k.sales_count), tr(_t("Unpaid")) + ": " + this.fmt(k.sales_unpaid_amount)],
             },
             {
-                key: "profit", color: PALETTE[5], label: tr("Net Profit"),
+                key: "profit", color: PALETTE[5], label: tr(_t("Net Profit")),
                 value: this.fmt(k.sales_total_net_profit),
-                sub: [tr("Total profit") + ": " + this.fmt(k.sales_total_profit), tr("Management fees") + ": " + this.fmt(k.sales_total_management_fees)],
+                sub: [tr(_t("Total profit")) + ": " + this.fmt(k.sales_total_profit), tr(_t("Management fees")) + ": " + this.fmt(k.sales_total_management_fees)],
             },
             {
-                key: "expenses", color: PALETTE[6], label: tr("Expenses"),
+                key: "expenses", color: PALETTE[6], label: tr(_t("Expenses")),
                 value: this.fmt(k.expenses_total_amount),
-                sub: [tr("Investments") + ": " + this.fmt(k.expenses_investment_amount), tr("Company") + ": " + this.fmt(k.expenses_company_amount)],
+                sub: [tr(_t("Investments")) + ": " + this.fmt(k.expenses_investment_amount), tr(_t("Company")) + ": " + this.fmt(k.expenses_company_amount)],
             },
             {
-                key: "overdue", color: PALETTE[7], label: tr("Overdue Installments"),
+                key: "overdue", color: PALETTE[7], label: tr(_t("Overdue Installments")),
                 value: this.count(inst.overdue_count),
-                sub: [tr("To collect") + ": " + this.fmt(inst.overdue_receivable), tr("To pay") + ": " + this.fmt(inst.overdue_payable)],
+                sub: [tr(_t("To collect")) + ": " + this.fmt(inst.overdue_receivable), tr(_t("To pay")) + ": " + this.fmt(inst.overdue_payable)],
             },
         ];
     }
@@ -201,10 +201,10 @@ export class RealEstateDashboard extends Component {
         const a = this.state.data.alerts;
         const inst = this.state.data.installments;
         return [
-            { key: "ready_to_close", label: tr("Investments ready to close"), ids: a.ready_to_close, model: "real.estate.investment" },
-            { key: "restructure_ready", label: tr("Ready for restructuring"), ids: a.restructure_ready, model: "real.estate.investment" },
-            { key: "incomplete_partnerships", label: tr("Partnerships below 100%"), ids: a.incomplete_partnerships, model: "real.estate.investment" },
-            { key: "overdue_installments", label: tr("Overdue installments"), ids: inst.overdue_ids, model: "real.estate.payment.installment" },
+            { key: "ready_to_close", label: tr(_t("Investments ready to close")), ids: a.ready_to_close, model: "real.estate.investment" },
+            { key: "restructure_ready", label: tr(_t("Ready for restructuring")), ids: a.restructure_ready, model: "real.estate.investment" },
+            { key: "incomplete_partnerships", label: tr(_t("Partnerships below 100%")), ids: a.incomplete_partnerships, model: "real.estate.investment" },
+            { key: "overdue_installments", label: tr(_t("Overdue installments")), ids: inst.overdue_ids, model: "real.estate.payment.installment" },
         ];
     }
 
@@ -225,12 +225,12 @@ export class RealEstateDashboard extends Component {
     openCard(ev) {
         const key = ev.currentTarget.dataset.key;
         const map = {
-            investments: [tr("Investments"), "real.estate.investment", [["status", "=", "opening"]]],
-            partners: [tr("Partners"), "res.partner", [["is_partner", "=", true]]],
-            purchases: [tr("Purchase Properties"), "real.estate.property", [["is_purchased", "=", true]]],
-            sales: [tr("Sale Properties"), "real.estate.property", [["is_purchased", "=", false]]],
-            expenses: [tr("Expenses"), "real.estate.expense", []],
-            overdue: [tr("Overdue installments"), "real.estate.payment.installment", [["id", "in", this.state.data.installments.overdue_ids]]],
+            investments: [tr(_t("Investments")), "real.estate.investment", [["status", "=", "opening"]]],
+            partners: [tr(_t("Partners")), "res.partner", [["is_partner", "=", true]]],
+            purchases: [tr(_t("Purchase Properties")), "real.estate.property", [["is_purchased", "=", true]]],
+            sales: [tr(_t("Sale Properties")), "real.estate.property", [["is_purchased", "=", false]]],
+            expenses: [tr(_t("Expenses")), "real.estate.expense", []],
+            overdue: [tr(_t("Overdue installments")), "real.estate.payment.installment", [["id", "in", this.state.data.installments.overdue_ids]]],
         };
         if (map[key]) {
             this.openList(map[key][0], map[key][1], map[key][2]);
@@ -290,16 +290,16 @@ export class RealEstateDashboard extends Component {
         const d = this.state.data;
         const months = this.monthLabels();
         this.makeChart("trade", "bar", months, [
-            this.solid(tr("Purchases"), d.monthly.purchases, PALETTE[2]),
-            this.solid(tr("Sales"), d.monthly.sales, PALETTE[1]),
+            this.solid(tr(_t("Purchases")), d.monthly.purchases, PALETTE[2]),
+            this.solid(tr(_t("Sales")), d.monthly.sales, PALETTE[1]),
         ]);
         this.makeChart("profit", "line", months, [
-            { label: tr("Net profit"), data: d.monthly.profits, borderColor: PALETTE[1], backgroundColor: PALETTE[1], fill: false },
-            { label: tr("Expenses"), data: d.monthly.expenses, borderColor: PALETTE[4], backgroundColor: PALETTE[4], fill: false },
+            { label: tr(_t("Net profit")), data: d.monthly.profits, borderColor: PALETTE[1], backgroundColor: PALETTE[1], fill: false },
+            { label: tr(_t("Expenses")), data: d.monthly.expenses, borderColor: PALETTE[4], backgroundColor: PALETTE[4], fill: false },
         ]);
         this.makeChart("cash", "bar", months, [
-            this.solid(tr("Deposits"), d.monthly.deposits, PALETTE[3]),
-            this.solid(tr("Withdrawals"), d.monthly.withdrawals, PALETTE[4]),
+            this.solid(tr(_t("Deposits")), d.monthly.deposits, PALETTE[3]),
+            this.solid(tr(_t("Withdrawals")), d.monthly.withdrawals, PALETTE[4]),
         ]);
         this.makeChart("category", "doughnut", d.category_chart.labels, [
             { data: d.category_chart.values, backgroundColor: PALETTE },
@@ -311,12 +311,12 @@ export class RealEstateDashboard extends Component {
             { data: d.type_chart.values, backgroundColor: PALETTE },
         ]);
         this.makeChart("area", "bar", d.area_chart.labels, [
-            this.solid(tr("Sold area"), d.area_chart.sold, PALETTE[1]),
-            this.solid(tr("Remaining area"), d.area_chart.remaining, PALETTE[2]),
+            this.solid(tr(_t("Sold area")), d.area_chart.sold, PALETTE[1]),
+            this.solid(tr(_t("Remaining area")), d.area_chart.remaining, PALETTE[2]),
         ]);
         this.makeChart("partners", "bar", d.partners_chart.labels, [
-            this.solid(tr("Current balance"), d.partners_chart.current, PALETTE[0]),
-            this.solid(tr("Actual balance"), d.partners_chart.actual, PALETTE[3]),
+            this.solid(tr(_t("Current balance")), d.partners_chart.current, PALETTE[0]),
+            this.solid(tr(_t("Actual balance")), d.partners_chart.actual, PALETTE[3]),
         ]);
     }
 }

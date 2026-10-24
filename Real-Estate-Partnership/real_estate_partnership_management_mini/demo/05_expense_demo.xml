@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="expense_cairo_heights_renovation_demo" model="real.estate.expense">
+            <field name="name">Main entrance renovation</field>
+            <field name="expense_type">investment</field>
+            <field name="status">paid</field>
+            <field name="amount">12000.0</field>
+            <field name="expense_date">2026-01-22</field>
+            <field name="investment_id" ref="investment_cairo_heights_demo"/>
+            <field name="category_id" ref="expense_category_renovation"/>
+            <field name="payment_method">bank</field>
+            <field name="payment_reference">BANK-REN-001</field>
+        </record>
+
+        <record id="expense_cairo_heights_maintenance_demo" model="real.estate.expense">
+            <field name="name">Building maintenance and cleaning</field>
+            <field name="expense_type">investment</field>
+            <field name="status">confirmed</field>
+            <field name="amount">8500.0</field>
+            <field name="expense_date">2026-02-05</field>
+            <field name="investment_id" ref="investment_cairo_heights_demo"/>
+            <field name="category_id" ref="expense_category_maintenance"/>
+            <field name="payment_method">cash</field>
+        </record>
+
+        <record id="expense_alexandria_marina_landscaping_demo" model="real.estate.expense">
+            <field name="name">Landscaping and outdoor works</field>
+            <field name="expense_type">investment</field>
+            <field name="status">paid</field>
+            <field name="amount">20000.0</field>
+            <field name="expense_date">2026-02-22</field>
+            <field name="investment_id" ref="investment_alexandria_marina_demo"/>
+            <field name="category_id" ref="expense_category_renovation"/>
+            <field name="payment_method">bank</field>
+            <field name="payment_reference">ALEX-LAND-002</field>
+        </record>
+
+        <record id="expense_alexandria_marina_taxes_demo" model="real.estate.expense">
+            <field name="name">Municipality taxes and permits</field>
+            <field name="expense_type">investment</field>
+            <field name="status">confirmed</field>
+            <field name="amount">13500.0</field>
+            <field name="expense_date">2026-03-07</field>
+            <field name="investment_id" ref="investment_alexandria_marina_demo"/>
+            <field name="category_id" ref="expense_category_taxes"/>
+            <field name="payment_method">bank</field>
+            <field name="payment_reference">ALEX-TAX-003</field>
+        </record>
+
+        <record id="expense_giza_plaza_legal_demo" model="real.estate.expense">
+            <field name="name">Legal consultation and registration</field>
+            <field name="expense_type">investment</field>
+            <field name="status">paid</field>
+            <field name="amount">18000.0</field>
+            <field name="expense_date">2026-03-18</field>
+            <field name="investment_id" ref="investment_giza_plaza_demo"/>
+            <field name="category_id" ref="expense_category_legal"/>
+            <field name="payment_method">bank</field>
+            <field name="payment_reference">GIZA-LEGAL-010</field>
+        </record>
+
+        <record id="expense_giza_plaza_management_demo" model="real.estate.expense">
+            <field name="name">Management and admin fees</field>
+            <field name="expense_type">investment</field>
+            <field name="status">confirmed</field>
+            <field name="amount">9500.0</field>
+            <field name="expense_date">2026-04-02</field>
+            <field name="investment_id" ref="investment_giza_plaza_demo"/>
+            <field name="category_id" ref="expense_category_management"/>
+            <field name="payment_method">cash</field>
+        </record>
+
+        <record id="expense_company_rent_demo" model="real.estate.expense">
+            <field name="name">Office rent and utilities</field>
+            <field name="expense_type">company</field>
+            <field name="status">paid</field>
+            <field name="amount">18000.0</field>
+            <field name="expense_date">2026-03-15</field>
+            <field name="category_id" ref="expense_category_management"/>
+            <field name="paid_date">2026-03-15</field>
+            <field name="payment_method">bank</field>
+            <field name="payment_reference">COMP-REN-201</field>
+            <field name="notes">Monthly office rent and general utilities for the company headquarters.</field>
+        </record>
+
+        <record id="expense_company_marketing_demo" model="real.estate.expense">
+            <field name="name">Marketing and digital campaign</field>
+            <field name="expense_type">company</field>
+            <field name="status">paid</field>
+            <field name="amount">12500.0</field>
+            <field name="expense_date">2026-04-11</field>
+            <field name="category_id" ref="expense_category_management"/>
+            <field name="paid_date">2026-04-11</field>
+            <field name="payment_method">bank</field>
+            <field name="payment_reference">COMP-MKT-202</field>
+            <field name="notes">Campaign costs for new property acquisition and partner acquisition.</field>
+        </record>
+
+        <record id="expense_company_insurance_demo" model="real.estate.expense">
+            <field name="name">Company insurance and licenses</field>
+            <field name="expense_type">company</field>
+            <field name="status">confirmed</field>
+            <field name="amount">9600.0</field>
+            <field name="expense_date">2026-05-22</field>
+            <field name="category_id" ref="expense_category_taxes"/>
+            <field name="payment_method">bank</field>
+            <field name="payment_reference">COMP-INS-303</field>
+            <field name="notes">Annual insurance and municipal license payments.</field>
+        </record>
+
+        <record id="expense_company_software_demo" model="real.estate.expense">
+            <field name="name">Software and subscription services</field>
+            <field name="expense_type">company</field>
+            <field name="status">paid</field>
+            <field name="amount">4200.0</field>
+            <field name="expense_date">2026-07-03</field>
+            <field name="category_id" ref="expense_category_management"/>
+            <field name="paid_date">2026-07-03</field>
+            <field name="payment_method">bank</field>
+            <field name="payment_reference">COMP-IT-404</field>
+            <field name="notes">Cloud services, account software, and office subscriptions.</field>
+        </record>
+    </data>
+</odoo>

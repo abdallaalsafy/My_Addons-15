@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="partnership_ahmed_cairo_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_ahmed_hassan_demo"/>
+            <field name="investment_id" ref="investment_cairo_heights_demo"/>
+            <field name="partnership_date">2026-01-12</field>
+            <field name="percentage">35.0</field>
+            <field name="notes">Residential apartment partnership share.</field>
+        </record>
+
+        <record id="partnership_sara_cairo_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_sara_ibrahim_demo"/>
+            <field name="investment_id" ref="investment_cairo_heights_demo"/>
+            <field name="partnership_date">2026-01-16</field>
+            <field name="percentage">35.0</field>
+            <field name="notes">Second strong investor in the apartment project.</field>
+        </record>
+
+        <record id="partnership_omar_cairo_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_omar_nabil_demo"/>
+            <field name="investment_id" ref="investment_cairo_heights_demo"/>
+            <field name="partnership_date">2026-01-18</field>
+            <field name="percentage">30.0</field>
+            <field name="notes">Balanced partnership share to complete the capital structure.</field>
+        </record>
+
+        <record id="partnership_mona_alex_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_mona_saleh_demo"/>
+            <field name="investment_id" ref="investment_alexandria_marina_demo"/>
+            <field name="partnership_date">2026-02-05</field>
+            <field name="percentage">40.0</field>
+            <field name="notes">Coastal villa partnership share.</field>
+        </record>
+
+        <record id="partnership_khaled_alex_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_khaled_mostafa_demo"/>
+            <field name="investment_id" ref="investment_alexandria_marina_demo"/>
+            <field name="partnership_date">2026-02-07</field>
+            <field name="percentage">35.0</field>
+            <field name="notes">Second villa investor under the Marina concept.</field>
+        </record>
+
+        <record id="partnership_mai_alex_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_mai_ali_demo"/>
+            <field name="investment_id" ref="investment_alexandria_marina_demo"/>
+            <field name="partnership_date">2026-02-12</field>
+            <field name="percentage">25.0</field>
+            <field name="notes">Minority partner for diversified structure.</field>
+        </record>
+
+        <record id="partnership_sara_giza_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_sara_ibrahim_demo"/>
+            <field name="investment_id" ref="investment_giza_plaza_demo"/>
+            <field name="partnership_date">2026-03-20</field>
+            <field name="percentage">45.0</field>
+            <field name="notes">Commercial center partnership with significant capital share.</field>
+        </record>
+
+        <record id="partnership_noor_giza_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_noor_hatem_demo"/>
+            <field name="investment_id" ref="investment_giza_plaza_demo"/>
+            <field name="partnership_date">2026-03-22</field>
+            <field name="percentage">35.0</field>
+            <field name="notes">Commercial unit partnership for retail and office spaces.</field>
+        </record>
+
+        <record id="partnership_ahmed_giza_demo" model="real.estate.partnership">
+            <field name="partner_id" ref="partner_ahmed_hassan_demo"/>
+            <field name="investment_id" ref="investment_giza_plaza_demo"/>
+            <field name="partnership_date">2026-03-25</field>
+            <field name="percentage">20.0</field>
+            <field name="notes">Supporting partner in the mixed-use development portfolio.</field>
+        </record>
+    </data>
+</odoo>

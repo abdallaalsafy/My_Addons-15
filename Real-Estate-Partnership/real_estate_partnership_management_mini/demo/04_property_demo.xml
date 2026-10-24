@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="property_cairo_unit_101_demo" model="real.estate.property">
+            <field name="name">Cairo Heights Unit 101</field>
+            <field name="investment_id" ref="investment_cairo_heights_demo"/>
+            <field name="status">confirmed</field>
+            <field name="is_purchased">True</field>
+            <field name="property_date">2026-01-20</field>
+            <field name="contact_id" ref="partner_mona_saleh_demo"/>
+            <field name="company_currency" ref="base.USD"/>
+            <field name="total_area">180.0</field>
+            <field name="built_area">150.0</field>
+            <field name="number_of_floors">1</field>
+            <field name="total_rooms">4</field>
+            <field name="bedrooms">2</field>
+            <field name="bathrooms">2</field>
+            <field name="kitchens">1</field>
+            <field name="living_rooms">1</field>
+            <field name="property_price">950000.0</field>
+            <field name="down_payment">150000.0</field>
+            <field name="payment_method">cash</field>
+            <field name="description">Purchased apartment used as demo for the investment portfolio.</field>
+        </record>
+
+        <record id="property_cairo_unit_202_demo" model="real.estate.property">
+            <field name="name">Cairo Heights Unit 202</field>
+            <field name="investment_id" ref="investment_cairo_heights_demo"/>
+            <field name="status">confirmed</field>
+            <field name="is_purchased">True</field>
+            <field name="property_date">2026-02-10</field>
+            <field name="contact_id" ref="partner_ahmed_hassan_demo"/>
+            <field name="company_currency" ref="base.USD"/>
+            <field name="total_area">200.0</field>
+            <field name="built_area">170.0</field>
+            <field name="number_of_floors">1</field>
+            <field name="total_rooms">5</field>
+            <field name="bedrooms">3</field>
+            <field name="bathrooms">2</field>
+            <field name="kitchens">1</field>
+            <field name="living_rooms">1</field>
+            <field name="property_price">1100000.0</field>
+            <field name="down_payment">180000.0</field>
+            <field name="payment_method">bank</field>
+            <field name="description">Second residential unit in the same investment.</field>
+        </record>
+
+        <record id="property_alexandria_villa_1_demo" model="real.estate.property">
+            <field name="name">Alexandria Marina Villa 1</field>
+            <field name="investment_id" ref="investment_alexandria_marina_demo"/>
+            <field name="status">confirmed</field>
+            <field name="is_purchased">True</field>
+            <field name="property_date">2026-02-18</field>
+            <field name="contact_id" ref="partner_khaled_mostafa_demo"/>
+            <field name="company_currency" ref="base.USD"/>
+            <field name="total_area">420.0</field>
+            <field name="built_area">320.0</field>
+            <field name="number_of_floors">2</field>
+            <field name="total_rooms">8</field>
+            <field name="bedrooms">4</field>
+            <field name="bathrooms">3</field>
+            <field name="kitchens">2</field>
+            <field name="living_rooms">2</field>
+            <field name="property_price">1800000.0</field>
+            <field name="down_payment">250000.0</field>
+            <field name="payment_method">bank</field>
+            <field name="description">Luxury villa for the Marina investment demonstration.</field>
+        </record>
+
+        <record id="property_alexandria_villa_2_demo" model="real.estate.property">
+            <field name="name">Alexandria Marina Villa 2</field>
+            <field name="investment_id" ref="investment_alexandria_marina_demo"/>
+            <field name="status">confirmed</field>
+            <field name="is_purchased">True</field>
+            <field name="property_date">2026-03-02</field>
+            <field name="contact_id" ref="partner_youssef_adel_demo"/>
+            <field name="company_currency" ref="base.USD"/>
+            <field name="total_area">390.0</field>
+            <field name="built_area">280.0</field>
+            <field name="number_of_floors">2</field>
+            <field name="total_rooms">7</field>
+            <field name="bedrooms">3</field>
+            <field name="bathrooms">3</field>
+            <field name="kitchens">2</field>
+            <field name="living_rooms">2</field>
+            <field name="property_price">1650000.0</field>
+            <field name="down_payment">200000.0</field>
+            <field name="payment_method">cash</field>
+            <field name="description">Second seaside villa in the same portfolio.</field>
+        </record>
+
+        <record id="property_giza_plaza_shop_demo" model="real.estate.property">
+            <field name="name">Giza Plaza Retail Shop</field>
+            <field name="investment_id" ref="investment_giza_plaza_demo"/>
+            <field name="status">confirmed</field>
+            <field name="is_purchased">True</field>
+            <field name="property_date">2026-04-01</field>
+            <field name="contact_id" ref="partner_noor_hatem_demo"/>
+            <field name="company_currency" ref="base.USD"/>
+            <field name="total_area">120.0</field>
+            <field name="built_area">98.0</field>
+            <field name="number_of_floors">1</field>
+            <field name="total_rooms">3</field>
+            <field name="bedrooms">0</field>
+            <field name="bathrooms">1</field>
+            <field name="kitchens">0</field>
+            <field name="living_rooms">1</field>
+            <field name="property_price">780000.0</field>
+            <field name="down_payment">120000.0</field>
+            <field name="payment_method">bank</field>
+            <field name="description">Commercial unit in the mixed-use development project.</field>
+        </record>
+    </data>
+</odoo>

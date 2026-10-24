@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="investment_cairo_heights_demo" model="real.estate.investment">
+            <field name="name">Cairo Heights Residences</field>
+            <field name="investment_type">apartment</field>
+            <field name="investment_method">percentage</field>
+            <field name="status">opening</field>
+            <field name="open_date">2026-01-10</field>
+            <field name="area_unit">meter</field>
+            <field name="city_id" ref="city_cairo_demo"/>
+            <field name="address">Nasr City, Cairo, Egypt</field>
+            <field name="description">Residential apartment project for demo purposes.</field>
+        </record>
+
+        <record id="investment_alexandria_marina_demo" model="real.estate.investment">
+            <field name="name">Alexandria Marina Villas</field>
+            <field name="investment_type">villa</field>
+            <field name="investment_method">percentage</field>
+            <field name="status">opening</field>
+            <field name="open_date">2026-02-01</field>
+            <field name="area_unit">meter</field>
+            <field name="city_id" ref="city_giza_demo"/>
+            <field name="address">Montazah, Alexandria, Egypt</field>
+            <field name="description">Coastal luxury villa investment with multiple units.</field>
+        </record>
+
+        <record id="investment_giza_plaza_demo" model="real.estate.investment">
+            <field name="name">Giza Plaza Commercial Center</field>
+            <field name="investment_type">building</field>
+            <field name="investment_method">amount</field>
+            <field name="status">opening</field>
+            <field name="open_date">2026-03-15</field>
+            <field name="area_unit">meter</field>
+            <field name="city_id" ref="city_giza_demo"/>
+            <field name="address">Dokki, Giza, Egypt</field>
+            <field name="description">Commercial building project with a diverse capital structure.</field>
+        </record>
+    </data>
+</odoo>

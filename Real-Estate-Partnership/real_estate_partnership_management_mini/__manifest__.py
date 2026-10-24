@@ -58,6 +58,19 @@ This module helps manage:
         'views/dashboard_views.xml',
         'views/menu.xml',
     ],
+    'demo': [
+        'demo/01_city_demo.xml',
+        'demo/02_partner_demo.xml',
+        'demo/03_investment_demo.xml',
+        'demo/04_property_demo.xml',
+        'demo/05_expense_demo.xml',
+        'demo/06_partnership_demo.xml',
+        'demo/07_partnership_payment_demo.xml',
+        'demo/08_transaction_demo.xml',
+        'demo/09_sale_property_demo.xml',
+        'demo/10_payment_installment_demo.xml',
+        'demo/11_sale_line_demo.xml',
+    ],
     'assets': {
         'web.assets_backend': [
             'real_estate_partnership_management_mini/static/src/scss/dashboard.scss',

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="sale_line_cairo_sale_1_demo" model="real.estate.sale.line">
+            <field name="property_id" ref="property_cairo_sale_1_demo"/>
+            <field name="partner_id" ref="partner_ahmed_hassan_demo"/>
+            <field name="profit_amount">95000.0</field>
+        </record>
+
+        <record id="sale_line_alex_sale_1_demo" model="real.estate.sale.line">
+            <field name="property_id" ref="property_alex_sale_1_demo"/>
+            <field name="partner_id" ref="partner_omar_nabil_demo"/>
+            <field name="profit_amount">150000.0</field>
+        </record>
+
+        <record id="sale_line_giza_sale_1_demo" model="real.estate.sale.line">
+            <field name="property_id" ref="property_giza_sale_1_demo"/>
+            <field name="partner_id" ref="partner_mona_saleh_demo"/>
+            <field name="profit_amount">105000.0</field>
+        </record>
+    </data>
+</odoo>

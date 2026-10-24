@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="property_cairo_sale_1_demo" model="real.estate.property">
+            <field name="name">Cairo Heights Sale Unit A</field>
+            <field name="investment_id" ref="investment_cairo_heights_demo"/>
+            <field name="status">confirmed</field>
+            <field name="is_purchased">False</field>
+            <field name="property_date">2026-03-20</field>
+            <field name="contact_id" ref="partner_ahmed_hassan_demo"/>
+            <field name="company_currency" ref="base.USD"/>
+            <field name="total_area">165.0</field>
+            <field name="built_area">140.0</field>
+            <field name="number_of_floors">1</field>
+            <field name="total_rooms">4</field>
+            <field name="bedrooms">2</field>
+            <field name="bathrooms">2</field>
+            <field name="kitchens">1</field>
+            <field name="living_rooms">1</field>
+            <field name="property_price">1280000.0</field>
+            <field name="down_payment">260000.0</field>
+            <field name="payment_method">bank</field>
+            <field name="description">Sold residential unit demonstrating completed property sale process.</field>
+        </record>
+
+        <record id="property_alex_sale_1_demo" model="real.estate.property">
+            <field name="name">Alexandria Marina Sale Villa</field>
+            <field name="investment_id" ref="investment_alexandria_marina_demo"/>
+            <field name="status">confirmed</field>
+            <field name="is_purchased">False</field>
+            <field name="property_date">2026-04-09</field>
+            <field name="contact_id" ref="partner_omar_nabil_demo"/>
+            <field name="company_currency" ref="base.USD"/>
+            <field name="total_area">410.0</field>
+            <field name="built_area">305.0</field>
+            <field name="number_of_floors">2</field>
+            <field name="total_rooms">8</field>
+            <field name="bedrooms">4</field>
+            <field name="bathrooms">3</field>
+            <field name="kitchens">2</field>
+            <field name="living_rooms">2</field>
+            <field name="property_price">1980000.0</field>
+            <field name="down_payment">350000.0</field>
+            <field name="payment_method">cash</field>
+            <field name="description">Sold villa in the Marina investment illustrating income recognition.</field>
+        </record>
+
+        <record id="property_giza_sale_1_demo" model="real.estate.property">
+            <field name="name">Giza Plaza Office Floor</field>
+            <field name="investment_id" ref="investment_giza_plaza_demo"/>
+            <field name="status">confirmed</field>
+            <field name="is_purchased">False</field>
+            <field name="property_date">2026-05-07</field>
+            <field name="contact_id" ref="partner_mona_saleh_demo"/>
+            <field name="company_currency" ref="base.USD"/>
+            <field name="total_area">120.0</field>
+            <field name="built_area">100.0</field>
+            <field name="number_of_floors">1</field>
+            <field name="total_rooms">4</field>
+            <field name="bedrooms">1</field>
+            <field name="bathrooms">2</field>
+            <field name="kitchens">1</field>
+            <field name="living_rooms">1</field>
+            <field name="property_price">990000.0</field>
+            <field name="down_payment">180000.0</field>
+            <field name="payment_method">bank</field>
+            <field name="description">Office-level sale to reflect commercial property outcomes.</field>
+        </record>
+    </data>
+</odoo>
