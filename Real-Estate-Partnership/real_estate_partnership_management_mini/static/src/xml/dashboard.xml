@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="real_estate_partnership_management_mini.Dashboard" owl="1">
+        <div class="o_re_dashboard">
+            <div class="o_re_header">
+                <h1>Real Estate Dashboard</h1>
+                <div class="o_re_header_actions">
+                    <span t-if="state.data" class="o_re_date"><t t-esc="state.data.generated_on"/></span>
+                    <button class="btn btn-primary" t-on-click="refresh">Refresh</button>
+                </div>
+            </div>
+
+            <div t-if="state.loading" class="o_re_loading">Loading...</div>
+
+            <t t-if="state.data">
+            <t t-if="!state.loading">
+                <!-- KPI cards -->
+                <div class="o_re_cards">
+                    <t t-foreach="cards" t-as="card" t-key="card.key">
+                        <div class="o_re_card" t-att-data-key="card.key" t-att-style="'border-top-color:' + card.color" t-on-click="openCard">
+                            <div class="o_re_card_label"><t t-esc="card.label"/></div>
+                            <div class="o_re_card_value"><t t-esc="card.value"/></div>
+                            <t t-foreach="card.sub" t-as="line" t-key="line_index">
+                                <div class="o_re_card_sub"><t t-esc="line"/></div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+
+                <!-- things that need an action -->
+                <div class="o_re_alerts">
+                    <t t-foreach="alerts" t-as="alert" t-key="alert.key">
+                        <button type="button"
+                                t-attf-class="o_re_alert #{alert.ids.length ? 'o_re_alert_on' : ''}"
+                                t-att-data-key="alert.key" t-on-click="openAlert">
+                            <span class="o_re_alert_count"><t t-esc="alert.ids.length"/></span>
+                            <span><t t-esc="alert.label"/></span>
+                        </button>
+                    </t>
+                </div>
+
+                <!-- charts -->
+                <div class="o_re_charts">
+                    <div class="o_re_chart"><h3>Purchases vs Sales (12 months)</h3><div class="o_re_canvas"><canvas t-ref="chart_trade"/></div></div>
+                    <div class="o_re_chart"><h3>Net Profit vs Expenses (12 months)</h3><div class="o_re_canvas"><canvas t-ref="chart_profit"/></div></div>
+                    <div class="o_re_chart"><h3>Partners Deposits vs Withdrawals (12 months)</h3><div class="o_re_canvas"><canvas t-ref="chart_cash"/></div></div>
+                    <div class="o_re_chart"><h3>Expenses by Category</h3><div class="o_re_canvas"><canvas t-ref="chart_category"/></div></div>
+                    <div class="o_re_chart"><h3>Investments by Status</h3><div class="o_re_canvas"><canvas t-ref="chart_status"/></div></div>
+                    <div class="o_re_chart"><h3>Investment Cost by Type</h3><div class="o_re_canvas"><canvas t-ref="chart_type"/></div></div>
+                    <div class="o_re_chart"><h3>Sold vs Remaining Area (open investments)</h3><div class="o_re_canvas"><canvas t-ref="chart_area"/></div></div>
+                    <div class="o_re_chart"><h3>Top Partners by Balance</h3><div class="o_re_canvas"><canvas t-ref="chart_partners"/></div></div>
+                </div>
+
+                <!-- tables -->
+                <div class="o_re_tables">
+                    <div class="o_re_table">
+                        <h3>Overdue Installments</h3>
+                        <table class="table table-sm">
+                            <thead><tr><th>Reference</th><th>Property</th><th>Due Date</th><th class="text-end">Amount</th></tr></thead>
+                            <tbody>
+                                <t t-foreach="state.data.installments.overdue" t-as="row" t-key="row.id">
+                                    <tr class="o_re_row" t-att-data-model="'real.estate.payment.installment'" t-att-data-id="row.id" t-on-click="openRecord">
+                                        <td><t t-esc="row.name"/></td>
+                                        <td><t t-esc="row.property"/></td>
+                                        <td><t t-esc="row.due_date"/></td>
+                                        <td class="text-end"><t t-esc="fmt(row.amount)"/></td>
+                                    </tr>
+                                </t>
+                                <tr t-if="!state.data.installments.overdue.length"><td colspan="4" class="text-muted">Nothing overdue</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="o_re_table">
+                        <h3>Due in the Next 30 Days</h3>
+                        <table class="table table-sm">
+                            <thead><tr><th>Reference</th><th>Property</th><th>Due Date</th><th class="text-end">Amount</th></tr></thead>
+                            <tbody>
+                                <t t-foreach="state.data.installments.upcoming" t-as="row" t-key="row.id">
+                                    <tr class="o_re_row" t-att-data-model="'real.estate.payment.installment'" t-att-data-id="row.id" t-on-click="openRecord">
+                                        <td><t t-esc="row.name"/></td>
+                                        <td><t t-esc="row.property"/></td>
+                                        <td><t t-esc="row.due_date"/></td>
+                                        <td class="text-end"><t t-esc="fmt(row.amount)"/></td>
+                                    </tr>
+                                </t>
+                                <tr t-if="!state.data.installments.upcoming.length"><td colspan="4" class="text-muted">Nothing due soon</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="o_re_table">
+                        <h3>Latest Transactions</h3>
+                        <table class="table table-sm">
+                            <thead><tr><th>Reference</th><th>Partner</th><th>Type</th><th class="text-end">Amount</th></tr></thead>
+                            <tbody>
+                                <t t-foreach="state.data.latest_transactions" t-as="row" t-key="row.id">
+                                    <tr class="o_re_row" t-att-data-model="'real.estate.transaction'" t-att-data-id="row.id" t-on-click="openRecord">
+                                        <td><t t-esc="row.name"/></td>
+                                        <td><t t-esc="row.partner"/></td>
+                                        <td><t t-esc="row.type_label"/></td>
+                                        <td class="text-end"><t t-esc="fmt(row.amount)"/></td>
+                                    </tr>
+                                </t>
+                                <tr t-if="!state.data.latest_transactions.length"><td colspan="4" class="text-muted">No transactions yet</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+            </t>
+        </div>
+    </t>
+
+</templates>

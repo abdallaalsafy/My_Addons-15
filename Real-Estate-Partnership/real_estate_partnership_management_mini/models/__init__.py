@@ -12,3 +12,4 @@ from . import company_settings
 from . import payment_installment
 from . import res_company
 from . import city
+from . import dashboard

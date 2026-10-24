@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0-20240131\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 17:44+0000\n"
-"PO-Revision-Date: 2026-09-23 17:44+0000\n"
+"POT-Creation-Date: 2026-10-24 10:19+0000\n"
+"PO-Revision-Date: 2026-10-24 10:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -850,6 +850,10 @@ msgid "All sold total area is greater than total area of investment."
 msgstr "إجمالي مساحة الوحدات المباعة يفوق إجمالي مساحة الاستثمار."
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_cash_flow_into_cash_box_line__amount
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_partner_unified_ledger_line__amount
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_property_payment_receipts_wizard__amount
@@ -863,6 +867,7 @@ msgstr "إجمالي مساحة الوحدات المباعة يفوق إجما�
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_real_estate_partner_details
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_real_estate_partnership_details
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_real_estate_property_details
+#, python-format
 msgid "Amount"
 msgstr "المبلغ"
 
@@ -1787,6 +1792,12 @@ msgid "Daily Cashbox Report"
 msgstr "تقرير صندوق النقدية اليومي"
 
 #. module: real_estate_partnership_management_mini
+#: model:ir.actions.client,name:real_estate_partnership_management_mini.action_real_estate_dashboard
+#: model:ir.ui.menu,name:real_estate_partnership_management_mini.menu_real_estate_dashboard
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#. module: real_estate_partnership_management_mini
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_cash_flow_into_cash_box_line__date
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_partner_unified_ledger_line__date
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_expense__expense_date
@@ -1952,9 +1963,13 @@ msgid "Draft Sold Properties Count"
 msgstr "عدد العقارات المباعة (مسودة)"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_payment_installment__due_date
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_real_estate_property_details
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_payment_installment_search
+#, python-format
 msgid "Due Date"
 msgstr "تاريخ الاستحقاق"
 
@@ -1972,6 +1987,13 @@ msgstr "إلى تاريخ إستحقاق"
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_payment_installment_search
 msgid "Due This Month"
 msgstr "مستحق هذا الشهر"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Due in the Next 30 Days"
+msgstr "المستحقات خلال الأيام الثلاثين القادمة"
 
 #. module: real_estate_partnership_management_mini
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_property_payment_receipts_wizard__duration
@@ -2147,6 +2169,13 @@ msgstr "إجمالي المصروفات الغير مسددة"
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_company_financial_summary__expenses_unpaid_count
 msgid "Expenses Unpaid Count"
 msgstr "عدد المصروفات الغير مسددة"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Expenses by Category"
+msgstr "النفقات حسب الفئة"
 
 #. module: real_estate_partnership_management_mini
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_payment_filter_wizard_form
@@ -2453,6 +2482,13 @@ msgid "Investment"
 msgstr "الأستثمار"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Investment Cost by Type"
+msgstr "تكلفة الاستثمار حسب النوع"
+
+#. module: real_estate_partnership_management_mini
 #: model:ir.actions.report,name:real_estate_partnership_management_mini.action_report_real_estate_investment_details
 msgid "Investment Detailed Report"
 msgstr "تقرير مفصل عن الاستثمار"
@@ -2579,6 +2615,13 @@ msgid "Investments Statistics"
 msgstr "إحصاءات الاستثمار"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Investments by Status"
+msgstr ""
+
+#. module: real_estate_partnership_management_mini
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_property__is_conversion
 msgid "Is Conversioned"
 msgstr "محوّل"
@@ -2685,6 +2728,13 @@ msgid "Last Updated on"
 msgstr "آخر تحديث بتاريخ"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Latest Transactions"
+msgstr "أحدث المعاملات"
+
+#. module: real_estate_partnership_management_mini
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_partner_unified_ledger_line__ledger_id
 msgid "Ledger"
 msgstr "دفتر الأستاذ"
@@ -2710,6 +2760,13 @@ msgstr "عرض القائمة"
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_property__living_rooms
 msgid "Living Rooms"
 msgstr "غرف المعيشة"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Loading..."
+msgstr "جاري التحميل..."
 
 #. module: real_estate_partnership_management_mini
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_investment_form
@@ -2869,6 +2926,13 @@ msgid "Net Profit"
 msgstr "صافي الربح"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Net Profit vs Expenses (12 months)"
+msgstr "الربح الصافي ضد المصروفات (12 شهر)"
+
+#. module: real_estate_partnership_management_mini
 #: code:addons/real_estate_partnership_management_mini/models/expense.py:0
 #: code:addons/real_estate_partnership_management_mini/models/expense.py:0
 #: code:addons/real_estate_partnership_management_mini/models/expense.py:0
@@ -2890,7 +2954,6 @@ msgstr "صافي الربح"
 #: code:addons/real_estate_partnership_management_mini/models/property.py:0
 #: code:addons/real_estate_partnership_management_mini/models/property.py:0
 #: code:addons/real_estate_partnership_management_mini/models/property.py:0
-#: code:addons/real_estate_partnership_management_mini/models/res_partner.py:0
 #: code:addons/real_estate_partnership_management_mini/models/res_partner.py:0
 #: code:addons/real_estate_partnership_management_mini/models/res_partner.py:0
 #: code:addons/real_estate_partnership_management_mini/models/res_partner.py:0
@@ -2975,6 +3038,13 @@ msgid "No payment schedule available for this property."
 msgstr "لا يوجد أقساط دفع متاحة لهذا العقار."
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "No transactions yet"
+msgstr "لا توجد أي معاملات بعد"
+
+#. module: real_estate_partnership_management_mini
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_investment__north_boundary
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_property__north_boundary
 msgid "North Boundary"
@@ -2996,6 +3066,20 @@ msgstr "الحدود الشمالية"
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_partnership_form
 msgid "Notes"
 msgstr "الملاحظات"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Nothing due soon"
+msgstr "لا توجد استحقاقات قريبة"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Nothing overdue"
+msgstr "لا توجد استحقاقات متأخرة"
 
 #. module: real_estate_partnership_management_mini
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_expense__message_needaction_counter
@@ -3149,13 +3233,22 @@ msgid "Opening Partnerships"
 msgstr "الشراكات الجارية"
 
 #. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/models/dashboard.py:0
 #: model:real.estate.expense.category,name:real_estate_partnership_management_mini.expense_category_other
+#, python-format
 msgid "Other"
 msgstr "أخرى"
 
 #. module: real_estate_partnership_management_mini
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_payment_installment_search
 msgid "Overdue"
+msgstr "أقساط متأخرة"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Overdue Installments"
 msgstr "أقساط متأخرة"
 
 #. module: real_estate_partnership_management_mini
@@ -3197,6 +3290,8 @@ msgid "Paid date cannot be earlier than expense date."
 msgstr "لا يمكن أن يكون تاريخ الدفع سابقاً لتاريخ المصروف."
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_partner_unified_ledger__partner_id
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_partnership__partner_id
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_partnership_payment__partner_id
@@ -3208,6 +3303,7 @@ msgstr "لا يمكن أن يكون تاريخ الدفع سابقاً لتار�
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_partnership_search
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_property_sale_lines_search
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_transaction_search
+#, python-format
 msgid "Partner"
 msgstr "الشريك"
 
@@ -3310,6 +3406,13 @@ msgstr "شاراكات الشريك"
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_res_partner_filter
 msgid "Partners"
 msgstr "الشركاء"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Partners Deposits vs Withdrawals (12 months)"
+msgstr "إيداعات الشركاء مقابل سحوبات (12 شهر)"
 
 #. module: real_estate_partnership_management_mini
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_company_financial_summary_form
@@ -3447,6 +3550,10 @@ msgstr "معالج ترشيح أقساط الدفع"
 #. module: real_estate_partnership_management_mini
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_payment_installment_form
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_expense_form
+msgid "Payment Information"
+msgstr "معلومات الدفع"
+
+#. module: real_estate_partnership_management_mini
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_property_form
 msgid "Payment Information Down Payment"
 msgstr "معلومات دفع المقدم"
@@ -3674,6 +3781,9 @@ msgid "Properties Sold"
 msgstr "مبيعات العقارات"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_payment_filter_wizard__property_id
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_property_payment_receipts_wizard__property_id
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_expense__property_id
@@ -3682,6 +3792,7 @@ msgstr "مبيعات العقارات"
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_expense_search
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_property_form
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_property_sale_lines_search
+#, python-format
 msgid "Property"
 msgstr "العقار"
 
@@ -3934,6 +4045,13 @@ msgid "Purchases Unpaid Count"
 msgstr "عدد المشتريات الغير مسددة بالكامل"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Purchases vs Sales (12 months)"
+msgstr "المشتريات ضد المبيعات (12 شهر)"
+
+#. module: real_estate_partnership_management_mini
 #: model:ir.model.fields.selection,name:real_estate_partnership_management_mini.selection__real_estate_investment__area_unit__qirat
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_property_search
 msgid "Qirat"
@@ -3953,6 +4071,18 @@ msgstr "إدارة إستثمارات العقارات"
 #: model:ir.model,name:real_estate_partnership_management_mini.model_real_estate_city
 msgid "Real Estate City"
 msgstr "نموذج مناطق العقارات"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Real Estate Dashboard"
+msgstr "لوحة التحكم للشراكات العقارية"
+
+#. module: real_estate_partnership_management_mini
+#: model:ir.model,name:real_estate_partnership_management_mini.model_real_estate_dashboard
+msgid "Real Estate Dashboard Data"
+msgstr "نموذج بيانات لوحة التحكم للشراكات العقارية"
 
 #. module: real_estate_partnership_management_mini
 #: model:ir.model,name:real_estate_partnership_management_mini.model_real_estate_expense_category
@@ -4030,9 +4160,14 @@ msgid "Real Estate User"
 msgstr "جروب المستخدمين"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_partnership_payment__name
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_cash_flow_into_cash_box
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_partner_unified_ledger
+#, python-format
 msgid "Reference"
 msgstr "المرجع"
 
@@ -4041,6 +4176,13 @@ msgstr "المرجع"
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_partner_unified_ledger_line__name
 msgid "Reference/Description"
 msgstr "المرجع/الوصف"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Refresh"
+msgstr "تحديث"
 
 #. module: real_estate_partnership_management_mini
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_real_estate_partnership__remaining_amount
@@ -4313,6 +4455,13 @@ msgid "Sold This Month"
 msgstr "مبيعات الشهر"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Sold vs Remaining Area (open investments)"
+msgstr "المبيعات ضد المساحة المتبقية (الأستثمارات المفتوحة)"
+
+#. module: real_estate_partnership_management_mini
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_cash_flow_into_cash_box
 msgid "Source"
 msgstr "المصدر"
@@ -4484,6 +4633,13 @@ msgstr "إلى تاريخ"
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_real_estate_transaction_search
 msgid "Today"
 msgstr "اليوم"
+
+#. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
+#, python-format
+msgid "Top Partners by Balance"
+msgstr "الشركاء الأعلى حسب الرصيد"
 
 #. module: real_estate_partnership_management_mini
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.view_cash_flow_into_cash_box_line_tree
@@ -4676,10 +4832,13 @@ msgid "Transactions"
 msgstr "معاملة الشركاء"
 
 #. module: real_estate_partnership_management_mini
+#. openerp-web
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml:0
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_cash_flow_into_cash_box_line__transaction_type
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_partner_unified_ledger_line__transaction_type
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_cash_flow_into_cash_box
 #: model_terms:ir.ui.view,arch_db:real_estate_partnership_management_mini.report_partner_unified_ledger
+#, python-format
 msgid "Type"
 msgstr "نوع الحركة"
 
@@ -4693,6 +4852,12 @@ msgstr "نوع الحركة"
 #: model:ir.model.fields,help:real_estate_partnership_management_mini.field_real_estate_transaction__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr "نوع نشاط الاستثناء المُسجَّل."
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/models/dashboard.py:0
+#, python-format
+msgid "Uncategorized"
+msgstr "غير مصنف"
 
 #. module: real_estate_partnership_management_mini
 #: model:ir.model.fields,field_description:real_estate_partnership_management_mini.field_partner_unified_ledger__line_ids

@@ -5,6 +5,13 @@
         <menuitem id="menu_real_estate_root" name="Real Estate Partnership Management" sequence="0"
                   web_icon="real_estate_partnership,static/description/icon.png"/>
         
+                  <!-- Dashboard -->
+        <menuitem id="menu_real_estate_dashboard"
+              name="Dashboard"
+              parent="menu_real_estate_root"
+              action="action_real_estate_dashboard"
+              sequence="1"/>
+        
         <!-- Partners Menu -->
         <menuitem id="menu_real_estate_contacts" name="Contacts" parent="menu_real_estate_root" sequence="10"/>
 

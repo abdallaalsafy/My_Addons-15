@@ -1,0 +1,308 @@
+# Arabic translation for the Dashboard add-on.
+# Save as i18n/ar.po (if the strings do not show, merge them into i18n/ar_001.po).
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Actual Liquidity"
+msgstr "السيولة النقدية"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Deposits"
+msgstr "الإيداعات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Withdrawals"
+msgstr "السحوبات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Open Investments"
+msgstr "الاستثمارات المفتوحة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Total investments"
+msgstr "إجمالي الاستثمارات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Open amount"
+msgstr "مبلغ المفتوحة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Partners Balance"
+msgstr "أرصدة الشركاء"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Active partners"
+msgstr "الشركاء النشطون"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Debtor partners"
+msgstr "الشركاء المدينون"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Purchases"
+msgstr "المشتريات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Count"
+msgstr "العدد"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Unpaid"
+msgstr "غير المسدد"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Sales"
+msgstr "المبيعات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Net Profit"
+msgstr "صافي الربح"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Total profit"
+msgstr "إجمالي الربح"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Management fees"
+msgstr "رسوم الإدارة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Expenses"
+msgstr "المصروفات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Investments"
+msgstr "الاستثمارات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Company"
+msgstr "الشركة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Overdue Installments"
+msgstr "الأقساط المتأخرة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "To collect"
+msgstr "للتحصيل"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "To pay"
+msgstr "للسداد"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Investments ready to close"
+msgstr "استثمارات جاهزة للقفل"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Ready for restructuring"
+msgstr "جاهزة لإعادة الهيكلة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Partnerships below 100%"
+msgstr "شراكات أقل من 100%"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Overdue installments"
+msgstr "أقساط متأخرة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Partners"
+msgstr "الشركاء"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Purchase Properties"
+msgstr "العقارات المشتراة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Sale Properties"
+msgstr "العقارات المباعة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Net profit"
+msgstr "صافي الربح"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Sold area"
+msgstr "المساحة المباعة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Remaining area"
+msgstr "المساحة المتبقية"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Current balance"
+msgstr "الرصيد الحالي"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/js/dashboard.js
+msgid "Actual balance"
+msgstr "الرصيد الفعلي"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Real Estate Dashboard"
+msgstr "لوحة المعلومات العقارية"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Refresh"
+msgstr "تحديث"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Loading..."
+msgstr "جاري التحميل..."
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Purchases vs Sales (12 months)"
+msgstr "المشتريات مقابل المبيعات (12 شهر)"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Net Profit vs Expenses (12 months)"
+msgstr "صافي الربح مقابل المصروفات (12 شهر)"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Partners Deposits vs Withdrawals (12 months)"
+msgstr "إيداعات الشركاء مقابل سحوباتهم (12 شهر)"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Expenses by Category"
+msgstr "المصروفات حسب الفئة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Investments by Status"
+msgstr "الاستثمارات حسب الحالة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Investment Cost by Type"
+msgstr "تكلفة الاستثمار حسب النوع"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Sold vs Remaining Area (open investments)"
+msgstr "المساحة المباعة مقابل المتبقية (الاستثمارات المفتوحة)"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Top Partners by Balance"
+msgstr "أعلى الشركاء رصيداً"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Due in the Next 30 Days"
+msgstr "مستحقة خلال 30 يوم"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Property"
+msgstr "العقار"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Due Date"
+msgstr "تاريخ الاستحقاق"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Partner"
+msgstr "الشريك"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Type"
+msgstr "النوع"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Nothing overdue"
+msgstr "لا يوجد متأخرات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Nothing due soon"
+msgstr "لا يوجد مستحقات قريبة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "Latest Transactions"
+msgstr "آخر الحركات"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/static/src/xml/dashboard.xml
+msgid "No transactions yet"
+msgstr "لا توجد حركات بعد"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/models/dashboard.py
+msgid "Uncategorized"
+msgstr "بدون فئة"
+
+#. module: real_estate_partnership_management_mini
+#: code:addons/real_estate_partnership_management_mini/models/dashboard.py
+msgid "Other"
+msgstr "أخرى"
+
+#. module: real_estate_partnership_management_mini
+#: model:ir.actions.client,name:real_estate_partnership_management_mini.action_real_estate_dashboard
+#: model:ir.ui.menu,name:real_estate_partnership_management_mini.menu_real_estate_dashboard
+msgid "Dashboard"
+msgstr "لوحة المعلومات"

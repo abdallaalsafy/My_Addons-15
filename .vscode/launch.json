@@ -9,6 +9,7 @@
             "program": "D:/Odoo_Work_Space/Pycharm_Work_Space/Odoo-15/server/odoo-bin",
             "args": [
                 "--config=D:/Odoo_Work_Space/Pycharm_Work_Space/Odoo-15.conf",
+                "-u","real_estate_partnership_management_mini"
             ],
             "console": "integratedTerminal",
         }

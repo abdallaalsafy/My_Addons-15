@@ -55,8 +55,19 @@ This module helps manage:
         'reports/partner_unified_ledger_report.xml',
         'reports/company_financial_summary_report.xml',
         'reports/cash_flow_into_cash_box_report.xml',
+        'views/dashboard_views.xml',
         'views/menu.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'real_estate_partnership_management_mini/static/src/scss/dashboard.scss',
+            'real_estate_partnership_management_mini/static/src/js/dashboard.js',  
+        ],
+        'web.assets_qweb': [
+            'real_estate_partnership_management_mini/static/src/xml/dashboard.xml',
+        ],
+    },
+    'installable': True,
     'installable': True,
     'application': True,
     'sequence': 0,
